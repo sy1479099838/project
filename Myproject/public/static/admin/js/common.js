@@ -20,7 +20,7 @@ function jsApiCall(data)
     );
 }
 
-function callpay(data)
+function Goodspay(data)
 {
     if (typeof WeixinJSBridge == "undefined"){
         if( document.addEventListener ){
