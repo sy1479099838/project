@@ -30,22 +30,69 @@ function closeImage() {
     $(".SeeBigImages").fadeOut(0);
 }
 function closeAddbuinsess() {
-    $(".Pcmenu-AddMenu-Box").fadeOut(1000);
+    $(".Business-AddMenu-Box").fadeOut(1000);
 }
 
 function Addbuinsess() {
-    $(".Pcmenu-AddMenu-Box").fadeIn(700);
+    $(".Business-AddMenu-Box").fadeIn(700);
 }
 
-function preview(file) {
-    var prevDiv = document.getElementById('preview');
-    if (file.files && file.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(evt) {
-            prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';
-        };
-        reader.readAsDataURL(file.files[0]);
+function previewFile () {
+    //alert(12456);
+    var preview = document.getElementById('img1');
+    var file  = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    };
+    //alert(preview.src);
+    if (file) {
+        reader.readAsDataURL(file);
     } else {
-        prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
+        preview.src = "";
     }
+}
+
+function AddBusinessSubmit(){
+    var fd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#img2").get(0).files[0]);
+    $.ajax({
+        url: "AddBusiness",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: fd,
+        success: function(d) {
+            // $(".Index_subImg").show();
+            // var href = $(".Index_subImg")[0].src;
+            // $(".Index_subImg").attr('src',href+"/uploads/"+d);
+        }
+    });
+
+
+
+    // var  name=$("input[name='name']").val();
+    // var  Zhanghao=$("input[name='zhanghao']").val();
+    // var  Pwd=$("input[name='pwd']").val();
+    // var  Gsname=$("input[name='gsname']").val();
+    // var  Address=$("input[name='address']").val();
+    // var  Head=$("input[name='head']").val();
+    // $.ajax({
+    //     type:'post',
+    //     url:'AddBusiness',
+    //     data:({
+    //         Name:name,
+    //         Zhanghao:Zhanghao,
+    //         Pwd:Pwd,
+    //         Gsname:Gsname,
+    //         Address:Address,
+    //         Head:Head
+    //     }),
+    //     success:function(data){
+    //         alert('商家添加成功');
+    //     }
+    //
+    //
+    // });
 }

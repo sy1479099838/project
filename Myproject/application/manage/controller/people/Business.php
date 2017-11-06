@@ -39,4 +39,9 @@ class Business extends Common
         }
 
     }
+    public function AddBusiness()
+    {
+        $file = $_POST;
+        dump($file);
+    }
 }

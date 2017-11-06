@@ -93,38 +93,40 @@
 
     });
 </script>
-<div class="Pcmenu-AddMenu-Box">
+<div class="Business-AddMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
         <p>
-            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加</b>
             <button class="icon-remove-circle" onclick="closeAddbuinsess()"><b>关闭</b></button>
             <span class="cb"></span>
         </p>
+        <h1>添加</h1>
         <div class="Pcmenu-AddMenu layui-form">
                 <span>
-                    <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" name="MenuName" value="" placeholder="">
+                    <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" name="name" value="" placeholder="">
                 </span>
             <span>
-                    <label>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" name="fileName" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
+                    <label>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" name="zhanghao" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
                 </span>
             <span>
-                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="text" name="fileName" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
+                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="text" name="pwd" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
                 </span>
             <span>
-                    <label>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label><input type="text" name="fileName" value="" placeholder="公司名称">
+                    <label>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label><input type="text" name="gsname" value="" placeholder="公司名称">
                 </span>
             <span>
-                    <label>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label><input type="text" name="fileName" value="" placeholder="请填写现在具体住址">
+                    <label>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label><input type="text" name="address" value="" placeholder="请填写现在具体住址">
                 </span>
             <span>
-                    <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label><input type="file" name="fileName" value=""  onchange="preview(this)">
+                    <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label><input type="file" name="head" onchange="previewFile('')" id="img2">
+
                 </span>
+            <span style="height:100px"><img src="" height="100" width="80%" alt="请上传头像" id="img1"/><br></span>
             <span>
                     <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </span>
             <br>
             <div class="AddMenu-Submit">
-                <button onclick="AddMenuSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+                <button onclick="AddBusinessSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
             </div>
         </div>
     </div>
