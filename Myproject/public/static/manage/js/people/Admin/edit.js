@@ -2,7 +2,7 @@
 
 /*
 * 当负责人选择框第一个的值发生改变的时候触发
-*返回后台进行区域选择
+*返回后台进行区域
 * */
 $(function () {
    $(".EditLiabilityPeople-Choice_one").change(function () {
