@@ -1,0 +1,45 @@
+
+.Index_styleBox_3{display:inline-block;width: 96%;}
+.Index_styleBox_3 p{display: inline-block;width: 100%;height:30px;text-align: left;line-height: 30px;padding-bottom: 10px;}
+.Index_styleBox_3 a{display:inline-block;width: 100%;position: relative;}
+.Index_styleBox_3 a img{display: inline-block;width: 100%;margin: 2px 0;}
+.Index_styleBox_3 p img{display: inline-block;height:30px;float: left;}
+.Index_styleBox_3 p a{display: inline-block;width: 50%;float: right;text-align: right;color: #5bc0de;font-size: 14px;}
+.Index_styleBox_3 a p:nth-child(4){height:20px;line-height:20px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;padding-bottom: 0;font-size: 14px;color: #626262;float: left;}
+.Index_styleBox_3 a p:nth-child(3){height:20px;line-height:20px;padding-bottom: 0;color: black;font-size: 14px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;float: left;}
+.Index_styleBox_3 a p:nth-child(2){padding-bottom: 0;float: left;position: absolute;bottom: 45px;right: 0;text-align: right;font-size: 12px;color: #ffffff;}
+
+.Index_styleBox_4{display:inline-block;width: 96%;}
+.Index_styleBox_4 p{display: inline-block;width: 100%;height:30px;text-align: left;line-height: 30px;padding-bottom: 10px;}
+.Index_styleBox_4 p a{display: inline-block;width: 50%;float: right;text-align: right;color: #5bc0de;font-size: 14px;}
+.Index_styleBox_4 a img{display: inline-block;width: 100%;margin: 2px 0;}
+.Index_styleBox_4 p img{display: inline-block;height:30px;float: left;}
+
+.Index_styleBox_1{display:inline-block;width: 96%;ustify-content:space-between}
+.Index_styleBox_1 p{display: inline-block;width: 100%;height:30px;text-align: left;line-height: 30px;padding-bottom: 10px;}
+.Index_styleBox_1 p img{display: inline-block;height:30px;float: left;}
+.Index_styleBox_1 a{display: inline-block;width: 32%;position: relative;}
+.Index_styleBox_1 a img{display: inline-block;width: 98%;margin: 2px 1%;border-radius: 10%;float: left;}
+.Index_styleBox_1 a span{ position: absolute;top:35%;left: 10%;right:10%;bottom:35%;color: #ffffff;text-align: center;font-size: 12px;}
+.Index_styleBox_1 a b{ position: absolute;top:15%;left: 10%;right:10%;bottom:15%;color: #ffffff;text-align: center;font-size: 12px;}
+.Index_styleBox_1 a span i{font-size: 20px;}
+.Index_styleBox_1 a b i{font-size: 25px;}
+.Index_styleBox_2{display:inline-block;width: 96%;}
+.Index_styleBox_2 p{display: inline-block;width: 100%;height:30px;text-align: left;line-height: 30px;padding-bottom: 10px;}
+.Index_styleBox_2 p img{display: inline-block;height:30px;float: left;}
+.Index_styleBox_2 p a{display: inline-block;width: 50%;float: right;text-align: right;color: #5bc0de;font-size: 14px;}
+.Index_styleBox_2 a{display: inline-block;width: 100%;position: relative;}
+.Index_styleBox_2 a img{display: inline-block;width: 30%;padding: 5px 0;float: left;}
+.Index_styleBox_2 div{position: absolute;top:0;left: 35%;right:0;bottom:0;color:black;text-align: left;font-size: 12px;}
+.Index_styleBox_2 div p{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;padding-bottom: 0;}
+.Index_styleBox_2 div span:nth-child(1){display:inline-block;width: 40%;}
+.timer-simple-seconds{color:#FF4040;font-size:12px;float: right;}
+.day,.hour,.minute,.second{font-size:12px;}
+.timer-simple-seconds i{color: #c8c8c8;}
+.Index_classify{display:inline-block;width: 49%;color: black;}
+.Index_classify img{width: 100%;height: 100%;}
+.Index_classify_shopName{display: inline-block;width: 100%;height: 50px;}
+.Index_classify_shopName span:nth-child(1){display: inline-block;width: 49.5%;line-height: 25px;}
+.Index_classify_shopName span:nth-child(1) sub{font-size: 13px;color: #888888;}
+.Index_classify_shopName span:nth-child(2){display: inline-block;width: 49.5%;line-height: 50px;font-size: 20px;color: #65a031;}
+.Index_classify_shopName span:nth-child(2) sub{font-size: 13px;text-decoration:line-through;color: #888888;}

@@ -1,0 +1,73 @@
+.Goods-Details-BigBox{width: 100%;height: auto;}
+/*----------------以下是商品详情部分---------------*/
+.Goods_guide{position: fixed;display: inline-block;width: 100%;height: 30px;top:0;left:0;border-bottom: 1px solid #c8c8c8;background: rgba(255,255,255,0.9);z-index: 99999;line-height: 30px; }
+.Goods_guide button{display: inline-block;width: 15%;text-align: center;float: left;font-size: 20px;height: 100%;line-height: 30px;color: #7d7d7d;background: none;border: none;}
+.Goods_guide a{display: inline-block;width: 21%;height: 100%;text-align: center;float: left;font-size: 18px;color: #7d7d7d;}
+.Goods_guide a i{font-size: 24px;}
+.Goods_info_block{width: 100%;height: 10px;background:#f2f2f2; }
+.swiper-container {display: inline-block;height:auto;width: 100%;}
+.swiper-slide img{display: inline-block;width: 100%;}
+.pagination {position: absolute;left: 0;text-align: center;bottom:5px;width: 100%;z-index: 999;}
+.Goods_info_Box{display: inline-block;width: 100%;text-align: center; background: #ffffff;}
+.Goods_info_Box>.Goods_info_content{display: inline-block;width: 96%;text-align: left;line-height: 25px; border-bottom: 1px solid #aaaaaa; }
+.Goods_info_Box>.Goods_info_content span:nth-child(2){width: 35%;color:red;display: inline-block;font-size: 14px;}
+.Goods_info_Box>.Goods_info_content span:nth-child(3){width: 15%;color:black;font-size: 12px;text-align: center;display: inline-block; text-decoration: line-through;}
+.Goods_info_Box>.Goods_info_content span:nth-child(4){font-size: 13px;text-align: center;display: inline-block;color: red;}
+.Goods_info_Box>.Goods_info_content1{display: inline-block;width: 96%;text-align: center;line-height: 25px;}
+.Goods_info_Box>.Goods_info_content1 span:nth-child(1){width: 35%;color:#aaaaaa;display: inline-block;font-size: 14px;text-align: left; }
+.Goods_info_Box>.Goods_info_content1 span:nth-child(2){color:#aaaaaa;font-size: 14px; }
+.Goods_info_Box>.Goods_info_content1 p:nth-child(4){border-bottom:1px solid #aaaaaa;display: inline-block;width: 100%;height: auto;color:#898989;font-size: 16px;text-align: left; padding:3px 0;}
+.Goods_info_Box>.Goods_info_content1 p:nth-child(5){display: inline-block;width: 100%;height: auto;text-align: left;}
+.Goods_info_Box>.Goods_info_content1 p i{color: #c31661;}
+.Goods_info_Box>.Goods_info_remind{display: inline-block;width: 100%;line-height: 25px;background: #fffcdc;text-align: center;}
+.Goods_info_Box>.Goods_info_remind p{text-align: left;width: 96%;display: inline-block;}
+.Goods_info_Box>.Goods_info_remind p i{color: red;}
+.Goods_info_Box>.Goods_info_Scenic{display: inline-block;width: 96%;text-align: left;}
+.Goods_info_Box>.Goods_info_Scenic p{border-bottom: 1px solid #aaaaaa;padding: 5px 0;height: 30px;line-height: 30px;}
+.Goods_info_Box>.Goods_info_Scenic a{border-bottom: 1px solid #aaaaaa;padding: 5px 0;display: inline-block;width: 100%;color:black;height: 30px;line-height: 30px;}
+.Goods_info_Box>.Goods_info_Scenic p b{height: 100%;display: inline-block;line-height: 30px;}
+.Goods_info_Box>.Goods_info_Scenic a b{height: 100%;display: inline-block;line-height: 30px;}
+.Goods_info_Box>.Goods_info_Scenic p img{display: inline-block;width: 30px;height: 30px;float: left;border-radius: 15px;}
+.Goods_info_Box>.Goods_info_Package{display: inline-block;width: 100%;line-height: 25px; background: #ffffff;text-align: center;}
+.Goods_info_Box>.Goods_info_Package tbody{display: inline-block;width: 96%;}
+.Goods_info_Box>.Goods_info_Package tbody tr{border-bottom:1px solid #aaaaaa;display: inline-block;width: 100%;margin: 5px 0;}
+.Goods_info_Box>.Goods_info_Package tbody tr td:nth-child(1){display: inline-block;width: 20%;height: auto;float: left;text-align: center;}
+.Goods_info_Box>.Goods_info_Package tbody tr td:nth-child(2){display: inline-block;width: 78%;height: auto;float: right;}
+.Goods_info_Box>.Goods_info_Package tbody tr td span{display: inline-block;width: 95%;background: #caebe0;color: #16d191;margin-top: 3px;}
+.Goods_info_Menu_Box{position: fixed;bottom:0;z-index: 1000;width:100%;height: 50px;text-align: center;border-top: 2px solid #c8c8c8;background: rgba(255,255,255,0.9);}
+.Goods_info_Menu_tel{display: inline-block;width: 18.8%;height:100%;text-align: center;color: #a4a4a4;font-size: 12px;float: left;}
+.Goods_info_Menu_tel span{font-size: 30px;}
+.Goods_info_Menu_car{display: inline-block;width: 30%;background: #f9f273;height: 50px;line-height: 50px;float: right;}
+.Goods_info_Menu_Buy{display: inline-block;width: 30%;background: #fd794a;height: 50px;line-height: 50px;float: right;}
+
+
+
+
+
+
+
+/*---------------------------以下是商品评价区---------------------------*/
+.Goods_evaluate_Menu{width: 100%;text-align: center;background: #ffffff;}
+.Goods_evaluate_Menu div{display:inline-block;width: 96%;ustify-content:space-between}
+.Goods_evaluate_Menu div button{display:inline-block;width: 27%;text-align: center;background: #f4dbdc;height:22px;line-height:22px;margin: 5px 2%;border-radius: 3px;font-size: 12px;border: 1px solid #f29c9f;}
+#evaluate_Fraction{color: red;}
+
+
+
+.Comment_Box{width: 100%;height: auto;position: relative;border-bottom: 2px solid #c8c8c8;padding-bottom: 15px;}
+.Comment_Box_top{display:inline-block;width: 100%;height:40px;text-align: left;line-height: 40px;}
+.Comment_Box_top img{width: 30px;height:30px;border-radius: 50%;text-align: center;margin:5px 5px;}
+.Comment_Box_top label{font-size: 12px;color: #a4a4a4;float: right;height:100%;line-height: 40px;margin-right: 5px;}
+.Comment_Box_left{display: inline-block;width: 40px;}
+.Comment_Box_right{height:auto;text-align: left;width: 95%;padding-left: 2.5%;}
+.Comment_Box_right_img{width: 95%;}
+.Comment_Box_right_img a{width: 24%;display: inline-block;float: left;margin: 0 0.5%;}
+.Comment_Box_right_img a img{display: inline-block;width: 100%;}
+.Comment_Box_button{height:auto;text-align: left;width: 95%;padding-left: 2.5%;}
+.Comment_Box_button p{font-size: 12px;color: #a4a4a4;text-align: right;}
+.Comment_Box_button p i{font-size: 16px;color: #a4a4a4;}
+.Comment_Box_button span{font-size: 12px;color:#a4a4a4;display: inline-block;}
+.Comment_Box_button_span{width: 24%;float: left;}
+.Comment_Box_button button{font-size: 12px;color:#a4a4a4;display: inline-block;border: none;background: none;}
+.Comment_Box_button span i{font-size: 16px;color: #52c0d3;}
+.Comment_Box_button button i{font-size: 16px;color: #a4a4a4;}

@@ -1,0 +1,72 @@
+.Region-index-Box{width: 100%;height: 100%;overflow:auto;}
+.Region-index-Box p{width: 96%;padding:10px 2%;text-align: left;height: 30px;line-height: 30px;}
+.Region-index-Box p button{background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Region-index-Box p select{padding:0 10px;display: inline-block;width: 15%;height: 100%;text-align: left; margin:0 2%;border:2px solid green;-moz-appearance: none;border-radius: 5px;-webkit-appearance: none;  appearance: none;}
+.Region-index-Box p span{display: inline-block;height: 100%;line-height: 30px;border:2px solid green; border-radius: 5px;}
+.Region-index-Box p span input{display: inline-block;height: 100%;background: none;border: none;}
+.Region-index-Box p span i{display: inline-block;width: 20px;height: 100%;font-size: 18px;color: #959595;}
+
+
+.Region-Enable{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.Region-Enable>.Region-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
+.Region-Enable>.Region-open img{float: left;display: inline-block;}
+.Region-Enable>.Region-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
+.Region-Enable>.Region-off img{float: right;display: inline-block;}
+.Region-EditRegion{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.Region-EditRegion button{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid #6da0cd;padding:0 3px;border-radius: 5px;}
+.Region-EditRegion button img{float: left;display: inline-block;}
+.Region-AddRegion{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.Region-AddRegion button{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid #6da0cd;padding:0 3px;border-radius: 5px;}
+.Region-AddRegion button img{float: left;display: inline-block;}
+
+
+
+
+.Region-index-Box p button img{display: inline-block;height: 100%;float: left;}
+.Region-index-Box h1{text-align: center;font-size: 30px;padding-left: 2%;width: 96%;line-height: 30px;}
+.Region-index-Box>.Region{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 2%;border-collapse:collapse;}
+.Region-index-Box>.Region tbody{width: 100%;}
+.Region-index-Box>.Region tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.Region-index-Box>.Region tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.Region-index-Box>.Region tbody tr td:nth-child(1){width: 10%}
+.Region-index-Box>.Region tbody tr td:nth-child(2){width:auto;}
+.Region-index-Box>.Region tbody tr td:nth-child(3){width: 15%;text-align: center}
+.Region-index-Box>.Region tbody tr td:nth-child(4){width: 20%;text-align: center;}
+.Region-index-Box>.Region tbody tr td:nth-child(5){width: 15%}
+.Region-index-Box>.Region tbody tr td:nth-child(6){width: 10%;text-align: center;}
+.Region-index-Box>.Region tbody tr td:nth-child(7){width: 10%;text-align: center;}
+
+.AddRegion-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.7);display: none;position:absolute;}
+.AddRegion-Box>.AddRegion-head{position: relative;top:30%;border: 1px solid #707070;left: 30%;right: 30%;bottom: 30%;width: 40%;height: 40%;border-radius: 3px;}
+.AddRegion-Box>.AddRegion-head p{padding: 5px 1%;}
+.AddRegion-Box>.AddRegion-head p button{float: right;}
+.AddRegion-Box>.AddRegion-head h1{text-align: center;display: inline-block;width: 100%;font-size: 20px;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content{margin: 1%;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div{height: 40px;margin: 10px 0 0 0;line-height: 40px;border-bottom:1px solid #a4a4a4; font-size: 18px;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div span{display: inline-block;width: 25%;height: 100%;font-size: 18px;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div input{display: inline-block;width: 50%;height: 100%;background: none;border: none;font-size: 18px;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div label{display: none;width: 20%;float: right;height: 100%;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div select{display: inline-block;margin-left: 2%;background: none;border: none;width: 30%;height: 100%;-moz-appearance: none;border-radius: 5px;-webkit-appearance: none;  appearance: none;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content>.submit{border: none;height: 40px;text-align: center;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content>.submit button{display: inline-block;width: 30%;background: green;border: none;border-radius: 15px;height: 100%;color: #ffffff;font-size: 22px;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content div>.RegionSelect_2{display: none;}
+.AddRegion-Box>.AddRegion-head>.AddRegion-content>.AddRegion-enable input{display: inline-block;width: 10%;height: 80%;padding-top: 5px;}
+
+
+.EditRegion-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.7);display: none;position:absolute;}
+.EditRegion-Box>.EditRegion-head{position: relative;top:30%;border: 1px solid #707070;left: 30%;right: 30%;bottom: 30%;width: 40%;height: 40%;border-radius: 3px;}
+.EditRegion-Box>.EditRegion-head p{padding: 5px 1%;}
+.EditRegion-Box>.EditRegion-head p button{float: right;}
+.EditRegion-Box>.EditRegion-head h1{text-align: center;display: inline-block;width: 100%;font-size: 20px;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content{margin: 1%;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div{height: 40px;margin: 10px 0 0 0;line-height: 40px;border-bottom:1px solid #a4a4a4; font-size: 18px;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div span{display: inline-block;width: 25%;height: 100%;font-size: 18px;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div input{display: inline-block;width: 50%;height: 100%;background: none;border: none;font-size: 18px;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div label{display: none;width: 20%;float: right;height: 100%;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div select{display: inline-block;margin-left: 2%;background: none;border: none;width: 30%;height: 100%;-moz-appearance: none;border-radius: 5px;-webkit-appearance: none;  appearance: none;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content>.submit{border: none;height: 40px;text-align: center;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content>.submit button{display: inline-block;width: 30%;background: green;border: none;border-radius: 15px;height: 100%;color: #ffffff;font-size: 22px;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content div>.EditRegionSelect_2{display: none;}
+.EditRegion-Box>.EditRegion-head>.EditRegion-content>.EditRegion-enable input{display: inline-block;width: 10%;height: 80%;padding-top: 5px;}
+
+

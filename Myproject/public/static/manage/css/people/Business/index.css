@@ -1,0 +1,35 @@
+.Business{width: 100%;height: 100%;overflow: auto;}
+.Business h1{width: 96%;margin-left: 2%;text-align: center;font-size: 22px;}
+.Business>.BusinessList-Content-Box p{width: 96%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 2%;}
+.Business>.BusinessList-Content-Box p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Business>.BusinessList-Content-Box p button img{display: inline-block;height: 100%;float: left;}
+.Business>.BusinessList-Content-Box p span{display: inline-block;height: 95%;line-height: 30px;border:2px solid green; border-radius: 5px;float: left;margin-left: 20px;}
+.Business>.BusinessList-Content-Box p span input{display: inline-block;height: 95%;background: none;border: none;}
+.Business>.BusinessList-Content-Box p span i{display: inline-block;width: 20px;height: 95%;font-size: 18px;color: #959595;}
+
+.Business>.BusinessList-Content-Box>.BusinessList-table{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 0;border-collapse:collapse;margin-left: 2%;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody{width: 100%;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(1){width: 5%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(2){width:9%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(3){width: auto;padding-left: 5px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(4){width: 9%;text-align: center;padding:3px 3px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(5){width: 9%;text-align: center;padding:3px 3px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(6){width: 12%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(7){width: 10%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(8){width: 6%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(9){width: 6%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td:nth-child(10){width: 6%;text-align: center;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td button{display:inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;}
+.Business>.BusinessList-Content-Box>.BusinessList-table tbody tr td button img{display: inline-block;height: 95%;float: left;margin: 0 3px;}
+
+
+
+.BigImagesButton{display: inline-block;width: 100%;}
+
+.SeeBigImages{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.SeeBigImages img{display: inline-block;position: absolute;left:auto;}
+
+
+

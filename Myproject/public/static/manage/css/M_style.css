@@ -1,0 +1,91 @@
+*{padding: 0;margin: 0;}
+.fl{float: left;}
+.fr{float: right;}
+.cb{clear: both;}
+ul li{list-style-type:none;}
+a{text-decoration:none;}
+
+/*------------以下为首页部分------------*/
+.index_box{display:none;position: fixed;top:15%;left:15%;width:70%;height:70%;}
+.test_box{border:1px solid red ;display: inline-block;width:100%;height:100%;}
+.TreeMenuBox>.MenuIndex{width: 180px;height: 34px;display: inline-block;background: #d2d2d2;line-height: 34px;color: black;border-bottom: 1px solid #bfbfbf;}
+
+/*----------------以下为登陆界面--------------*/
+.MaxBox{display: inline-block;width: 100%;height: 100%;}
+.BigBoxImg{width: 100%;height:100%;}
+.LoginBox{position: fixed;top:3%;right:2%;z-index: 100;width:25%;height:60%;background:rgba(255,255,255,0.5);}
+.LoginBox_Choice{width:100%;height:10%;display: inline-block;background:rgba(0,0,0,0);}
+.LoginBox_Login{display:inline-block;width: 100%;height: 100%;line-height:130%;background:rgba(0,0,0,0);border: none;font-size: 30px;text-align: center;font-family: 华文行楷;}
+#verify_img{display: inline-block;width: 50%;height: 100%;}
+.Login_Box{display: inline-block;text-align: center;width: 100%;height: 90%;}
+.Login_Input_Box{display: inline-block;width:90%;height:8%;border-bottom:2px solid #2ca02c;}
+.Login_Input_Box label{display: inline-block;width:10%;height:100%;font-size: 20px;border:none;background:rgba(0,0,0,0);}
+.Login_Input{display: inline-block;width:60%;height:100%;font-size: 16px;border:none;background:rgba(0,0,0,0);}
+.Login_Verify{display: inline-block;width:90%;height:20%;border: none;border-radius: 5px;position: relative;text-align: left}
+.Login_Verify button{display: inline-block;width:49%;height:100%;font-size: 16px;border: none;border-radius: 5px;position: absolute;top:0;right: 0;}
+.Login_submit{display: inline-block;width:90%;height:8%;border:none;}
+.login_submit_button{display: inline-block;width: 50%;height: 100%;border-radius: 5px;border:1px solid #2ca02c;background: #2ca02c;font-size: 20px;}
+.login_res_button{display: inline-block;width:49%;height:100%;font-size: 20px;border: none;border-radius: 5px;float: right;}
+.prompt_Box{position: fixed;top:40%;left: 45%;background: rgba(125,125,125,0.4);font-size: 20px;border-radius: 5px;padding: 5px;display: none;z-index: 9999999;}
+
+/*------------------以下为首页的头顶部分-----------------*/
+
+.Head_Box{width: 100%;height:70px;background:#00923f;display: inline-block;line-height: 50px;position: fixed;top: 0;left: 0;z-index: 999;}
+.HeadLogo_Box{display: inline-block;width: 30%;height: 70px;color:#ffffff;font-family: 华文行楷;line-height: 70px;font-size: 30px;}
+.HeadLogo_Box img{display: inline-block;width: 66px;height: 66px;margin: 2px 0 0 2px;}
+.information_Box{display: inline-block;width: 50%;height: 70px;color:#ffffff;font-family:宋体; font-size: 20px;text-align: right;}
+.information_Box a{display: inline-block;width: 15%;height: 70px;color:#ffffff;float: right;}
+.information_Box a i{display: inline-block;width: 100%;height: 50%;font-size: 25px;text-align: center;line-height: 35px;border-left: 2px solid #76cc9b;}
+.information_Box a p{display: inline-block;width: 100%;height: 50%;float: left;text-align: center;font-size: 16px;line-height: 25px;border-left: 2px solid #76cc9b;}
+.information_Box a p b{font-weight: bolder;}
+.blackBox{width: 100%;height: 70px;display: inline-block;}
+.position_Box{position: absolute;left: 182px;right: 0px;height: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;border-left: 2px solid #e5e5e5;}
+.position_Box i{font-size: 27px;z-index: 999;}
+.Content_Box{display: inline-block;position: absolute;left: 182px;right: 0px;top:102px;bottom: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;overflow:auto;border-left: 2px solid #e5e5e5;}
+.copyright_Box{display: inline-block;position: absolute;left: 180px;right: 0px;bottom: 0;height:30px;font-size: 16px;background: #28323b;text-align: center;color: #ffffff;line-height: 30px; }
+.music_Box{border:1px solid red;width: 300px;height: 50px;}
+.video_Box{width: 50%;height:auto;}
+.Index_subImg{display:none; border:1px solid red;}
+
+/*--------------------这里是系统登录信息页-------------------*/
+.page-container{width: 100%;background: #ffffff;}
+.page-container h1{font-size: 25px;margin-bottom: 10px;padding:10px;}
+.page-container p{font-size: 14px;margin-bottom: 10px;padding:10px;}
+.text-success b{font-size: 20px;padding:10px 0;}
+.table-bordered{width: 100%;border: 1px solid #bfbfbf;margin: 15px 0;border-collapse:collapse; }
+.table-bordered tbody{width: 100%;}
+.table-bordered tbody tr td{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;padding:10px;}
+.table-bordered tbody tr th{border: 1px solid #bfbfbf; text-align: left;height: 30px;line-height: 30px;background: #e8e7f3;padding:10px;font-size: 20px;}
+
+/*-----------------------树状选择菜单-----------------------*/
+.treemenu{width: 100%;height: auto;background: rgba(255,255,255,0);}
+.treemenu>.tree-box{width: 100%;}
+.treemenu>.tree-box p{height: 30px;line-height: 28px;color: #313131;background:#b8b8b8 ;}
+.treemenu>.tree-box p a{color: #313131;}
+.treemenu>.tree-box p a:hover{color:green;}
+.treemenu>.tree-box p button{background: none;width: 30px;height: 100%;display: inline-block;border: none;float: left;}
+.treemenu>.tree-box p button img{display: inline-block;width: 30px;}
+
+.treemenu>.tree-box>.treeMenu-one{line-height: 28px;background: none;display: none;}
+.treemenu>.tree-box>.treeMenu-one dt{height: 30px;line-height: 28px;background:none;background: #c4c4c4;}
+.treemenu>.tree-box>.treeMenu-one dt span{width: 15px;float: left;display: inline-block;}
+.treemenu>.tree-box>.treeMenu-one dt button{background: none;width: 30px;height: 100%;display: inline-block;border: none;float: left;}
+.treemenu>.tree-box>.treeMenu-one dt a{display: inline-block;height: 30px;color: #313131;}
+.treemenu>.tree-box>.treeMenu-one dt a:hover{color: green;}
+.treemenu>.tree-box>.treeMenu-one dt button img{display: inline-block;width: 30px;}
+
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two{height: 30px;line-height: 28px;background:none;background: #c4c4c4;}
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two a{color: #313131;}
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two a:hover{color: green;}
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two i{display: inline-block;width: 15px;float: left;}
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two button{background: none;width: 30px;height: 100%;display: inline-block;border: none;float: left;}
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-two button img{display: inline-block;width: 30px;}
+
+.treemenu>.tree-box>.treeMenu-one dd div{height: 30px;line-height: 28px;background:none;width: 100%;background: #d0d0d0;}
+.treemenu>.tree-box>.treeMenu-one dd div a{color: #313131;}
+.treemenu>.tree-box>.treeMenu-one dd div a:hover{color: green;}
+.treemenu>.tree-box>.treeMenu-one dd div i{display: inline-block;width: 35px;float: left;}
+.treemenu>.tree-box>.treeMenu-one dd div button{background: none;width: 30px;height: 100%;display: inline-block;border: none;float: left;}
+.treemenu>.tree-box>.treeMenu-one dd div button img{display: inline-block;width: 30px;}
+
+.treemenu>.tree-box>.treeMenu-one>.treeMenu-three{line-height: 28px;background: none;display: none;}

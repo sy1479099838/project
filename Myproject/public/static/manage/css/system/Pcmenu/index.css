@@ -1,0 +1,63 @@
+.Pcmenu-index-Box{width: 100%;height: 100%;overflow:auto; }
+.Pcmenu-index-Box>.MenuList{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 2%;border-collapse:collapse;}
+.Pcmenu-index-Box>.MenuList tbody{width: 100%;}
+.Pcmenu-index-Box>.MenuList tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.Pcmenu-index-Box>.MenuList tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(1){width: 10%}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(2){width:auto;}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(3){width: 12%}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(4){width: 15%}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(5){width: 20%}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(6){width: 15%}
+.Pcmenu-index-Box>.MenuList tbody tr td:nth-child(7){width: 10%}
+.Pcmenu-index-Box h1{width: 96%;height: auto;margin: 5px 2%;font-size: 25px;text-align: center;}
+.Pcmenu-index-Box p{width: 96%;height: 30px;margin: 5px 2%;font-size: 25px;line-height: 30px;}
+.Pcmenu-index-Box p button{display: inline-block;height: 100%;float: left; line-height: 25px;}
+.Pcmenu-index-Box p button img{display: inline-block;height: 100%;width: auto;float: left;}
+.PcMenu-Enable{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.PcMenu-Enable>.PcMenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
+.PcMenu-Enable>.PcMenu-open img{float: left;display: inline-block;}
+.PcMenu-Enable>.PcMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
+.PcMenu-Enable>.PcMenu-off img{float: right;display: inline-block;}
+.PcMenu-AddMenu{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.PcMenu-AddMenu button{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid #6da0cd;padding:0 3px;border-radius: 5px;}
+.PcMenu-AddMenu button img{float: left;display: inline-block;}
+.PcMenu-EditMenu{display: inline-block;width: 100%;height: 100%;text-align: center;padding: 3px 0;}
+.PcMenu-EditMenu button{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid #6da0cd;padding:0 3px;border-radius: 5px;}
+.PcMenu-EditMenu button img{float: left;display: inline-block;}
+.Pcmenu-AddMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;top:25%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 50%;background: #ffffff;border-radius: 10px;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window p{padding:3px;height: 33px;text-align: center;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window p button b{font-size: 14px;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window p b{font-size: 25px;font-family: 华文楷体;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines; }
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 60%;height: 100%;display: inline-block;float: left;}
+.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{width: 36%;display: inline-block;height: 100%;border: none;background: none;float: left;text-align: center;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span>.Menu-ISUSE{display: inline-block;width: 10%;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span b{display: inline-block;height: 100%;font-weight: normal;float: left;}
+.AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
+.AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;border: 1px solid green;font-size: 20px;border-radius: 10px;}
+.Menu-chose-2{display: none;}
+.Pcmenu-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
+
+.Pcmenu-EditMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window{position: relative;top:25%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 50%;background: #ffffff;border-radius: 10px;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window p{padding:3px;height: 33px;text-align: center;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window p button b{font-size: 14px;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window p b{font-size: 25px;font-family: 华文楷体;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu{width: 98%;float: left;margin: 2%;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines; }
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span input{background: none;border: none;width: 60%;height: 100%;display: inline-block;float: left;}
+.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span select{width: 36%;display: inline-block;height: 100%;border: none;background: none;float: left;text-align: center;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span>.EditMenu-ISUSE{display: inline-block;width: 10%;}
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span b{display: inline-block;height: 100%;font-weight: normal;float: left;}
+.EditMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
+.EditMenu-Submit button{display: inline-block;width: 40%;height: 95%;border: 1px solid green;font-size: 20px;border-radius: 10px;}
+/*.EditMenu-chose-2{display: none;}*/
+.Pcmenu-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-EditMenu span>.EditMenu-chose-2{display: none;}
+

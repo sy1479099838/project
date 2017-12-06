@@ -1,0 +1,108 @@
+.AdminList-Index_left{width: 14%;height:auto;float: left;margin:0 2px 0 2px;}
+.AdminList-Index_right{width: 85%;height: auto;overflow:auto;float: right;}
+h1{width: 96%;height: auto;margin: 5px 2%;font-size: 25px;text-align: center;}
+.AdminList-Index_right p{width: 100%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;}
+.AdminList-Index_right p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.AdminList-Index_right p button img{display: inline-block;height: 100%;float: left;}
+.AdminList-Index_right p span{display: inline-block;height: 95%;line-height: 30px;border:2px solid green; border-radius: 5px;float: left;margin-left: 20px;}
+.AdminList-Index_right p span input{display: inline-block;height: 95%;background: none;border: none;}
+.AdminList-Index_right p span i{display: inline-block;width: 20px;height: 95%;font-size: 18px;color: #959595;}
+.AdminList-Index_right>.AdminList-table{width: 100%;height: auto;border: 1px solid #bfbfbf;margin: 5px 0;border-collapse:collapse;}
+.AdminList-Index_right>.AdminList-table tbody{width: 100%;}
+.AdminList-Index_right>.AdminList-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.AdminList-Index_right>.AdminList-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(1){width: 8%}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(2){width:auto;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(3){width: 6%;text-align: center}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(4){width: 10%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(5){width: 11%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(6){width: 8%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(7){width: 6%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(8){width: 8%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(9){width: 12%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(10){width: 7%;text-align: center;}
+.AdminList-Index_right>.AdminList-table tbody tr td:nth-child(11){width: 11%;text-align: center;}
+.Admin-authority-button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding-right: 5px;}
+.Admin-authority-button img{display: inline-block;height: 100%;float: left;margin: 0 5px;}
+.Admin-edit-button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding-right: 3px;}
+.Admin-edit-button img{display: inline-block;height: 100%;float: left;margin: 0 3px;}
+.Admin-Del-button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding-right: 3px;}
+.Admin-Del-button img{display: inline-block;height: 95%;float: left;margin: 0 3px;}
+.Admin-Pwd-Res{display:inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;}
+.Admin-Pwd-Res img{display: inline-block;height: 95%;float: left;margin: 0 3px;}
+
+.Admin-Add-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Admin-Add-Box>.Admin-Add-content{position: absolute;top:10%;left: 20%;right: 20%;border:1px solid red;}
+.Admin-Add-Box>.Admin-Add-content>.Add-close{margin: 5px 1%;height: 30px;}
+.Admin-Add-Box>.Admin-Add-content>.Add-close button{background: none;float: right;display: inline-block;height: 100%;border: 1px solid green;border-radius: 5px;padding-right: 5px;line-height: 25px;}
+.Admin-Add-Box>.Admin-Add-content>.Add-close button i{margin: 0 5px;font-size: 20px;line-height: 30px;height: 100%;}
+.Admin-Add-Box>.Admin-Add-content h1{text-align: center;font-size: 22px;width: 95%;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left{width: 48%;margin-left: 1%;float: left;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right{width: 48%;margin-right: 1%;float: right;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left p{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px; }
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left p span{display: inline-block;width: 15%;height: 100%;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left p input{display: inline-block;width: 60%;height: 90%;border: none;background: none;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left p label{color:red;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left>.AddAdmin-Sex{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-left>.AddAdmin-Sex input{display: inline-block;width: 20%;height: 50%;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px; }
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p span{display: inline-block;width: 21%;height: 100%;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p input{display: inline-block;width: 60%;height: 90%;border: none;background: none;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p label{color:red;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}
+.Admin-Add-Box>.Admin-Add-content>.AddAdmin-submit{width: 100%;text-align: center;margin: 20px 0;}
+.Admin-Add-Box>.Admin-Add-content>.AddAdmin-submit button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 10px;color: #ffffff;font-size: 22px;line-height: 30px;padding: 5px;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right p>.AddLiabilityPeople-Choice_Two{display: none;}
+.Admin-Add-Box>.Admin-Add-content>.Admin-Add-content-right>.AddAdmin-Region>#AdminRegion-Add{width: 50%;}
+
+/*
+管理员权限样式
+*/
+.Admin-power-BigBox{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Admin-power-BigBox>.Admin-power-content{position: absolute;top:5%;left: 30%;right: 30%;border:1px solid #434343;border-radius: 10px;width: 40%;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-close{margin: 5px 1%;height: 30px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-close button{background: none;float: right;display: inline-block;height: 100%;border: 1px solid green;border-radius: 5px;padding-right: 5px;line-height: 25px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-close button i{margin: 0 5px;font-size: 20px;line-height: 30px;height: 100%;}
+.Admin-power-BigBox>.Admin-power-content h1{text-align: center;font-size: 22px;width: 95%;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList{width: 95%;margin-left: 2.5%;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList p{font-size: 20px;font-weight: 800;height: 25px;line-height: 25px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList p input{width: 20px;height: 20px;vertical-align: middle;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two{width: 100%;height: auto;border-bottom: 1px solid #bfbfbf;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content{width:100%;color:#434343;font-size: 18px;font-weight: 500;height: 22px;line-height: 22px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content input{width: 18px;height: 18px;vertical-align: middle;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content b{display: inline-block;width: 25px;float: left;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-three-content{float: left;width: 100%;display: inline-block;padding-left: 50px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-three-content span{display: inline-block;color:#434343;font-size: 15px;font-weight: 400;height: 15px;line-height: 18px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-save{width: 100%;margin-top: 5px;height: 30px;text-align: center;margin-bottom: 5px;line-height: 30px;}
+.Admin-power-BigBox>.Admin-power-content>.Admin-power-save button{color:#ffffff;background: green;border: 1px solid green;border-radius: 10px;display: inline-block;height: 100%;line-height: 30px;padding: 0 10px;font-size: 18px;}
+.Admin-Edit-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Admin-Edit-Box>.Admin-Edit-content{position: absolute;top:10%;left: 20%;right: 20%;border:1px solid red;}
+.Admin-Edit-Box>.Admin-Edit-content>.Edit-close{margin: 5px 1%;height: 30px;}
+.Admin-Edit-Box>.Admin-Edit-content>.Edit-close button{background: none;float: right;display: inline-block;height: 100%;border: 1px solid green;border-radius: 5px;padding-right: 5px;line-height: 25px;}
+.Admin-Edit-Box>.Admin-Edit-content>.Edit-close button i{margin: 0 5px;font-size: 20px;line-height: 30px;height: 100%;}
+.Admin-Edit-Box>.Admin-Edit-content h1{text-align: center;font-size: 22px;width: 95%;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left{width: 48%;margin-left: 1%;float: left;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right{width: 48%;margin-right: 1%;float: right;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left p{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px; }
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left p span{display: inline-block;width: 15%;height: 100%;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left p input{display: inline-block;width: 60%;height: 90%;border: none;background: none;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left p label{color:red;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left>.EditAdmin-Sex{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-left>.EditAdmin-Sex input{display: inline-block;width: 20%;height: 50%;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p{width: 100%;height: 30px;margin: 10px 0;border-bottom: 1px solid #a4a4a4;line-height:30px; }
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p span{display: inline-block;width: 21%;height: 100%;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p input{display: inline-block;width: 60%;height: 90%;border: none;background: none;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p label{color:red;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}
+.Admin-Edit-Box>.Admin-Edit-content>.EditAdmin-submit{width: 100%;text-align: center;margin: 20px 0;}
+.Admin-Edit-Box>.Admin-Edit-content>.EditAdmin-submit button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 10px;color: #ffffff;font-size: 22px;line-height: 30px;padding: 5px;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right p>.EditLiabilityPeople-Choice_Two{display: none;}
+.Admin-Edit-Box>.Admin-Edit-content>.Admin-Edit-content-right>.EditAdmin-Region>#AdminRegion-Edit{width: 50%;}
+.Admin-pwd-Res-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content{position: absolute;top:20%;left: 35%;right: 35%;border:1px solid #bfbfbf;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content p{text-align: center;font-size: 16px;width: 100%;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content>.pwd-Res{margin: 5px 1%;height: 30px;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content h1{text-align: center;font-size: 20px;width: 100%;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content>.Pwd-res-button{width: 100%;text-align: center;margin: 20px 0;height: 30px;}
+.Admin-pwd-Res-Box>.Admin-pwd-Res-content>.Pwd-res-button button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 15px;color: #ffffff;font-size: 20px;line-height: 30px;}
+

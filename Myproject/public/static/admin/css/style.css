@@ -1,0 +1,118 @@
+body{background:#f2f2f2;}
+*{padding:0;margin:0;}
+.MAXwidth{width:100%;height:auto;margin:0 auto;}
+.width{width:93%;height:auto;margin:0 auto;}
+.fl{float:left;}
+.fr{float:right;}
+.cb{clear:both;}
+ul li{list-style-type:none;}
+a{text-decoration:none;}
+.prompt_Box{position: fixed;top:40%;left: 25%;right:25%;text-align:center;background: rgba(125,125,125,0.4);font-size: 16px;border-radius: 5px;padding: 5px;display: none;z-index: 9999999;}
+/*----------------------以上是公共部分---------------------------*/
+.Bottom_Menu_Box{position: fixed;bottom:0;z-index: 1000;width:100%;height: 50px;text-align: center;border-top: 2px solid #c8c8c8;background: rgba(255,255,255,0.9);}
+.Bottom_Menu_Box a{display: inline-block;width: 18.8%;height:100%;text-align: center;color: #a4a4a4;font-size: 15px;}
+.Bottom_Menu_Box a span{font-size: 30px;}
+.bottom_margin_Box{height:50px;}
+.guide_block_Box{height:31px;}
+/*------------------以下是首页部分---------------------*/
+.topHead_box{height: 50px;background: #00923f;color:#ffffff;line-height: 50px;display: inline-block;}
+.logo_box{display: inline-block;width: 25%;height:100%;line-height: 50px;text-align: center;background: none;border: none;color:#ffffff;font-size: 16px;}
+.logo_box img{display:inline-block;width: 50px;height: 50px;}
+.Search_box{display: inline-block;width: 45%;height:30px;line-height: 30px;background: #ffffff;border-radius: 8px;margin-top: 10px;}
+.Search_box input{display: inline-block;width: 85%;height:100%;font-size:14px;border: none;background: none;text-align: left;}
+.Search_box button{display: inline-block;width: 15%;border: none;color: #999999;font-size: 16px;height:100%;background: none;}
+.margin_box{display: inline-block;width: 2%;}
+.index_login_box{display: inline-block;width: 25%;height:100%;line-height: 50px;text-align: center;}
+.index_login_box a{color:#ffffff;font-size: 10px;line-height: 12px;display: inline-block;width: 100%;}
+.Index_MenuBigBox{background: #ffffff;}
+.swiper-container{background:#ffffff;width:100%;height:auto;position:absolute;top:0;z-index: 3;font-size: 20px;}
+.swiper-wrapper{width:100%;}
+.swiper-slide{display:inline-block;width:100%;height:auto;}
+.blue-slide img{width:100%;}
+.chevron_button_left{background:rgba(255, 255, 255, 0.5);position: absolute;z-index: 4;top:40%;left:2%;display: inline-block;width:35px;height: 35px;border-radius: 50%;line-height: 35px;text-align: center;color:#ffffff;}
+.chevron_button_right{background:rgba(255, 255, 255, 0.5);position: absolute;z-index: 4;top:40%;right:2%;display: inline-block;width:35px;height: 35px;border-radius: 50%;line-height: 35px;text-align: center;color:#ffffff;}
+.Index_Menu_box{width:100%;height:auto;text-align: center;background: #ffffff;padding-bottom: 10px;}
+.Index_Menu_box a{background: none;border: none;display: inline-block;width: 23.8%;text-align: center;color: #5e9b1a;}
+.Index_Menu_box a img{display: inline-block;width: 90%;height: auto;}
+.Index_HotShop_Box{text-align: center;padding: 10px 0;background: #ffffff;}
+
+/*--------------以下是个人中心部分--------------*/
+/*------------头像部分-------------*/
+.HeadPortraitBox{height:100px;text-align:center;}
+.HeadPortrait{display:inline-block;width:70px;height:70px;position:relative;top:15px;}
+.HeadPortrait img{display:inline-block;width:70px;height:70px;border-radius:50%;}
+.UserMember{display:inline-block;background:#9e6426;width:20px;height:20px;border-radius:50%;position:relative;bottom:25px;right:-25px;line-height:20px;color:#ffffff;}
+.turnright{display:inline-block;width:10px;height:auto;position:relative;bottom:30px;right:3px;}
+.turnright img{display:inline-block;width:100%;height:100%;}
+/*----------电话号码（账号）---------*/
+.PhoneNum{text-align:center;font-size:20px;}
+/*----------积分、余额、优惠-------------*/
+.IntegralBox{height:80px;text-align:center;}
+.Integral{display:inline-block;width:33%;height:60px;border-left:1px solid #999999;position:relative;top:10px;line-height:30px;font-size:20px;}
+.Integral b{color:red;font-size:16px;}
+/*--------------------------------*/
+.MyMenuBox{width:100%;height:340px;background:#f2f2f2;}
+.MyMenu{display:inline-block;width:33%;height:auto;border-left:1px solid #999999;border-bottom:1px solid #999999;position:relative;top:10px;text-align:center;padding-top:5px;color:#363636;background:#f2f2f2;}
+.MyMenu img{display:inline-block;width:80%;}
+
+/*--------------------------以下是商品区部分----------------------------*/
+
+.LeftMenuBox{display:inline-block;height:auto;width:25%;background:#f2f2f2;border-right:1px solid #dddddd;border-top:1px solid #dddddd;}
+.LeftMenu{display:inline-block;width:100%;height:50px;line-height:50px;font-size:18px;text-align:center;color:#2b2a2a;border-bottom:1px solid #dddddd;}
+#LeftMenu_1{background:#ffffff;}
+.RightFruit{display:inline-block;background:#ffffff;width:74.6%;height:auto;border-top:1px solid #dddddd;}
+.RightFruit_order{font-size:13px;height:50px;}
+#RightFruit_1{display:block;}
+#RightFruit_2{display:none;}
+#RightFruit_3{display:none;}
+.RightFruit_order a{display:inline-block;line-height:50px;text-align:center;padding-left:4px;color:#333333;}
+.RightFruit_order a img{display:inline-block;margin-bottom:-2px;}
+.AllFruit{width:100%;display:inline-block;height:auto;}
+.AllFruit_photo{display:inline-block;width:35%;height:auto;}
+.AllFruit_photo img{display:inline-block;width:92%;border:1px solid #dddddd;float:right;}
+.AllFruit_text{display:inline-block;font-size:12px;width:25%;line-height:234%;margin-left: 7px;height:100%;}
+.AllFruit_text sub{font-size:8px;color:#333333;}
+.Fruit_text_Price{font-size:12px;color:#65a031;}
+.Fruit_text_Price b{font-size:8px;color:#c0bcb6;text-decoration:line-through;}
+.AllFruit_input{display:inline-block;height:20px;color:#6ea037;width:33%;margin-top: 13%;}
+.AllFruit_num{display:inline-block;border-radius:0;text-align:center;border:none;border:1px solid #dddddd;height:100%;color:#6ea037;margin:0 3px;width:35%;}
+.AllFruit_input span{display:inline-block;border:1px solid #dddddd;height:100%;text-align:center;width:20%;}
+
+/*------------------------以下是购物车内容-------------------------*/
+.LoginHead{display: inline-block;width: 100%;height:50px;font-size:20px;line-height: 50px;background: #ffffff;}
+.LoginHead a{display: inline-block;width: 15%;height:50px;text-align: center;line-height: 50px;color: #5e8f1b;}
+.LoginHead span{display: inline-block;width: 70%;height: 50px;text-align: center;line-height: 50px;color: #5e8f1b;}
+.shoppingcar_img{width:13px;height:auto;display:inline-block;padding-right:15px;}
+.BoughtmenuBox{display: inline-block;width: 100%;height:50px;text-align: center;}
+.Boughtmenu{display:inline-block;width:91%;text-align:left;font-size:20px;line-height: 50px;}
+.BoughtFruitBox{background:#ffffff;text-align:center;}
+.BoughtFruit{display:inline-block;border-bottom:1px solid #dddddd;width:90%;height:100px;text-align:left;}
+.BoughtFruit a{display:inline-block;height:85%;text-align:center;float:left;}
+.BoughtFruit a img{display:inline-block;height:100%;position:relative;bottom:-7.5%;}
+.BoughtFruit_text{display:inline-block;width:42%;height:100%;line-height:100%;font-size:12px;color:#b4afc0;margin-left: 5%;line-height: 130%;}
+.BoughtFruit_text p:nth-child(1){display:inline-block;height:33%;font-size:14px;color:black;line-height:180%;}
+.BoughtFruit_text b{display:inline-block;height:33%;font-size:16px;line-height:180%;color:#ff992e;}
+.BoughtFruit_input{display:inline-block;width:20%;height:20%;position:relative;top:67%;text-align:center;}
+.BoughtFruit_input input{width:40%;height:100%;border:none;text-align:center;font-size:100%;}
+.BoughtFruit_input button{width:30%;height:100%;border:none;text-align:center;font-size:100%;border:1px solid #bfbfbf;border-radius:50%;background:#ffffff;color:#ff992e;}
+.TotalAmount{display:inline-block;width:90%;height:80px;text-align:left;color:#ff992e;line-height:80px;font-size:30px;}
+.TotalAmount button{display:inline-block;width:50%;height:40px;background:#ff992e;border:1px solid #ff992e;border-radius:40px;float:right;position:relative;top:25%;font-size:20px;color:#ffffff;}
+
+/*------------------------以下是登录注册页面-------------------------*/
+.LoginHtml_head_Box{width: 100%;height: 50px;background: #00923f;color:#ffffff;line-height: 50px;text-align: center;}
+.LoginHtml_head_Box span:nth-child(2){display: inline-block;width: 50%;float: left;text-align: center;font-size: 20px;}
+.LoginHtml_head_Box span:nth-child(3){display: inline-block;width: 24%;float: right;text-align: center;font-size: 30px;}
+.LoginHtml_head_Box span a{color: #ffffff;}
+.LoginHtml_count_box{width: 100%;text-align: center;padding-top: 50px;}
+.LoginHtml_count_box span{display: inline-block;width: 90%;height: 40px;line-height: 40px;font-size: 25px;border-bottom: 1px solid black;}
+.LoginHtml_count_box span i{display: inline-block;width: 25%;color: #747474;float: left;height: 100%;line-height: 40px;}
+.LoginHtml_count_box span input{display: inline-block;width: 55%;height: 100%;float: left;background: none;border: none;font-size: 16px;line-height: 40px;}
+.LoginHtml_count_box span label{display: inline-block;width: 20%;float: right;font-size: 16px;display: none;}
+.LoginHtml_count_forget{border-bottom: none;font-size: 10px;display: inline-block;text-align: right;width: 90%;height: 40px;line-height: 40px;}
+.LoginHtml_count_forget a{color: red;float: right;}
+.RegisterPhone_Code{display: inline;border: none;width: 20%;height: 100%;float: right;background: green;}
+.LoginHtml_count_button1{display: inline-block;width: 90%;height: 40px;line-height: 40px;font-size: 25px;background: #f37b1d;border: 2px solid #f37b1d;border-radius: 20px;color: #ffffff;}
+.LoginHtml_count_button2{display: inline-block;width: 90%;height: 40px;line-height: 40px;font-size: 25px;background: #ffffff;border: 2px solid #f37b1d;border-radius: 20px;color: #f37b1d;}
+
+
+

@@ -1,0 +1,49 @@
+.discuss_speak_box{display: inline-block;width: 25%;height:100%;line-height: 50px;text-align: center;font-size: 25px;}
+.discuss_speak_box a{color:#ffffff;}
+.Comment_Box{width: 100%;height: auto;position: relative;border-bottom: 2px solid #c8c8c8;padding-bottom: 15px;}
+.Comment_Box_top{display:inline-block;width: 100%;height:40px;text-align: left;line-height: 40px;}
+.Comment_Box_top img{width: 30px;height:30px;border-radius: 50%;text-align: center;margin:5px 5px;}
+.Comment_Box_top label{font-size: 12px;color: #a4a4a4;float: right;height:100%;line-height: 40px;margin-right: 5px;}
+.Comment_Box_left{display: inline-block;width: 40px;}
+.Comment_Box_right{height:auto;text-align: left;width: 95%;padding-left: 2.5%;}
+.Comment_Box_right_img{width: 95%;}
+.Comment_Box_right_img a{width: 24%;display: inline-block;float: left;margin: 0 0.5%;}
+.Comment_Box_right_img a img{display: inline-block;width: 100%;}
+.Comment_Box_button{height:auto;text-align: left;width: 95%;padding-left: 2.5%;}
+.Comment_Box_button p{font-size: 12px;color: #a4a4a4;text-align: right;}
+.Comment_Box_button p i{font-size: 16px;color: #a4a4a4;}
+.Comment_Box_button span{font-size: 12px;color:#a4a4a4;display: inline-block;}
+.Comment_Box_button_span{width: 24%;float: left;}
+.Comment_Box_button button{font-size: 12px;color:#a4a4a4;display: inline-block;border: none;background: none;}
+.Comment_Box_button span i{font-size: 16px;color: #52c0d3;}
+.Comment_Box_button button i{font-size: 16px;color: #a4a4a4;}
+.Discuss_publish_box{position: fixed;top:0;left: 0;right: 0;bottom:0;text-align: center;background: rgba(229,229,229,1);z-index: 999999;overflow:auto;display: none;}
+.Discuss_publish_CancerSure{display: inline-block;width: 100%;float: left;background: #393737;height: 50px;line-height: 50px;font-size: 22px;}
+.Discuss_publish_CancerSure a:nth-child(1){float: left;color:#ffffff; }
+.Discuss_publish_CancerSure a:nth-child(3){float: right;color:#22f978; }
+.Discuss_publish_GoodsList{display: inline-block;width: 100%;float: left;background: #ffffff;}
+.Discuss_publish_GoodsList div{text-align: left;display: inline-block;width: 96%;padding-top: 2%;}
+.Discuss_publish_GoodsList div textarea{display: inline-block;width: 100%;height: 150px;border:none;border-bottom: 1px solid #2e3436;background: none;border-radius:0;text-align: left;}
+.Discuss_publish_Scenic{display: inline-block;width: 100%;float: left;background: #ffffff;margin-top: 10px;}
+.Discuss_publish_Scenic div label{color: red;font-size: 10px;display: none;}
+.Discuss_publish_Scenic div{text-align: left;display: inline-block;width: 96%;padding-top: 2%;}
+.Discuss_publish_Scenic div span{text-align: left;border-bottom: 1px solid #898989;display: inline-block;width: 100%;}
+.Discuss_publish_Scenic div span i{color:#626262; }
+.Discuss_publish_Scenic div ul li{height: 30px;line-height:30px;border-bottom: 1px solid #898989; }
+.Discuss_publish_position{display: inline-block;width: 100%;float: left;background: #ffffff;margin: 10px 0 10px 0;}
+.Discuss_publish_position div{text-align: left;display: inline-block;width: 96%;padding: 2% 0;}
+.Discuss_publish_position div span:nth-child(1){display: inline-block;width: 100%;border-bottom: 1px solid #898989;height: 30px;line-height: 30px;}
+.NowPosition{display: none;width: 100%;border-bottom: 1px solid #898989;text-align: right;height: 30px;line-height: 30px;}
+.Discuss_publish_img{display: inline-block;width: 100%;float: left;background: #ffffff;padding: 3px 0;text-align: center;}
+.Discuss_publish_img div{text-align: left;display: inline-block;width: 96%;}
+#test>.webuploader-pick {position: relative;display: inline-block;cursor: pointer;background: #00b7ee;padding: 10px 15px;color: #fff;text-align: center;border-radius: 3px;overflow: hidden;width: 50%;}
+#IMGUpload>.parentFileBox{display: inline-block;width: 100%;}
+#IMGUpload{ min-height:400px; background:#ffffff;display: inline-block;}
+#allmap {display: none;}
+
+
+
+#SeeImg{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: black;line-height: 100%;z-index: 999999;display: none;
+}
+.swiper-container {display: inline-block;height:auto;width: 100%;}
+.swiper-slide img{display: inline-block;width: 100%;}
