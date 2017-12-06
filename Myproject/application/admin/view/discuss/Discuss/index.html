@@ -1,0 +1,85 @@
+﻿{extend name="Public:public"/}
+{block name="main"}
+<div class="MAXwidth topHead_box">
+    <span class="logo_box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt=""></span>
+	<span class="margin_box fl">&nbsp;</span>
+	<span class="Search_box fl"><input type="text" name="" placeholder="&nbsp;寻找你关心的"><button class="icon-search"></button></span>
+	<span class="discuss_speak_box fr">&nbsp;<a class="icon-camera" href="javascript:showPublish()"></a></span>
+	<div class="cb"></div>
+</div>
+<div class="Discuss_publish_box">
+    <div class="Discuss_publish_CancerSure">
+        <a href="javascript:hidePublish()" class="Discuss_publish_Cancer">&nbsp;&nbsp;取消</a><a class="fr">&nbsp;&nbsp;</a><a class="diyStart" href="javascript:void(0)" onclick="PanDuan()">发表</a>
+    </div>
+    <div class="Discuss_publish_GoodsList">
+        <div>
+            <textarea rows="3" cols="20" placeholder="你的感受" class="DiscussFeel"></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="Discuss_publish_Scenic ">
+        <div><span><i class="icon-ok-circle">&nbsp;</i>请选择你去过的地方<label>&nbsp;&nbsp;&nbsp;*请选择*</label><i class="icon-chevron-down fr"></i></span>
+            <ul>
+                <li>&nbsp;&nbsp;<input type="radio" value="1" name="DiscussScenic">千佛山</li>
+                <li>&nbsp;&nbsp;<input type="radio" value="2" name="DiscussScenic">九皇山</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="Discuss_publish_position">
+        <div>
+            <span>
+                <i class="icon-map-marker">&nbsp;</i>是否暴露您的位置？<input type="checkbox" id="NowPosition"/>
+            </span>
+            <p class="NowPosition"></p>
+        </div>
+    </div>
+    <div class="Discuss_publish_img">
+        <div id="IMGUpload">
+            <div id="test" ></div>
+        </div>
+    </div>
+    <div id="allmap"></div>
+</div>
+
+{volist name="friendTalk" id="vo"}
+<div class="Comment_Box">
+    <input type="hidden" value="{$vo.id}" name="TalkNum">
+    <p class="Comment_Box_top fl">
+        <img  onclick="UserInformation('用户信息')" src="__PUBLIC__/admin/images/u-icon1.png" class="fl" alt=""/>{$vo.profile.0.UserName}<label class="icon-map-marker">&nbsp;{$vo.position}</label>
+    </p><div class="cb"></div>
+    <div class="Comment_Box_right">
+        {$vo.TalkText}
+        {present name="vo.photo"}
+        <div class="Comment_Box_right_img">
+            {volist name="vo.photo" id="vo_1"}
+            <a href="javascript:void(0)" onclick="DiscussSeeImg('{$key+1}_{$vo.id}')"><img src="__ROTH__/uploads/{$vo_1.0}/E{$vo_1.1}" alt=""></a>
+            {/volist}
+            <div class="cb"></div>
+        </div>
+        {/present}
+    </div>
+    <div class="Comment_Box_button">
+        <p>
+            <i class="icon-screenshot">&nbsp;</i>描述地点：{$vo.GoodsId}
+        </p>
+        <br>
+        <span class="Comment_Box_button_span">{$vo.CreateTime|date="Y/m/d H:i:s",###}</span>
+        <span class="Comment_Box_button_span"><i class="icon-eye-open">&nbsp;</i>123</span>
+        <button class="Comment_Box_button_span" onclick="ThumbsUp()"><i class="icon-thumbs-up"></i>123</button>
+        <button class="Comment_Box_button_span" onclick="ThumbsUp()"><i class="icon-comment-alt"></i>123</button>
+    </div>
+    <div class="cb"></div>
+</div>
+{/volist}
+
+
+
+
+<div id="SeeImg">
+
+</div>
+
+
+{/block}
+

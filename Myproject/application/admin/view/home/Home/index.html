@@ -1,0 +1,138 @@
+﻿{extend name="Public:public"/}
+{block name="main"}
+    <div class="MAXwidth topHead_box">
+        <span class="logo_box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt=""></span>
+        <span class="margin_box fl">&nbsp;</span>
+        <span class="Search_box fl"><input type="text" name="" placeholder="&nbsp;寻找你喜欢的商品"><button class="icon-search"></button></span>
+        <span class="index_login_box fr">
+            <a href="javascript:;">您好：{$UserInformation['UserName']}</a>
+        </span>
+        <div class="cb"></div>
+    </div>
+    <div class="Index_MenuBigBox">
+        <div class="MAXwidth swiper-container">
+            <div class="swiper-wrapper">
+                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban1.png" class="Location_img"></a>
+                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban2.jpg" class="Location_img"></a>
+                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban3.jpg" class="Location_img"></a>
+                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban_4.jpg" class="Location_img"></a>
+                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban_5.png" class="Location_img"></a>
+            </div>
+            <div class="cb"></div>
+            <a href="javascript:;" class="chevron_button_left fl"><span class="icon-chevron-left"></span></a>
+            <a href="javascript:;" class="chevron_button_right fr"><span class="icon-chevron-right"></span></a>
+            <div class="cb"></div>
+        </div>
+        <div class="MAXwidth Index_Menu_box">
+            <a href="javascript:refreshVerify(1)"><img src="__PUBLIC__/admin/images/90sheji_linggan_13435875.png"><br />门票</a>
+            <a href="javascript:refreshVerify(2)"><img src="__PUBLIC__/admin/images/oneDay.png"><br />一日游</a>
+            <a href="javascript:refreshVerify(3)"><img src="__PUBLIC__/admin/images/Together.png"><br />跟团游</a>
+            <a href="javascript:refreshVerify(4)"><img src="__PUBLIC__/admin/images/welfare.png"><br />福利</a>
+        </div>
+    </div><br>
+
+    <div class="Index_HotShop_Box">
+        <div class="Index_styleBox_1">
+            <p><img src="__PUBLIC__/admin/images/hot.png" alt="">&nbsp;热门旅游地</p>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
+                <span>花荄</span>
+            </a>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
+                <span>花荄</span>
+            </a>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
+                <span>花荄</span>
+            </a>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
+                <span>花荄</span>
+            </a>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
+                <span>花荄</span>
+            </a>
+            <a href="javascript:;">
+                <img src="__PUBLIC__/admin/images/qq_bjhjhhd123.png">
+                <b><i class="icon-double-angle-right"></i><br>点击查看更多</b>
+            </a>
+
+        </div>
+    </div><br>
+
+    <div class="MAXwidth Index_HotShop_Box">
+        <div class="Index_styleBox_2">
+            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;限时抢购
+                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+            </p>
+            <a href="">
+                <img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">
+                <div>
+                    <p>&lt;丽江+大理+香格里拉6日5晚跟团游丽江&gt;</p>
+                    <p>hjsdkahfrjsdkchjafrhyejsh的积分卡掉了第三个快递反馈</p>
+                    <span class="fl">
+                        ￥45起<br>仅限1000份
+                    </span>
+                    <span id="timer" class="timer-simple-seconds fl" timer="600">
+                        <i>距离结束：<br></i><span class="day">0</span>天<span class="hour">0</span>时<span class="minute">0</span>分<span class="second">0</span>秒
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div><br>
+
+    <div class="Index_HotShop_Box">
+        <div class="Index_styleBox_3">
+            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;热门攻略
+                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+            </p>
+            <a href="javascript:HotShop(1)">
+                <img src="__PUBLIC__/admin/images/act1.jpg" alt="">
+                <p>绵阳千佛山风景区&nbsp;&nbsp;1234浏览&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p>生命在于运动</p>
+                <p>偶尔在工作学习之余，运动运动，看看雪，心旷神怡，好不安逸！</p>
+            </a>
+        </div>
+    </div><br>
+    <div class="Index_HotShop_Box">
+        <div class="Index_styleBox_4">
+            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;旅游门票
+                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+            </p>
+            <a class="Index_classify" href="{:url('/admin/goods/Details/index')}">
+                <img src="__PUBLIC__/admin/images/p1.jpg"><br />
+                <span class="Index_classify_shopName">
+                    <span class="fl">千佛山<br /><sub>4.5分</sub></span>
+                    <span class="fr">￥88<sub>￥122</sub></span>
+                </span>
+            </a>
+
+            <a class="Index_classify" href="javascript:refreshVerify(8)">
+                <img src="__PUBLIC__/admin/images/ban1.png"><br />
+                <span class="Index_classify_shopName">
+                    <span class="fl">九皇山<br /><sub>4.8分</sub></span>
+                    <span class="fr">￥88<sub>￥122</sub></span>
+                </span>
+            </a>
+            <a class="Index_classify" href="{:url('Goods/details')}">
+                <img src="__PUBLIC__/admin/images/p1.jpg"><br />
+                <span class="Index_classify_shopName">
+                    <span class="fl">千佛山<br /><sub>4.5分</sub></span>
+                    <span class="fr">￥88<sub>￥122</sub></span>
+                </span>
+            </a>
+
+            <a class="Index_classify" href="javascript:refreshVerify(8)">
+                <img src="__PUBLIC__/admin/images/p2.jpg"><br />
+                <span class="Index_classify_shopName">
+                    <span class="fl">九皇山<br /><sub>4.8分</sub></span>
+                    <span class="fr">￥88<sub>￥122</sub></span>
+                </span>
+            </a>
+
+
+        </div>
+    </div>
+{/block}

@@ -1,0 +1,79 @@
+<tbody>
+<tr>
+    <th>编号</th>
+    <th>姓名</th>
+    <th>账号</th>
+    <th>电话</th>
+    <th>所属区域</th>
+    <th>负责人</th>
+    <th>添加人</th>
+    <th>权限设置</th>
+    <th>注册时间</th>
+    <th>密码重置</th>
+    <th>操作</th>
+</tr>
+{present name="AdminList.0"}
+{volist name="AdminList" id="vo"}
+<tr>
+    <td>{$key+1}</td>
+    <td>{$vo.AdminName}</td>
+    <td>{$vo.account}</td>
+    <td>{$vo.PhoneNumber}</td>
+    <td>{$vo.AdminRegion.0.regionName}</td>
+    <td>第一负责人</td>
+    <td>{$vo.RegisterAdmin}</td>
+    <td>
+        <button class="Admin-authority-button" onclick="AdminPower('{$vo.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button>
+    </td>
+    <td>
+        {$vo["RegisterTime"]|date="Y/m/d H:i",###}
+    </td>
+    <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+    <td>
+        <button class="Admin-edit-button" onclick="EditAdmin('{$vo.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+        <button class="Admin-Del-button" onclick="DelAdmin('{$vo.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+    </td>
+</tr>
+{present name="vo.children.0"}
+{volist name="vo.children" id="vo_1"}
+<tr>
+    <td>&nbsp;&nbsp;|--(&nbsp;{$key+1}&nbsp;)</td>
+    <td>&nbsp;&nbsp;|--(&nbsp;{$vo_1.AdminName}&nbsp;)</td>
+    <td>{$vo_1.account}</td>
+    <td>{$vo_1.PhoneNumber}</td>
+    <td>{$vo_1.AdminRegion.0.regionName}</td>
+    <td>{$vo.AdminName}</td>
+    <td>{$vo_1.RegisterAdmin}</td>
+    <td><button class="Admin-authority-button" onclick="AdminPower('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button></td>
+    <td>{$vo_1["RegisterTime"]|date="Y/m/d H:i",###}</td>
+    <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+    <td>
+        <button class="Admin-edit-button" onclick="EditAdmin('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+        <button class="Admin-Del-button" onclick="DelAdmin('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+    </td>
+</tr>
+{present name="vo_1.children.0"}
+{volist name="vo_1.children" id="vo_2"}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--[&nbsp;{$key+1}&nbsp;]</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--[&nbsp;{$vo_2.AdminName}&nbsp;]</td>
+    <td>{$vo_2.account}</td>
+    <td>{$vo_2.PhoneNumber}</td>
+    <td>{$vo_2.AdminRegion.0.regionName}</td>
+    <td>{$vo_1.AdminName}</td>
+    <td>{$vo_2.RegisterAdmin}</td>
+    <td><button class="Admin-authority-button" onclick="AdminPower('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button></td>
+    <td>{$vo_2["RegisterTime"]|date="Y/m/d H:i",###}</td>
+    <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+    <td>
+        <button class="Admin-edit-button" onclick="EditAdmin('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+        <button class="Admin-Del-button" onclick="DelAdmin('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+    </td>
+</tr>
+{/volist}
+{/present}
+{/volist}
+{/present}
+{/volist}
+{/present}
+</tbody>

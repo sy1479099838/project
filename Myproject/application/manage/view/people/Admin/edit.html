@@ -1,0 +1,83 @@
+
+<script language="JavaScript" src="__PUBLIC__/manage/js/people/Admin/edit.js"></script>
+<div class="Admin-Edit-content">
+    <p class="Edit-close"><button onclick="closeEditAdmin()"><i class="icon-remove-circle"></i>关闭</button></p>
+    <h1>编辑管理员</h1>
+    <div class="Admin-Edit-content-left">
+        <p>
+            <span>姓名：</span>
+            <input type="text" name="EditAdminName" value="{$NowAdmin.AdminName}" placeholder="真实姓名">
+            <label>*</label>
+        </p>
+        <p>
+            <span>账号：</span>
+            <input type="text" name="EditAdminAccount" value="{$NowAdmin.account}" placeholder="4-18字母或数字，不能为中文！" disabled>
+            <label>*</label>
+        </p>
+        <p>
+            <span>电话：</span>
+            <input type="text" name="EditAdminPhoneNum" value="{$NowAdmin.PhoneNumber}" placeholder="电话号码">
+            <label>*</label>
+        </p>
+        <p>
+            <span>年龄：</span>
+            <input type="text" name="EditAdminAge" value="{$NowAdmin.age}" placeholder="">
+            <label></label>
+        </p>
+        <p class="EditAdmin-Sex">
+            <span>性别：</span>
+            男：<input type="radio" name="EditAdminSex" value="1" placeholder="" {$NowAdmin['sex']=='1'?'checked':''}>
+            女：<input type="radio" name="EditAdminSex" value="0" placeholder="" {$NowAdmin['sex']=='1'?'':'checked'}>
+            <label>*</label>
+        </p>
+    </div>
+    <div class="Admin-Edit-content-right">
+
+        <p>
+            <span>负&nbsp;&nbsp;责&nbsp;&nbsp;人：</span>
+
+            <select class="EditLiabilityPeople-Choice_one">
+                <option value="0">--选择--</option>
+                {volist name="AdminList" id="List"}
+                {notin name="List.id" value="1"}
+                <option value="{$List.id}" {$NowAdmin['cid']==$List['id']?'selected':''} >{$List.AdminName}</option>
+                {/notin}
+                {/volist}
+            </select>
+            {volist name="AdminList" id="res"}
+            {present name="res.children.0"}
+            <select class="EditLiabilityPeople-Choice_Two" id="EditLiabilityPeople{$res.id}">
+                <option value="0">--选择--</option>
+                {volist name="res.children" id="res_1"}
+                <option value="{$res_1.id}" {$NowAdmin['pid']==$res_1['id']?'selected':''} >{$res_1.AdminName}</option>
+                {/volist}
+            </select>
+            {/present}
+            {/volist}
+            <label>*</label>
+        </p>
+        <p class="EditAdmin-Region">
+            <span>区域选择：</span>
+            <select name="" id="AdminRegion-Edit">
+                <option value="0">--选择--</option>
+                {volist name="RegionList" id="vo"}
+                <option value="{$vo.id}" {$NowAdmin['RegionId']==$vo['id']?'selected':''} >{$vo.regionName}</option>
+                {present name="vo.children.0"}
+                {volist name="vo.children" id="vo_1"}
+                <option value="{$vo_1.id}" {$NowAdmin['RegionId']==$vo_1['id']?'selected':''} >&nbsp;&nbsp;|--{$vo_1.regionName}</option>
+                {present name="vo_1.children.0"}
+                {volist name="vo_1.children" id="vo_2"}
+                <option value="{$vo_2.id}" {$NowAdmin['RegionId']==$vo_2['id']?'selected':''} >&nbsp;&nbsp;&nbsp;&nbsp;|--|--{$vo_2.regionName}</option>
+                {/volist}
+                {/present}
+                {/volist}
+                {/present}
+                {/volist}
+            </select>
+        </p>
+    </div>
+    <div class="cb"></div>
+    <div class="EditAdmin-submit">
+        <button onclick="EditAdminSubmit('{$NowAdmin.id}')">提交</button>
+    </div>
+</div>

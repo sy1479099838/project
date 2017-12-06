@@ -1,0 +1,18 @@
+
+    <span>区域选择：</span>
+    <select name="" id="AdminRegion-Add">
+        <option value="0">--选择--</option>
+        {volist name="AdminSelect" id="vo"}
+        <option value="{$vo.id}">{$vo.regionName}</option>
+        {present name="vo.children.0"}
+            {volist name="vo.children" id="vo_1"}
+                <option value="{$vo_1.id}">&nbsp;&nbsp;|--{$vo_1.regionName}</option>
+                {present name="vo_1.children.0"}
+                    {volist name="vo_1.children" id="vo_2"}
+                        <option value="{$vo_2.id}" >&nbsp;&nbsp;&nbsp;&nbsp;|--|--{$vo_2.regionName}</option>
+                    {/volist}
+                {/present}
+            {/volist}
+        {/present}
+        {/volist}
+    </select>

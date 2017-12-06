@@ -1,0 +1,44 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> {$Title} </title>
+		<meta name="Generator" content="EditPlus">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="" >
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/style.css">
+		<link rel="stylesheet" href="__PUBLIC__/admin/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/admin/css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/diyUpload/css/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/diyUpload/css/diyUpload.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/{$JsName}.css">
+		<script language="JavaScript" src="__PUBLIC__/admin/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
+		<script type="text/javascript" src="__PUBLIC__/diyUpload/js/webuploader.html5only.min.js"></script>
+		<script language="JavaScript" src="__PUBLIC__/admin/js/common.js"></script>
+		<script language="JavaScript" src="__PUBLIC__/admin/js/swiper.min.js"></script>
+		<script language="JavaScript" src="__PUBLIC__/admin/js/timer-simple-seconds.js"></script>
+		<script language="JavaScript" src="__PUBLIC__/admin/js/{$JsName}.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/diyUpload/js/diyUpload.js"></script>
+
+	</head>
+
+	<body>
+
+	<div class="Bottom_Menu_Box">
+		<a href="{:url('/admin/home/home/index')}"><span class="icon-home"></span><br />首页</a>
+		<a href="{:url('/admin/goods/Goods/index')}"><span class="icon-th-large"></span><br />商品</a>
+		<a href="{:url('/admin/personal/Personal/index')}"><span class="icon-user"></span><br />个人中心</a>
+		<a href="{:url('/admin/shoppingcar/Shoppingcar/index')}"><span class="icon-shopping-cart"></span><br />购物车</a>
+		<a href="{:url('/admin/discuss/Discuss/index')}"><span class="icon-file-alt"></span><br />驴友说</a>
+	</div>
+	<div class="cb"></div>
+	{block name="main"}
+	{/block}
+	<div class="bottom_margin_Box"></div>
+	<div class="prompt_Box"></div>
+
+	</body>
+</html>

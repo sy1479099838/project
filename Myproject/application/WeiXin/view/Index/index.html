@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统首页</title>
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/M_style.css" />
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/treeMenu.css" />
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/font-awesome.min.css" />
+    <script language="JavaScript" src="__PUBLIC__/admin/js/jquery-3.2.1.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/jquery.qrcode.min.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/index.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/treeMenu.js"></script>
+
+</head>
+<body>
+    <div class="Head_Box">
+        <span class="HeadLogo_Box fl"><img src="__PUBLIC__/manage/images/u-icon1.png" alt="Logo" class="fl">大黄蜂公众号管理系统</span>
+        <div class="information_Box fr">
+            <a href="javascript:TopMenu(2);">
+                <i class="icon-off fl"></i>
+                <p>退出</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(2);">
+                <i class="icon-comment fl"></i>
+                <p>信息<b>(123)</b></p>
+                <div class="cb"></div>
+            </a>
+            <a href="">
+                <i class="icon-refresh fl"></i>
+                <p>刷新</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(2);">
+                <i class="icon-home fl"></i>
+                <p>系统首页</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(1);">
+                <i class="icon-user fl"></i>
+                <p>用户:admin</p>
+                <div class="cb"></div>
+            </a>
+        </div>
+        <div class="cb"></div>
+    </div>
+    <div class="blackBox">&nbsp;</div>
+<!-------------树状菜单----------------->
+    <div class="TreeMenuBox fl">
+        <dl>
+            <dt class="list_dt">
+                <span class="_after"></span>
+            <p>增加</p>
+            <i class="list_dt_icon"></i>
+            </dt>
+            <dd class="list_dd">
+                <a class="list_li" >
+                    <span class="_after"></span>
+                    <p>增加2</p>
+                    <i class="list_dt_icon"></i>
+                </a>
+                <span class="list_three">
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+            </span>
+
+                <a class="list_li" >
+                    <span class="_after"></span>
+                    <p>增加2</p>
+                    <i class="list_dt_icon"></i>
+                </a>
+                <span class="list_three">
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+                <a href="javascript:;">三层</a>
+            </span>
+                <a href="javascript:;" class="list_li">自加2</a>
+                <a href="javascript:;" class="list_li">自加3</a>
+                <a href="javascript:;" class="list_li">自加4</a>
+            </dd>
+
+            <dt class="list_dt" id="OpenTree_1">
+                <span class="_after"></span>
+            <p>一年级（上册）</p>
+            <i class="list_dt_icon"></i>
+            </dt>
+            <dd class="list_dd">
+                <a class="list_li" >语文
+                    <i class="list_dt_icon"></i>
+                </a>
+                <span class="list_three">
+                <a href="javascript:;">第1课</a>
+                <a href="javascript:;">第2课</a>
+                <a href="javascript:;">第3课</a>
+                <a href="javascript:;">第4课</a>
+            </span>
+
+                <a class="list_li" >
+                    <span class="_after"></span>
+                    <p>数学</p>
+                    <i class="list_dt_icon"></i>
+                </a>
+                <span class="list_three">
+                <a href="javascript:;">第1章</a>
+                <a href="javascript:;">第2章</a>
+                <a href="javascript:;">第3章</a>
+                <a href="javascript:;">第4章</a>
+            </span>
+                <a href="javascript:;" class="list_li">英语</a>
+                <a href="javascript:;" class="list_li">自然</a>
+            </dd>
+        </dl>
+    </div>
+    <!----------------定位栏---------------->
+    <div class="position_Box">
+        &nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-screenshot"></i>&nbsp;&nbsp;您当前的位置：首页
+    </div>
+    <!----------------内容部分------------------->
+    <div class="Content_Box">
+        <div id="QRcode"></div>
+    </div>
+    <!-----------------底部版权部分------------------->
+    <div class="copyright_Box">
+        @版权所有，侵权必究！
+    </div>
+</body>
+
+</html>

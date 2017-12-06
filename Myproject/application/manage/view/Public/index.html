@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统首页</title>
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/M_style.css" />
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/treeMenu.css" />
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/{present name='fileName'}{$fileName}{/present}.css" />
+    <script language="JavaScript" src="__PUBLIC__/admin/js/jquery-3.2.1.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.parse.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/index.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/treeMenu.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/{present name='fileName'}{$fileName}{/present}.js"></script>
+</head>
+<body>
+    <div class="Head_Box">
+        <span class="HeadLogo_Box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt="Logo" class="fl">&nbsp;&nbsp;管理系统</span>
+        <div class="information_Box fr">
+            <a href="javascript:OutLogin(2);">
+                <i class="icon-off fl"></i>
+                <p>退出</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(2);">
+                <i class="icon-comment fl"></i>
+                <p>信息<b>(123)</b></p>
+                <div class="cb"></div>
+            </a>
+            <a href="">
+                <i class="icon-refresh fl"></i>
+                <p>刷新</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(2);">
+                <i class="icon-home fl"></i>
+                <p>系统首页</p>
+                <div class="cb"></div>
+            </a>
+            <a href="javascript:TopMenu(1);">
+                <i class="icon-user fl"></i>
+                <p>用户:{$LoginAdmin.AdminName}</p>
+                <div class="cb"></div>
+            </a>
+        </div>
+        <div class="cb"></div>
+    </div>
+    <div class="blackBox">&nbsp;</div>
+<!-----------------树状菜单------------------>
+    <div class="TreeMenuBox fl">
+        <a class="MenuIndex" href="{:url('manage/Index/index')}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页</a>
+
+        <dl>
+        {volist name="MenuName" id="vo"}
+            <dt class="list_dt" id="{$vo['id']==$MenuId['0']?'OpenTree_1':''}" >
+                <span class="_after"></span>
+            <p>{$vo.MenuName}</p>
+            <i class="list_dt_icon"></i>
+            </dt>
+            {present name="vo.children"}
+            <dd class="list_dd">
+                {volist name="vo.children" id="vo_1"}
+                {present name="vo_1.children.0"}
+                        <a class="list_li" >
+                            <span class="_after" {present name="$MenuId['1']"} id="{$vo_1['id']==$MenuId['1']?'OpenTree_2':''}" {/present} ></span>
+                            <p>{$vo_1.MenuName}</p>
+                            <i class="list_dt_icon"></i>
+                        </a>
+                        <span class="list_three">
+                            {volist name="vo_1.children" id="vo_2"}
+                                <a href="{:url($vo_2.href,['id' => $vo_2['id']])}" class="{$position==$vo_2['id']?'NowPosition':''}">{$vo_2.MenuName}</a>
+                            {/volist}
+                        </span>
+                {else /}
+                <a href="{:url($vo_1.href,['id' => $vo_1['id']])}" class="list_li {$position==$vo_1['id']?'NowPosition':''}"  >{$vo_1.MenuName}</a>
+                {/present}
+                {/volist}
+            </dd>
+            {/present}
+        {/volist}
+        </dl>
+    </div>
+    <!--------------------中间定位位置--------------------->
+    <div class="position_Box">
+        &nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-caret-right"></i>&nbsp;&nbsp;您当前的位置：<span id="PositionName"></span>
+    </div>
+    <!---------------------正文部分-------------------------->
+
+    <div class="Content_Box">
+        {block name="main"}
+        {/block}
+    </div>
+
+    <div class="copyright_Box">
+        @版权所有，侵权必究！
+    </div>
+    <div class="prompt_Box">fgh是阿富汗是否</div>
+</body>
+</html>

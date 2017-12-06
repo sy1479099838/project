@@ -1,0 +1,205 @@
+{extend name="Public:index"/}
+{block name="main"}
+    <div class="Pcmenu-index-Box">
+        <h1>后台管理系统菜单管理</h1>
+        <p>
+            <button class="" onclick="AddMenu()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加菜单</button>
+        </p>
+        <table class="MenuList">
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>菜单名称</th>
+                <th>文件名</th>
+                <th>文件位置</th>
+                <th>菜单链接</th>
+                <th>是否启用</th>
+                <th>操作</th>
+            </tr>
+            {volist name="MenuList" id="vo"}
+                <tr>
+                    <td>{$key+1}</td>
+                    <td class="MenuName{$vo.id}"><label>{$vo.MenuName}</label></td>
+                    <td class="fileName{$vo.id}">{$vo.Name}</td>
+                    <td class="filePosition{$vo.id}">{$vo.fileName}</td>
+                    <td class="fileHref{$vo.id}">{$vo.href}</td>
+                    <td>
+                        <span class="PcMenu-Enable">
+                            <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status MenuState{$vo.id}">
+                            <button class="PcMenu-open" onclick="OffMenu('{$vo.id}')">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="PcMenu-off" onclick="OpenMenu('{$vo.id}')">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="PcMenu-EditMenu">
+                            <input type="hidden" value="" class="EditMenu">
+                            <button onclick="EditMenu('{$vo.id}|+|{$vo.cid}')">
+                                <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+                {present name="vo.children"}
+                {volist name="vo.children" id="vo_1"}
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;||-{$key+1}</td>
+                        <td class="MenuName{$vo_1.id}">&nbsp;&nbsp;&nbsp;|--<label>{$vo_1.MenuName}</label></td>
+                        <td class="fileName{$vo_1.id}">{$vo_1.Name}</td>
+                        <td class="filePosition{$vo_1.id}">{$vo_1.fileName}</td>
+                        <td class="fileHref{$vo_1.id}">{$vo_1.href}</td>
+                        <td>
+                            <span class="PcMenu-Enable">
+                                <input type="hidden" value="{$vo_1['Enable']==='1'?'open':'off'}" class="status MenuState{$vo_1.id}">
+                                <button class="PcMenu-open" onclick="OffMenu('{$vo_1.id}')">
+                                    <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                                </button>
+                                <button class="PcMenu-off" onclick="OpenMenu('{$vo_1.id}')">
+                                    <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                                </button>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="PcMenu-EditMenu">
+                                <input type="hidden" value="" class="EditMenu">
+                                <button onclick="EditMenu('{$vo_1.id}|+|{$vo_1.cid}')">
+                                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                    {present name="vo_1.children"}
+                    {volist name="vo_1.children" id="vo_2"}
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||-||-{$key+1}</td>
+                            <td class="MenuName{$vo_2.id}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--|--<label>{$vo_2.MenuName}</label></td>
+                            <td class="fileName{$vo_2.id}">{$vo_2.Name}</td>
+                            <td class="filePosition{$vo_2.id}">{$vo_2.fileName}</td>
+                            <td class="fileHref{$vo_2.id}">{$vo_2.href}</td>
+                            <td>
+                                <span class="PcMenu-Enable">
+                                    <input type="hidden" value="{$vo_2['Enable']==='1'?'open':'off'}" class="status MenuState{$vo_2.id}">
+                                    <button class="PcMenu-open " onclick="OffMenu('{$vo_2.id}')">
+                                        <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                                    </button>
+                                    <button class="PcMenu-off" onclick="OpenMenu('{$vo_2.id}')">
+                                        <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                                    </button>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="PcMenu-EditMenu">
+                                    <input type="hidden" value="" class="EditMenu">
+                                    <button onclick="EditMenu('{$vo_2.id}|+|{$vo_2.cid}')">
+                                        <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
+                    {/volist}
+                    {/present}
+                {/volist}
+                {/present}
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+    <div class="Pcmenu-AddMenu-Box">
+        <div class="Pcmenu-AddMenu-Window">
+            <p>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加菜单</b>
+                <button class="icon-remove-circle" onclick="closeAddMenu()"><b>关闭</b></button>
+                <span class="cb"></span>
+            </p>
+            <div class="Pcmenu-AddMenu">
+                <span>
+                    <label>菜&nbsp;&nbsp;单&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;称：</label><input type="text" name="MenuName" value="" placeholder="">
+                </span>
+                <span>
+                    <label>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" name="fileName" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
+                </span>
+                <span>
+                    <label>菜&nbsp;&nbsp;单&nbsp;&nbsp;链&nbsp;&nbsp;&nbsp;接：</label><input type="text" name="MenuHref" value="" placeholder="不可选！" disabled>
+                </span>
+                <span>
+                    <label>选择父级菜单：</label>
+                    <select name="" class="father-Menu">
+                        <option>--请选择--</option>
+                        <option value="0">顶级菜单</option>
+                        {volist name="MenuList" id="value"}
+                            <option value="{$value.Name}|+|{$value.id}">{$value.MenuName}</option>
+                        {/volist}
+                    </select>
+                    {volist name="MenuList" id="val"}
+                        <select name="" class="Menu-chose-2" id="Menu-chose{$val.id}">
+                            <option value="0">--请选择--</option>
+                            {volist name="val.children" id="val_1"}
+                                <option value="{$val_1.Name}|+|{$val_1.id}">{$val_1.MenuName}</option>
+                            {/volist}
+                        </select>
+                    {/volist}
+                </span>
+                <span>
+                    <label>是&nbsp;&nbsp;否&nbsp;&nbsp;启&nbsp;&nbsp;&nbsp;用：</label>
+                    <input type="radio" name="ISUSE" value="1" class="Menu-ISUSE" checked><b>启用</b>
+                    <input type="radio" name="ISUSE" value="0" class="Menu-ISUSE"><b>不启用</b>
+                </span>
+                <br>
+                <div class="AddMenu-Submit">
+                    <button onclick="AddMenuSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="Pcmenu-EditMenu-Box">
+    <div class="Pcmenu-EditMenu-Window">
+        <p>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;菜单修改</b>
+            <button class="icon-remove-circle" onclick="closeEditMenu()"><b>关闭</b></button>
+            <span class="cb"></span>
+        </p>
+        <div class="Pcmenu-EditMenu">
+                <span>
+                    <label>菜&nbsp;&nbsp;单&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;称：</label><input type="text" name="EditMenuName" value="" placeholder="">
+                </span>
+            <span>
+                    <label>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" name="EditFileName" value="" placeholder="由3-15位字母组成，不含数字、汉字、字符">
+                </span>
+            <span>
+                    <label>菜&nbsp;&nbsp;单&nbsp;&nbsp;链&nbsp;&nbsp;&nbsp;接：</label><input type="text" name="EditMenuHref" value="" placeholder="不可选！" disabled>
+                </span>
+            <span>
+                    <label>选择父级菜单：</label>
+                    <select name="" class="Editfather-Menu">
+                        <option>--请选择--</option>
+                        <option value="0">顶级菜单</option>
+                        {volist name="MenuList" id="value"}
+                            <option value="{$value.Name}|+|{$value.id}">{$value.MenuName}</option>
+                        {/volist}
+                    </select>
+                    {volist name="MenuList" id="val"}
+                        <select name="" class="EditMenu-chose-2" id="EditMenu-chose{$val.id}">
+                            <option value="0">--请选择--</option>
+                            {volist name="val.children" id="val_1"}
+                                <option value="{$val_1.Name}|+|{$val_1.id}">{$val_1.MenuName}</option>
+                            {/volist}
+                        </select>
+                    {/volist}
+                </span>
+            <input type="hidden" value="" name="EditHidden">
+            <br>
+            <div class="EditMenu-Submit">
+                <button onclick="EditMenuSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+

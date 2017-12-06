@@ -1,0 +1,26 @@
+﻿{extend name="Public:public_1"/}
+{block name="main"}
+    <div class="LoginHtml_head_Box">
+        <span class="logo_box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt=""></span>
+        <span><b>登&nbsp;&nbsp;录</b></span>
+        <span><a class="icon-home" href="{:url('Index/index')}"></a></span>
+    </div>
+    <div class="LoginHtml_count_box">
+        <span>
+            <i class="icon-user">&nbsp;</i><input type="text" name="LoginUserAccount" placeholder="手机："><label>a</label>
+        </span> <div class="cb"></div><br>
+
+        <span>
+            <i class="icon-unlock">&nbsp;</i><input type="password" name="LoginUserPwd" placeholder="密码：" disabled><label>a</label>
+        </span><div class="cb"></div><br>
+
+        <div class="LoginHtml_count_forget">
+            <a href="#">忘记密码？点这儿</a>
+        </div><div class="cb"></div><br>
+
+        <button class="LoginHtml_count_button1" onclick="Login()">登录</button><div class="cb"></div><br>
+        <a class="LoginHtml_count_button2" href="{:url('/admin/login/Register/index')}">注册</a>
+
+    </div>
+{/block}
+

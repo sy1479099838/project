@@ -1,0 +1,35 @@
+﻿{extend name="Public:public_1"/}
+{block name="main"}
+    <div class="LoginHtml_head_Box">
+        <span class="logo_box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt=""></span>
+        <span><b>注&nbsp;&nbsp;册</b></span>
+        <span><a class="icon-home" href="{:url('Index/index')}"></a></span>
+    </div>
+    <div class="LoginHtml_count_box">
+        <span>
+            <i class="icon-edit">&nbsp;</i><input type="text" name="RegisterUserName" placeholder="昵称：" value="{$UserName}"><label>a</label>
+        </span> <div class="cb"></div><br>
+
+        <span>
+            <i class="icon-user">&nbsp;</i><input type="text" name="RegisterPhoneNum" placeholder="手机："><label>a</label>
+        </span> <div class="cb"></div><br>
+
+        <span>
+            <i class="icon-envelope-alt">&nbsp;</i><input type="text" name="RegisterPhoneCode" placeholder="手机验证码："><button class="RegisterPhone_Code" onclick="daojishi()">点击获取验证码</button>
+        </span> <div class="cb"></div><br>
+
+        <span onclick="RegisterJudge()">
+            <i class="icon-lock">&nbsp;</i><input type="password" name="RegisterUserPwd_1" placeholder="密码：" disabled><label>a</label>
+        </span><div class="cb"></div><br>
+
+        <span onclick="RegisterJudge()">
+            <i class="icon-lock">&nbsp;</i><input type="password" name="RegisterUserPwd_2" placeholder="确认密码：" disabled><label>a</label>
+        </span><div class="cb"></div><br>
+
+        <div class="LoginHtml_count_forget">
+            <a href="{:url('/admin/login/Login/index')}">已有账号？去登陆</a>
+        </div><div class="cb"></div><br>
+        <button class="LoginHtml_count_button2" onclick="LRegister()">注册</button>
+    </div>
+{/block}
+

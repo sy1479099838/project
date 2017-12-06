@@ -1,0 +1,120 @@
+<tbody>
+<tr>
+    <th>编号</th>
+    <th>区域名称</th>
+    <th>第几层次</th>
+    <th>所属区域</th>
+    <th>是否启用</th>
+    <th>添加区域</th>
+    <th>操作</th>
+</tr>
+{volist name="List" id="vo"}
+    <tr>
+        <td>{$key+1}</td>
+        <td>{$vo.regionName}</td>
+        <td>第&nbsp;{$vo.level}&nbsp;级区域</td>
+        <td>{$regionName}</td>
+        <td>
+            <span class="Region-Enable">
+                <input type="hidden" value="{$vo['enable']=='1'?'open':'off'}" class="status">
+                <button class="Region-open" onclick="OffRegion('{$vo.id}')" id="RegionSwitch_off{$vo.id}">
+                    <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                </button>
+                <button class="Region-off" onclick="OpenRegion('{$vo.id}')" id="RegionSwitch_open{$vo.id}">
+                    <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-AddRegion">
+                <input type="hidden" value="" class="AddRegion">
+                <button onclick="AddRegion('{$vo.id}')">
+                    <img src="__PUBLIC__/manage/images/NewAdd.png" alt="">&nbsp;添加
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-EditRegion">
+                <input type="hidden" value="" class="EditRegion">
+                <button onclick="EditRegion('{$vo.id}')">
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                </button>
+            </span>
+        </td>
+    </tr>
+    {present name="vo.children.0"}
+    {volist name="vo.children" id="vo_1"}
+    <tr>
+        <td>&nbsp;&nbsp;|--(&nbsp;{$key+1}&nbsp;)</td>
+        <td>&nbsp;&nbsp;|--{$vo_1.regionName}</td>
+        <td>第&nbsp;{$vo_1.level}&nbsp;级区域</td>
+        <td>{$vo.regionName}</td>
+        <td>
+            <span class="Region-Enable">
+                <input type="hidden" value="{$vo_1['enable']=='1'?'open':'off'}" class="status">
+                <button class="Region-open" onclick="OffRegion('{$vo_1.id}')" id="RegionSwitch_off{$vo_1.id}">
+                    <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                </button>
+                <button class="Region-off" onclick="OpenRegion('{$vo_1.id}')" id="RegionSwitch_open{$vo_1.id}">
+                    <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-AddRegion">
+                <input type="hidden" value="" class="AddRegion">
+                <button onclick="AddRegion('{$vo_1.id}')">
+                    <img src="__PUBLIC__/manage/images/NewAdd.png" alt="">&nbsp;添加
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-EditRegion">
+                <input type="hidden" value="" class="EditRegion">
+                <button onclick="EditRegion('{$vo_1.id}')">
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                </button>
+            </span>
+        </td>
+    </tr>
+    {present name="vo_1.children.0"}
+    {volist name="vo_1.children" id="vo_2"}
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--[&nbsp;{$key+1}&nbsp;]</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--{$vo_2.regionName}</td>
+        <td>第&nbsp;{$vo_2.level}&nbsp;级区域</td>
+        <td>{$vo_1.regionName}</td>
+        <td>
+            <span class="Region-Enable">
+                <input type="hidden" value="{$vo_2['enable']=='1'?'open':'off'}" class="status">
+                <button class="Region-open" onclick="OffRegion('{$vo_2.id}')" id="RegionSwitch_off{$vo_2.id}">
+                    <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                </button>
+                <button class="Region-off" onclick="OpenRegion('{$vo_2.id}')" id="RegionSwitch_open{$vo_2.id}">
+                    <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-AddRegion">
+                <input type="hidden" value="" class="AddRegion">
+                <button onclick="AddRegion('{$vo_2.id}')">
+                    <img src="__PUBLIC__/manage/images/NewAdd.png" alt="">&nbsp;添加
+                </button>
+            </span>
+        </td>
+        <td>
+            <span class="Region-EditRegion">
+                <input type="hidden" value="" class="EditRegion">
+                <button onclick="EditRegion('{$vo_2.id}')">
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">&nbsp;编辑
+                </button>
+            </span>
+        </td>
+    </tr>
+    {/volist}
+    {/present}
+    {/volist}
+    {/present}
+{/volist}
+</tbody>

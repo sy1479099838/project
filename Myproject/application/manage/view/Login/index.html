@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/manage/css/M_style.css">
+    <script language="JavaScript" src="__PUBLIC__/admin/js/jquery-3.2.1.js"></script>
+    <script src="__PUBLIC__/manage/js/login.js"></script>
+</head>
+<body>
+<div class="MaxBox"><img src="__PUBLIC__/manage/images/1506842609781.jpg" class="BigBoxImg"></div>
+<div class="LoginBox">
+    <div class="LoginBox_Choice">
+        <span class="LoginBox_Login">管理员登录</span>
+        <div class="cb"></div>
+    </div>
+    <div class="Login_Box Login_hidden" id="sss"><br />
+        <div class="Login_Input_Box">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<label class="fr account_label"></label><input type="text" class="Login_Input fr Login_account" value="" placeholder="账号"></div><br /><br />
+        <div class="Login_Input_Box">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<label class="fr password_label"></label><input type="password" class="Login_Input fr Login_password" placeholder="密码" disabled></div><br /><br />
+        <div class="Login_Input_Box">验&nbsp;证&nbsp;码：<label class="fr verify_label"></label><input type="text" class="Login_Input fr Verification"  placeholder="验证码"></div><br /><br />
+        <div class="Login_Verify">
+            <img id="verify_img" src="{:captcha_src()}" alt="验证码" onclick="refreshVerify()">
+            <a href="javascript:refreshVerify()"><button>看不清？<br />换一张</button></a>
+        </div><br /><br />
+        <div class="Login_submit">
+            <button class="login_submit_button">提&nbsp;&nbsp;交</button>
+            <button class="login_res_button" onclick="clearinput('');">重&nbsp;&nbsp;置</button>
+            <div class="cb"></div>
+        </div>
+    </div>
+    <div class="prompt_Box">fgh是阿富汗是否</div>
+    <input type="hidden" value="" class="Hidden_Input">
+    <input type="hidden" value="{:url('Login/login')}">
+</div>
+</body>
+</html>

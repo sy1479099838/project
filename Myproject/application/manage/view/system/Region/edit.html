@@ -1,0 +1,45 @@
+<script language="JavaScript" src="__PUBLIC__/manage/js/system/Region/edit.js"></script>
+    <div>
+        <span>区&nbsp;&nbsp;域&nbsp;&nbsp;名&nbsp;&nbsp;称：</span><input type="text" name="EditRegionName" value="{$regionVal.regionName}" placeholder=""><label>&nbsp;</label>
+    </div>
+    <div class="EditRegion-enable">
+        <span>是&nbsp;&nbsp;否&nbsp;&nbsp;启&nbsp;&nbsp;用：</span>
+        启用：<input type="radio" name="EditRegionEnable" value="1" placeholder="" {$regionVal['enable']=='1'?'checked':''}>
+        不启用：<input type="radio" name="EditRegionEnable" value="0" placeholder="" {$regionVal['enable']=='1'?'':'checked'}>
+    </div>
+    <div>
+        <span>选择父级区域：</span>
+
+        <select class="EditRegionSelect_1">
+            {in name="AdminId" value="1"}
+            <option value="0" {$regionVal['cid']==0?'selected':''}>----顶级区域----</option>
+            {else/}
+            <option value="0">----请选择----</option>
+            {/in}
+            {volist name="RegionList" id="value"}
+
+            {volist name="List" id="value"}
+            {in name="value.level" value="2"}
+            <option value="{$value.id}" {$regionVal['pid']==$value['id']?'selected':''}>----{$value.regionName}----</option>
+            {else/}
+            <option value="{$value.id}" {$regionVal['cid']==$value['id']?'selected':''}>----{$value.regionName}----</option>
+            {/in}
+            {/volist}
+        </select>
+        {volist name="List" id="va"}
+        {present name="va.children.0"}
+        {notin name="va.level" value="2"}
+        <select id="EditRegionSelect{$va.id}" class="EditRegionSelect_2 ">
+            <option value="0">---请选择----</option>
+            {volist name="va.children" id="va_1"}
+            <option value="{$va_1.id}" {$regionVal['pid']==$va_1['id']?'selected':''}>----{$va_1.regionName}----</option>
+            {/volist}
+        </select>
+        {/notin}
+        {/present}
+        {/volist}
+    </div>
+    <br>
+    <div class="submit">
+        <button onclick="EditRegionSubmit('{$regionVal.id}')">提&nbsp;&nbsp;&nbsp;交</button>
+    </div>

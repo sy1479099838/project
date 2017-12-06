@@ -1,0 +1,220 @@
+{extend name="Public:index"/}
+{block name="main"}
+<h1>后台管理员管理</h1>
+    <div class="AdminList-Index_right">
+        <p>
+            <button class="" onclick="AddAdmin()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加管理员</button>
+            <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;姓名/电话"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+        </p>
+        <table class="AdminList-table">
+            <tbody>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>账号</th>
+                    <th>电话</th>
+                    <th>所属区域</th>
+                    <th>负责人</th>
+                    <th>添加人</th>
+                    <th>权限设置</th>
+                    <th>注册时间</th>
+                    <th>密码重置</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="AdminList" id="vo"}
+                    <tr>
+                        <td>{$key+1}</td>
+                        <td>{$vo.AdminName}</td>
+                        <td>{$vo.account}</td>
+                        <td>{$vo.PhoneNumber}</td>
+                        <td>{$vo.AdminRegion.0.regionName}</td>
+                        <td>第一负责人</td>
+                        <td>{$vo.RegisterAdmin}</td>
+                        <td>
+                            <button class="Admin-authority-button" onclick="AdminPower('{$vo.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button>
+                        </td>
+                        <td>
+                            {$vo["RegisterTime"]|date="Y/m/d H:i",###}
+                        </td>
+                        <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+                        <td>
+                            <button class="Admin-edit-button" onclick="EditAdmin('{$vo.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                            <button class="Admin-Del-button" onclick="DelAdmin('{$vo.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                        </td>
+                    </tr>
+                    {present name="vo.children.0"}
+                    {volist name="vo.children" id="vo_1"}
+                        <tr>
+                            <td>&nbsp;&nbsp;|--(&nbsp;{$key+1}&nbsp;)</td>
+                            <td>&nbsp;&nbsp;|--(&nbsp;{$vo_1.AdminName}&nbsp;)</td>
+                            <td>{$vo_1.account}</td>
+                            <td>{$vo_1.PhoneNumber}</td>
+                            <td>{$vo_1.AdminRegion.0.regionName}</td>
+                            <td>{$vo.AdminName}</td>
+                            <td>{$vo_1.RegisterAdmin}</td>
+                            <td><button class="Admin-authority-button" onclick="AdminPower('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button></td>
+                            <td>{$vo_1["RegisterTime"]|date="Y/m/d H:i",###}</td>
+                            <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+                            <td>
+                                <button class="Admin-edit-button" onclick="EditAdmin('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                                <button class="Admin-Del-button" onclick="DelAdmin('{$vo_1.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                            </td>
+                        </tr>
+                        {present name="vo_1.children.0"}
+                        {volist name="vo_1.children" id="vo_2"}
+                            <tr>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--[&nbsp;{$key+1}&nbsp;]</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;|--|--[&nbsp;{$vo_2.AdminName}&nbsp;]</td>
+                                <td>{$vo_2.account}</td>
+                                <td>{$vo_2.PhoneNumber}</td>
+                                <td>{$vo_2.AdminRegion.0.regionName}</td>
+                                <td>{$vo_1.AdminName}</td>
+                                <td>{$vo_2.RegisterAdmin}</td>
+                                <td><button class="Admin-authority-button" onclick="AdminPower('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限</button></td>
+                                <td>{$vo_2["RegisterTime"]|date="Y/m/d H:i",###}</td>
+                                <td><button class="Admin-Pwd-Res" onclick="PwdRes('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置</button></td>
+                                <td>
+                                    <button class="Admin-edit-button" onclick="EditAdmin('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                                    <button class="Admin-Del-button" onclick="DelAdmin('{$vo_2.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                                </td>
+                            </tr>
+                        {/volist}
+                        {/present}
+                    {/volist}
+                    {/present}
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+<!-----------------------选择区域----------------------->
+    <div class="AdminList-Index_left">
+        <div class="treemenu">
+            <div class="tree-box">
+                <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:AdminRegionChoice('0')">全部</a></p>
+            </div>
+            {volist name="RegionList" id="val"}
+            <div class="tree-box">
+                <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:AdminRegionChoice('{$val.id}')">{$val.regionName}</a></p>
+                {present name="val.children.0"}
+
+                <dl class="treeMenu-one" id="treeOpen_1">
+                {volist name="val.children" id="val_1"}
+                    {present name="val_1.children.0"}
+                        <dt><span>&nbsp;</span><button class="TreeMenuTwo-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:AdminRegionChoice('{$val_1.id}')">{$val_1.regionName}</a></dt>
+                        <dd  class="treeMenu-three" id="treeOpen_2">
+                            {volist name="val_1.children" id="val_2"}
+                            <div><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:AdminRegionChoice('{$val_2.id}')">{$val_2.regionName}</a></div>
+                            {/volist}
+                        </dd>
+                    {else /}
+                        <div class="treeMenu-two"><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:AdminRegionChoice('{$val_1.id}')">{$val_1.regionName}</a></div>
+                    {/present}
+                {/volist}
+                </dl>
+                {/present}
+            </div>
+            {/volist}
+        </div>
+    </div>
+<!-------------------------添加管理员------------------------>
+    <div class="Admin-Add-Box">
+        <div class="Admin-Add-content">
+            <p class="Add-close"><button onclick="closeAddAdmin()"><i class="icon-remove-circle"></i>关闭</button></p>
+            <h1>添加管理员</h1>
+            <div class="Admin-Add-content-left">
+                <p>
+                    <span>姓名：</span>
+                    <input type="text" name="AdminName" value="" placeholder="真实姓名">
+                    <label>*</label>
+                </p>
+                <p>
+                    <span>账号：</span>
+                    <input type="text" name="AdminAccount" value="" placeholder="4-18字母或数字，不能为中文！">
+                    <label>*</label>
+                </p>
+                <p>
+                    <span>电话：</span>
+                    <input type="text" name="AdminPhoneNum" value="" placeholder="电话号码">
+                    <label>*</label>
+                </p>
+                <p>
+                    <span>年龄：</span>
+                    <input type="text" name="AdminAge" value="" placeholder="">
+                    <label></label>
+                </p>
+                <p class="AddAdmin-Sex">
+                    <span>性别：</span>
+                    男：<input type="radio" name="AdminSex" value="1" placeholder="">
+                    女：<input type="radio" name="AdminSex" value="0" placeholder="">
+                    <label>*</label>
+                </p>
+            </div>
+            <div class="Admin-Add-content-right">
+                <p>
+                    <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+                    <input type="password" name="AdminLoginPwdOne" value="" placeholder="前俩大写，长度6-18字母+数字">
+                    <label>*</label>
+                </p>
+                <p>
+                    <span>确认密码：</span>
+                    <input type="password" name="AdminLoginPwdTwo" value="" placeholder="保证两次一样">
+                    <label>*</label>
+                </p>
+                <p>
+                    <span>负&nbsp;&nbsp;责&nbsp;&nbsp;人：</span>
+
+                    <select class="AddLiabilityPeople-Choice_one">
+                        <option value="0">--选择--</option>
+                        {volist name="AdminList" id="List"}
+                        {notin name="List.id" value="1"}
+                            <option value="{$List.id}">{$List.AdminName}</option>
+                        {/notin}
+                        {/volist}
+                    </select>
+                    {volist name="AdminList" id="res"}
+                    {present name="res.children.0"}
+                    <select class="AddLiabilityPeople-Choice_Two" id="AddLiabilityPeople{$res.id}">
+                        <option value="0">--选择--</option>
+                        {volist name="res.children" id="res_1"}
+                        <option value="{$res_1.id}">{$res_1.AdminName}</option>
+                        {/volist}
+                    </select>
+                    {/present}
+                    {/volist}
+                    <label>*</label>
+                </p>
+                <p class="AddAdmin-Region">
+                    <span>区域选择：</span>
+                    <label>*</label>
+                </p>
+            </div>
+            <div class="cb"></div>
+            <div class="AddAdmin-submit">
+                <button onclick="AddAdminSubmit()">提交</button>
+            </div>
+        </div>
+    </div>
+<!-----------------权限选择----------------->
+    <div class="Admin-power-BigBox">
+    </div>
+<!--------------------管理员编辑--------------------->
+<div class="Admin-Edit-Box"></div>
+<!-------------密码重置确认框-------------->
+<div class="Admin-pwd-Res-Box">
+    <div class="Admin-pwd-Res-content">
+        <h1>确认重置密码</h1>
+        <input type="hidden" value="" name="SureResPwdNum">
+        <br>
+        <p>
+            注意：重置后的密码为DHf+电话后6位！
+        </p>
+        <br>
+        <div class="Pwd-res-button">
+            <button onclick="SureResPwd()">确认</button>&nbsp;&nbsp;&nbsp;
+            <button onclick="CancelResPwd()">取消</button>
+        </div>
+    </div>
+</div>
+{/block}
+
+
