@@ -29,9 +29,6 @@ $(function () {
 function closeImage() {
     $(".SeeBigImages").fadeOut(0);
 }
-
-
-
 function closeAddbuinsess() {
     $(".Pcmenu-AddMenu-Box").fadeOut(1000);
 }
