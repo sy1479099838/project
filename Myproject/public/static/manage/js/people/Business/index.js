@@ -96,3 +96,21 @@ function AddBusinessSubmit(){
     //
     // });
 }
+
+/*商家权限关闭*/
+function closeBuinesspower() {
+    $(".Buiness-power-BigBox").fadeOut();
+}
+/*商家权限添加*/
+function AddBuinsesspower() {
+    $(".Buiness-power-BigBox").fadeIn();
+}
+
+/*商家密码重置*/
+function BuPwd() {
+    $(".Buiness-pwd-Res-Box").fadeIn();
+}
+/*商家密码关闭*/
+function BuncelResPwd() {
+    $(".Buiness-pwd-Res-Box").fadeOut();
+}
