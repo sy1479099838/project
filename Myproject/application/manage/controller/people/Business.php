@@ -63,7 +63,7 @@ class Business extends Common
             $photo[0]=$head;
             $photo[1]=$ImgName;
             $ImgJson=json_encode(array(0=>$head,1=>$ImgName),true);
-            if($ImgJson=="" || strlen($ImgJson)<12)
+            if($ImgJson=="" || strlen($ImgJson)< 12)
             {
                 exit("error");
             }
