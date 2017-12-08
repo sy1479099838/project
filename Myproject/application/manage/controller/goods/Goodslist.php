@@ -15,7 +15,7 @@ class Goodslist extends Common
                 $result[] = $v;
             }
         }
-        return $result ;
+        return $result;
     }
 
 }
