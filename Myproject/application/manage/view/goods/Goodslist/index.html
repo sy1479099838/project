@@ -6,6 +6,7 @@
         <p>
             <button class="" onclick="AddGoodlist()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
             <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+            <span>活动结束日期：</span>
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -15,31 +16,35 @@
                 <th>商品封面</th>
                 <th>套餐名称</th>
                 <th>活动日期</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
                 <th>是否上架</th>
                 <th>操作</th>
             </tr>
             <tr>
                 <td>1</td>
                 <td>1号商品</td>
-                <td><img src=""></td>
+                <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
+                    <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    <span>上架</span>
+                </td>
+                <td> <button onclick="EditBuiness()">
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+                </button>
+                    <button onclick="DelAdmin()">
+                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                    </button></td>
             </tr>
             </tbody>
-
         </table>
-
     </div>
-
-
 </div>
 {/block}
 
