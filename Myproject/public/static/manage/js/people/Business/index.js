@@ -77,26 +77,30 @@ function AddBusinessSubmit(){
                 var  Pwd=$("input[name='pwd']").val();
                 var  Gsname=$("input[name='gsname']").val();
                 var  Address=$("input[name='address']").val();
+                var  Date=$("input[name='date']").val();
                 var  Head=msg;
 
                 var AccountRet = /^[A-Za-z0-9]{4,18}$/;
                 var PwdRet = /^[A-Z]{2}[A-Za-z0-9]{4,16}$/;
                 if(Zhanghao=="" || !AccountRet.test(Zhanghao)){
-                        alert('请输入正确账号');
+                    $.showBox('请输入正确账号');
                 }else if(Pwd=="" || !PwdRet.test(Pwd))
                 {
-                        alert('请输入合适格式密码');
+                    $.showBox('请输入合适格式密码');
                 }else if(name=="")
                 {
-                        alert('请输入商家名称');
+                    $.showBox('请输入商家名称');
                 }else if(Gsname=="")
                 {
-                        alert('请输入公司名称');
+                    $.showBox('请输入公司名称');
                 }else if(Address=="")
                 {
-                        alert("请输入地址");
+                    $.showBox("请输入地址");
                 }else if(Head==""){
-                        alert("请上传头像");
+                    $.showBox("请上传头像");
+                }else if(Date="")
+                {
+                    $.showBox("填写注册日期");
                 }
                 else{
 
@@ -109,7 +113,8 @@ function AddBusinessSubmit(){
                             Pwd:Pwd,
                             Gsname:Gsname,
                             Address:Address,
-                            Head:Head
+                            Head:Head,
+                            Date:Date
                         }),
                         success:function(data){
                             alert('商家添加成功');
