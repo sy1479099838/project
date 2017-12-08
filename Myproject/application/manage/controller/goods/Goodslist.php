@@ -5,7 +5,7 @@ class Goodslist extends Common
 {
     public function index()
     {
-        return $this->fetch("");
+        return $this->fetch();
     }
     public function treeData($data,$pid = 0){
         $result = array();
