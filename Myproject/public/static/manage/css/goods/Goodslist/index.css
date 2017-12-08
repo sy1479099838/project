@@ -1,0 +1,10 @@
+.Goodslist{width: 100%;height: 100%;overflow: auto;}
+.Goodslist h1{width: 96%;margin-left: 2%;text-align: center;font-size: 22px;}
+.Goodslist>.Goodslist-Content-Box p{width: 96%;padding: 10px;text-align: left;line-height:30px;margin-left: 2%; }
+.Goodslist>.Goodslist-Content-Box p button{float: left;background: none;display: inline-block;height: 100%;margin: 3px;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Goodslist>.Goodslist-Content-Box p button img{display: inline-block;height: 100%;float: left;}
+.Goodslist>.Goodslist-Content-Box p span{display: inline-block;height: 95%;line-height: 30px;border: 2px solid green;border-radius: 5px;text-align: center;margin-left: 20px;}
+.Goodslist>.Goodslist-Content-Box p span input{display: inline-block;height: 95%;background: none;border: none;}
+.Goodslist>.Goodslist-Content-Box p span i{display: inline-block;width: 20px;height: 95%;font-size: 18px;color: #959595;}
+
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 0;border-collapse:collapse;margin-left: 2%;}

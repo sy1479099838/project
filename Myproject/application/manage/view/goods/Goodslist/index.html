@@ -1,6 +1,34 @@
 {extend name="Public:index"/}
 {block name="main"}
+<div class="Goodslist">
+    <h1>活动商品管理</h1>
+    <div class="Goodslist-Content-Box">
+        <p>
+            <button class="" onclick="AddGoodlist()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
+            <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+        </p>
+        <table class="Goodslist-table">
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>商品</th>
+                <th>商品封面</th>
+                <th>套餐名称</th>
+                <th>活动日期</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>是否上架</th>
+                <th>操作</th>
+            </tr>
+            </tbody>
 
+        </table>
+
+    </div>
+
+
+</div>
 {/block}
 
 
