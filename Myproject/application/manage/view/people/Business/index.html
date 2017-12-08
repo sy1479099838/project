@@ -55,7 +55,7 @@
                         </button>
                     </td>
                     <td>
-                        <button onclick="PwdRes('{$vo.id}')">
+                        <button onclick="BuPwd()">
                             <img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置
                         </button>
                     </td>
@@ -120,7 +120,7 @@
                     <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label><input type="file" name="head" onchange="previewFile('')" id="img2">
 
                 </span>
-            <span style="height:100px"><img src="" height="100" width="80%" alt="请上传头像" id="img1"/><br></span>
+            <span style="height:100px"><img src="" height="100" width="auto" alt="请上传头像" id="img1"/><br></span>
             <span>
                     <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </span>
@@ -132,15 +132,49 @@
     </div>
 </div>
 
-<div class="Business-power-Box">
-    <div class="Business-power-Window">
 
-        <p>
-            <button class="icon-remove-circle" onclick="closeAddbuinsess()"><b>关闭</b></button>
-            <span class="cb"></span>
-        </p>
+<!----------------------------------------商家权限------------------------------------------>
+
+<div class="Business-power-Box">
+    <div class="Buinsess-power-content">
+        <p class="Admin-power-close"><button onclick="closeBuinesspower()"><i class="icon-remove-circle"></i>关闭</button></p>
+        <h1>权限管理</h1>
+
+        <div class="Admin-power-MenuList" >
+            <p>
+                <input type="checkbox" name="MenuPower" value="" placeholder="" >&nbsp;&nbsp;一级权限
+            </p>
+            <div class="Admin-power-MenuList-two">
+                <p class="power-MenuList-two-content"><b>&nbsp;</b><input type="checkbox" name="MenuPower" value="" placeholder="" >&nbsp;&nbsp;二级权限</p>
+                <div class="power-MenuList-three-content">
+                    <span><input type="checkbox" name="MenuPower" value="" placeholder="" >&nbsp;&nbsp;</span>三级权限
+                </div>
+                <div class="cb"></div>
+            </div>
+        </div>
         <div class="cb"></div>
-        <h1>添加</h1>
+        <div class="Admin-power-save">
+            <button onclick="SavePower()">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="closePowerAdmin()">取消</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!------------------------------密码重置------------------------------------>
+<div class="Business-pwd-Res-Box">
+    <div class="Business-pwd-Res-content">
+        <h1>确认重置密码</h1>
+        <input type="hidden" value="" name="SureResPwdNum">
+        <br>
+        <p>
+            注意：重置后的密码为DHf+电话后6位！
+        </p>
+        <br>
+        <div class="Pwd-res-button">
+            <button onclick="SureResPwd()">确认</button>&nbsp;&nbsp;&nbsp;
+            <button onclick="CloseBuPwd()">取消</button>
+        </div>
     </div>
 </div>
 

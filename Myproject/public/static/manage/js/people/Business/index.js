@@ -99,18 +99,19 @@ function AddBusinessSubmit(){
 
 /*商家权限关闭*/
 function closeBuinesspower() {
-    $(".Buiness-power-BigBox").fadeOut();
+    $(".Business-power-Box").fadeOut();
 }
 /*商家权限添加*/
 function AddBuinsesspower() {
-    $(".Buiness-power-BigBox").fadeIn();
+    //alert(1111111111);
+    $(".Business-power-Box").fadeIn();
 }
 
 /*商家密码重置*/
 function BuPwd() {
-    $(".Buiness-pwd-Res-Box").fadeIn();
+    $(".Business-pwd-Res-Box").fadeIn();
 }
 /*商家密码关闭*/
-function BuncelResPwd() {
-    $(".Buiness-pwd-Res-Box").fadeOut();
+function CloseBuPwd() {
+    $(".Business-pwd-Res-Box").fadeOut();
 }

@@ -51,9 +51,31 @@
 #img1{margin-left:10%;}
 .Business-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
 
-.Business-power-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
-.Business-power-Box>.Business-power-Window{position: relative;top:25%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 50%;background: #ffffff;border-radius: 10px;}
-.Business-power-Box>.Business-power-Window p{padding:3px;height: 30px;text-align: center;}
-.Business-power-Box>.Business-power-Window h1{padding:3px;height: 30px;text-align: center;font-size: 20px;}
-.icon-remove-circle{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
-.icon-remove-circle b{font-size: 14px;}
+
+.Business-power-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Business-power-Box>.Buinsess-power-content{position: absolute;top:5%;left: 30%;right: 30%;border:1px solid #434343;border-radius: 10px;width: 40%;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-close{margin: 5px 1%;height: 30px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-close button{background: none;float: right;display: inline-block;height: 100%;border: 1px solid green;border-radius: 5px;padding-right: 5px;line-height: 25px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-close button i{margin: 0 5px;font-size: 20px;line-height: 30px;height: 100%;}
+.Business-power-Box>.Buinsess-power-content h1{text-align: center;font-size: 22px;width: 95%;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList{width: 95%;margin-left: 2.5%;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList p{font-size: 20px;font-weight: 800;height: 25px;line-height: 25px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList p input{width: 20px;height: 20px;vertical-align: middle;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two{width: 100%;height: auto;border-bottom: 1px solid #bfbfbf;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content{width:100%;color:#434343;font-size: 18px;font-weight: 500;height: 22px;line-height: 22px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content input{width: 18px;height: 18px;vertical-align: middle;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-two-content b{display: inline-block;width: 25px;float: left;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-three-content{float: left;width: 100%;display: inline-block;padding-left: 50px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-MenuList>.Admin-power-MenuList-two>.power-MenuList-three-content span{display: inline-block;color:#434343;font-size: 15px;font-weight: 400;height: 15px;line-height: 18px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-save{width: 100%;margin-top: 5px;height: 30px;text-align: center;margin-bottom: 5px;line-height: 30px;}
+.Business-power-Box>.Buinsess-power-content>.Admin-power-save button{color:#ffffff;background: green;border: 1px solid green;border-radius: 10px;display: inline-block;height: 100%;line-height: 30px;padding: 0 10px;font-size: 18px;}
+
+
+
+.Business-pwd-Res-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content{position: absolute;top:20%;left: 35%;right: 35%;border:1px solid #bfbfbf;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content p{text-align: center;font-size: 16px;width: 100%;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content>.pwd-Res{margin: 5px 1%;height: 30px;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content h1{text-align: center;font-size: 20px;width: 100%;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content>.Pwd-res-button{width: 100%;text-align: center;margin: 20px 0;height: 30px;}
+.Business-pwd-Res-Box>.Business-pwd-Res-content>.Pwd-res-button button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 15px;color: #ffffff;font-size: 20px;line-height: 30px;}
