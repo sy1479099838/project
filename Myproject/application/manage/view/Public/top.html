@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统首页</title>
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/M_style.css" />
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/treeMenu.css" />
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/manage/css/{present name='fileName'}{$fileName}{/present}.css" />
+    <link rel="stylesheet" href="__ROTH__/layui/css/layui.css" media="all">
+    <script src="__ROTH__/layui/layui.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/admin/js/jquery-3.2.1.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.parse.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/index.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/treeMenu.js"></script>
+    <script language="JavaScript" src="__PUBLIC__/manage/js/{present name='fileName'}{$fileName}{/present}.js"></script>
+</head>
+<body>
+<div class="Head_Box">
+    <span class="HeadLogo_Box fl"><img src="__PUBLIC__/admin/images/Logo.jpg" alt="Logo" class="fl">&nbsp;&nbsp;管理系统</span>
+    <div class="information_Box fr">
+        <a href="javascript:OutLogin(2);">
+            <i class="icon-off fl"></i>
+            <p>退出</p>
+            <div class="cb"></div>
+        </a>
+        <a href="javascript:TopMenu(2);">
+            <i class="icon-comment fl"></i>
+            <p>信息<b>(123)</b></p>
+            <div class="cb"></div>
+        </a>
+        <a href="">
+            <i class="icon-refresh fl"></i>
+            <p>刷新</p>
+            <div class="cb"></div>
+        </a>
+        <a href="/manage/Index/index">
+            <i class="icon-home fl"></i>
+            <p>系统首页</p>
+            <div class="cb"></div>
+        </a>
+        <a href="/manage/topmenu/Manageinfor/index">
+            <i class="icon-user fl"></i>
+            <p>{$LoginAdmin.AdminName}</p>
+            <div class="cb"></div>
+        </a>
+    </div>
+    <div class="cb"></div>
+</div>
+<div class="blackBox">&nbsp;</div>
+<!---------------------正文部分-------------------------->
+
+<div class="Adminfile-Content_Box">
+    {block name="main"}
+    {/block}
+</div>
+
+<div class="Adminfile-copyright_Box">
+    @版权所有，侵权必究！
+</div>
+<div class="prompt_Box">fgh是阿富汗是否</div>
+</body>
+</html>
