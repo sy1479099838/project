@@ -71,36 +71,58 @@ function AddBusinessSubmit(){
             }
             else
             {
-                alert(msg);
+                //alert(msg);
+                var  name=$("input[name='name']").val();
+                var  Zhanghao=$("input[name='zhanghao']").val();
+                var  Pwd=$("input[name='pwd']").val();
+                var  Gsname=$("input[name='gsname']").val();
+                var  Address=$("input[name='address']").val();
+                var  Head=msg;
+
+                var AccountRet = /^[A-Za-z0-9]{4,18}$/;
+                var PwdRet = /^[A-Z]{2}[A-Za-z0-9]{4,16}$/;
+                if(Zhanghao=="" || !AccountRet.test(Zhanghao)){
+                        alert('请输入正确账号');
+                }else if(Pwd=="" || !PwdRet.test(Pwd))
+                {
+                        alert('请输入合适格式密码');
+                }else if(name=="")
+                {
+                        alert('请输入商家名称');
+                }else if(Gsname=="")
+                {
+                        alert('请输入公司名称');
+                }else if(Address=="")
+                {
+                        alert("请输入地址");
+                }else if(Head==""){
+                        alert("请上传头像");
+                }
+                else{
+
+                    $.ajax({
+                        type:'post',
+                        url:'AddBusiness',
+                        data:({
+                            Name:name,
+                            Zhanghao:Zhanghao,
+                            Pwd:Pwd,
+                            Gsname:Gsname,
+                            Address:Address,
+                            Head:Head
+                        }),
+                        success:function(data){
+                            alert('商家添加成功');
+                        }
+
+
+                    });
+                }
+
+
             }
         }
     });
-
-
-
-    // var  name=$("input[name='name']").val();
-    // var  Zhanghao=$("input[name='zhanghao']").val();
-    // var  Pwd=$("input[name='pwd']").val();
-    // var  Gsname=$("input[name='gsname']").val();
-    // var  Address=$("input[name='address']").val();
-    // var  Head=$("input[name='head']").val();
-    // $.ajax({
-    //     type:'post',
-    //     url:'AddBusiness',
-    //     data:({
-    //         Name:name,
-    //         Zhanghao:Zhanghao,
-    //         Pwd:Pwd,
-    //         Gsname:Gsname,
-    //         Address:Address,
-    //         Head:Head
-    //     }),
-    //     success:function(data){
-    //         alert('商家添加成功');
-    //     }
-    //
-    //
-    // });
 }
 /*
 *
