@@ -152,3 +152,12 @@ function CloseBuPwd() {
     $(".Business-pwd-Res-Box").fadeOut();
 }
 
+/*商家编辑*/
+function EditBuiness() {
+    $(".Business-EditMenu-Box").fadeIn();
+}
+/*商家编辑关闭*/
+function closeEditbuiness() {
+    $(".Business-EditMenu-Box").fadeOut();
+}
+
