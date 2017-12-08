@@ -185,7 +185,25 @@
 
 
 <!-------------------------------商家编辑--------------------------------------->
+
 <div class="Business-EditMenu-Box">
+    <!--此处为日期插件配置-->
+    <script>
+        layui.use(['form', 'laydate'], function(){
+            var form = layui.form
+                ,laydate = layui.laydate;
+
+            //日期
+            laydate.render({
+                elem: '#date2'
+            });
+            laydate.render({
+                elem: '#test1-1'
+                ,lang: 'en'
+            });
+
+        });
+    </script>
     <div class="Pcmenu-EditMenu-Window">
         <p>
             <button class="icon-remove-circle" onclick="closeEditbuiness()"><b>关闭</b></button>
@@ -203,16 +221,16 @@
                         <label>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label><input type="text" name="address" value="" placeholder="请填写现在具体住址">
                     </span>
                 <span>
-                    <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label><input type="file" name="head" onchange="previewFile('')" id="img2">
+                    <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label><input type="file" name="head" onchange="previewFile2()">
 
                 </span>
                 <span style="height:100px">
-                    <div  id="img1">
+                    <div  id="img2">
                         <img src="" height="99" width="71" alt="请上传头像"/>
                     </div>
                 </span>
                 <span>
-                    <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label><input type="text" name="date2" id="date2" lay-verify="date2" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </span>
             <br>
             <div class="AddMenu-Submit">

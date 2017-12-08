@@ -100,7 +100,7 @@ function AddBusinessSubmit(){
                     $.showBox("请上传头像");
                 }else if(Date=="")
                 {
-                    $.showBox("填写注册日期");
+                    $.showBox ("填写注册日期");
                 }
                 else{
 
@@ -160,4 +160,6 @@ function EditBuiness() {
 function closeEditbuiness() {
     $(".Business-EditMenu-Box").fadeOut();
 }
+
+
 
