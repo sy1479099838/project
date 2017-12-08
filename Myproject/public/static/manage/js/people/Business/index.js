@@ -71,7 +71,6 @@ function AddBusinessSubmit(){
             }
             else
             {
-                //alert(msg);
                 var  name=$("input[name='name']").val();
                 var  Zhanghao=$("input[name='zhanghao']").val();
                 var  Pwd=$("input[name='pwd']").val();
@@ -117,7 +116,20 @@ function AddBusinessSubmit(){
                             Date:Date
                         }),
                         success:function(data){
-                            alert('商家添加成功');
+                            if(data=="success")
+                            {
+                                $.showBox("商家添加成功！");
+                                window.location.reload();
+                            }
+                            else if(data=="error")
+                            {
+                                $.showBox("商家添加失败！");
+                                window.location.reload();
+                            }
+                            else
+                            {
+                                $.showBox(data);
+                            }
                         }
 
 

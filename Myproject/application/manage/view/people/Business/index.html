@@ -21,21 +21,22 @@
                     <th>密码重置</th>
                     <th>操作</th>
                 </tr>
+                {volist name="BusinessList" id="vo"}
                 <tr>
-                    <td>1</td>
+                    <td>{$key+1}</td>
                     <td>
-                        李久久<br>
-                        账号：lijiujiu
+                        {$vo.LiablePeople}<br>
+                        账号：{$vo.Account}
                     </td>
                     <td>
-                        名称：四川吃喝玩乐有限责任公司<br>
-                        地址：四川省绵阳市涪城区富乐路富乐大厦805<br>
-                        注册时间：2017.11.18<br>
+                        名称：{$vo.CompanyName}<br>
+                        地址：{$vo.address}<br>
+                        注册时间：{$vo["createTime"]|date="Y/m/d H:i",###}<br>
                         详细资料：<a href="#">查看</a>
                     </td>
                     <td>
-                        <img src="__ROTH__/uploads/20171125/E4a274af96e8d3281492b4b3c3aef6cd2.png" alt="" class="BigImagesButton">
-                        <input type="hidden" value="__ROTH__/uploads/20171125/4a274af96e8d3281492b4b3c3aef6cd2.png">
+                        <img src="__ROTH__/uploads/{$vo.PeopleImg.0}/E{$vo.PeopleImg.1}" alt="" class="BigImagesButton">
+                        <input type="hidden" value="__ROTH__/uploads/{$vo.PeopleImg.0}/{$vo.PeopleImg.1}">
                     </td>
                     <td>
                         <img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
@@ -46,8 +47,8 @@
                         0813-123456
                     </td>
                     <td>
-                        2018/12/12<br>
-                        剩余：102天
+                        {$vo["EndTime"]|date="Y/m/d",###}<br>
+                        剩余：{$vo["EndTime"]}天
                     </td>
                     <td>
                         <button onclick="AddBuinsesspower()">
@@ -68,6 +69,7 @@
                         </button>
                     </td>
                 </tr>
+                {/volist}
                 </tbody>
             </table>
         </div>
