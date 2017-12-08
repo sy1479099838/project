@@ -37,15 +37,15 @@ function Addbuinsess() {
     $(".Business-AddMenu-Box").fadeIn(700);
 }
 
+
+
 function previewFile () {
-    //alert(12456);
     var preview = document.getElementById('img1');
     var file  = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
         preview.src = reader.result;
     };
-    //alert(preview.src);
     if (file) {
         reader.readAsDataURL(file);
     } else {
@@ -58,15 +58,20 @@ function AddBusinessSubmit(){
     fd.append("upload", 1);
     fd.append("upfile", $("#img2").get(0).files[0]);
     $.ajax({
-        url: "AddBusiness",
+        url: "UplodeImg",
         type: "POST",
         processData: false,
         contentType: false,
         data: fd,
-        success: function(d) {
-            // $(".Index_subImg").show();
-            // var href = $(".Index_subImg")[0].src;
-            // $(".Index_subImg").attr('src',href+"/uploads/"+d);
+        success: function(msg) {
+            if(msg=="error")
+            {
+                $.showBox("照片上传失败！");
+            }
+            else
+            {
+                alert(msg);
+            }
         }
     });
 
