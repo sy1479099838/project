@@ -48,7 +48,7 @@
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;border: 1px solid green;font-size: 20px;border-radius: 10px;}
 .Menu-chose-2{display: none;}
-#img1{margin-left:10%;}
+#img1{margin:0 auto;width:71px;height:99px;border:1px solid black;}
 .Business-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
 
 
