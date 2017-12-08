@@ -98,7 +98,7 @@ function AddBusinessSubmit(){
                     $.showBox("请输入地址");
                 }else if(Head==""){
                     $.showBox("请上传头像");
-                }else if(Date="")
+                }else if(Date=="")
                 {
                     $.showBox("填写注册日期");
                 }
