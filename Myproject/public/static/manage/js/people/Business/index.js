@@ -40,16 +40,17 @@ function Addbuinsess() {
 function previewFile () {
     //alert(12456);
     var preview = document.getElementById('img1');
+    var imgfile=preview.getElementsByTagName('img')[0];
     var file  = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
-        preview.src = reader.result;
+        imgfile.src = reader.result;
     };
     //alert(preview.src);
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        preview.src = "";
+        imgfile.src = "";
     }
 }
 
@@ -96,7 +97,10 @@ function AddBusinessSubmit(){
     //
     // });
 }
-
+/*
+*
+*
+* */
 /*商家权限关闭*/
 function closeBuinesspower() {
     $(".Business-power-Box").fadeOut();
@@ -115,3 +119,4 @@ function BuPwd() {
 function CloseBuPwd() {
     $(".Business-pwd-Res-Box").fadeOut();
 }
+
