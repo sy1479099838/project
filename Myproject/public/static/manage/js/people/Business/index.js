@@ -100,7 +100,7 @@ function AddBusinessSubmit(){
                     $.showBox("请上传头像");
                 }else if(Date=="")
                 {
-                    $.showBox("填写注册日期");
+                    $.showBox ("填写注册日期");
                 }
                 else{
 
@@ -151,4 +151,15 @@ function BuPwd() {
 function CloseBuPwd() {
     $(".Business-pwd-Res-Box").fadeOut();
 }
+
+/*商家编辑*/
+function EditBuiness() {
+    $(".Business-EditMenu-Box").fadeIn();
+}
+/*商家编辑关闭*/
+function closeEditbuiness() {
+    $(".Business-EditMenu-Box").fadeOut();
+}
+
+
 

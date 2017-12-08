@@ -71,7 +71,7 @@
 .Business-power-Box>.Buinsess-power-content>.Admin-power-save button{color:#ffffff;background: green;border: 1px solid green;border-radius: 10px;display: inline-block;height: 100%;line-height: 30px;padding: 0 10px;font-size: 18px;}
 
 
-
+/*密码重置*/
 .Business-pwd-Res-Box{width: 100%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,0.8);z-index: 999;display: none;}
 .Business-pwd-Res-Box>.Business-pwd-Res-content{position: absolute;top:20%;left: 35%;right: 35%;border:1px solid #bfbfbf;}
 .Business-pwd-Res-Box>.Business-pwd-Res-content p{text-align: center;font-size: 16px;width: 100%;}
@@ -79,3 +79,25 @@
 .Business-pwd-Res-Box>.Business-pwd-Res-content h1{text-align: center;font-size: 20px;width: 100%;}
 .Business-pwd-Res-Box>.Business-pwd-Res-content>.Pwd-res-button{width: 100%;text-align: center;margin: 20px 0;height: 30px;}
 .Business-pwd-Res-Box>.Business-pwd-Res-content>.Pwd-res-button button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 15px;color: #ffffff;font-size: 20px;line-height: 30px;}
+
+
+/*商品编辑*/
+.Business-EditMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window{position: relative;top:10%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 70%;background: #ffffff;border-radius: 10px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p{padding:3px;height: 33px;text-align: center;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p button b{font-size: 14px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p b{font-size: 25px;font-family: ���Ŀ���;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window h1{text-align: center;font-size: 20px;font-weight: bold;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines; }
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 60%;height: 100%;display: inline-block;float: left;}
+.Business-EditMenu-Box>.Pcmenu-AddMenu span select{width: 36%;display: inline-block;height: 100%;border: none;background: none;float: left;text-align: center;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-ISUSE{display: inline-block;width: 10%;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span b{display: inline-block;height: 100%;font-weight: normal;float: left;}
+.AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
+.AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;border: 1px solid green;font-size: 20px;border-radius: 10px;}
+.Menu-chose-2{display: none;}
+#img1{margin:0 auto;width:71px;height:99px;border:1px solid black;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
