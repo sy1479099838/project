@@ -1,6 +1,56 @@
 {extend name="Public:top"/}
 {block name="main"}
-1256486
+
+<script>
+    function $(v){return document.getElementById(v);}
+    var x=0;
+    function c(y){
+        $("a"+x).style.display = "none";
+        $("a"+y).style.display = "";
+        x=y
+    }
+</script>
+<!------左侧列表-------->
+<div class="left-box">
+    <a class="left-menu"  href="javascript:;" onclick="c(0)">人物介绍</a>
+    <a class="left-menu"  href="javascript:;" onclick="c(1)">公司介绍</a>
+    <a class="left-menu"  href="javascript:;" onclick="c(2)">人物详细资料</a>
+    <a class="left-menu"  href="javascript:;" onclick="c(3)">公司详细子资料</a>
+    <a class="left-menu"  href="javascript:;" onclick="c(4)">照片展示</a>
+    <a class="left-menu"  href="javascript:;" onclick="">资料编辑</a>
+</div>
+
+<!-------------右侧内容------------------->
+<div class="right-box">
+    <div class="right-info" id="a0">
+            <div class="jieshao">人物介绍</div>
+            <div class="jieshao_1">
+                <li>姓名：XXXXX</li>
+                <li>性别：XXXXX</li>
+                <li>年龄：XXXXX</li>
+                <li>电话：XXXXX</li>
+                <li>座机：XXXXX</li>
+                <li>住址：XXXXX</li>
+                <li>QQ：XXXXX</li>
+                <li>邮箱：XXXXX</li>
+            </div>
+            <div class="jieshao_2">
+                <img src="" class="">
+            </div>
+    </div>
+    <div class="right-info" id="a1" style="display:none;">
+            22222222222
+    </div>
+    <div class="right-info" id="a2" style="display:none;">
+               33333333333333
+    </div>
+    <div class="right-info" id="a3" style="display:none;">
+           444444444444444
+    </div>
+    <div class="right-info" id="a4" style="display:none;">
+                   5555555555
+    </div>
+</div>
 {/block}
 
 
