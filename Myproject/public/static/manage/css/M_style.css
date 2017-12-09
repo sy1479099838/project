@@ -42,7 +42,7 @@ a{text-decoration:none;}
 .position_Box{position: absolute;left: 182px;right: 0px;height: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;border-left: 2px solid #e5e5e5;}
 .position_Box i{font-size: 27px;z-index: 999;}
 .Content_Box{display: inline-block;position: absolute;left: 182px;right: 0px;top:102px;bottom: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;overflow:auto;border-left: 2px solid #e5e5e5;}
-.Adminfile-Content_Box{display: inline-block;position: absolute;left: 0;right: 0px;top:102px;bottom: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;overflow:auto;}
+.Adminfile-Content_Box{display: inline-block;position: absolute;left: 0;right: 0px;top:70px;bottom: 30px;font-size: 16px;border-bottom: 2px solid #e8e8e8;overflow:auto;}
 .Adminfile-copyright_Box{display: inline-block;position: absolute;left: 0px;right: 0px;bottom: 0;height:30px;font-size: 16px;background: #28323b;text-align: center;color: #ffffff;line-height: 30px; }
 .copyright_Box{display: inline-block;position: absolute;left: 180px;right: 0px;bottom: 0;height:30px;font-size: 16px;background: #28323b;text-align: center;color: #ffffff;line-height: 30px; }
 .music_Box{border:1px solid red;width: 300px;height: 50px;}

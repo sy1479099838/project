@@ -161,5 +161,12 @@ function closeEditbuiness() {
     $(".Business-EditMenu-Box").fadeOut();
 }
 
+/*商家删除*/
+function  DelBuiness1(){
+    $(".Business-delete-Box").fadeIn();
+}
 
-
+/*关闭商家删除窗口*/
+function  CloseDele1(){
+    $(".Business-delete-Box").fadeOut();
+}
