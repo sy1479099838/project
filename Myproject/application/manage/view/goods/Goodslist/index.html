@@ -1,10 +1,29 @@
 {extend name="Public:index"/}
 {block name="main"}
+<div class="Goodslist-Index_left">
+    <div class="treemenu">
+        <div class="tree-box">
+            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">全部</a></p>
+        </div>
+        <div class="tree-box">
+            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">商家</a></p>
+            <dl class="treeMenu-one" id="treeOpen_1">
+                <dt><span>&nbsp;</span><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐一</a></dt>
+                <dd class="treeMenu-three" id="treeOpen_2">
+                    <div><i>&nbsp;</i><button><img src="_PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐二</a></div>
+                </dd>
+                <div class="treeMenu-two">
+                    <i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐三</a>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
 <div class="Goodslist">
     <h1>活动商品管理</h1>
     <div class="Goodslist-Content-Box">
         <p>
-            <button class="" onclick="AddGoodlist()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
+            <button class="" onclick="AddGoods()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
             <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
             <span>活动结束日期：</span>
         </p>
@@ -23,12 +42,16 @@
                 <th>操作</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>1号商品</td>
+                <td>{$key+1}</td>
+                <td>商品名称：<br>
+                    商品分类：<br>
+                    商家：</td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
-                <td></td>
-                <td></td>
+                <td>套餐一：<br>
+                    套餐二：<br>
+                    套餐三：</td>
+                <td>2017.12.1--2017.12.31</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -45,7 +68,79 @@
             </tbody>
         </table>
     </div>
+    <div class="SeeBigImages" onclick="closeImage()">
+        <img src="" alt="">
+    </div>
 </div>
+<script>
+    layui.use(['form', 'laydate'], function(){
+        var form = layui.form
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#test1-1'
+            ,lang: 'en'
+        });
+
+    });
+</script>
+<!--商品添加-->
+<div class="Goods-AddMenu-Box">
+    <div class="Pcmenu-AddMenu-Window">
+        <p>
+            <button class="icon-remove-circle" onclick="closeAddGoods()"><b>关闭</b></button>
+            <span class="cb"></span>
+        </p>
+        <h1>商品添加</h1>
+        <div class="Pcmenu-AddMenu layui-form">
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="">
+            </span><br>
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+                 <select class="AddLiabilityPeople-Choice_one">
+                        <option value="0">--选择--</option>
+                            <option value="">大类</option>
+                    </select>
+                    <select class="AddLiabilityPeople-Choice_Two" id="AddLiabilityPeople">
+                        <option value="0">--选择--</option>
+                        <option value="">小类</option>
+                    </select>
+            </span><br>
+            <span>
+                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
+            </span><br>
+            <span>
+                <label>添&nbsp;&nbsp;加&nbsp;&nbsp;套&nbsp;&nbsp;餐</label><input type="text" name="package" value="" placeholder="请输入套餐" >
+            </span><br>
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile('')" id="img2">
+            </span><br>
+            <span style="height: 100px;text-align: center;">
+                <div  id="img1">
+                    <img src="" height="99" width="71" alt="请上传商品照"/>
+                </div>
+            </span><br>
+            <span>
+                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </span><br>
+            <div class="AddMenu-Submit">
+                <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
 {/block}
 
 
