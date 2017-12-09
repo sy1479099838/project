@@ -1,12 +1,25 @@
 <?php
 namespace app\manage\controller\people;
 use app\manage\controller\Common;
-use phpDocumentor\Reflection\Types\Null_;
-
+use app\manage\model\Business as ModelBusiness;
+use think\Session;
 class Business extends Common
 {
     public function index()
     {
+        $BusinessList=ModelBusiness::field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime")->limit(10)
+            ->order('createTime', 'desc')
+            ->select();
+        $BusinessList=json_decode(json_encode($BusinessList,true),true);
+        $Nowtime=strtotime(date("Y-m-d",time()));
+        foreach($BusinessList as $k=>$v)
+        {
+            $BusinessList[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
+            $BusinessList[$k]["EndTime"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+        }
+//        dump($BusinessList);exit;
+        $this->assign("BusinessList",$BusinessList);
+
         return $this->fetch();
     }
     public function treeData($data,$pid = 0){
@@ -91,7 +104,53 @@ class Business extends Common
 
     public function AddBusiness()
     {
-        $file = input();
-        dump($file);
+        $information = input();
+        $isExistAccount=ModelBusiness::where("Account",$information["Zhanghao"])->field("Account")->find();
+        $isExistAccount=json_decode(json_encode($isExistAccount,true),true);
+        if($isExistAccount=="" || $isExistAccount==NULL)
+        {
+            $admin=Session::get('admin');
+            $AccountRet = '/^[A-Za-z0-9]{4,18}$/';
+            if(preg_match($AccountRet, $information["Zhanghao"])=='1')
+            {
+                $PwdRet = "/^[A-Z]{2}[A-Za-z0-9]{4,16}$/";
+                if(preg_match($PwdRet, $information["Pwd"])=='1')
+                {
+                    $password=MD5("DHF".$information["Pwd"]."PWD");
+                    $Admin = ModelBusiness::create([
+                        'Account'  =>  $information["Zhanghao"],
+                        'LiablePeople' =>  $information["Name"],
+                        'CompanyName'=>$information["Gsname"],
+                        'address'=>$information["Address"],
+                        'LoginPwd'=>$password,
+                        'PeopleImg'=>$information["Head"],
+                        'EndTime'=>strtotime($information["Date"]),
+                        'createTime'=>time(),
+                        'createAdmin'=>$admin["id"]
+                    ]);
+                    if($Admin)
+                    {
+                        exit("success");//
+                    }
+                    else
+                    {
+                        exit("error");
+                    }
+                }
+                else
+                {
+                    exit("密码格式错误！");
+                }
+            }
+            else
+            {
+                exit("账号格式错误");
+            }
+        }
+        else
+        {
+            exit("账号已存在！");
+        }
+
     }
 }
