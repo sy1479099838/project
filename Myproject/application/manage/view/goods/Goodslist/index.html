@@ -75,20 +75,20 @@
 </div>
 <script>
 //    document.getElementById('user_date').valueAsDate = new Date();
-    layui.use(['form', 'laydate'], function(){
-        var form = layui.form
-            ,laydate = layui.laydate;
-
-        //日期
-        laydate.render({
-            elem: '#date'
-        });
-        laydate.render({
-            elem: '#test1-1'
-            ,lang: 'en'
-        });
-
-    });
+//    layui.use(['form', 'laydate'], function(){
+//        var form = layui.form
+//            ,laydate = layui.laydate;
+//
+//        //日期
+//        laydate.render({
+//            elem: '#date'
+//        });
+//        laydate.render({
+//            elem: '#test1-1'
+//            ,lang: 'en'
+//        });
+//
+//    });
 </script>
 
 <!--商品添加-->
@@ -114,10 +114,11 @@
                     </select>
             </span><br>
             <span>
-                <label>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
-                <input type="text" name="price" id="price" value="" placeholder="实际价格" ></input>&nbsp;&nbsp;&nbsp;&nbsp;
-                <label >活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
-                <input type="text" name="activePrice" id="activePrice" value="" placeholder="活动价格"></input>
+                <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
+                <input type="text" name="price" id="price" value="" placeholder="实际价格"></input>&nbsp;&nbsp;
+                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
+                <input type="text" name="activeprice" id="activePrice" value="" placeholder="实际价格"  ></input>&nbsp;
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
@@ -125,7 +126,9 @@
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label>
-                <input type="">
+            <script id="container" name="content" type="text/plain" >
+                    这里写你的初始化内容
+            </script>
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
@@ -144,6 +147,16 @@
         </div>
     </div>
 </div>
+<!-- 加载编辑器的容器 -->
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+</script>
 {/block}
 
 
