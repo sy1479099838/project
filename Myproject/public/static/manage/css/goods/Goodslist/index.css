@@ -14,7 +14,7 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(1){width: 6%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(2){width:11% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:11%;text-align:center;padding: 3px 3px}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:11%;text-align:center;padding: 1px 1px}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:12%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:12%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:12% ;text-align: center}
