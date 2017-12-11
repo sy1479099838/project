@@ -1,9 +1,9 @@
 .Business{width: 100%;height: 100%;overflow: auto;}
 .Business h1{width: 96%;margin-left: 2%;text-align: center;font-size: 22px;}
 .Business>.BusinessList-Content-Box p{width: 96%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 2%;}
-.Business>.BusinessList-Content-Box p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Business>.BusinessList-Content-Box p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 25px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
 .Business>.BusinessList-Content-Box p button img{display: inline-block;height: 100%;float: left;}
-.Business>.BusinessList-Content-Box p span{display: inline-block;height: 95%;line-height: 30px;border:2px solid green; border-radius: 5px;float: left;margin-left: 20px;}
+.Business>.BusinessList-Content-Box p span{display: inline-block;height: 89%;line-height: 30px;border:2px solid green; border-radius: 5px;float: left;margin: 2px 20px 0 20px;}
 .Business>.BusinessList-Content-Box p span input{display: inline-block;height: 95%;background: none;border: none;}
 .Business>.BusinessList-Content-Box p span i{display: inline-block;width: 20px;height: 95%;font-size: 18px;color: #959595;}
 
@@ -112,3 +112,6 @@
 .Business-delete-Box>.Business-delete-content h1{text-align: center;font-size: 20px;width: 100%;}
 .Business-delete-Box>.Business-delete-content>.Buinsess-delete-button{width: 100%;text-align: center;margin: 20px 0;height: 30px;}
 .Business-delete-Box>.Business-delete-content>.Buinsess-delete-button button{display: inline-block;width: 20%;height: 100%;background: green;border: none;border-radius: 15px;color: #ffffff;font-size: 20px;line-height: 30px;}
+
+/*商家总权限*/
+

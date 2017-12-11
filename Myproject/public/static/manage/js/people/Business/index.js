@@ -141,18 +141,32 @@ function AddBusinessSubmit(){
         }
     });
 }
-/*
-*
-*
-* */
+
 /*商家权限关闭*/
 function closeBuinesspower() {
     $(".Business-power-Box").fadeOut();
 }
 /*商家权限添加*/
-function AddBuinsesspower() {
-    //alert(1111111111);
-    $(".Business-power-Box").fadeIn();
+function AddBuinsesspower(data) {
+    $.ajax({
+        url:'power',
+        type:'post',
+        data:({data:data}),
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("请重试！");
+            }
+            else
+            {
+                $(".Business-EditMenu-Box").html(msg);
+                $(".Business-EditMenu-Box").fadeIn();
+            }
+        },
+        error:function (msg) {
+            $.showBox("错误，请重试！");
+        }
+    });
 }
 
 /*商家密码重置*/
@@ -183,7 +197,7 @@ function EditBusiness(data) {
             }
         },
         error:function (msg) {
-            
+            $.showBox("错误，请重试！");
         }
     });
 }
@@ -191,6 +205,62 @@ function EditBusiness(data) {
 function closeEditbuiness() {
     $(".Business-EditMenu-Box").fadeOut();
 }
+/*
+* 商家所有权限编辑
+* */
+function businessAllPower() {
+    $.ajax({
+        url:"AllPower",
+        type:"post",
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("对不起，您没有权利！");
+            }
+            else
+            {
+                $(".Business-power-Box").html(msg);
+                $(".Business-power-Box").fadeIn();
+            }
 
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+        }
+    });
+}
 
+function BusinessAllpower() {
+    var text = $("input:checkbox[name='BusinessAllpower']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
+    $.ajax({
+        url:"SaveAllPower",
+        type:"get",
+        data:({text:text}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("编辑成功！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else if(msg=="nopower")
+            {
+                $.showBox("对不起，您没有权限！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else
+            {
+                $.showBox("请选择！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+            $(".Business-power-Box").fadeOut();
+            $(".Business-power-Box").html("");
+        }
+    });
+}
 

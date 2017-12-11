@@ -2,6 +2,7 @@
 namespace app\manage\controller\people;
 use app\manage\controller\Common;
 use app\manage\model\Business as ModelBusiness;
+use app\manage\model\Managemenu;
 use think\Session;
 class Business extends Common
 {
@@ -21,6 +22,8 @@ class Business extends Common
         }
 //        dump($BusinessList);exit;
         $this->assign("BusinessList",$BusinessList);
+
+        $this->assign("AdminId",Session::get('admin')["id"]);
 
         return $this->fetch();
     }
@@ -162,4 +165,66 @@ class Business extends Common
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
         return $this->fetch("EditBusiness",["information"=>$BusinessList]);
     }
+    /*
+     * 超级管理员查询商家的总权利
+     * */
+    public function AllPower()
+    {
+        $admin=Session::get('admin');//首先查询一下当前登录人的信息
+        $id=$admin["id"];
+        if($id=="1")
+        {
+            $AllPower=json_decode(json_encode(ModelBusiness::where("id","1")->field("power")->find(),true),true)["power"];
+            $AllPower=explode(",",$AllPower);
+            $MenuList=json_decode(json_encode(Managemenu::field("id,MenuName,pid")->select(),true),true);
+            foreach ($MenuList as $k=>$v)
+            {
+                if(in_array($v["id"],$AllPower))
+                {
+                    $MenuList[$k]["key"]="1";
+                }
+                else
+                {
+                    $MenuList[$k]["key"]="0";
+                }
+            }
+            $MenuList=$this->treeData($MenuList);
+            return $this->fetch("AllPower",["MenuList"=>$MenuList]);
+        }
+        else
+        {
+            exit("error");
+        }
+
+    }
+    /*
+     * 保存总权限
+     * */
+    public function SaveAllPower()
+    {
+        $data=input("text");
+        $admin=Session::get('admin');//首先查询一下当前登录人的信息
+        $id=$admin["id"];
+        if($id=="1")
+        {
+            $value=ModelBusiness::where('id', 1)
+                ->update(['power' => $data]);
+            if($value=="1")
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            exit("nopower");
+        }
+    }
+
+    /*
+     * 添加个人权限
+     * */
 }
