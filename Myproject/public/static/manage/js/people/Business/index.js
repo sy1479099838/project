@@ -329,3 +329,18 @@ function BusinessAllpower() {
     });
 }
 
+function BusinessKeywordSearch() {
+    var text=$('input:text[name="BusinessKeywordSearch"]').val();
+    $.ajax({
+        url:"BusinessKeywordSearch",
+        type:"post",
+        data:({key:text}),
+        success:function (msg) {
+            $(".BusinessList-table").html(msg);
+        },
+        error:function (msg) {
+
+        }
+    });
+}
+

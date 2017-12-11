@@ -262,4 +262,22 @@ class Business extends Common
             exit("error");
         }
     }
+
+    public function BusinessKeywordSearch()
+    {
+        $key=input("key");
+        $list=ModelBusiness::where('LiablePeople|CompanyName|address','like',"%".$key."%")
+            ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
+            ->limit(10)
+            ->order('createTime', 'desc')
+            ->select();
+        $list=json_decode(json_encode($list,true),true);
+        $Nowtime=strtotime(date("Y-m-d",time()));
+        foreach($list as $k=>$v)
+        {
+            $list[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
+            $list[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+        }
+        return $this->fetch("BusinessKeywordSearch",["list"=>$list]);
+    }
 }
