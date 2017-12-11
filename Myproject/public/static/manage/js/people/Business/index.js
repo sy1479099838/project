@@ -187,12 +187,12 @@ function AddBuinsesspower(data) {
         success:function (msg) {
             if(msg=="error")
             {
-                $.showBox("请重试！");
+                $.showBox("对不起，您没有权利！");
             }
             else
             {
-                $(".Business-EditMenu-Box").html(msg);
-                $(".Business-EditMenu-Box").fadeIn();
+                $(".Business-power-Box").html(msg);
+                $(".Business-power-Box").fadeIn();
             }
         },
         error:function (msg) {
@@ -200,6 +200,39 @@ function AddBuinsesspower(data) {
         }
     });
 }
+
+/*
+* 保存商家权限
+* */
+function SaveBusinessPower(data) {
+    var text = $("input:checkbox[name='Businesspower']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
+    $.ajax({
+        url:"SavePower",
+        type:"get",
+        data:({text:text,
+               data:data}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("编辑成功！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else
+            {
+                $.showBox("请选择！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+            $(".Business-power-Box").fadeOut();
+            $(".Business-power-Box").html("");
+        }
+    });
+}
+
 
 /*商家密码重置*/
 function BuPwd() {

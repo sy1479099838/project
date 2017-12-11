@@ -227,4 +227,39 @@ class Business extends Common
     /*
      * 添加个人权限
      * */
+    public function power()
+    {
+        $data=input("data");
+        $AllPower=ModelBusiness::where("id","1")->field("power")->find()->power;
+        $MenuList=json_decode(json_encode(Managemenu::where("id","in",$AllPower)->field("id,MenuName,pid")->select(),true),true);
+        $AllPower=explode(",",ModelBusiness::where("id",$data)->field("power")->find()->power);
+        foreach ($MenuList as $k=>$v)
+        {
+            if(in_array($v["id"],$AllPower))
+            {
+                $MenuList[$k]["key"]="1";
+            }
+            else
+            {
+                $MenuList[$k]["key"]="0";
+            }
+        }
+        $MenuList=$this->treeData($MenuList);
+        return $this->fetch("power",["MenuList"=>$MenuList,"id"=>$data]);
+
+    }
+    public function SavePower()
+    {
+        $data=input();
+        $value=ModelBusiness::where('id', $data["data"])
+            ->update(['power' => $data["text"]]);
+        if($value=="1")
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
 }
