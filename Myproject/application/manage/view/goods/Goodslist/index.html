@@ -6,15 +6,13 @@
             <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">全部</a></p>
         </div>
         <div class="tree-box">
-            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">商家</a></p>
+            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">商家</a></p>
             <dl class="treeMenu-one" id="treeOpen_1">
-                <dt><span>&nbsp;</span><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐一</a></dt>
-                <dd class="treeMenu-three" id="treeOpen_2">
-                    <div><i>&nbsp;</i><button><img src="_PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐二</a></div>
+                <dt><span>&nbsp;</span><button class="TreeMenuTwo-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐一</a></dt>
+                <dd  class="treeMenu-three" id="treeOpen_2">
+                    <div><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐二</a></div>
                 </dd>
-                <div class="treeMenu-two">
-                    <i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">套餐三</a>
-                </div>
+                <div class="treeMenu-two"><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐三</a></div>
             </dl>
         </div>
     </div>
@@ -25,7 +23,10 @@
         <p>
             <button class="" onclick="AddGoods()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
             <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
-            <span>活动结束日期：</span>
+            <span>
+                 活动结束日期：
+            </span>
+            <input href="" type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" /><input type="submit" />
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -35,8 +36,8 @@
                 <th>商品封面</th>
                 <th>套餐名称</th>
                 <th>活动日期</th>
-                <th>0</th>
-                <th>0</th>
+                <th>商品价格</th>
+                <th>商品详情</th>
                 <th>0</th>
                 <th>是否上架</th>
                 <th>操作</th>
@@ -51,9 +52,9 @@
                 <td>套餐一：<br>
                     套餐二：<br>
                     套餐三：</td>
-                <td>2017.12.1--2017.12.31</td>
-                <td></td>
-                <td></td>
+                <td>2017.12.01--2017.12.31</td>
+                <td>价格3元</td>
+                <td>详情</td>
                 <td></td>
                 <td>
                     <span>上架</span>
@@ -73,6 +74,7 @@
     </div>
 </div>
 <script>
+//    document.getElementById('user_date').valueAsDate = new Date();
     layui.use(['form', 'laydate'], function(){
         var form = layui.form
             ,laydate = layui.laydate;
@@ -98,27 +100,24 @@
         <h1>商品添加</h1>
         <div class="Pcmenu-AddMenu layui-form">
             <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="">
-            </span><br>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                 <select class="AddLiabilityPeople-Choice_one">
-                        <option value="0">--选择--</option>
-                            <option value="">大类</option>
-                    </select>
-                    <select class="AddLiabilityPeople-Choice_Two" id="AddLiabilityPeople">
-                        <option value="0">--选择--</option>
-                        <option value="">小类</option>
-                    </select>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
             </span><br>
             <span>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
             <span>
-                <label>添&nbsp;&nbsp;加&nbsp;&nbsp;套&nbsp;&nbsp;餐</label><input type="text" name="package" value="" placeholder="请输入套餐" >
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+                    <select class="AddLiabilityGoods-Choice_one">
+                        <option value="0">--选择--</option>
+                        <option value="">--大类--</option>
+                    </select>
+                    <select class="AddLiabilityGoods-Choice_Two" id="AddLiabilityGoods">
+                        <option value="0">--选择--</option>
+                        <option value="">--小类--</option>
+                    </select>
             </span><br>
             <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile('')" id="img2">
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
             <span style="height: 100px;text-align: center;">
                 <div  id="img1">
@@ -126,21 +125,14 @@
                 </div>
             </span><br>
             <span>
-                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
-
             </div>
-
         </div>
-
     </div>
-
-
-
 </div>
-
 {/block}
 
 
