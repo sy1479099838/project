@@ -7,7 +7,7 @@ class Business extends Common
 {
     public function index()
     {
-        $BusinessList=ModelBusiness::field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime")->limit(10)
+        $BusinessList=ModelBusiness::field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")->limit(10)
             ->order('createTime', 'desc')
             ->select();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
@@ -15,7 +15,7 @@ class Business extends Common
         foreach($BusinessList as $k=>$v)
         {
             $BusinessList[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
-            $BusinessList[$k]["EndTime"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
         }
 //        dump($BusinessList);exit;
         $this->assign("BusinessList",$BusinessList);
@@ -152,5 +152,12 @@ class Business extends Common
             exit("账号已存在！");
         }
 
+    }
+    public function EditBusiness()
+    {
+        $PostId=input("data");
+        $BusinessList=ModelBusiness::where("id",$PostId)->field("LiablePeople,CompanyName,address,PhoneNum,EndTime,id")->find();
+        $BusinessList=json_decode(json_encode($BusinessList,true),true);
+        return $this->fetch("EditBusiness",["information"=>$BusinessList]);
     }
 }
