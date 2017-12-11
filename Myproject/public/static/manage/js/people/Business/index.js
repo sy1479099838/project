@@ -23,7 +23,27 @@ $(function () {
        };
        newImg.src = img.attr("src");
 
-   }); 
+   });
+    /*当手机号码失去焦点时正则     备注绑定时间需要包在一个$(function(){})中*/
+    $('input:text[name="phonenumber"]').focusout(function () {
+        /*alert(1212121);*/
+        var Phonenumber=$(this).val();
+         var Phonecheck=/^1[3|4|5|7|8][0-9]\d{8}$/;
+         if(!Phonecheck.test(Phonenumber))
+         {
+         $.showBox("请按照正确格式填写手机号码！");
+         }
+    });
+
+    /*当座机号码失去焦点时正则*/
+    $('input:text[name="zuonumber"]').focusout(function () {
+        var Zuonumber=$(this).val();
+        var Zuocheck=/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+        if(!Zuocheck.test(Zuonumber))
+        {
+            $.showBox("请按照正确格式填写座机号码！");
+        }
+    });
 });
 
 function closeImage() {
@@ -54,6 +74,13 @@ function previewFile () {
     }
 }
 
+
+
+
+
+
+
+
 function AddBusinessSubmit(){
     var fd = new FormData();
     fd.append("upload", 1);
@@ -76,11 +103,15 @@ function AddBusinessSubmit(){
                 var  Pwd=$("input[name='pwd']").val();
                 var  Gsname=$("input[name='gsname']").val();
                 var  Address=$("input[name='address']").val();
+                var  Phonenumber=$("input[name='phonenumber']").val();
+                var  Zuonumber=$("input[name='zuonumber']").val();
+                var  Haonumber=Phonenumber+','+Zuonumber;
                 var  Date=$("input[name='date']").val();
                 var  Head=msg;
 
                 var AccountRet = /^[A-Za-z0-9]{4,18}$/;
                 var PwdRet = /^[A-Z]{2}[A-Za-z0-9]{4,16}$/;
+
                 if(Zhanghao=="" || !AccountRet.test(Zhanghao)){
                     $.showBox('请输入正确账号');
                 }else if(Pwd=="" || !PwdRet.test(Pwd))
@@ -113,7 +144,8 @@ function AddBusinessSubmit(){
                             Gsname:Gsname,
                             Address:Address,
                             Head:Head,
-                            Date:Date
+                            Date:Date,
+                            Haonumber:Haonumber
                         }),
                         success:function(data){
                             if(data=="success")
@@ -141,19 +173,66 @@ function AddBusinessSubmit(){
         }
     });
 }
-/*
-*
-*
-* */
+
 /*商家权限关闭*/
 function closeBuinesspower() {
     $(".Business-power-Box").fadeOut();
 }
 /*商家权限添加*/
-function AddBuinsesspower() {
-    //alert(1111111111);
-    $(".Business-power-Box").fadeIn();
+function AddBuinsesspower(data) {
+    $.ajax({
+        url:'power',
+        type:'post',
+        data:({data:data}),
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("对不起，您没有权利！");
+            }
+            else
+            {
+                $(".Business-power-Box").html(msg);
+                $(".Business-power-Box").fadeIn();
+            }
+        },
+        error:function (msg) {
+            $.showBox("错误，请重试！");
+        }
+    });
 }
+
+/*
+* 保存商家权限
+* */
+function SaveBusinessPower(data) {
+    var text = $("input:checkbox[name='Businesspower']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
+    $.ajax({
+        url:"SavePower",
+        type:"get",
+        data:({text:text,
+               data:data}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("编辑成功！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else
+            {
+                $.showBox("请选择！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+            $(".Business-power-Box").fadeOut();
+            $(".Business-power-Box").html("");
+        }
+    });
+}
+
 
 /*商家密码重置*/
 function BuPwd() {
@@ -183,7 +262,7 @@ function EditBusiness(data) {
             }
         },
         error:function (msg) {
-            
+            $.showBox("错误，请重试！");
         }
     });
 }
@@ -191,6 +270,62 @@ function EditBusiness(data) {
 function closeEditbuiness() {
     $(".Business-EditMenu-Box").fadeOut();
 }
+/*
+* 商家所有权限编辑
+* */
+function businessAllPower() {
+    $.ajax({
+        url:"AllPower",
+        type:"post",
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("对不起，您没有权利！");
+            }
+            else
+            {
+                $(".Business-power-Box").html(msg);
+                $(".Business-power-Box").fadeIn();
+            }
 
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+        }
+    });
+}
 
+function BusinessAllpower() {
+    var text = $("input:checkbox[name='BusinessAllpower']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
+    $.ajax({
+        url:"SaveAllPower",
+        type:"get",
+        data:({text:text}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("编辑成功！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else if(msg=="nopower")
+            {
+                $.showBox("对不起，您没有权限！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else
+            {
+                $.showBox("请选择！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+            $(".Business-power-Box").fadeOut();
+            $(".Business-power-Box").html("");
+        }
+    });
+}
 

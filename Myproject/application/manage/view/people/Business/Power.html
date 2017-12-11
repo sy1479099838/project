@@ -1,0 +1,30 @@
+<div class="Buinsess-power-content">
+    <p class="Admin-power-close"><button onclick="closeBuinesspower()"><i class="icon-remove-circle"></i>关闭</button></p>
+    <h1>权限管理</h1>
+    {volist name="MenuList" id="vo"}
+    <div class="Admin-power-MenuList" >
+        <p>
+            <input type="checkbox" name="Businesspower" value="{$vo.id}" placeholder="" {$vo['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo.MenuName}
+        </p>
+        {present name="vo.children.0"}
+        {volist name="vo.children" id="vo1"}
+        <div class="Admin-power-MenuList-two">
+            <p class="power-MenuList-two-content"><b>&nbsp;</b><input type="checkbox" name="Businesspower" value="{$vo1.id}" placeholder="" {$vo1['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo1.MenuName}</p>
+            {present name="vo1.children.0"}
+            <div class="power-MenuList-three-content">
+                {volist name="vo1.children" id="vo2"}
+                <span><input type="checkbox" name="Businesspower" value="{$vo2.id}" placeholder="" {$vo2['key']=="1"?"checked":""} >&nbsp;&nbsp;</span>{$vo2.MenuName}
+                {/volist}
+            </div>
+            {/present}
+            <div class="cb"></div>
+        </div>
+        {/volist}
+        {/present}
+    </div>
+    {/volist}
+    <div class="cb"></div>
+    <div class="Admin-power-save">
+        <button onclick="SaveBusinessPower('{$id}')">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="closePowerAdmin()">取消</button>
+    </div>
+</div>
