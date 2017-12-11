@@ -35,14 +35,14 @@
             <input type="text" name="address" value="{$information.address}" placeholder="请填写现在具体住址">
         </span>
         <span>
-            <label>头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相：</label>
-            <input type="file" name="head" onchange="previewFile2()">
+            <label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
+            <input type="text" name="phonenumber" value="{$information.address}" placeholder="请填写商家的手机号码">
         </span>
-        <span style="height:100px">
-            <div  id="img2">
-                <img src="" height="99" width="71" alt="请上传头像"/>
-            </div>
+        <span>
+            <label>座&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
+            <input type="text" name="zuonumber" value="{$information.address}" placeholder="请填写商家的座机">
         </span>
+
         <span>
             <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label>
             <input type="text" name="date2" value="{$information['EndTime']|date='Y/m/d',###}" id="date2" lay-verify="date2" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
