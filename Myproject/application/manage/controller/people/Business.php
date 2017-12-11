@@ -7,7 +7,9 @@ class Business extends Common
 {
     public function index()
     {
-        $BusinessList=ModelBusiness::field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")->limit(10)
+        $BusinessList=ModelBusiness::where('id','neq',1)
+            ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
+            ->limit(10)
             ->order('createTime', 'desc')
             ->select();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
