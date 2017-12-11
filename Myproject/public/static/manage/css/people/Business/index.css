@@ -32,7 +32,7 @@
 .SeeBigImages img{display: inline-block;position: absolute;left:auto;}
 
 .Business-AddMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
-.Business-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;top:10%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 70%;background: #ffffff;border-radius: 10px;}
+.Business-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;top:6%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 650px;background: #ffffff;border-radius: 10px;}
 .Business-AddMenu-Box>.Pcmenu-AddMenu-Window p{padding:3px;height: 33px;text-align: center;}
 .Business-AddMenu-Box>.Pcmenu-AddMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
 .Business-AddMenu-Box>.Pcmenu-AddMenu-Window p button b{font-size: 14px;}
