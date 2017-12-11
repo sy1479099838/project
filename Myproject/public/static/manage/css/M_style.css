@@ -94,10 +94,12 @@ a{text-decoration:none;}
 
 
 /*首页超级管理员*/
+.cb{clear:both;}
 .left-box{width:20%;height:100%;position:fixed;left:0;top:70px;}
 .left-menu{display:block;width:100%;height:80px;line-height:80px;color:white;margin-top:30px;background:#4DFFFF;text-align:center;font:26px;font-weight:bolder;font-family:"微软雅黑";}
-.right-box{width:75%;height:100%;float:right;margin-right:2%;}
+.right-box{width:75%;height:auto;float:right;margin-right:2%;}
 .right-info{width:100%;height:95%;margin-top:30px;background:#F0F0F0;color:black;}
+.right-info>.kong{width:100%;height:60px;}
 .jieshao{width:20%;height:60px;margin:0 auto;font-size:24px;font-weight:bloder;text-align:center;line-height:60px;}
 .jieshao_1{width:30%;float:left;}
 .jieshao_1>li{height:60px;font-family:"微软雅黑";font-size:18px;text-indent:40px;}
