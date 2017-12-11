@@ -165,8 +165,27 @@ function CloseBuPwd() {
 }
 
 /*商家编辑*/
-function EditBuiness() {
-    $(".Business-EditMenu-Box").fadeIn();
+function EditBusiness(data) {
+
+    $.ajax({
+        url:'EditBusiness',
+        type:'post',
+        data:({data:data}),
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("请重试！");
+            }
+            else
+            {
+                $(".Business-EditMenu-Box").html(msg);
+                $(".Business-EditMenu-Box").fadeIn();
+            }
+        },
+        error:function (msg) {
+            
+        }
+    });
 }
 /*商家编辑关闭*/
 function closeEditbuiness() {
