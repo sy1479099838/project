@@ -38,7 +38,7 @@ $(function () {
     /*当座机号码失去焦点时正则*/
     $('input:text[name="zuonumber"]').focusout(function () {
         var Zuonumber=$(this).val();
-        var Zuocheck=/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+        var Zuocheck=/[0-9-()（）]{7,18}/;
         if(!Zuocheck.test(Zuonumber))
         {
             $.showBox("请按照正确格式填写座机号码！");
@@ -105,7 +105,6 @@ function AddBusinessSubmit(){
                 var  Address=$("input[name='address']").val();
                 var  Phonenumber=$("input[name='phonenumber']").val();
                 var  Zuonumber=$("input[name='zuonumber']").val();
-                var  Haonumber=Phonenumber+','+Zuonumber;
                 var  Date=$("input[name='date']").val();
                 var  Head=msg;
 
@@ -145,7 +144,8 @@ function AddBusinessSubmit(){
                             Address:Address,
                             Head:Head,
                             Date:Date,
-                            Haonumber:Haonumber
+                            Phonenumber:Phonenumber,
+                            Zuonumber:Zuonumber
                         }),
                         success:function(data){
                             if(data=="success")
