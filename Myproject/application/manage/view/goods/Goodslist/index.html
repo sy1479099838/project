@@ -24,12 +24,11 @@
             <button class="" onclick="AddGoods()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
             <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
             <span>
-                 活动结束日期：
+                 活动日期：
             </span>
-            <span style="border: 1px solid #0000">
-            <!--<input type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" />-->
-            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
-            </span>
+            <input type="datetime-local" name="start_date" value="" id="start_date" style="max-width: 150px;width: 15%"/>
+            <label style="color: red"><font size="20px">至</font></label>
+            <input type="datetime-local" name="end_date" value="" id="end_date" style="max-width: 150px;width: 15%"/>
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -47,14 +46,14 @@
             </tr>
             <tr>
                 <td>{$key+1}</td>
-                <td>商品名称：<br>
-                    商品分类：<br>
-                    商家：</td>
+                <td>商品名称：绵阳欢乐世界双十二狂欢节<br>
+                    商品分类：旅游<br>
+                    商家：大黄蜂有限公司</td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
-                <td>套餐一：<br>
-                    套餐二：<br>
-                    套餐三：</td>
+                <td>套餐一：全家一日游(包含大人票两张，小孩票一张)<br>
+                    套餐二：情亲1+1(包含大人票一张，小孩票一张，)<br>
+                    套餐三：豪华多人行(包含一张门票，吃，喝，玩全免)</td>
                 <td>2017.12.01--2017.12.31</td>
                 <td><p><b style="text-decoration:line-through;">商品原价：￥128</b><br>
                        <b style="color: red">活动价：￥99</b></p></td>
@@ -64,7 +63,7 @@
                 <td></td>
                 <td>
                     <span class="GoodsChoice">
-                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}">
+                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
                         <button class="GoodsMenu-open" onclick="UpMenu()">
                             <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;上架
                         </button>
@@ -88,21 +87,9 @@
     </div>
 </div>
 <script>
-    document.getElementById('user_date').valueAsDate = new Date();
-    layui.use(['form', 'laydate'], function(){
-        var form = layui.form
-            ,laydate = layui.laydate;
+    document.getElementById('start_date').valueAsDate = new Date();
+    document.getElementById('end_date').valueAsDate = new Date();
 
-        //日期
-        laydate.render({
-            elem: '#date'
-        });
-        laydate.render({
-            elem: '#test1-1'
-            ,lang: 'en'
-        });
-
-    });
 </script>
 
 <!--商品添加-->
@@ -153,7 +140,10 @@
                 </div>
             </span><br>
             <span>
-                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" />
+                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
+                <input type="date" name="start_date" value="2015/03/27 10:41" id="Start-Tate" style="max-width: 250px;width: 20%" />
+                <label style="width: 5%"><font size="20px" color="red">至</font></label>
+                <input type="date" name="end_date" value="2015/03/27 10:41" id="End-Date" style="max-width: 250px;width: 20%"/>
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -161,7 +151,65 @@
         </div>
     </div>
 </div>
-<!-- 加载编辑器的容器 -->
+
+<!--商品编辑-->
+<div class="EditGoods-EditMenu-Box">
+    <div class="Pcmenu-AddMenu-Window">
+    <p>
+        <button class="icon-remove-circle" onclick="closeEditGoods()"><b>关闭</b></button>
+        <span class="cb"></span>
+    </p>
+    <h1>商品编辑页面</h1>
+    <div class="Pcmenu-AddMenu layui-form">
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
+        </span><br>
+        <span>
+                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
+            </span><br>
+        <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+            <input type="text" name="choice" value="">
+                    <select class="AddLiabilityGoods-Choice_one">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+            </span><br>
+        <span>
+                <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
+                <input type="text" name="price"  value="" placeholder="实际价格"></input>&nbsp;&nbsp;
+                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
+                <input type="text" name="activeprice"  value="" placeholder="实际价格"  ></input>&nbsp;
+            </span>
+        <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
+                <input type="number" name="number" id="" value="">
+            </span>
+        <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label>
+            <input type="text" name="content" id="content" value="此处我有话要说，这个不必再发了！我也这么觉得，你说的对吗？" overflow="hidden">
+            </span>
+        <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()"  value=""/>
+            </span><br>
+        <span style="height: 100px;text-align: center;">
+                <div >
+                    <img src="" height="99" width="71" alt="请上传商品照"/>
+                </div>
+            </span><br>
+        <span>
+                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
+                <input type="date" id="starDate" name="start_date" value=""style="max-width: 350px;width: 25%"  />
+             <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <input type="date" id="endDate" name="end_date" value="" style="max-width: 350px;width: 25%"  />
+            </span><br>
+        <div class="EditMenu-Submit">
+            <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+        </div>
+    </div>
+    </div>
+</div>
 
 <!-- 配置文件 -->
 <script type="text/javascript" src="ueditor.config.js"></script>
