@@ -6,109 +6,6 @@ function AddGoods() {
 function closeAddGoods() {
     $(".Goods-AddMenu-Box").fadeOut(1000);
 }
-// function AddGoodsSubmit() {
-//     var GoodsName=$('input:text[name="GoodsName"]').val();
-//     var SjName=$('input:text[name="SjName"]').val();
-//     var AddLiabilityGoodsPid="";
-//     var AddLiabilityGoodsCid="";
-//     var GoodsRegion=$("#GoodsRegion-Add").val();
-//     var Date=$("input[name='Date']").val();
-//     if(GoodsRegion==""||typeof(GoodsRegion) == "undefined"||GoodsRegion=="0" )
-//     {
-//         $.showBox("请选择商品所属类别！");
-//     }
-//     else
-//     {
-//         var num=$(".AddLiabilityGoods-Choice_one").val();
-//         if(num=="0")
-//         {
-//             AddLiabilityGoodsPid = 0;
-//             AddLiabilityGoodsCid = 0;
-//         }
-//         else if(num!="0" && $("#AddLiabilityGoods" + num).length<=0)
-//         {
-//             AddLiabilityPeoplePid = num;
-//             AddLiabilityPeopleCid = num;
-//         }
-//         else {
-//             var num_2 = $("#AddLiabilityGoods" + num).val();
-//             if (num_2 == "0") {
-//                 AddLiabilityGoodsPid = num;
-//                 AddLiabilityGoodsCid = num;
-//             }
-//             else {
-//                 AddLiabilityGoodsPid = num_2;
-//                 AddLiabilityGoodsCid = num + "," + num_2;
-//             }
-//         }
-//         if(GoodsName=="")
-//         {
-//             $.showBox("请输入商品名称！");
-//         }
-//         else if(SjName=="" )
-//         {
-//             $.showBox("请正确商家名称！");
-//         }
-//         else if(Date=="")
-//         {
-//             $.showBox ("填写活动日期");
-//         }
-//         var fd = new FormData();
-//         fd.append("upload", 1);
-//         fd.append("upfile", $("#img2").get(0).files[0]);
-//         $.ajax({
-//             url: "UplodeImg",
-//             type: "POST",
-//             processData: false,
-//             contentType: false,
-//             data: fd,
-//             success: function(msg) {
-//                 if(msg=="error")
-//                 {
-//                     $.showBox("照片上传失败！");
-//                 }
-//                 else
-//                 {
-//                     var  Head=msg;
-//
-//                    if(Head==""){
-//                         $.showBox("请上传头像");
-//                     }}}})
-//
-//         else
-//         {
-//             $.ajax({
-//                 url:"AddGoods",
-//                 type:"post",
-//                 data: ({GoodsName:GoodsName,
-//                     SjName:SjName,
-//                     AddLiabilityPeoplePid:AddLiabilityPeoplePid,
-//                     AddLiabilityPeopleCid:AddLiabilityPeopleCid,
-//                     head:head,
-//                     Date:Date,
-//                 }),
-//                 success:function (msg) {
-//                     if(msg=="success")
-//                     {
-//                         $.showBox("添加成功！");
-//                         window.location.reload();
-//                     }
-//                     else if(msg=="error")
-//                     {
-//                         $.showBox("添加失败！");
-//                     }
-//                     else
-//                     {
-//                         $.showBox(msg);
-//                     }
-//                 },
-//                 error:function () {
-//
-//                 }
-//             })
-//         }
-//     }
-// }
 function GoodslistRegionChoice(data) {
     $.ajax({
         url:"GoodslistRegionChoice",
@@ -123,7 +20,7 @@ function GoodslistRegionChoice(data) {
     });
 
 }
-// 商品添加
+// 商品添加/编辑提交
 function AddGoodsSubmit(){
     var fg = new FormData();
     fg.append("upload", 1);
@@ -135,7 +32,6 @@ function AddGoodsSubmit(){
         contentType: false,
         data: fg,
         success: function(msg) {
-            alert(123);
             if(msg=="error")
             {
                 $.showBox("照片上传失败！");
@@ -147,7 +43,8 @@ function AddGoodsSubmit(){
                 var AddLiabilityGoodsPid="";
                 var AddLiabilityGoodsCid="";
                 var GoodsRegion=$("#GoodsRegion-Add").val();
-                var Date=$("input[name='date']").val();
+                var StartDate=$("input[name='start_date']").val();
+                var EndDate=$("input[name='end_date']").val();
                 var Head=msg;
                 // var AccountRet = /^[A-Za-z0-9]{4,18}$/;
                 // var PwdRet = /^[A-Z]{2}[A-Za-z0-9]{4,16}$/;
@@ -187,9 +84,13 @@ function AddGoodsSubmit(){
                 }
                 else if(Head==""){
                     $.showBox("请上传头像");
-                }else if(Date=="")
+                }else if(StartDate=="")
                 {
-                    $.showBox ("填写注册日期");
+                    $.showBox ("填写活动开始日期");
+                }
+                else if(EndDate=="")
+                {
+                    $.showBox ("填写活动结束日期");
                 }
                 else{
                     $.ajax({
@@ -201,7 +102,8 @@ function AddGoodsSubmit(){
                             AddLiabilityGoodsPid:AddLiabilityGoodsPid,
                             AddLiabilityGoodsCid:AddLiabilityGoodsCid,
                             Head:Head,
-                            Hate:Date
+                            StartDate:StartDate,
+                            EndDate:EndDate,
                         }),
                         success:function(data){
                             if(data=="success")
@@ -228,26 +130,33 @@ function AddGoodsSubmit(){
         }
     });
 }
-
 // 商品编辑
-function EditGoods(data) {
-    $.ajax({
-        url:"",
-        type:"post",
-        data:({num:data}),
-        success:function (msg) {
-            if (msg==null)
-            {
-                $.showBox("你暂时没有查询条件！");
-            }   else {
-                $('.Goods-Edit-Box').html(msg);
-                $('.Goods-Edit-Box').fedeIn(700);
-            }
-        },error:function (num) {
-
-        }
-    })
+// function EditGoods(data) {
+//     $.ajax({
+//         url:"/manage/view/goods/Goodslist/Goodslist",
+//         type:"post",
+//         data:({num:data}),
+//         success:function (msg) {
+//             if (msg==null)
+//             {
+//                 $.showBox("你暂时没有查询条件！");
+//             }   else {
+//                 $('.EditGoods-EditMenu-Box').html(msg);
+//                 $('.EditGoods-EditMenu-Box').fadeIn(700);
+//             }
+//         },error:function (num) {
+//
+//         }
+//     })
+// }
+function EditGoods() {
+    $(".EditGoods-EditMenu-Box").fadeIn(700);
 }
+// 商品编辑关闭
+function closeEditGoods() {
+    $(".EditGoods-EditMenu-Box").fadeOut(1000);
+}
+
 // 商品删除
 function DelGoods(data) {
     alert("del"+date);
@@ -270,7 +179,7 @@ function KeywordSearch() {
 // 上下架
 $(document).ready(function(){
 
-    $(".GoodsMenu-Enable").each(function(){
+    $(".GoodsChoice").each(function(){
         if($(this).children(".status").val()==="open")
         {
             $(this).children(".GoodsMenu-open").fadeIn();
@@ -286,7 +195,7 @@ $(document).ready(function(){
 });
 function UpMenu(id) {
     $.ajax({
-        url:"",
+        url:"/manage/goods/Goodslist/UpMenu",
         type:"post",
         data:({id:id}),
         success:function (msg) {
@@ -297,7 +206,7 @@ function UpMenu(id) {
                 $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
             }
         },error:function (err) {
-            $.showBox("操作失败！请重试！！")
+            $.showBox("上架失败！请重试！！")
         }
     })
 }
@@ -306,7 +215,7 @@ function EndMenu(id) {
       $.showBox("对不起！你暂时无权限进行上下架操作！")
     }else {
         $.ajax({
-            url:"",
+            url:"/manage/goods/Goodslist/EndMenu",
             type:"post",
             data:({id:id}),
             success:function (msg) {
@@ -317,9 +226,10 @@ function EndMenu(id) {
                     $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeIn(1000);
                 }
             },error:function (err) {
-                $.showBox("操作失败！请重试！！")
+                $.showBox("下架失败！请重试！！")
             }
         })
     }
 }
+
 
