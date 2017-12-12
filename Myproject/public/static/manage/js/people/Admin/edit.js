@@ -208,3 +208,24 @@ function EditAdminSubmit(data) {
 
     }
 }
+
+
+/*
+ * 权限checkbox选中方法
+ * */
+$(document).ready(function(){
+    $('input:checkbox').click(function(){
+        //alert($(this).attr('checked'))
+        if($(this).attr('checked')){
+            $(this).parent().find('input:checkbox').attr('checked',true);
+        }else{
+            $(this).parent().find('input:checkbox').attr('checked',false);
+        }
+        if($(this).attr('checked')){
+            $(this).parents(".Admin-power-MenuList").find('input:checkbox').attr('checked',true);
+        }else{
+            $(this).parents(".Admin-power-MenuList").find('input:checkbox').attr('checked',false);
+        }
+
+    });
+});
