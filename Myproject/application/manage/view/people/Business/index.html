@@ -5,7 +5,7 @@
         <div class="BusinessList-Content-Box">
             <p>
                 <button class="" onclick="Addbuinsess()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商家</button>
-                <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+                <span><input type="text" value="" name="BusinessKeywordSearch" placeholder="&nbsp;负责人、公司、地址"><i class="icon-search" onclick="BusinessKeywordSearch('')"></i></span>
                 {in name="AdminId" value="1"}
                 <button onclick="businessAllPower()">商家权限</button>
                 {/in}
@@ -34,7 +34,7 @@
                     <td>
                         名称：{$vo.CompanyName}<br>
                         地址：{$vo.address}<br>
-                        注册时间：{$vo["createTime"]|date="Y/m/d H:i",###}<br>
+                        注册时间：{$vo["createTime"]|date="Y-m-d H:i",###}<br>
                         详细资料：<a href="#">查看</a>
                     </td>
                     <td>
@@ -46,8 +46,8 @@
                         <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg">
                     </td>
                     <td>
-                        18780516325<br>
-                        0813-123456
+                        {$vo.PhoneNum.0}<br>
+                        {$vo.PhoneNum.1}
                     </td>
                     <td>
                         {$vo["EndTime"]|date="Y/m/d",###}<br>

@@ -1,0 +1,64 @@
+
+    <tbody>
+    <tr>
+        <th>编号</th>
+        <th>负责人 </th>
+        <th>公司信息</th>
+        <th>负责人头像</th>
+        <th>营业执照</th>
+        <th>联系电话</th>
+        <th>有效期</th>
+        <th>权限设置</th>
+        <th>密码重置</th>
+        <th>操作</th>
+    </tr>
+    {volist name="list" id="vo"}
+    <tr>
+        <td>{$key+1}</td>
+        <td>
+            {$vo.LiablePeople}<br>
+            账号：{$vo.Account}
+        </td>
+        <td>
+            名称：{$vo.CompanyName}<br>
+            地址：{$vo.address}<br>
+            注册时间：{$vo["createTime"]|date="Y-m-d H:i",###}<br>
+            详细资料：<a href="#">查看</a>
+        </td>
+        <td>
+            <img src="__ROTH__/uploads/{$vo.PeopleImg.0}/E{$vo.PeopleImg.1}" alt="" class="BigImagesButton">
+            <input type="hidden" value="__ROTH__/uploads/{$vo.PeopleImg.0}/{$vo.PeopleImg.1}">
+        </td>
+        <td>
+            <img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
+            <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg">
+        </td>
+        <td>
+            {$vo.PhoneNum.0}<br>
+            {$vo.PhoneNum.1}
+        </td>
+        <td>
+            {$vo["EndTime"]|date="Y/m/d",###}<br>
+            剩余：{$vo["endDays"]}天
+        </td>
+        <td>
+            <button onclick="AddBuinsesspower('{$vo.id}')">
+                <img src="__PUBLIC__/manage/images/icon-authority.png" alt="">权限
+            </button>
+        </td>
+        <td>
+            <button onclick="BuPwd('{$vo.id}')">
+                <img src="__PUBLIC__/manage/images/shortcuts.png" alt="">重置
+            </button>
+        </td>
+        <td>
+            <button onclick="EditBusiness('{$vo.id}')">
+                <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+            </button>
+            <button onclick="DelBuiness1('{$vo.id}')">
+                <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+            </button>
+        </td>
+    </tr>
+    {/volist}
+    </tbody>

@@ -1,6 +1,8 @@
+// 添加按钮打开
 function AddGoods() {
     $(".Goods-AddMenu-Box").fadeIn(700);
 }
+// 关闭添加按钮
 function closeAddGoods() {
     $(".Goods-AddMenu-Box").fadeOut(1000);
 }
@@ -121,6 +123,7 @@ function GoodslistRegionChoice(data) {
     });
 
 }
+// 商品添加
 function AddGoodsSubmit(){
     var fg = new FormData();
     fg.append("upload", 1);
@@ -225,3 +228,98 @@ function AddGoodsSubmit(){
         }
     });
 }
+
+// 商品编辑
+function EditGoods(data) {
+    $.ajax({
+        url:"",
+        type:"post",
+        data:({num:data}),
+        success:function (msg) {
+            if (msg==null)
+            {
+                $.showBox("你暂时没有查询条件！");
+            }   else {
+                $('.Goods-Edit-Box').html(msg);
+                $('.Goods-Edit-Box').fedeIn(700);
+            }
+        },error:function (num) {
+
+        }
+    })
+}
+// 商品删除
+function DelGoods(data) {
+    alert("del"+date);
+}
+/*
+ * 关键字搜索
+ * */
+function KeywordSearch() {
+    var text=$('input:text[name="KeywordSearch"]').val();
+    $.ajax({
+        type:"post",
+        data:({key:text}),
+        url:"KeywordSearch",
+        success:function (msg) {
+            $(".Goodslist-table").html(msg);
+        },error:function (msg) {
+        }
+    })
+}
+// 上下架
+$(document).ready(function(){
+
+    $(".GoodsMenu-Enable").each(function(){
+        if($(this).children(".status").val()==="open")
+        {
+            $(this).children(".GoodsMenu-open").fadeIn();
+            $(this).children(".GoodsMenu-off").fadeOut();
+        }
+        else if($(this).children(".status").val()==="off")
+        {
+            $(this).children(".GoodsMenu-off").fadeIn();
+            $(this).children(".GoodsMenu-open").fadeOut();
+        }
+    })
+
+});
+function UpMenu(id) {
+    $.ajax({
+        url:"",
+        type:"post",
+        data:({id:id}),
+        success:function (msg) {
+            if (msg==suceess){
+                $.showBox("操作成功！");
+                $(".GoodsState"+id).val("open");
+                $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
+                $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
+            }
+        },error:function (err) {
+            $.showBox("操作失败！请重试！！")
+        }
+    })
+}
+function EndMenu(id) {
+    if (id=="1"||id=="2"){
+      $.showBox("对不起！你暂时无权限进行上下架操作！")
+    }else {
+        $.ajax({
+            url:"",
+            type:"post",
+            data:({id:id}),
+            success:function (msg) {
+                if (msg==success){
+                    $.showBox("操作成功！");
+                    $(".GoodsState"+id).val(off);
+                    $(".GoodsState"+id).next(".GoodsMenu-open").fadeOut(0);
+                    $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeIn(1000);
+                }
+            },error:function (err) {
+                $.showBox("操作失败！请重试！！")
+            }
+        })
+    }
+}
+

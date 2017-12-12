@@ -38,7 +38,7 @@ $(function () {
     /*当座机号码失去焦点时正则*/
     $('input:text[name="zuonumber"]').focusout(function () {
         var Zuonumber=$(this).val();
-        var Zuocheck=/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+        var Zuocheck=/[0-9-()（）]{7,18}/;
         if(!Zuocheck.test(Zuonumber))
         {
             $.showBox("请按照正确格式填写座机号码！");
@@ -105,7 +105,6 @@ function AddBusinessSubmit(){
                 var  Address=$("input[name='address']").val();
                 var  Phonenumber=$("input[name='phonenumber']").val();
                 var  Zuonumber=$("input[name='zuonumber']").val();
-                var  Haonumber=Phonenumber+','+Zuonumber;
                 var  Date=$("input[name='date']").val();
                 var  Head=msg;
 
@@ -145,7 +144,8 @@ function AddBusinessSubmit(){
                             Address:Address,
                             Head:Head,
                             Date:Date,
-                            Haonumber:Haonumber
+                            Phonenumber:Phonenumber,
+                            Zuonumber:Zuonumber
                         }),
                         success:function(data){
                             if(data=="success")
@@ -174,6 +174,79 @@ function AddBusinessSubmit(){
     });
 }
 
+/*
+* 编辑商家
+* */
+function EditBusinessSubmit(data) {
+    var  name=$("input[name='Editname']").val();
+    var  Gsname=$("input[name='Editgsname']").val();
+    var  Address=$("input[name='Editaddress']").val();
+    var  Phonenumber=$("input[name='Editphonenumber']").val();
+    var  Zuonumber=$("input[name='Editzuonumber']").val();
+    var  Date=$("input[name='Editdate2']").val();
+    var MPhoneRet = /^1[3|4|5|7|8][0-9]\d{8}$/;
+    var GphoneRet = /[0-9-()（）]{7,18}/;
+
+    if(name=="")
+    {
+        $.showBox('请输入商家名称');
+    }else if(Gsname=="")
+    {
+        $.showBox('请输入公司名称');
+    }else if(Address=="")
+    {
+        $.showBox("请输入地址");
+    }else if(Date=="")
+    {
+        $.showBox ("填写到期时间");
+    }
+    else if(Phonenumber=="" || !MPhoneRet.test(Phonenumber))
+    {
+        $.showBox ("手机格式错误！");
+    }
+    else if(Zuonumber=="" || !GphoneRet.test(Zuonumber))
+    {
+        $.showBox ("座机格式错误！");
+    }
+    else {
+        $.ajax({
+            url: 'SaveEdit',
+            type: 'post',
+            data: ({
+                Name:name,
+                Gsname:Gsname,
+                Address:Address,
+                Date:Date,
+                Phonenumber:Phonenumber,
+                Zuonumber:Zuonumber,
+                num:data
+            }),
+            success: function (msg) {
+                if(msg=="success")
+                {
+                    $.showBox ("编辑成功！");
+                    window.location.reload();
+                }
+                else if(msg=="error")
+                {
+                    $.showBox ("编辑失败！");
+                    window.location.reload();
+                }
+                else
+                {
+                    $.showBox (msg);
+                }
+            },
+            error: function () {
+                $.showBox("出错啦！");
+            }
+        });
+    }
+}
+
+
+
+
 /*商家权限关闭*/
 function closeBuinesspower() {
     $(".Business-power-Box").fadeOut();
@@ -187,12 +260,12 @@ function AddBuinsesspower(data) {
         success:function (msg) {
             if(msg=="error")
             {
-                $.showBox("请重试！");
+                $.showBox("对不起，您没有权利！");
             }
             else
             {
-                $(".Business-EditMenu-Box").html(msg);
-                $(".Business-EditMenu-Box").fadeIn();
+                $(".Business-power-Box").html(msg);
+                $(".Business-power-Box").fadeIn();
             }
         },
         error:function (msg) {
@@ -200,6 +273,39 @@ function AddBuinsesspower(data) {
         }
     });
 }
+
+/*
+* 保存商家权限
+* */
+function SaveBusinessPower(data) {
+    var text = $("input:checkbox[name='Businesspower']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
+    $.ajax({
+        url:"SavePower",
+        type:"get",
+        data:({text:text,
+               data:data}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("编辑成功！");
+                $(".Business-power-Box").fadeOut();
+                $(".Business-power-Box").html("");
+            }
+            else
+            {
+                $.showBox("请选择！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重试！");
+            $(".Business-power-Box").fadeOut();
+            $(".Business-power-Box").html("");
+        }
+    });
+}
+
 
 /*商家密码重置*/
 function BuPwd() {
@@ -292,6 +398,21 @@ function BusinessAllpower() {
             $.showBox("请重试！");
             $(".Business-power-Box").fadeOut();
             $(".Business-power-Box").html("");
+        }
+    });
+}
+
+function BusinessKeywordSearch() {
+    var text=$('input:text[name="BusinessKeywordSearch"]').val();
+    $.ajax({
+        url:"BusinessKeywordSearch",
+        type:"post",
+        data:({key:text}),
+        success:function (msg) {
+            $(".BusinessList-table").html(msg);
+        },
+        error:function (msg) {
+
         }
     });
 }

@@ -6,7 +6,7 @@
 
         //日期
         laydate.render({
-            elem: '#date2'
+            elem: '#Editdate2'
         });
         laydate.render({
             elem: '#test1-1'
@@ -24,32 +24,32 @@
     <div class="Pcmenu-AddMenu layui-form">
         <span>
             <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
-            <input type="text" name="name" value="{$information.LiablePeople}" placeholder="">
+            <input type="text" name="Editname" value="{$information.LiablePeople}" placeholder="">
         </span>
         <span>
             <label>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
-            <input type="text" name="gsname" value="{$information.CompanyName}" placeholder="公司名称">
+            <input type="text" name="Editgsname" value="{$information.CompanyName}" placeholder="公司名称">
         </span>
         <span>
             <label>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
-            <input type="text" name="address" value="{$information.address}" placeholder="请填写现在具体住址">
+            <input type="text" name="Editaddress" value="{$information.address}" placeholder="请填写现在具体住址">
         </span>
         <span>
             <label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
-            <input type="text" name="phonenumber" value="{$information.address}" placeholder="请填写商家的手机号码">
+            <input type="text" name="Editphonenumber" value="{$information.PhoneNum.0}" placeholder="请填写商家的手机号码">
         </span>
         <span>
             <label>座&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
-            <input type="text" name="zuonumber" value="{$information.address}" placeholder="请填写商家的座机">
+            <input type="text" name="Editzuonumber" value="{$information.PhoneNum.1}" placeholder="请填写商家的座机">
         </span>
 
         <span>
             <label>有&nbsp;&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</label>
-            <input type="text" name="date2" value="{$information['EndTime']|date='Y/m/d',###}" id="date2" lay-verify="date2" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            <input type="text" name="Editdate2" value="{$information['EndTime']|date='Y-m-d',###}" id="Editdate2" lay-verify="Editdate2" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
         </span>
         <br>
         <div class="AddMenu-Submit">
-            <button onclick="AddBusinessSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            <button onclick="EditBusinessSubmit('{$id}')">提&nbsp;&nbsp;&nbsp;交</button>
         </div>
     </div>
 </div>

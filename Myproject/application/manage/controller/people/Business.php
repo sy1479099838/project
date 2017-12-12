@@ -19,6 +19,7 @@ class Business extends Common
         {
             $BusinessList[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
             $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
 //        dump($BusinessList);exit;
         $this->assign("BusinessList",$BusinessList);
@@ -110,6 +111,14 @@ class Business extends Common
     public function AddBusiness()
     {
         $information = input();
+        if(preg_match("/^1[3|4|5|7|8][0-9]\d{8}$/", $information["Phonenumber"])!='1')
+        {
+            exit("电话格式错误！");
+        }
+        if(preg_match("/[0-9-()（）]{7,18}/",$information["Zuonumber"])!='1')
+        {
+            exit("座机格式错误！");
+        }
         $isExistAccount=ModelBusiness::where("Account",$information["Zhanghao"])->field("Account")->find();
         $isExistAccount=json_decode(json_encode($isExistAccount,true),true);
         if($isExistAccount=="" || $isExistAccount==NULL)
@@ -131,7 +140,8 @@ class Business extends Common
                         'PeopleImg'=>$information["Head"],
                         'EndTime'=>strtotime($information["Date"]),
                         'createTime'=>time(),
-                        'createAdmin'=>$admin["id"]
+                        'createAdmin'=>$admin["id"],
+                        'PhoneNum'=>$information["Phonenumber"].",".$information["Zuonumber"]
                     ]);
                     if($Admin)
                     {
@@ -163,7 +173,8 @@ class Business extends Common
         $PostId=input("data");
         $BusinessList=ModelBusiness::where("id",$PostId)->field("LiablePeople,CompanyName,address,PhoneNum,EndTime,id")->find();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
-        return $this->fetch("EditBusiness",["information"=>$BusinessList]);
+        $BusinessList["PhoneNum"]=explode(",",$BusinessList["PhoneNum"]);
+        return $this->fetch("EditBusiness",["information"=>$BusinessList,"id"=>$PostId]);
     }
     /*
      * 超级管理员查询商家的总权利
@@ -227,4 +238,91 @@ class Business extends Common
     /*
      * 添加个人权限
      * */
+    public function power()
+    {
+        $data=input("data");
+        $AllPower=ModelBusiness::where("id","1")->field("power")->find()->power;
+        $MenuList=json_decode(json_encode(Managemenu::where("id","in",$AllPower)->field("id,MenuName,pid")->select(),true),true);
+        $AllPower=explode(",",ModelBusiness::where("id",$data)->field("power")->find()->power);
+        foreach ($MenuList as $k=>$v)
+        {
+            if(in_array($v["id"],$AllPower))
+            {
+                $MenuList[$k]["key"]="1";
+            }
+            else
+            {
+                $MenuList[$k]["key"]="0";
+            }
+        }
+        $MenuList=$this->treeData($MenuList);
+        return $this->fetch("power",["MenuList"=>$MenuList,"id"=>$data]);
+
+    }
+    public function SavePower()
+    {
+        $data=input();
+        $value=ModelBusiness::where('id', $data["data"])
+            ->update(['power' => $data["text"]]);
+        if($value=="1")
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
+
+    public function BusinessKeywordSearch()
+    {
+        $key=input("key");
+        $list=ModelBusiness::where('LiablePeople|CompanyName|address','like',"%".$key."%")
+            ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
+            ->limit(10)
+            ->order('createTime', 'desc')
+            ->select();
+        $list=json_decode(json_encode($list,true),true);
+        $Nowtime=strtotime(date("Y-m-d",time()));
+        foreach($list as $k=>$v)
+        {
+            $list[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
+            $list[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $list[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
+        }
+        return $this->fetch("BusinessKeywordSearch",["list"=>$list]);
+    }
+
+    /*
+     * 保存编辑
+     * */
+    public function SaveEdit()
+    {
+        $information = input();
+        if(preg_match("/^1[3|4|5|7|8][0-9]\d{8}$/", $information["Phonenumber"])!='1')
+        {
+            exit("电话格式错误！");
+        }
+        if(preg_match("/[0-9-()（）]{7,18}/",$information["Zuonumber"])!='1')
+        {
+            exit("座机格式错误！");
+        }
+        $value = ModelBusiness::where('id', $information["num"])
+            ->update([
+            'LiablePeople' =>  $information["Name"],
+            'CompanyName'=>$information["Gsname"],
+            'address'=>$information["Address"],
+            'EndTime'=>strtotime($information["Date"]),
+            'PhoneNum'=>$information["Phonenumber"].",".$information["Zuonumber"]
+        ]);
+        if($value=="1")
+        {
+            exit("success");//
+        }
+        else
+        {
+            exit("error");
+        }
+
+    }
 }
