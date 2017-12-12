@@ -82,25 +82,25 @@
 
 
 /*商品编辑*/
-.EditGoods-AddMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window{position: relative;top:10%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 70%;background: #ffffff;border-radius: 10px;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window p{padding:3px;height: 33px;text-align: center;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window p button b{font-size: 14px;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window p b{font-size: 25px;font-family: ���Ŀ���;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window h1{text-align: center;font-size: 20px;font-weight: bold;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines; }
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 60%;height: 100%;display: inline-block;float: left;}
-.EditGoods-AddMenu-Box>.Pcmenu-AddMenu span select{width: 36%;display: inline-block;height: 100%;border: none;background: none;float: left;text-align: center;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-ISUSE{display: inline-block;width: 10%;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span b{display: inline-block;height: 100%;font-weight: normal;float: left;}
+.Business-EditMenu-Box{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(255,255,255,0.7);z-index: 999;position: absolute;display: none;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window{position: relative;top:10%;left: 30%;right: 30%;border:2px solid green;width: 40%;height: 70%;background: #ffffff;border-radius: 10px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p{padding:3px;height: 33px;text-align: center;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;border: 2px solid #f19149;background: none;font-size: 18px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p button b{font-size: 14px;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window p b{font-size: 25px;font-family: ���Ŀ���;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window h1{text-align: center;font-size: 20px;font-weight: bold;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines; }
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 60%;height: 100%;display: inline-block;float: left;}
+.Business-EditMenu-Box>.Pcmenu-AddMenu span select{width: 36%;display: inline-block;height: 100%;border: none;background: none;float: left;text-align: center;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-ISUSE{display: inline-block;width: 10%;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span b{display: inline-block;height: 100%;font-weight: normal;float: left;}
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;border: 1px solid green;font-size: 20px;border-radius: 10px;}
 .Menu-chose-2{display: none;}
 #img1{margin:0 auto;width:71px;height:99px;border:1px solid black;}
-.EditGoods-AddMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
+.Business-EditMenu-Box>.Pcmenu-EditMenu-Window>.Pcmenu-AddMenu span>.Menu-chose-2{display: none;}
 
 
 
