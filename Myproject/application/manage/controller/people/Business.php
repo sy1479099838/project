@@ -19,6 +19,7 @@ class Business extends Common
         {
             $BusinessList[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
             $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
 //        dump($BusinessList);exit;
         $this->assign("BusinessList",$BusinessList);
@@ -110,6 +111,14 @@ class Business extends Common
     public function AddBusiness()
     {
         $information = input();
+        if(preg_match("/^1[3|4|5|7|8][0-9]\d{8}$/", $information["Phonenumber"])!='1')
+        {
+            exit("电话格式错误！");
+        }
+        if(preg_match("/[0-9-()（）]{7,18}/",$information["Zuonumber"])!='1')
+        {
+            exit("座机格式错误！");
+        }
         $isExistAccount=ModelBusiness::where("Account",$information["Zhanghao"])->field("Account")->find();
         $isExistAccount=json_decode(json_encode($isExistAccount,true),true);
         if($isExistAccount=="" || $isExistAccount==NULL)
@@ -131,7 +140,8 @@ class Business extends Common
                         'PeopleImg'=>$information["Head"],
                         'EndTime'=>strtotime($information["Date"]),
                         'createTime'=>time(),
-                        'createAdmin'=>$admin["id"]
+                        'createAdmin'=>$admin["id"],
+                        'PhoneNum'=>$information["Phonenumber"].",".$information["Zuonumber"]
                     ]);
                     if($Admin)
                     {
@@ -163,6 +173,7 @@ class Business extends Common
         $PostId=input("data");
         $BusinessList=ModelBusiness::where("id",$PostId)->field("LiablePeople,CompanyName,address,PhoneNum,EndTime,id")->find();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
+        $BusinessList["PhoneNum"]=explode(",",$BusinessList["PhoneNum"]);
         return $this->fetch("EditBusiness",["information"=>$BusinessList]);
     }
     /*
@@ -277,6 +288,7 @@ class Business extends Common
         {
             $list[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
             $list[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $list[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
         return $this->fetch("BusinessKeywordSearch",["list"=>$list]);
     }
