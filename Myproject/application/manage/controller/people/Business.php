@@ -187,7 +187,7 @@ class Business extends Common
         {
             $AllPower=json_decode(json_encode(ModelBusiness::where("id","1")->field("power")->find(),true),true)["power"];
             $AllPower=explode(",",$AllPower);
-            $MenuList=json_decode(json_encode(Managemenu::field("id,MenuName,pid")->select(),true),true);
+            $MenuList=json_decode(json_encode(Managemenu::where("Enable","1")->field("id,MenuName,pid")->select(),true),true);
             foreach ($MenuList as $k=>$v)
             {
                 if(in_array($v["id"],$AllPower))
@@ -242,7 +242,7 @@ class Business extends Common
     {
         $data=input("data");
         $AllPower=ModelBusiness::where("id","1")->field("power")->find()->power;
-        $MenuList=json_decode(json_encode(Managemenu::where("id","in",$AllPower)->field("id,MenuName,pid")->select(),true),true);
+        $MenuList=json_decode(json_encode(Managemenu::where("id","in",$AllPower)->where("Enable","1")->field("id,MenuName,pid")->select(),true),true);
         $AllPower=explode(",",ModelBusiness::where("id",$data)->field("power")->find()->power);
         foreach ($MenuList as $k=>$v)
         {
