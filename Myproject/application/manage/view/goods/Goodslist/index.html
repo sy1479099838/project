@@ -26,7 +26,10 @@
             <span>
                  活动结束日期：
             </span>
-            <input href="" type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" /><input type="submit" />
+            <span style="border: 1px solid #0000">
+            <!--<input type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" />-->
+            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
+            </span>
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -53,16 +56,27 @@
                     套餐二：<br>
                     套餐三：</td>
                 <td>2017.12.01--2017.12.31</td>
-                <td>价格3元</td>
-                <td>详情</td>
+                <td><p><b style="text-decoration:line-through;">商品原价：￥128</b><br>
+                       <b style="color: red">活动价：￥99</b></p></td>
+                <td><div style="width: 100%;overflow: hidden;height: 100px;">
+                    此处写商品的详细资料
+                </div></td>
                 <td></td>
                 <td>
-                    <span>上架</span>
+                    <span class="GoodsChoice">
+                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}">
+                        <button class="GoodsMenu-open" onclick="UpMenu()">
+                            <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;上架
+                        </button>
+                        <button class="GoodsMenu-off" onclick="EndMenu()">
+                            <img src="__PUBLIC__/manage/images/inco-close.png" alt="">下架&nbsp;
+                        </button>
+                    </span>
                 </td>
-                <td> <button onclick="EditBuiness()">
+                <td> <button onclick="EditGoods()">
                     <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
                 </button>
-                    <button onclick="DelAdmin()">
+                    <button onclick="DelGoods()">
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
                     </button></td>
             </tr>
@@ -74,21 +88,21 @@
     </div>
 </div>
 <script>
-//    document.getElementById('user_date').valueAsDate = new Date();
-//    layui.use(['form', 'laydate'], function(){
-//        var form = layui.form
-//            ,laydate = layui.laydate;
-//
-//        //日期
-//        laydate.render({
-//            elem: '#date'
-//        });
-//        laydate.render({
-//            elem: '#test1-1'
-//            ,lang: 'en'
-//        });
-//
-//    });
+    document.getElementById('user_date').valueAsDate = new Date();
+    layui.use(['form', 'laydate'], function(){
+        var form = layui.form
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#test1-1'
+            ,lang: 'en'
+        });
+
+    });
 </script>
 
 <!--商品添加-->
@@ -139,7 +153,7 @@
                 </div>
             </span><br>
             <span>
-                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
+                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label><input type="datetime-local" name="user_date" value="2015/03/27 10:41" id="user_date" />
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
