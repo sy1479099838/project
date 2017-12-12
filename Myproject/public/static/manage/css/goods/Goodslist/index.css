@@ -15,7 +15,7 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(1){width: 6%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(2){width:11% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:11%;text-align:center;padding: 1px 1px}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:12%;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:12%;text-align: center;overflow: hidden;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:12%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:12% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(7){width:12% ;text-align: center}
@@ -24,11 +24,12 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:6% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;margin: 0 3px;}
-.GoodsChoice{display: inline-block;width: 100%;height: 50%;text-align: center;padding: 3px 0;}
+.GoodsChoice{display: inline-block;width: 100%;height: 30%;text-align: center;padding: 3px 0;}
 .GoodsChoice>.GoodsMenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
 .GoodsChoice>.GoodsMenu-open img{float: left;display: inline-block;}
 .GoodsChoice>.GoodsMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
 .GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}
+.packageBox{float: left;border: 0px solid #000000}
 
 .Goods-AddMenu-Box{width:85%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;left: 15%;border-left: 2px solid #000000}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
