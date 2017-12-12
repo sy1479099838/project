@@ -40,7 +40,7 @@
                 <th>活动日期</th>
                 <th>商品价格</th>
                 <th>商品详情</th>
-                <th>0</th>
+                <th>剩余商品数</th>
                 <th>是否上架</th>
                 <th>操作</th>
             </tr>
@@ -52,15 +52,17 @@
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
                 <td>套餐一：全家一日游(包含大人票两张，小孩票一张)<br>
-                    套餐二：情亲1+1(包含大人票一张，小孩票一张，)<br>
-                    套餐三：豪华多人行(包含一张门票，吃，喝，玩全免)</td>
+                    套餐二：情亲1+1(包含大人票一张，小孩票一张)<br>
+                    套餐三：豪华单人行(包含一张门票，吃，喝，玩全免)</td>
                 <td>2017.12.01--2017.12.31</td>
                 <td><p><b style="text-decoration:line-through;">商品原价：￥128</b><br>
                        <b style="color: red">活动价：￥99</b></p></td>
                 <td><div style="width: 100%;overflow: hidden;height: 100px;">
                     此处写商品的详细资料
                 </div></td>
-                <td></td>
+                <td>
+                    <font size="5" color="red">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="red">张</font>
+                </td>
                 <td>
                     <span class="GoodsChoice">
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
@@ -141,9 +143,9 @@
             </span><br>
             <span>
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="date" name="start_date" value="2015/03/27 10:41" id="Start-Tate" style="max-width: 250px;width: 20%" />
+                <input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="Start-Tate" style="max-width: 250px;width: 15%" />
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="date" name="end_date" value="2015/03/27 10:41" id="End-Date" style="max-width: 250px;width: 20%"/>
+                <input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="End-Date" style="max-width: 250px;width: 15%"/>
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -200,9 +202,9 @@
             </span><br>
         <span>
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="date" id="starDate" name="start_date" value=""style="max-width: 350px;width: 25%"  />
-             <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
-                <input type="date" id="endDate" name="end_date" value="" style="max-width: 350px;width: 25%"  />
+                <input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />
+                <label style="width: 5%"><font size="20px" color="red">至</font></label>
+                <input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />
             </span><br>
         <div class="EditMenu-Submit">
             <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>

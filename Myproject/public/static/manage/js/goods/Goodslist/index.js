@@ -43,7 +43,8 @@ function AddGoodsSubmit(){
                 var AddLiabilityGoodsPid="";
                 var AddLiabilityGoodsCid="";
                 var GoodsRegion=$("#GoodsRegion-Add").val();
-                var Date=$("input[name='date']").val();
+                var StartDate=$("input[name='start_date']").val();
+                var EndDate=$("input[name='end_date']").val();
                 var Head=msg;
                 // var AccountRet = /^[A-Za-z0-9]{4,18}$/;
                 // var PwdRet = /^[A-Z]{2}[A-Za-z0-9]{4,16}$/;
@@ -83,9 +84,13 @@ function AddGoodsSubmit(){
                 }
                 else if(Head==""){
                     $.showBox("请上传头像");
-                }else if(Date=="")
+                }else if(StartDate=="")
                 {
                     $.showBox ("填写活动开始日期");
+                }
+                else if(EndDate=="")
+                {
+                    $.showBox ("填写活动结束日期");
                 }
                 else{
                     $.ajax({
@@ -97,7 +102,8 @@ function AddGoodsSubmit(){
                             AddLiabilityGoodsPid:AddLiabilityGoodsPid,
                             AddLiabilityGoodsCid:AddLiabilityGoodsCid,
                             Head:Head,
-                            Hate:Date
+                            StartDate:StartDate,
+                            EndDate:EndDate,
                         }),
                         success:function(data){
                             if(data=="success")
