@@ -174,7 +174,7 @@ class Business extends Common
         $BusinessList=ModelBusiness::where("id",$PostId)->field("LiablePeople,CompanyName,address,PhoneNum,EndTime,id")->find();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
         $BusinessList["PhoneNum"]=explode(",",$BusinessList["PhoneNum"]);
-        return $this->fetch("EditBusiness",["information"=>$BusinessList]);
+        return $this->fetch("EditBusiness",["information"=>$BusinessList,"id"=>$PostId]);
     }
     /*
      * 超级管理员查询商家的总权利
@@ -291,5 +291,38 @@ class Business extends Common
             $list[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
         return $this->fetch("BusinessKeywordSearch",["list"=>$list]);
+    }
+
+    /*
+     * 保存编辑
+     * */
+    public function SaveEdit()
+    {
+        $information = input();
+        if(preg_match("/^1[3|4|5|7|8][0-9]\d{8}$/", $information["Phonenumber"])!='1')
+        {
+            exit("电话格式错误！");
+        }
+        if(preg_match("/[0-9-()（）]{7,18}/",$information["Zuonumber"])!='1')
+        {
+            exit("座机格式错误！");
+        }
+        $value = ModelBusiness::where('id', $information["num"])
+            ->update([
+            'LiablePeople' =>  $information["Name"],
+            'CompanyName'=>$information["Gsname"],
+            'address'=>$information["Address"],
+            'EndTime'=>strtotime($information["Date"]),
+            'PhoneNum'=>$information["Phonenumber"].",".$information["Zuonumber"]
+        ]);
+        if($value=="1")
+        {
+            exit("success");//
+        }
+        else
+        {
+            exit("error");
+        }
+
     }
 }
