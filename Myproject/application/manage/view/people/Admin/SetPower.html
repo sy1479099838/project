@@ -3,17 +3,21 @@
     <h1>权限管理</h1>
     {volist name="List" id="vo"}
     <div class="Admin-power-MenuList" >
+        <!--<input type="hidden" name="asdf" value="12346">-->
         <p>
-            <input type="checkbox" name="MenuPower" value="{$vo.id}" placeholder="" {$vo['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo.MenuName}
+            <input class="check-1" type="checkbox" name="MenuPower" value="{$vo.id}" placeholder="" {$vo['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo.MenuName}
         </p>
         {present name="vo.children.0"}
         {volist name="vo.children" id="vo1"}
         <div class="Admin-power-MenuList-two">
-            <p class="power-MenuList-two-content"><b>&nbsp;</b><input type="checkbox" name="MenuPower" value="{$vo1.id}" placeholder="" {$vo1['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo1.MenuName}</p>
+            <p class="power-MenuList-two-content">
+                <b>&nbsp;</b>
+                <input class="check-2" type="checkbox" name="MenuPower" value="{$vo1.id}" placeholder="" {$vo1['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo1.MenuName}
+            </p>
             {present name="vo1.children.0"}
             <div class="power-MenuList-three-content">
                 {volist name="vo1.children" id="vo2"}
-                <span><input type="checkbox" name="MenuPower" value="{$vo2.id}" placeholder="" {$vo2['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo2.MenuName}</span>
+                <span><input class="check-3" type="checkbox" name="MenuPower" value="{$vo2.id}" placeholder="" {$vo2['key']=="1"?"checked":""} >&nbsp;&nbsp;{$vo2.MenuName}</span>
                 {/volist}
             </div>
             {/present}
@@ -28,3 +32,59 @@
         <button onclick="SavePower('{$id}')">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="closePowerAdmin()">取消</button>
     </div>
 </div>
+<script>
+    /*商品权限选择*/
+    $(document).ready(function(){
+
+//        $('input:checkbox').click(function(){
+//            //alert(111111111);
+//            var check = $(this);
+//            if(check.prop("checked")){
+//                 $(this).parent().parent().prevAll().children().find('input:checkbox').attr('checked',true);
+//                 }else{
+//                $(this).parent().parent().prevAll().children().find('input:checkbox').attr('checked',false);
+//            }
+//           /* if(check.prop("checked")){
+//                 $(this).parents(".Admin-power-MenuList").children().find('input:checkbox').attr('checked',true);
+//                 }else{
+//                 $(this).parents(".Admin-power-MenuList").find('input:checkbox').attr('checked',false);
+//             }*/
+//            if(check.prop("checked")){
+//                $(this).nextAll().parent().parent().children().find('input:checkbox').attr('checked',true);
+//            }else{
+//                $(this).nextAll().parent().parent().children().find('input:checkbox').attr('checked',false);
+//            }
+//        });
+    });
+    $(function () {
+        $('.check-1').click(function() {
+            var check = $(this);
+            if(check.prop("checked")===true )
+            {
+                $(this).parents(".Admin-power-MenuList").find(".check-2").attr('checked',true);
+                $(this).parents(".Admin-power-MenuList").find(".check-3").attr('checked',true);
+            }
+            else
+            {
+                $(this).parents(".Admin-power-MenuList").find(".check-2").attr('checked',false);
+                $(this).parents(".Admin-power-MenuList").find(".check-3").attr('checked',false);
+            }
+        });
+
+    });
+    $(function () {
+        $('.check-2').click(function() {
+            var check = $(this);
+            if(check.prop("checked")===true )
+            {
+                $(this).attr('checked',true);
+                $(this).parents(".power-MenuList-two-content").nextAll(".power-MenuList-three-content").find(".check-3").attr('checked',true);
+            }
+            else
+            {
+                $(this).attr('checked',false);
+                $(this).parents(".power-MenuList-two-content").nextAll(".power-MenuList-three-content").find(".check-3").attr('checked',false);
+            }
+        });
+    });
+</script>

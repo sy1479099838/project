@@ -174,6 +174,79 @@ function AddBusinessSubmit(){
     });
 }
 
+/*
+* 编辑商家
+* */
+function EditBusinessSubmit(data) {
+    var  name=$("input[name='Editname']").val();
+    var  Gsname=$("input[name='Editgsname']").val();
+    var  Address=$("input[name='Editaddress']").val();
+    var  Phonenumber=$("input[name='Editphonenumber']").val();
+    var  Zuonumber=$("input[name='Editzuonumber']").val();
+    var  Date=$("input[name='Editdate2']").val();
+    var MPhoneRet = /^1[3|4|5|7|8][0-9]\d{8}$/;
+    var GphoneRet = /[0-9-()（）]{7,18}/;
+
+    if(name=="")
+    {
+        $.showBox('请输入商家名称');
+    }else if(Gsname=="")
+    {
+        $.showBox('请输入公司名称');
+    }else if(Address=="")
+    {
+        $.showBox("请输入地址");
+    }else if(Date=="")
+    {
+        $.showBox ("填写到期时间");
+    }
+    else if(Phonenumber=="" || !MPhoneRet.test(Phonenumber))
+    {
+        $.showBox ("手机格式错误！");
+    }
+    else if(Zuonumber=="" || !GphoneRet.test(Zuonumber))
+    {
+        $.showBox ("座机格式错误！");
+    }
+    else {
+        $.ajax({
+            url: 'SaveEdit',
+            type: 'post',
+            data: ({
+                Name:name,
+                Gsname:Gsname,
+                Address:Address,
+                Date:Date,
+                Phonenumber:Phonenumber,
+                Zuonumber:Zuonumber,
+                num:data
+            }),
+            success: function (msg) {
+                if(msg=="success")
+                {
+                    $.showBox ("编辑成功！");
+                    window.location.reload();
+                }
+                else if(msg=="error")
+                {
+                    $.showBox ("编辑失败！");
+                    window.location.reload();
+                }
+                else
+                {
+                    $.showBox (msg);
+                }
+            },
+            error: function () {
+                $.showBox("出错啦！");
+            }
+        });
+    }
+}
+
+
+
+
 /*商家权限关闭*/
 function closeBuinesspower() {
     $(".Business-power-Box").fadeOut();
