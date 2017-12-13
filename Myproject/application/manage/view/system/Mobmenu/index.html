@@ -1,6 +1,67 @@
 {extend name="Public:index"/}
 {block name="main"}
-123456
+    <div class="Mobmenu-index-Box">
+        <h1>手机端菜单</h1>
+        <p class="operation">
+            <button class="" onclick="AddRegion()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">&nbsp;添加菜单&nbsp;</button>
+        </p>
+        <table class="Mobmenu-index-table">
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>菜单名称</th>
+                <th>菜单图标</th>
+                <th>图标修改</th>
+                <th>是否启用</th>
+                <th>列表模板</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>菜单名称</td>
+                <td>
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="img-icon">
+                </td>
+                <td>
+                    <a href="javascript:void(0)" onclick="Editicon('1')">修&nbsp;&nbsp;改</a>
+                </td>
+                <td>
+                    <span class="Mobmenu-Enable">
+                            <input type="hidden" value="open" class="status">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                </td>
+                <td>
+                    <span class="muban-box fl">
+                        <input type="radio" value="1" name="muban" placeholder="">&nbsp;模板1
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="2" name="muban" placeholder="">&nbsp;模板2
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="3" name="muban" placeholder="">&nbsp;模板3
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="4" name="muban" placeholder="">&nbsp;模板4
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img" >
+                    </span>
+                </td>
+                <td>
+                    <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {/block}
 
 
