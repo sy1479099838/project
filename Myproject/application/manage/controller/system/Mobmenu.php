@@ -5,9 +5,7 @@ class Mobmenu extends Common
 {
     public function index()
     {
-//        echo(123456789);
         return $this->fetch();
-
     }
     public function treeData($data,$pid = 0){
         $result = array();
