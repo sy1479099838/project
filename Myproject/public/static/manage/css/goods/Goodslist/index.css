@@ -29,7 +29,7 @@
 .GoodsChoice>.GoodsMenu-open img{float: left;display: inline-block;}
 .GoodsChoice>.GoodsMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
 .GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}
-.packageBox{float: left;border: 0px solid #000000}
+#{float: left;border: 0px solid #000000}
 
 .Goods-AddMenu-Box{width:85%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;left: 15%;border-left: 2px solid #000000}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
@@ -61,3 +61,8 @@
 .EditMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .EditMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span script{width: 70%;overflow: hidden;margin-top: 0px;}
+
+/**套餐详情**/
+.Package-Menu-Box{width: 200px;height: 200px;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;left: 50%;top: 10%;position:absolute;}
+.Package-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;}
+

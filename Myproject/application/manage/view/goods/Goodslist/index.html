@@ -52,7 +52,7 @@
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
                 <td>
-                    <p style="overflow: hidden;float: left">套餐一：<button onclick="PackageBox()" class="packageBox">全家一日游</button></p>
+                    <p style="overflow: hidden;">套餐一：<a onclick="PackageBox()" id="packageBox">全家一日游</a></p>
                     <p style="overflow: hidden;height: 20px">套餐二：情亲1+1</p>
                     <p style="overflow: hidden;height: 20px">套餐三：豪华单人行</p>
                 </td>
@@ -133,7 +133,7 @@
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>
             <script id="container" name="content" type="text/plain" >
-                    这里写你的初始化内容
+这里写你的初始化内容
             </script>
             </span>
             <span>
@@ -214,6 +214,15 @@
         </div>
     </div>
     </div>
+</div>
+<div class="Package-Menu-Box">
+    <p >
+        <button class="icon-remove-circle" onclick="closeShow()" style="background-color: #9da0a4;"><b>关闭</b></button>
+        <span class="cb"></span>
+    </p><br><br>
+    <p>
+        这里为解释套餐详细信息
+    </p>
 </div>
 
 <!-- 配置文件 -->

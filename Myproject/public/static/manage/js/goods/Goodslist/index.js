@@ -231,5 +231,21 @@ function EndMenu(id) {
         })
     }
 }
-
-
+// 点击套餐事件
+function PackageBox() {
+    // $.ajax({
+    //     url:"/manage/view/goods/Goodslist/",
+    //     type:"post",
+    //     data:({data:data}),
+    //     success:function (msg) {
+    //         $(".Package-Menu-Box").html(msg);
+    //         $(".Package-Menu-Box").fadeIn(700);
+    //     },error:function (meg) {
+    //
+    //     }
+    // })
+    $(".Package-Menu-Box").fadeIn(700);
+}
+function closeShow() {
+    $(".Package-Menu-Box").fadeOut(1000);
+}
