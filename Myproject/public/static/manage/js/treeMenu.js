@@ -23,5 +23,5 @@ $(function () {
             $(this).attr("id","open_1").next().slideDown().siblings("span").slideUp();
         }
     });
-    $("#OpenTree_2").trigger("click");
+    $("#OpenTree_2").trigger("click");//
 });
