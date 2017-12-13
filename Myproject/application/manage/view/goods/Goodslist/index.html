@@ -69,7 +69,16 @@
                 </td>
                 <td>
                     <button class=" icon-file-alt" onclick="GoodsPK()">详情</button>
-                    <button class=" icon-thumbs-up" onclick="GoodsPraise()">点赞</button>
+                    <div class="SHOW_Praise">
+                        <button class=" icon-thumbs-up" >点赞</button>
+                        <!--点赞详情-->
+                        <div class="GoodsPraise">
+                            <p>
+                                该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
+                            </p>
+                        </div>
+                    </div>
+
                     <button class=" icon-align-right" onclick="GoodsParameter()">参数</button>
                 </td>
                 <td>
@@ -279,17 +288,6 @@
     </p><br><br>
     <p>
         此处为商品信息详细介绍！
-    </p>
-</div>
-<!--点赞详情-->
-<div class="GoodsPraise">
-    <p>
-        <button class="icon-remove-sign" onclick="closeGoodsPraise()">关闭</button>
-        <span class="cb"></span>
-    </p><br><br>
-    <p>
-        <!--此处为商品点赞！-->
-        该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
     </p>
 </div>
 <!--商品参数详情-->

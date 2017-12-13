@@ -298,3 +298,82 @@ $(function(){
     });
 
 });
+// 拼团启用
+$(document).ready(function(){
+
+    $(".GoodsFight").each(function(){
+        if($(this).children(".status").val()==="open")
+        {
+            $(this).children(".GoodsFight-open").fadeIn();
+            $(this).children(".GoodsFight-off").fadeOut();
+        }
+        else if($(this).children(".status").val()==="off")
+        {
+            $(this).children(".GoodsFight-off").fadeIn();
+            $(this).children(".GoodsFight-open").fadeOut();
+        }
+    })
+
+});
+function Up_Menu(id) {
+    $.ajax({
+        url:"/manage/goods/Goodslist/Up_Menu",
+        type:"post",
+        data:({id:id}),
+        success:function (msg) {
+            if (msg==suceess){
+                $.showBox("操作成功！");
+                $(".GoodsState"+id).val("open");
+                $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeOut(0);
+                $(".GoodsState"+id).next(".GoodsFight-open").fadeIn(1000);
+            }
+        },error:function (err) {
+            $.showBox("启用失败！请重试！！")
+        }
+    })
+}
+function End_Menu(id) {
+    if (id=="1"||id=="2"){
+        $.showBox("对不起！你暂时无权限进行上下架操作！")
+    }else {
+        $.ajax({
+            url:"/manage/goods/Goodslist/End_Menu",
+            type:"post",
+            data:({id:id}),
+            success:function (msg) {
+                if (msg==success){
+                    $.showBox("操作成功！");
+                    $(".GoodsState"+id).val(off);
+                    $(".GoodsState"+id).next(".GoodsFight-open").fadeOut(0);
+                    $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeIn(1000);
+                }
+            },error:function (err) {
+                $.showBox("启用失败！请重试！！")
+            }
+        })
+    }
+}
+// 商品详情打开
+function GoodsPK() {
+    $(".GoodsPK-Menu-Box").fadeIn(700);
+}
+// 商品详情关闭
+function closeGoodsPK() {
+    $(".GoodsPK-Menu-Box").fadeOut(1000);
+}
+// 商品参数打开
+function GoodsParameter() {
+    $(".GoodsParameter-Menu-Box").fadeIn(700);
+}
+// 商品参数关闭
+function closeGoodsParameter() {
+    $(".GoodsParameter-Menu-Box").fadeOut(1000);
+}
+// 商品评论打开
+function GoodsComment() {
+    $(".GoodsComment-Menu-Box").fadeIn(700);
+}
+// 商品评论关闭
+function closeGoodsComment() {
+    $(".GoodsComment-Menu-Box").fadeOut(1000);
+}
