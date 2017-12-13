@@ -16,6 +16,7 @@
             </dl>
         </div>
     </div>
+    <div style="clear:both;"></div>
 </div>
 <div class="Goodslist">
     <h1>活动商品管理</h1>
@@ -115,6 +116,7 @@
             </tbody>
         </table>
     </div>
+    <div style="clear:both;"></div>
     <div class="SeeBigImages" onclick="closeImage()">
         <img src="" alt="">
     </div>
@@ -172,9 +174,14 @@
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>
-            <script id="container" name="content" type="text/plain" >
-这里写你的初始化内容
-            </script>
+            <!--<script id="container" name="content" type="text/plain" >
+                        这里写你的初始化内容
+            </script>-->
+                <textarea id="newsEditor" name="content" style="height: 200px">请输入新闻内容... </textarea>
+                <script type="text/javascript">
+                UE.getEditor('newsEditor');
+                // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+                </script>
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
@@ -295,20 +302,22 @@
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
         <span class="cb"></span>
-    </p><br><br>
-    <script id="GoodsContent" name="content" type="text/plain" >
-这里写你的初始化内容
-            </script>
+    </p><br>
+    <textarea id="newsEditor1" name="content" style="height: 50%">请输入新闻内容... </textarea>
+    <script type="text/javascript">
+        UE.getEditor('newsEditor1');
+        // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+    </script>
 </div>
 <!-- 配置文件 -->
-<script type="text/javascript" src="ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="ueditor.all.js"></script>
+<!--<script type="text/javascript" src="ueditor.config.js"></script>
+&lt;!&ndash; 编辑器源码文件 &ndash;&gt;
+<script type="text/javascript" src="ueditor.all.js"></script>-->
 <!-- 实例化编辑器 -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     var ue = UE.getEditor('container');
     var ue=UE.getEditor('GoodsContent');
-</script>
+</script>-->
 {/block}
 
 
