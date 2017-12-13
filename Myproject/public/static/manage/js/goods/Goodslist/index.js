@@ -248,4 +248,29 @@ function PackageBox() {
 }
 function closeShow() {
     $(".Package-Menu-Box").fadeOut(1000);
+
 }
+
+/*日期插件配置*/
+
+layui.use(['form', 'laydate'], function() {
+    var form = layui.form
+        , laydate = layui.laydate;
+
+    //日期
+    laydate.render({
+        elem: '#date1'
+    });
+    laydate.render({
+        elem: '#date2'
+        /* ,lang: 'en'*/
+    });
+    laydate.render({
+        elem: '#date3'
+        /* ,lang: 'en'*/
+    });
+    laydate.render({
+        elem: '#date4'
+        /* ,lang: 'en'*/
+    });
+});
