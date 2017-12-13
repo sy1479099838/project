@@ -81,3 +81,12 @@
 /*商品参数*/
 .GoodsParameter-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
 .GoodsParameter-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+/*商品评论*/
+.GoodsComment-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
+.GoodsComment-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+.GoodsComment-Menu-Box>.Message-Number {text-align: center;position: relative;}
+.GoodsComment-Menu-Box div p {border: 1px solid #aaaaaa;width: 70%;height: 30px;text-align: center;margin: 0 auto;}
+.GoodsComment-Menu-Box div p b{color: red;font-size: 20px;}
+.GoodsComment-Menu-Box div p span{color: #000077;font-size: 18px;text-decoration: underline;}
+.GoodsComment-Menu-Box>.user-Message{width: 90%;margin: 0 auto;}
+.GoodsComment-Menu-Box>.user-Message span{left: 20%;font-size: 7px;color: lightsteelblue;}
