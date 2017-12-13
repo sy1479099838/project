@@ -16,3 +16,10 @@ $(document).ready(function(){
         }
     })
 });
+
+function AddClass() {
+    $(".AddClass-Box").fadeIn(200);
+}
+function closeAddClass() {
+    $(".AddClass-Box").fadeOut(0);
+}
