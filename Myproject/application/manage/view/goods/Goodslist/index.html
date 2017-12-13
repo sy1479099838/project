@@ -46,11 +46,11 @@
             </tr>
             <tr>
                 <td>{$key+1}</td>
-                <td><h4 >商品名称：<b style="text-decoration: underline;">绵阳欢乐世界双十二狂欢节</b></h4>
-                    <h4 >商品分类：<b style="text-decoration: underline;">旅游</b></h4>
-                    <h4>商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4>
-                    <h4 style="text-decoration:line-through;">商品原价：￥128</h4>
-                    <h4><b style="color: red;text-decoration: underline;">活动价：￥99</b></h4>
+                <td><h4 class="SJC_lin">商品名称：<b style="text-decoration: underline;">绵阳欢乐世界双十二狂欢节</b></h4><br>
+                    <h4 class="SJC_lin">商品分类：<b style="text-decoration: underline;">旅游</b></h4><br>
+                    <h4 class="SJC_lin">商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4><br>
+                    <h4 class="SJC_lin" style="text-decoration:line-through;">原价：￥128</h4><br>
+                    <h4 class="SJC_lin"><b style="color: red;text-decoration: underline;">活动价：￥99</b></h4>
                 </td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
@@ -66,9 +66,18 @@
                     待定
                 </td>
                 <td>
-                    <button class=" icon-file-alt" onclick="GoodsPK()">详情</button>
-                    <button class=" icon-thumbs-up" onclick="GoodsPraise()">点赞</button>
-                    <button class=" icon-align-right" onclick="GoodsParameter()">参数</button>
+                    <button class=" icon-file-alt" onclick="GoodsPK()">&nbsp;&nbsp;详情</button>
+                    <div class="Praise">
+                        <button class=" icon-thumbs-up">&nbsp;&nbsp;点赞</button>
+                        <!--点赞详情-->
+                        <div class="GoodsPraises">
+                            <p>
+                                该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
+                            </p>
+                        </div>
+                    </div>
+                    <button class=" icon-align-right" onclick="GoodsParameter()">&nbsp;&nbsp;参数</button>
+                    <button class=" icon-comment" onclick="GoodsComment()">&nbsp;&nbsp;评论</button>
                 </td>
                 <td>
                     <font size="5" color="red">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="red">张</font>
@@ -108,14 +117,13 @@
         <img src="" alt="">
     </div>
 </div>
-<!--<script>
+<script>
     document.getElementById('start_date').valueAsDate = new Date();
     document.getElementById('end_date').valueAsDate = new Date();
 
-</script>-->
+</script>
 
-<!------------------------------------商品添加--------------------------------------->
-
+<!--商品添加-->
 <div class="Goods-AddMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
         <p>
@@ -123,10 +131,11 @@
             <span class="cb"></span>
         </p>
         <h1>商品添加</h1>
-        <div class="Pcmenu-AddMenu">
+        <div class="Pcmenu-AddMenu layui-form">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+            </span><br>
+            <span>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
             <span>
@@ -161,13 +170,11 @@
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-            <span class="layui-form">
+            <span>
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
+                <input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="Start-Tate" style="max-width: 250px;width: 15%" />
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
+                <input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="End-Date" style="max-width: 250px;width: 15%"/>
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -183,7 +190,7 @@
         <span class="cb"></span>
     </p>
     <h1>商品编辑页面</h1>
-    <div class="Pcmenu-AddMenu">
+    <div class="Pcmenu-AddMenu layui-form">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
         </span><br>
@@ -192,7 +199,7 @@
             </span><br>
         <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-            <input type="text" name="choice_1" value="">
+            <input type="text" name="choice" value="">
                     <select class="AddLiabilityGoods-Choice_one">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
@@ -221,13 +228,11 @@
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-        <span class="layui-form">
+        <span>
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <!--<input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />-->
-                <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                <label style="width: 5%"><font size="20px" id="red">至</font></label>
-                <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />-->
+                <input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />
+                <label style="width: 5%"><font size="20px" color="red">至</font></label>
+                <input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />
             </span><br>
         <div class="EditMenu-Submit">
             <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -255,17 +260,6 @@
         此处为商品信息详细介绍！
     </p>
 </div>
-<!--点赞详情-->
-<div class="GoodsPraise">
-    <p>
-        <button class="icon-remove-sign" onclick="closeGoodsPraise()">关闭</button>
-        <span class="cb"></span>
-    </p><br><br>
-    <p>
-        <!--此处为商品点赞！-->
-        该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
-    </p>
-</div>
 <!--商品参数详情-->
 <div class="GoodsParameter-Menu-Box">
     <p>
@@ -276,6 +270,24 @@
 这里写你的初始化内容
             </script>
 </div>
+<!--商品评论信息-->
+<div class="GoodsComment-Menu-Box">
+    <p>
+        <button class="icon-remove-sign" onclick="closeGoodsComment()">关闭</button>
+        <span class="cb"></span>
+    </p><br><br>
+    <div>
+        <div style="color: red">累计评论<font size="20px" color="#00008b">388</font>条</div>
+        <div>
+            <span>用户1号</span><span>2017/12/13 17:21</span>
+            <p>
+                此处为用户评论！
+            </p>
+            <p>用户所选择商品</p>
+        </div>
+    </div>
+</div>
+
 <!-- 配置文件 -->
 <script type="text/javascript" src="ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
