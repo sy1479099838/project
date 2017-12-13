@@ -20,15 +20,17 @@
 <div class="Goodslist">
     <h1>活动商品管理</h1>
     <div class="Goodslist-Content-Box">
-        <p>
+        <p class="layui-form">
             <button class="" onclick="AddGoods()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
             <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
             <span>
                  活动日期：
             </span>
-            <input type="datetime-local" name="start_date" value="" id="start_date" style="max-width: 150px;width: 15%"/>
+            <!--<input type="datetime-local" name="start_date" value="" id="start_date" style="max-width: 150px;width: 15%"/>-->
+            <input type="text" name="start_date" id="date5" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
             <label style="color: red"><font size="20px">至</font></label>
-            <input type="datetime-local" name="end_date" value="" id="end_date" style="max-width: 150px;width: 15%"/>
+            <input type="text" name="start_date" id="date6" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
+            <!--<input type="datetime-local" name="end_date" value="" id="end_date" style="max-width: 150px;width: 15%"/>-->
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -109,7 +111,7 @@
         <div class="Pcmenu-AddMenu">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
             <span>
@@ -117,12 +119,24 @@
                     <select class="AddLiabilityGoods-Choice_one">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
+                    </select>***
+                    <select id="0" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+                    <select id="1" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+                    <select id="2" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
                     </select>
             </span><br>
             <span>
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="price" id="price" value="" placeholder="实际价格"></input>&nbsp;&nbsp;
-                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="activeprice" id="activePrice" value="" placeholder="实际价格"  ></input>&nbsp;
             </span>
@@ -145,11 +159,11 @@
                 </div>
             </span><br>
             <span class="layui-form">
-                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <label style="letter-spacing:8px;">活动时间</label>
+                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
             <div class="AddMenu-Submit">
@@ -176,8 +190,20 @@
             </span><br>
         <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-            <input type="text" name="choice_1" value="">
+            <!--<input type="text" name="choice_1" value="">-->
                     <select class="AddLiabilityGoods-Choice_one">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>***
+                    <select id="0" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+                    <select id="1" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+                    <select id="2" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
@@ -185,7 +211,7 @@
         <span>
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="price"  value="" placeholder="实际价格"></input>&nbsp;&nbsp;
-                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
+                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="activeprice"  value="" placeholder="实际价格"  ></input>&nbsp;
             </span>
@@ -206,11 +232,11 @@
                 </div>
             </span><br>
         <span class="layui-form">
-                <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
+                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;时&nbsp;&nbsp;间</label>
                 <!--<input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />-->
-                <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <label style="width: 5%"><font size="20px" id="red">至</font></label>
-                <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <!--<input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />-->
             </span><br>
         <div class="EditMenu-Submit">
