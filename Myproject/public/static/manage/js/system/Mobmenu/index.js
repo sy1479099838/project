@@ -23,3 +23,15 @@ function AddClass() {
 function closeAddClass() {
     $(".AddClass-Box").fadeOut(0);
 }
+
+$(function () {
+    $(".ClassSelect_1").change(function () {
+        $(".ClassSelect_2").fadeOut(0);
+        var num=$(this).val();
+        $("#ClassSelect"+num).fadeIn(700);
+    });
+});
+
+function AddClassSubmit() {
+    alert("add");
+}

@@ -7,7 +7,7 @@ class Mobmenu extends Common
     public function index()
     {
         $ClsaaList=json_decode(json_encode(GoodsClassify::select(),true),true);
-        $this->assign("ClassList",$ClsaaList);
+        $this->assign("ClassList",$this->treeData($ClsaaList));
         return $this->fetch();
     }
     public function treeData($data,$pid = 0){

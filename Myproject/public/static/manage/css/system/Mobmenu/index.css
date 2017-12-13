@@ -34,7 +34,7 @@
 /*
 
 */
-.AddClass-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.7);display: none;position:absolute;}
+.AddClass-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.9);display: none;position:absolute;}
 .AddClass-Box>.AddClass-head{position: relative;top:30%;border: 1px solid #707070;left: 30%;right: 30%;width: 40%;height: auto;border-radius: 3px;}
 .AddClass-Box>.AddClass-head p{padding: 5px 1%;}
 .AddClass-Box>.AddClass-head p button{float: right;}
