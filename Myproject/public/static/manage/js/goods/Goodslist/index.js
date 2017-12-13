@@ -248,94 +248,29 @@ function PackageBox() {
 }
 function closeShow() {
     $(".Package-Menu-Box").fadeOut(1000);
-}
-// 商品详情打开
-function GoodsPK() {
-    // $.ajax({
-    //     url:"",
-    //     type:"post",
-    //     data:({data:data}),
-    //     success:function () {
-    //         $(".GoodsPackage-Menu-Box").html();
-    //         $(".GoodsPackage-Menu-Box").fadeIn(700);
-    //     },error:function () {
-    //
-    //     }
-    // })
-    $(".GoodsPK-Menu-Box").fadeIn(700);
-}
-// 商品详情关闭
-function closeGoodsPK() {
-    $(".GoodsPK-Menu-Box").fadeOut(1000);
-}
-// 点赞数量打开
-function GoodsPraise() {
-    $(".GoodsPraise").fadeIn(700);
-}
-// 点赞数据关闭
-function closeGoodsPraise() {
-    $(".GoodsPraise").fadeOut(1000);
-}
-// 商品参数打开
-function GoodsParameter() {
-    $(".GoodsParameter-Menu-Box").fadeIn(700);
-}
-// 商品参数关闭
-function closeGoodsParameter() {
-    $(".GoodsParameter-Menu-Box").fadeOut(700);
-}
-// 拼团启用
-$(document).ready(function(){
 
-    $(".GoodsFight").each(function(){
-        if($(this).children(".status").val()==="open")
-        {
-            $(this).children(".GoodsFight-open").fadeIn();
-            $(this).children(".GoodsFight-off").fadeOut();
-        }
-        else if($(this).children(".status").val()==="off")
-        {
-            $(this).children(".GoodsFight-off").fadeIn();
-            $(this).children(".GoodsFight-open").fadeOut();
-        }
-    })
+}
 
+/*日期插件配置*/
+
+layui.use(['form', 'laydate'], function() {
+    var form = layui.form
+        , laydate = layui.laydate;
+
+    //日期
+    laydate.render({
+        elem: '#date1'
+    });
+    laydate.render({
+        elem: '#date2'
+        /* ,lang: 'en'*/
+    });
+    laydate.render({
+        elem: '#date3'
+        /* ,lang: 'en'*/
+    });
+    laydate.render({
+        elem: '#date4'
+        /* ,lang: 'en'*/
+    });
 });
-function Up_Menu(id) {
-    $.ajax({
-        url:"/manage/goods/Goodslist/Up_Menu",
-        type:"post",
-        data:({id:id}),
-        success:function (msg) {
-            if (msg==suceess){
-                $.showBox("操作成功！");
-                $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsFight-open").fadeIn(1000);
-            }
-        },error:function (err) {
-            $.showBox("启动失败！请重试！！")
-        }
-    })
-}
-function End_Menu(id) {
-    if (id=="1"||id=="2"){
-        $.showBox("对不起！你暂时无权限进行启动架操作！")
-    }else {
-        $.ajax({
-            url:"/manage/goods/Goodslist/End_Menu",
-            type:"post",
-            data:({id:id}),
-            success:function (msg) {
-                if (msg==success){
-                    $.showBox("操作成功！");
-                    $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsFight-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeIn(1000);
-                }
-            },error:function (err) {
-                $.showBox("启动失败！请重试！！")
-            }
-        })
-    }
-}

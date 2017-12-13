@@ -108,13 +108,14 @@
         <img src="" alt="">
     </div>
 </div>
-<script>
+<!--<script>
     document.getElementById('start_date').valueAsDate = new Date();
     document.getElementById('end_date').valueAsDate = new Date();
 
-</script>
+</script>-->
 
-<!--商品添加-->
+<!------------------------------------商品添加--------------------------------------->
+
 <div class="Goods-AddMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
         <p>
@@ -122,11 +123,10 @@
             <span class="cb"></span>
         </p>
         <h1>商品添加</h1>
-        <div class="Pcmenu-AddMenu layui-form">
+        <div class="Pcmenu-AddMenu">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-            </span><br>
-            <span>
+                <label style="width: 5%;"><b>||&nbsp;&nbsp;</b></label>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
             <span>
@@ -161,11 +161,13 @@
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-            <span>
+            <span class="layui-form">
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="Start-Tate" style="max-width: 250px;width: 15%" />
+                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="End-Date" style="max-width: 250px;width: 15%"/>
+                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -181,7 +183,7 @@
         <span class="cb"></span>
     </p>
     <h1>商品编辑页面</h1>
-    <div class="Pcmenu-AddMenu layui-form">
+    <div class="Pcmenu-AddMenu">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
         </span><br>
@@ -190,7 +192,7 @@
             </span><br>
         <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-            <input type="text" name="choice" value="">
+            <input type="text" name="choice_1" value="">
                     <select class="AddLiabilityGoods-Choice_one">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
@@ -219,11 +221,13 @@
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-        <span>
+        <span class="layui-form">
                 <label>有&nbsp;&nbsp;&nbsp;效&nbsp;&nbsp;&nbsp;期</label>
-                <input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />
-                <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />
+                <!--<input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />-->
+                <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <label style="width: 5%"><font size="20px" id="red">至</font></label>
+                <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                <!--<input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />-->
             </span><br>
         <div class="EditMenu-Submit">
             <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
