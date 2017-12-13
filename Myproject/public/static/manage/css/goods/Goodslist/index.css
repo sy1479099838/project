@@ -13,23 +13,25 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height:30px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(1){width: 6%;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(2){width:11% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(2){width:13% ;text-align: center;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td h4{float: left;line-height: 20px;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td p{line-height: 20px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:11%;text-align:center;padding: 1px 1px}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:12%;text-align: center;overflow: hidden;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:12%;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:12% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(7){width:12% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(8){width:9% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:9%;text-align: center;overflow: hidden;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:9%;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:9% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(7){width:8% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(8){width:7% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9){width:9%;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:6% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:9% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;width: 70%;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;margin: 0 3px;}
-.GoodsChoice{display: inline-block;width: 100%;height: 30%;text-align: center;padding: 3px 0;}
+.GoodsChoice{display: inline-block;width: 100%;text-align: center;padding: 3px 0;}
 .GoodsChoice>.GoodsMenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
 .GoodsChoice>.GoodsMenu-open img{float: left;display: inline-block;}
 .GoodsChoice>.GoodsMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
 .GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}
-#{float: left;border: 0px solid #000000}
+/*#{float: left;border: 0px solid #000000}*/
 
 .Goods-AddMenu-Box{width:85%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;left: 15%;border-left: 2px solid #000000}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
@@ -63,6 +65,14 @@
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span script{width: 70%;overflow: hidden;margin-top: 0px;}
 
 /**套餐详情**/
-.Package-Menu-Box{width: 200px;height: 200px;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;left: 50%;top: 10%;position:absolute;}
-.Package-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;}
-
+.Package-Menu-Box{width: 17%;height: 200px;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;left: 15%;top: 10%;position:absolute;}
+.Package-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+/*商品详情*/
+.GoodsPK-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;position:absolute;top: 10%;}
+.GoodsPK-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+/*点赞参数*/
+.GoodsPraise{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
+.GoodsPraise p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+/*商品参数*/
+.GoodsParameter-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
+.GoodsParameter-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}

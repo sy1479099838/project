@@ -38,35 +38,58 @@
                 <th>商品封面</th>
                 <th>套餐名称</th>
                 <th>活动日期</th>
-                <th>商品价格</th>
+                <th>待定</th>
                 <th>商品详情</th>
                 <th>剩余商品数</th>
-                <th>是否上架</th>
+                <th>拼团启用</th>
                 <th>操作</th>
             </tr>
             <tr>
                 <td>{$key+1}</td>
-                <td>商品名称：绵阳欢乐世界双十二狂欢节<br>
-                    商品分类：旅游<br>
-                    商家：大黄蜂有限公司</td>
+                <td><h4 >商品名称：<b style="text-decoration: underline;">绵阳欢乐世界双十二狂欢节</b></h4>
+                    <h4 >商品分类：<b style="text-decoration: underline;">旅游</b></h4>
+                    <h4>商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4>
+                    <h4 style="text-decoration:line-through;">商品原价：￥128</h4>
+                    <h4><b style="color: red;text-decoration: underline;">活动价：￥99</b></h4>
+                </td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
                 <td>
-                    <p style="overflow: hidden;">套餐一：<a onclick="PackageBox()" id="packageBox">全家一日游</a></p>
-                    <p style="overflow: hidden;height: 20px">套餐二：情亲1+1</p>
-                    <p style="overflow: hidden;height: 20px">套餐三：豪华单人行</p>
+                    <p style="overflow: hidden;">套餐一：<a onclick="PackageBox('')" >全家一日游</a></p>
+                    <p style="overflow: hidden;">套餐二：<a onclick="PackageBox('')" >亲情1+1</a></p>
+                    <p style="overflow: hidden;">套餐三：<a onclick="PackageBox('')">豪华单人行</a></p>
                 </td>
-                <td>2017.12.01--2017.12.31</td>
-                <td><div><b style="text-decoration:line-through;">商品原价：￥128</b><br>
-                       <b style="color: red">活动价：￥99</b></div>
+                <td><b>2017.12.01</b>
+                    <b style="color: red">2017.12.31</b>
                 </td>
-                <td><div style="width: 100%;overflow: hidden;height: 100px;">
-                    此处写商品的详细资料
-                </div></td>
+                <td>
+                    待定
+                </td>
+                <td>
+                    <button class=" icon-file-alt" onclick="GoodsPK()">详情</button>
+                    <button class=" icon-thumbs-up" onclick="GoodsPraise()">点赞</button>
+                    <button class=" icon-align-right" onclick="GoodsParameter()">参数</button>
+                </td>
                 <td>
                     <font size="5" color="red">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="red">张</font>
                 </td>
                 <td>
+                    <span class="GoodsFight" >
+                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}" style="width:100%;">
+                        <button class="GoodsFight-open" onclick="Up_Menu()">
+                            <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;启用
+                        </button>
+                        <button class="GoodsFight-off" onclick="End_Menu()">
+                            <img src="__PUBLIC__/manage/images/inco-close.png" alt="">禁用&nbsp;
+                        </button>
+                    </span>
+                </td>
+                <td> <button onclick="EditGoods()">
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+                    </button>
+                    <button onclick="DelGoods()">
+                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                    </button>
                     <span class="GoodsChoice">
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
                         <button class="GoodsMenu-open" onclick="UpMenu()">
@@ -77,12 +100,6 @@
                         </button>
                     </span>
                 </td>
-                <td> <button onclick="EditGoods()">
-                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
-                </button>
-                    <button onclick="DelGoods()">
-                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
-                    </button></td>
             </tr>
             </tbody>
         </table>
@@ -156,12 +173,11 @@
         </div>
     </div>
 </div>
-
 <!--商品编辑-->
 <div class="EditGoods-EditMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
     <p>
-        <button class="icon-remove-circle" onclick="closeEditGoods()"><b>关闭</b></button>
+        <button onclick="closeEditGoods()"><b>关闭</b></button>
         <span class="cb"></span>
     </p>
     <h1>商品编辑页面</h1>
@@ -215,16 +231,47 @@
     </div>
     </div>
 </div>
+<!--套餐详情-->
 <div class="Package-Menu-Box">
     <p >
-        <button class="icon-remove-circle" onclick="closeShow()" style="background-color: #9da0a4;"><b>关闭</b></button>
+        <button class="icon-remove-sign" onclick="closeShow()"></button>
         <span class="cb"></span>
     </p><br><br>
     <p>
         这里为解释套餐详细信息
     </p>
 </div>
-
+<!--商品详情-->
+<div class="GoodsPK-Menu-Box">
+    <p >
+        <button class="icon-remove-sign" onclick="closeGoodsPK()">关闭</button>
+        <span class="cb"></span>
+    </p><br><br>
+    <p>
+        此处为商品信息详细介绍！
+    </p>
+</div>
+<!--点赞详情-->
+<div class="GoodsPraise">
+    <p>
+        <button class="icon-remove-sign" onclick="closeGoodsPraise()">关闭</button>
+        <span class="cb"></span>
+    </p><br><br>
+    <p>
+        <!--此处为商品点赞！-->
+        该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
+    </p>
+</div>
+<!--商品参数详情-->
+<div class="GoodsParameter-Menu-Box">
+    <p>
+        <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
+        <span class="cb"></span>
+    </p><br><br>
+    <script id="GoodsContent" name="content" type="text/plain" >
+这里写你的初始化内容
+            </script>
+</div>
 <!-- 配置文件 -->
 <script type="text/javascript" src="ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
@@ -232,6 +279,7 @@
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('container');
+    var ue=UE.getEditor('GoodsContent');
 </script>
 {/block}
 
