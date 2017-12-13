@@ -259,20 +259,44 @@ layui.use(['form', 'laydate'], function() {
 
     //日期
     laydate.render({
-        elem: '#date1'
+        elem: '#date1',
+        type: 'datetime'
     });
     laydate.render({
-        elem: '#date2'
+        elem: '#date2',
+        type: 'datetime'
+
         /* ,lang: 'en'*/
     });
     laydate.render({
-        elem: '#date3'
+        elem: '#date3',
+        type: 'datetime'
         /* ,lang: 'en'*/
     });
     laydate.render({
-        elem: '#date4'
+        elem: '#date4',
+        type: 'datetime'
         /* ,lang: 'en'*/
     });
+    laydate.render({
+        elem: '#date5',
+        type: 'datetime'
+        /* ,lang: 'en'*/
+    });
+    laydate.render({
+        elem: '#date6',
+        type: 'datetime'
+        /* ,lang: 'en'*/
+    });
+});
+
+$(function(){
+    $('.AddLiabilityGoods-Choice_one').change(function () {
+        $(".Choice-hidden").fadeOut(0);//将所有class=hidden的盒子全部隐藏
+        var num=$(this).val();//获取到所选中的option的值
+        $("#"+num).fadeIn(700);//将id与所选中的option的值相同相同的盒子显示
+    });
+
 });
 // 拼团启用
 $(document).ready(function(){
