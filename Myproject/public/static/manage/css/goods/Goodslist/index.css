@@ -43,11 +43,14 @@
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 20%;height: 100%;display: inline-block;float: left;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}
+/*.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}*/
 #img1{margin:0 auto;width:71px;height:99px;border:1px solid black;}
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span script{width: 70%;overflow: hidden;margin-top: 0px;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.Choice-hidden{display: none;width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.AddLiabilityGoods-Choice_one{width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
+
 
 .EditGoods-EditMenu-Box{width:85%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;left: 15%;border-left: 2px solid #000000}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
@@ -59,10 +62,12 @@
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 20%;height: 100%;display: inline-block;float: left;}
-.EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}
+/*.EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}*/
 .EditMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .EditMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span script{width: 70%;overflow: hidden;margin-top: 0px;}
+.EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.Choice-hidden{display: none;width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
+.EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.AddLiabilityGoods-Choice_one{width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
 
 /**套餐详情**/
 .Package-Menu-Box{width: 17%;height: 200px;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;left: 53%;top: 10%;position:absolute;}
