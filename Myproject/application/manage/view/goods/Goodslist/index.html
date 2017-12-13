@@ -124,9 +124,7 @@
     document.getElementById('end_date').valueAsDate = new Date();
 
 </script>-->
-
 <!------------------------------------商品添加--------------------------------------->
-
 <div class="Goods-AddMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
         <p>
@@ -246,7 +244,10 @@
             </span>
         <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label>
-            <input type="text" name="content" id="content" value="此处我有话要说，这个不必再发了！我也这么觉得，你说的对吗？" overflow="hidden">
+            <!--<input type="text" name="content" id="content" value="此处我有话要说，这个不必再发了！我也这么觉得，你说的对吗？" overflow="hidden">-->
+            <script id="content" name="content" type="text/plain">
+                此处我有话要说，这个不必再发了！我也这么觉得!
+            </script>
             </span>
         <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()"  value=""/>
@@ -306,9 +307,22 @@
         <button class="icon-remove-sign" onclick="closeGoodsComment()">关闭</button>
         <span class="cb"></span>
     </p><br><br>
-    <p>
-        此处为商品信息详细介绍！
-    </p>
+    <div class="Message-Number">
+     <p><b>累计留言</b><span>&nbsp;288&nbsp;</span><b>条</b></p>
+    </div>
+    <div class="user-Message">
+        <span>用户1号</span><br>
+        <span>2017/12/13 19:20</span>
+        <div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在此处用户可对商品进行详细的评论！
+            </div>
+            <!--<img src="" alt="" vocab="用户上传图片">-->
+        </div>
+        <div style="text-align: right">
+            <span >购买的商品：套餐一</span>
+        </div>
+    </div>
 </div>
 <!-- 配置文件 -->
 <script type="text/javascript" src="ueditor.config.js"></script>
