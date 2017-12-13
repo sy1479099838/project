@@ -1,5 +1,5 @@
-.Goodslist-Index_left{width: 14%;height:auto;float: left;margin:0 2px 0 2px;}
-.Goodslist{width:85%;height: 100%;overflow: auto;float: right;}
+.Goodslist-Index_left{width: 14%;height:auto;position:fixed;top:100px;left:184px;}
+.Goodslist{width:80%;height: 100%;overflow: auto;float: right;}
 .Goodslist h1{width: 96%;margin-left: 2%;text-align: center;font-size: 22px;}
 .Goodslist>.Goodslist-Content-Box p{width: 96%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 2%; }
 .Goodslist>.Goodslist-Content-Box p button{float: left;background: none;display: inline-block;height: 100%;margin: 3px;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
@@ -33,7 +33,7 @@
 .GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}
 /*#{float: left;border: 0px solid #000000}*/
 
-.Goods-AddMenu-Box{width:85%;height: 100%;position: absolute;top:0;right: 0;left: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;left: 15%;border-left: 2px solid #000000}
+.Goods-AddMenu-Box{width:83%;height: 100%;position: absolute;top:0;right: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p{text-align: center;height: 33px;padding: 3px}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;background: none;font-size: 18px;}
