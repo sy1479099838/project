@@ -326,7 +326,7 @@ function EditBusiness(data) {
         success:function (msg) {
             if(msg=="error")
             {
-                $.showBox("请重试！");
+                $.showBox(" 请重试！");
             }
             else
             {
