@@ -7,42 +7,54 @@
                 <button class="TreeMenuOne-switch">
                     <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodslistRegionChoice('0')">全部</a>
+                <a href="javascript:GoodsChoice('0')">全部</a>
             </p>
         </div>
+        {volist name="ClassList" id="list"}
         <div class="tree-box">
             <p>
                 <button class="TreeMenuOne-switch">
                     <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodslistRegionChoice()">商家</a>
+                <a href="javascript:GoodsChoice('{$list.id}')">{$list.ClassName}</a>
             </p>
+            {present name="list.children.0"}
+            {volist name="list.children" id="list_2"}
+
             <dl class="treeMenu-one" id="treeOpen_1">
+                {present name="list_2.children.0"}
                 <dt>
                     <span>&nbsp;</span>
                     <button class="TreeMenuTwo-switch">
                         <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                     </button>
-                    <a href="javascript:GoodslistRegionChoice()">套餐一</a>
+                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </dt>
                 <dd  class="treeMenu-three" id="treeOpen_2">
+                    {volist name="list_2.children" id="list_3"}
                     <div>
                         <i>&nbsp;</i>
                         <button>
                             <img src="__PUBLIC__/manage/images/file.png" alt="">
                         </button>
-                        <a href="javascript:GoodslistRegionChoice()">套餐二</a>
+                        <a href="javascript:GoodsChoice('{$list_3.id}')">{$list_3.ClassName}</a>
                     </div>
+                    {/volist}
                 </dd>
+                {else /}
                 <div class="treeMenu-two">
                     <i>&nbsp;</i>
                     <button>
                         <img src="__PUBLIC__/manage/images/file.png" alt="">
                     </button>
-                    <a href="javascript:GoodslistRegionChoice()">套餐三</a>
+                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </div>
+                {/present}
             </dl>
+            {/volist}
+            {/present}
         </div>
+        {/volist}
     </div>
     <div style="clear:both;"></div>
 </div>
