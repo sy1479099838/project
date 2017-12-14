@@ -1,5 +1,25 @@
+// 打开修改按钮
 function Editicon(data) {
-    alert(data);
+    // alert(data);
+    $(".Modify-Box").fadeIn(700);
+}
+// 关闭修改按钮
+function closeEdition() {
+    $(".Modify-Box").fadeOut(1000);
+}
+// 事件提交
+function ImgButton(data) {
+    $.ajax({
+        url:"/manage/view/system/Mobmenu",
+        type:"post",
+        data:({data:data}),
+        success:function (msg) {
+            if(msg=="error"){
+                $(".")
+            }
+        }
+    })
+
 }
 $(document).ready(function(){
 
