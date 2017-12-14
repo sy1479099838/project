@@ -780,7 +780,10 @@
                     _src: prefix + data.url,
                     title: data.title,
                     alt: data.original,
-                    floatStyle: align
+                    floatStyle: align,
+					//添加高度和宽度
+					//max-width:300px,
+					//height:auto
                 });
             }
             return list;
