@@ -1,6 +1,159 @@
 {extend name="Public:index"/}
 {block name="main"}
-123456
+    <div class="Mobmenu-index-Box">
+        <h1>手机端菜单</h1>
+        <p class="operation">
+            <button class="" onclick="AddClass()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">&nbsp;添加菜单&nbsp;</button>
+        </p>
+        <table class="Mobmenu-index-table">
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>菜单名称</th>
+                <th>菜单图标</th>
+                <th>图标修改</th>
+                <th>是否启用</th>
+                <th>列表模板</th>
+                <th>操作</th>
+            </tr>
+            {volist name="ClassList" id="vo"}
+            <tr>
+                <td>{$key+1}</td>
+                <td>
+                    {$vo.ClassName}<br>
+                    添加时间：{$vo.createTime|date="Y-m-d",###}
+                </td>
+                <td>
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="img-icon">
+                </td>
+                <td>
+                    <a href="javascript:void(0)" onclick="Editicon('1')">修&nbsp;&nbsp;改</a>
+                </td>
+                <td>
+                    <span class="Mobmenu-Enable">
+                            <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="status">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                </td>
+                <td>
+                    <span class="muban-box fl">
+                        <input type="radio" value="1" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='1'?'checked':''} >&nbsp;模板1
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="2" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='2'?'checked':''} >&nbsp;模板2
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="3" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='3'?'checked':''} >&nbsp;模板3
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="4" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='4'?'checked':''} >&nbsp;模板4
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img" >
+                    </span>
+                </td>
+                <td>
+                    <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                </td>
+            </tr>
+            {present name="vo.children.0"}
+            {volist name="vo.children" id="vo_2"}
+            <tr>
+                <td>&nbsp;&nbsp;|---({$key+1})</td>
+                <td>
+                    &nbsp;&nbsp;|---{$vo_2.ClassName}<br>
+                    &nbsp;&nbsp;添加时间：{$vo_2.createTime|date="Y-m-d",###}
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span class="Mobmenu-Enable">
+                            <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="status">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_2.id}">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_2.id}">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                </td>
+            </tr>
+            {/volist}
+            {/present}
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+    <!----------------添加分类---------------->
+    <div class="AddClass-Box">
+        <div class="AddClass-head">
+            <p>
+                <button onclick="closeAddClass()"><i class="icon-remove-circle"></i>关闭</button>
+            </p>
+            <h1>
+                新增分类
+            </h1><br>
+            <div class="cb"></div>
+            <div class="AddClass-content">
+                <div>
+                    <span>分&nbsp;&nbsp;类&nbsp;&nbsp;名&nbsp;&nbsp;称：</span><input type="text" name="ClassName" value="" placeholder=""><label>&nbsp;</label>
+                </div>
+                <div class="AddClass-enable">
+                    <span>是&nbsp;&nbsp;否&nbsp;&nbsp;启&nbsp;&nbsp;用：</span>
+                    启用：<input type="radio" name="ClassEnable" value="1" placeholder="" checked>
+                    不启用：<input type="radio" name="ClassEnable" value="0" placeholder="">
+                </div>
+                <div>
+                    <span>选择父级分类：</span>
+
+                    <select class="ClassSelect_1">
+                        <option value="0">----一级分类----</option>
+                        {present name="ClassList.0"}
+                        {volist name="ClassList" id="value"}
+                        <option value="{$value.id}">----{$value.ClassName}----</option>
+                        {/volist}
+                        {/present}
+                    </select>
+                    {present name="ClassList.0"}
+                    {volist name="ClassList" id="va"}
+                    {present name="va.children.0"}
+                    {notin name="va.level" value="2"}
+                    <select id="ClassSelect{$va.id}" class="ClassSelect_2">
+                        <option value="0">---请选择----</option>
+                        {volist name="va.children" id="va_1"}
+                        <option value="{$va_1.id}">----{$va_1.ClassName}----</option>
+                        {/volist}
+                    </select>
+                    {/notin}
+                    {/present}
+                    {/volist}
+                    {/present}
+                </div>
+                <br>
+                <div class="submit">
+                    <button onclick="AddClassSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {/block}
 
 
