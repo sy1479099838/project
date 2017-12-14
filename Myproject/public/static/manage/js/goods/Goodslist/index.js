@@ -182,13 +182,13 @@ $(document).ready(function(){
     $(".GoodsChoice").each(function(){
         if($(this).children(".status").val()==="open")
         {
-            $(this).children(".GoodsMenu-open").fadeIn();
-            $(this).children(".GoodsMenu-off").fadeOut();
+            $(this).children(".icon-cloud-upload").fadeIn();
+            $(this).children(".icon-cloud-download").fadeOut();
         }
         else if($(this).children(".status").val()==="off")
         {
-            $(this).children(".GoodsMenu-off").fadeIn();
-            $(this).children(".GoodsMenu-open").fadeOut();
+            $(this).children(".icon-cloud-download").fadeIn();
+            $(this).children(".icon-cloud-upload").fadeOut();
         }
     })
 
@@ -202,8 +202,8 @@ function UpMenu(id) {
             if (msg==suceess){
                 $.showBox("操作成功！");
                 $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
+                $(".GoodsState"+id).next(".icon-cloud-upload").next(".icon-cloud-download").fadeOut(0);
+                $(".GoodsState"+id).next(".icon-cloud-upload").fadeIn(1000);
             }
         },error:function (err) {
             $.showBox("上架失败！请重试！！")
@@ -222,8 +222,8 @@ function EndMenu(id) {
                 if (msg==success){
                     $.showBox("操作成功！");
                     $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsMenu-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeIn(1000);
+                    $(".GoodsState"+id).next(".icon-cloud-upload").fadeOut(0);
+                    $(".GoodsState"+id).next(".icon-cloud-upload").next(".icon-cloud-download").fadeIn(1000);
                 }
             },error:function (err) {
                 $.showBox("下架失败！请重试！！")
@@ -304,13 +304,13 @@ $(document).ready(function(){
     $(".GoodsFight").each(function(){
         if($(this).children(".status").val()==="open")
         {
-            $(this).children(".GoodsFight-open").fadeIn();
-            $(this).children(".GoodsFight-off").fadeOut();
+            $(this).children(".icon-check").fadeIn();
+            $(this).children(".icon-check-empty").fadeOut();
         }
         else if($(this).children(".status").val()==="off")
         {
-            $(this).children(".GoodsFight-off").fadeIn();
-            $(this).children(".GoodsFight-open").fadeOut();
+            $(this).children(".icon-check-empty").fadeIn();
+            $(this).children(".icon-check").fadeOut();
         }
     })
 
@@ -324,8 +324,8 @@ function Up_Menu(id) {
             if (msg==suceess){
                 $.showBox("操作成功！");
                 $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsFight-open").fadeIn(1000);
+                $(".GoodsState"+id).next(".icon-check").next(".icon-check-empty").fadeOut(0);
+                $(".GoodsState"+id).next(".icon-check").fadeIn(1000);
             }
         },error:function (err) {
             $.showBox("启用失败！请重试！！")
@@ -344,8 +344,8 @@ function End_Menu(id) {
                 if (msg==success){
                     $.showBox("操作成功！");
                     $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsFight-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeIn(1000);
+                    $(".GoodsState"+id).next(".icon-check").fadeOut(0);
+                    $(".GoodsState"+id).next(".icon-check").next(".icon-check-empty").fadeIn(1000);
                 }
             },error:function (err) {
                 $.showBox("启用失败！请重试！！")

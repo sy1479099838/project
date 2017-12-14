@@ -52,7 +52,7 @@
                     <h4 >商品分类：<b style="text-decoration: underline;">旅游</b></h4>
                     <h4>商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4>
                     <h4 style="text-decoration:line-through;">商品原价：￥128</h4>
-                    <h4><b style="color: red;text-decoration: underline;">活动价：￥99</b></h4>
+                    <h4><b style="color: #42b142;text-decoration: underline;">活动价：￥99</b></h4>
                 </td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
@@ -62,7 +62,7 @@
                     <p style="overflow: hidden;">套餐三：<a onclick="PackageBox('')">豪华单人行</a></p>
                 </td>
                 <td><b>2017.12.01</b>
-                    <b style="color: red">2017.12.31</b>
+                    <b style="color: #42b142">2017.12.31</b>
                 </td>
                 <td>
                     待定
@@ -82,32 +82,36 @@
                     <button class=" icon-comment" onclick="GoodsComment()">评论</button>
                 </td>
                 <td>
-                    <font size="5" color="red">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="red">张</font>
+                    <font size="5" color="#42b142">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="#42b142">张</font>
                 </td>
                 <td>
                     <span class="GoodsFight" >
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}" style="width:100%;">
-                        <button class="GoodsFight-open" onclick="Up_Menu()">
-                            <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">&nbsp;启用
+                        <button class="icon-check" onclick="Up_Menu()">
+                            <!--<img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">-->
+                            启用
                         </button>
-                        <button class="GoodsFight-off" onclick="End_Menu()">
-                            <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">禁用&nbsp;
+                        <button class="icon-check-empty" onclick="End_Menu()">
+                            <!--<img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">-->
+                            禁用
                         </button>
                     </span>
                 </td>
-                <td> <button onclick="EditGoods()">
-                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+                <td> <button onclick="EditGoods()" class=" icon-edit">编辑
+                    <!--<img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">-->
                     </button>
-                    <button onclick="DelGoods()">
-                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                    <button onclick="DelGoods()" class="icon-trash">删除
+                        <!--<img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">-->
                     </button>
                     <span class="GoodsChoice">
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
-                        <button class="GoodsMenu-open" onclick="UpMenu()">
-                            <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">&nbsp;上架
+                        <button class="icon-cloud-upload" onclick="UpMenu()">
+                            <!--<img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">-->
+                            上架
                         </button>
-                        <button class="GoodsMenu-off" onclick="EndMenu()">
-                            <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">下架&nbsp;
+                        <button class="icon-cloud-download" onclick="EndMenu()">
+                            <!--<img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">-->
+                            下架
                         </button>
                     </span>
                 </td>
