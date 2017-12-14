@@ -56,6 +56,7 @@
             </tr>
             {present name="vo.children.0"}
             {volist name="vo.children" id="vo_2"}
+
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---({$key+1})</td>
                 <td>
@@ -89,6 +90,43 @@
                     <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
                 </td>
             </tr>
+            {present name="vo_2.children.0"}
+            {volist name="vo_2.children" id="vo_3"}
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---|---({$key+1})</td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---|---{$vo_3.ClassName}
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span class="Mobmenu-Enable">
+                            <input type="hidden" value="{$vo_3['Enable']=='1'?'open':'off'}" class="class-switch">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_3.id}">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_3.id}">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                </td>
+                <td>
+                    {$vo_3.createTime|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                </td>
+            </tr>
+            {/volist}
+            {/present}
             {/volist}
             {/present}
             {/volist}
