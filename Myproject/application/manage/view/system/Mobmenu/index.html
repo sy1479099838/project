@@ -13,15 +13,15 @@
                 <th>菜单图标</th>
                 <th>图标修改</th>
                 <th>是否启用</th>
+                <th>添加时间</th>
                 <th>列表模板</th>
                 <th>操作</th>
             </tr>
             {volist name="ClassList" id="vo"}
             <tr>
-                <td>{$key+1}</td>
+                <td>&nbsp;&nbsp;{$key+1}</td>
                 <td>
-                    {$vo.ClassName}<br>
-                    添加时间：{$vo.createTime|date="Y-m-d",###}
+                    &nbsp;&nbsp;{$vo.ClassName}
                 </td>
                 <td>
                     <img src="__PUBLIC__/admin/images/sina.png" alt="" class="img-icon">
@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <span class="Mobmenu-Enable">
-                            <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="status">
+                            <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="class-switch">
                             <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
@@ -41,22 +41,13 @@
                         </span>
                 </td>
                 <td>
-                    <span class="muban-box fl">
-                        <input type="radio" value="1" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='1'?'checked':''} >&nbsp;模板1
-                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
-                    </span>
-                    <span class="muban-box fl">
-                        <input type="radio" value="2" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='2'?'checked':''} >&nbsp;模板2
-                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
-                    </span>
-                    <span class="muban-box fl">
-                        <input type="radio" value="3" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='3'?'checked':''} >&nbsp;模板3
-                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
-                    </span>
-                    <span class="muban-box fl">
-                        <input type="radio" value="4" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='4'?'checked':''} >&nbsp;模板4
-                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img" >
-                    </span>
+                    {$vo.createTime|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    <input type="radio" value="1" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='1'?'checked':''} >&nbsp;模板1
+                    <input type="radio" value="2" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='2'?'checked':''} >&nbsp;模板2<br>
+                    <input type="radio" value="3" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='3'?'checked':''} >&nbsp;模板3
+                    <input type="radio" value="4" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='4'?'checked':''} >&nbsp;模板4<br>
                 </td>
                 <td>
                     <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
@@ -66,10 +57,9 @@
             {present name="vo.children.0"}
             {volist name="vo.children" id="vo_2"}
             <tr>
-                <td>&nbsp;&nbsp;|---({$key+1})</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---({$key+1})</td>
                 <td>
-                    &nbsp;&nbsp;|---{$vo_2.ClassName}<br>
-                    &nbsp;&nbsp;添加时间：{$vo_2.createTime|date="Y-m-d",###}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---{$vo_2.ClassName}
                 </td>
                 <td>
 
@@ -79,7 +69,7 @@
                 </td>
                 <td>
                     <span class="Mobmenu-Enable">
-                            <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="status">
+                            <input type="hidden" value="{$vo_2['Enable']=='1'?'open':'off'}" class="class-switch">
                             <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_2.id}">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
@@ -87,6 +77,9 @@
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
                         </span>
+                </td>
+                <td>
+                    {$vo_2.createTime|date="Y-m-d H:i:s",###}
                 </td>
                 <td>
 
@@ -147,10 +140,31 @@
                     {/volist}
                     {/present}
                 </div>
+                <div class="mubanChoice">
+                    <span>模&nbsp;&nbsp;板&nbsp;&nbsp;选&nbsp;&nbsp;择：</span><br>
+                    <span class="muban-box fl">
+                        <input type="radio" value="1" name="AddMuban" placeholder="" checked >&nbsp;模板1
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="2" name="AddMuban" placeholder="" >&nbsp;模板2
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="3" name="AddMuban" placeholder="" >&nbsp;模板3
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                    </span>
+                    <span class="muban-box fl">
+                        <input type="radio" value="4" name="AddMuban" placeholder="" >&nbsp;模板4
+                        <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img" >
+                    </span>
+
+                </div>
                 <br>
                 <div class="submit">
                     <button onclick="AddClassSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
                 </div>
+                <div class="clear-Float"></div>
             </div>
         </div>
     </div>
