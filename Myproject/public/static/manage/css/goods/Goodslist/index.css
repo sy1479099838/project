@@ -65,8 +65,9 @@
 .Package-Menu-Box{width: 17%;height: 200px;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;left: 53%;top: 10%;position:absolute;}
 .Package-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
 /*商品详情*/
-.GoodsPK-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;position:absolute;top: 10%;}
+.GoodsPK-Menu-Box{width: 80%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #f0f0f0;position:absolute;top:0;right:0;}
 .GoodsPK-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+.GoodsPK-Menu-Box h1{text-align: center;font-size: 20px;font-weight: bold;}
 /*点赞参数*/
 .SHOW_Praise{position:relative;}
 .GoodsPraise{background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;position:absolute;top:24px;left:0;width: 300%;}
