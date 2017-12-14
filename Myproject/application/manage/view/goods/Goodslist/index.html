@@ -211,76 +211,79 @@
 <!--商品编辑-->
 <div class="EditGoods-EditMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
-    <p>
-        <button onclick="closeEditGoods()"><b>关闭</b></button>
-        <span class="cb"></span>
-    </p>
-    <h1>商品编辑页面</h1>
-    <div class="Pcmenu-AddMenu">
+        <p>
+            <button class="icon-remove-circle" onclick="closeEditGoods()"><b>关闭</b></button>
+            <span class="cb"></span>
+        </p>
+        <h1>商品编辑</h1>
+        <div class="Pcmenu-AddMenu">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-        </span><br>
-        <span>
+                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
-        <span>
+            <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-            <!--<input type="text" name="choice_1" value="">-->
-                    <select class="AddLiabilityGoods-Choice_one">
+                    <select class="AddLiabilityGoods-Choice_two">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>***
-                    <select id="0" class="Choice-hidden">
+                    <select id="Select0" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
-                    <select id="1" class="Choice-hidden">
+                    <select id="Select1" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
-                    <select id="2" class="Choice-hidden">
+                    <select id="Select2" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
             </span><br>
-        <span>
+            <span>
+
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="price"  value="" placeholder="实际价格"></input>&nbsp;&nbsp;
-                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
+                <label style="width:20px;">*</label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="activeprice"  value="" placeholder="实际价格"  ></input>&nbsp;
-            </span>
-        <span>
+                <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
-                <input type="number" name="number" id="" value="">
+                <input type="number" name="number"  value="">
+
             </span>
-        <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label>
-            <!--<input type="text" name="content" id="content" value="此处我有话要说，这个不必再发了！我也这么觉得，你说的对吗？" overflow="hidden">-->
-            <script id="content" name="content" type="text/plain">
-                此处我有话要说，这个不必再发了！我也这么觉得!
-            </script>
-            </span>
-        <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()"  value=""/>
+            <!--<span>-->
+            <!--<label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>-->
+            <!--&lt;!&ndash;<script id="container" name="content" type="text/plain" >-->
+            <!--这里写你的初始化内容-->
+            <!--</script>&ndash;&gt;-->
+            <!--<textarea id="newsEditor" name="content" style="height: 200px">请输入新闻内容... </textarea>-->
+            <!--<script type="text/javascript">-->
+            <!--UE.getEditor('newsEditor');-->
+            <!--// var content = UE.getPlainTxt();//content就是编辑器的带格式的内容-->
+            <!--</script>-->
+            <!--</span>-->
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
-        <span style="height: 100px;text-align: center;">
-                <div >
+            <span style="height: 210px;text-align: center;">
+                <div  id="img3">
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-        <span class="layui-form">
-                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;时&nbsp;&nbsp;间</label>
-                <!--<input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />-->
+            <span class="layui-form">
+                <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <label style="width: 5%"><font size="20px" id="red">至</font></label>
+                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
+                <label style="width: 5%"><font size="20px" color="red">至</font></label>
                 <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />-->
+                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
-        <div class="EditMenu-Submit">
-            <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            <div class="AddMenu-Submit">
+                <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <!--套餐详情-->
