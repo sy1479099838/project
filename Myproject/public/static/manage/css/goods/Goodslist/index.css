@@ -25,12 +25,12 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9){width:9%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:9% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;width: 70%;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;margin: 0 3px;}
-.GoodsChoice{display: inline-block;width: 100%;text-align: center;padding: 3px 0;}
-.GoodsChoice>.GoodsMenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
-.GoodsChoice>.GoodsMenu-open img{float: left;display: inline-block;}
-.GoodsChoice>.GoodsMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
-.GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;}
+/*.GoodsChoice{display: inline-block;width: 100%;text-align: center;padding: 3px 0;}*/
+/*.GoodsChoice>.GoodsMenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;display: none;}*/
+/*.GoodsChoice>.GoodsMenu-open img{float: left;display: inline-block;}*/
+/*.GoodsChoice>.GoodsMenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;display: none;}*/
+/*.GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}*/
 /*#{float: left;border: 0px solid #000000}*/
 
 .Goods-AddMenu-Box{width:83%;height: 100%;position:absolute;top:0;right:0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
@@ -84,3 +84,9 @@
 /*商品评论*/
 .GoodsComment-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
 .GoodsComment-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+.GoodsComment-Menu-Box>.Message-Number {text-align: center;position: relative;}
+.GoodsComment-Menu-Box div p {border: 1px solid #aaaaaa;width: 70%;height: 30px;text-align: center;margin: 0 auto;}
+.GoodsComment-Menu-Box div p b{color: red;font-size: 20px;}
+.GoodsComment-Menu-Box div p span{color: #000077;font-size: 18px;text-decoration: underline;}
+.GoodsComment-Menu-Box>.user-Message{width: 90%;margin: 0 auto;}
+.GoodsComment-Menu-Box>.user-Message span{left: 20%;font-size: 7px;color: lightsteelblue;}

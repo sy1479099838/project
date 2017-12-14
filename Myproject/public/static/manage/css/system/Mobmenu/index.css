@@ -1,0 +1,54 @@
+.Mobmenu-index-Box{width: 100%;height: 100%;overflow:auto;}
+.Mobmenu-index-Box h1{width: 100%;font-size: 22px;text-align: center;}
+.Mobmenu-index-Box p{width: 96%;padding:10px 2%;text-align: left;height: 30px;line-height: 30px;}
+.Mobmenu-index-Box p button{background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 28px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Mobmenu-index-Box p button img{display: inline-block;height: 100%;float: left;}
+.Mobmenu-index-Box>.Mobmenu-index-table{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 2%;border-collapse:collapse;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody{width: 100%;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(1){width: 8%}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(2){width:auto;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(3){width: 8%;text-align: center}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(4){width: 8%;text-align: center;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(5){width: 11%;text-align: center;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(6){width: 35%;text-align: center;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td:nth-child(7){width: 12%;text-align: center;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td>.img-icon{display: inline-block;width: 100%;}
+.Mobmenu-index-Box>.Mobmenu-index-table tbody tr td a{color: blue;font-size: 18px;}
+.muban-box img{display: inline-block;width: 94%;margin-left: 3%;}
+.muban-box{display: inline-block;width: 21.5%; border: 1px solid #c6c6c6;text-align: justify;margin:1%;padding:1px;}
+
+.Mobmenu-edit-button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding-right: 3px;}
+.Mobmenu-edit-button> img{display: inline-block;height: 100%;float: left;margin: 0 3px;}
+.Mobmenu-Del-button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding-right: 3px;}
+.Mobmenu-Del-button> img{display: inline-block;height: 95%;float: left;margin: 0 3px;}
+
+.Mobmenu-Enable{display: inline-block;width: 100%;height: 30px;text-align: center;padding: 3px 0;}
+.Mobmenu-Enable>.Mobmenu-open{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid green;padding:0 3px;border-radius: 5px;display: none;}
+.Mobmenu-Enable>.Mobmenu-open img{float: left;display: inline-block;}
+.Mobmenu-Enable>.Mobmenu-off{display: inline-block;width:auto;height: 95%;background: none;border: 2px solid black;padding:0 3px;border-radius: 5px;display: none;}
+.Mobmenu-Enable>.Mobmenu-off img{float: right;display: inline-block;}
+
+/*
+
+*/
+.AddClass-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.9);display: none;position:absolute;}
+.AddClass-Box>.AddClass-head{position: relative;top:30%;border: 1px solid #707070;left: 30%;right: 30%;width: 40%;height: auto;border-radius: 3px;}
+.AddClass-Box>.AddClass-head p{padding: 5px 1%;}
+.AddClass-Box>.AddClass-head p button{float: right;}
+.AddClass-Box>.AddClass-head h1{text-align: center;display: inline-block;width: 100%;font-size: 20px;}
+.AddClass-Box>.AddClass-head>.AddClass-content{margin: 1%;}
+.AddClass-Box>.AddClass-head>.AddClass-content div{height: 40px;margin: 10px 0 0 0;line-height: 40px;border-bottom:1px solid #a4a4a4; font-size: 18px;}
+.AddClass-Box>.AddClass-head>.AddClass-content div span{display: inline-block;width: 30%;height: 100%;font-size: 18px;}
+.AddClass-Box>.AddClass-head>.AddClass-content div input{display: inline-block;width: 50%;height: 100%;background: none;border: none;font-size: 18px;}
+.AddClass-Box>.AddClass-head>.AddClass-content div label{display: none;width: 20%;float: right;height: 100%;}
+.AddClass-Box>.AddClass-head>.AddClass-content div select{display: inline-block;margin-left: 2%;background: none;border: none;width: 30%;height: 100%;-moz-appearance: none;border-radius: 5px;-webkit-appearance: none;  appearance: none;}
+.AddClass-Box>.AddClass-head>.AddClass-content>.submit{border: none;height: 40px;text-align: center;}
+.AddClass-Box>.AddClass-head>.AddClass-content>.submit button{display: inline-block;width: 30%;background: green;border: none;border-radius: 15px;height: 100%;color: #ffffff;font-size: 22px;}
+.AddClass-Box>.AddClass-head>.AddClass-content div>.ClassSelect_2{display: none;}
+.AddClass-Box>.AddClass-head>.AddClass-content>.AddClass-enable input{display: inline-block;width: 10%;height: 80%;padding-top: 5px;}
+
+
+
