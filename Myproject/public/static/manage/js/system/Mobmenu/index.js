@@ -7,7 +7,7 @@ function Editicon(data) {
 function closeEdition() {
     $(".Modify-Box").fadeOut(1000);
 }
-// 事件提交
+// 图片修改事件提交
 function ImgButton(data) {
     $.ajax({
         url:"/manage/view/system/Mobmenu",
@@ -30,6 +30,21 @@ function ImgButton(data) {
         }
     })
 
+}
+// 图片修改预览功能
+function PreviewFile () {
+    var preview = document.getElementById('img1');
+    var imgfile=preview.getElementsByTagName('img')[0];
+    var file  = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        imgfile.src = reader.result;
+    };
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        imgfile.src = "";
+    }
 }
 $(document).ready(function(){
 
