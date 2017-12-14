@@ -2,6 +2,7 @@
 namespace app\manage\controller\system;
 use app\manage\controller\Common;
 use app\manage\model\GoodsClassify;
+use think\Session;
 class Mobmenu extends Common
 {
     public function index()
@@ -19,5 +20,27 @@ class Mobmenu extends Common
             }
         }
         return $result;
+    }
+    public function addclass()
+    {
+        $Class=input();
+        $value=GoodsClassify::create([
+            'ClassName'  =>  $Class["Name"],
+            'pid'  =>  $Class["pid"],
+            'cid'  =>  $Class["cid"],
+            'level'  =>  $Class["level"],
+            'Enable'  =>  $Class["enable"],
+            'CreateAdmin'  =>  Session::get('admin')["id"],
+            'createTime'  =>  time(),
+            'PageDisplays_frame'  =>$Class["muban"]
+        ]);
+        if($value)
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
     }
 }
