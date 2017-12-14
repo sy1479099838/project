@@ -33,20 +33,20 @@
 /*.GoodsChoice>.GoodsMenu-off img{float: right;display: inline-block;}*/
 /*#{float: left;border: 0px solid #000000}*/
 
-.Goods-AddMenu-Box{width:83%;height: 100%;position: absolute;top:0;right: 0;bottom: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}
+.Goods-AddMenu-Box{width:83%;height: 100%;position:absolute;top:0;right:0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{background: #ffffff;border-radius: 10px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p{text-align: center;height: 33px;padding: 3px}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;background: none;font-size: 18px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p button b{font-size: 14px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window h1{text-align: center;font-size: 20px;font-weight: bold;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 25%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 20%;height: 100%;display: inline-block;float: left;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:10px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 10%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 21%;height: 100%;display: inline-block;float: left;}
 /*.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span select{display: inline-block;width: 35%;height: 100%;border: none;background: none;}*/
-#img1{margin:0 auto;width:71px;height:99px;border:1px solid black;}
+#img1{margin:0 auto;width:400px;height:200px;border:2px solid #f0f0f0;}
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
-.AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;}
+.AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;border:1px solid green;background:#f0f0f0;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span script{width: 70%;overflow: hidden;margin-top: 0px;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.Choice-hidden{display: none;width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>span>.AddLiabilityGoods-Choice_one{width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
