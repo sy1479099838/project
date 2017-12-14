@@ -3,16 +3,44 @@
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
-            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice('0')">全部</a></p>
+            <p>
+                <button class="TreeMenuOne-switch">
+                    <img src="__PUBLIC__/manage/images/openFile.png" alt="">
+                </button>
+                <a href="javascript:GoodslistRegionChoice('0')">全部</a>
+            </p>
         </div>
         <div class="tree-box">
-            <p><button class="TreeMenuOne-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">商家</a></p>
+            <p>
+                <button class="TreeMenuOne-switch">
+                    <img src="__PUBLIC__/manage/images/openFile.png" alt="">
+                </button>
+                <a href="javascript:GoodslistRegionChoice()">商家</a>
+            </p>
             <dl class="treeMenu-one" id="treeOpen_1">
-                <dt><span>&nbsp;</span><button class="TreeMenuTwo-switch"><img src="__PUBLIC__/manage/images/openFile.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐一</a></dt>
+                <dt>
+                    <span>&nbsp;</span>
+                    <button class="TreeMenuTwo-switch">
+                        <img src="__PUBLIC__/manage/images/openFile.png" alt="">
+                    </button>
+                    <a href="javascript:GoodslistRegionChoice()">套餐一</a>
+                </dt>
                 <dd  class="treeMenu-three" id="treeOpen_2">
-                    <div><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐二</a></div>
+                    <div>
+                        <i>&nbsp;</i>
+                        <button>
+                            <img src="__PUBLIC__/manage/images/file.png" alt="">
+                        </button>
+                        <a href="javascript:GoodslistRegionChoice()">套餐二</a>
+                    </div>
                 </dd>
-                <div class="treeMenu-two"><i>&nbsp;</i><button><img src="__PUBLIC__/manage/images/file.png" alt=""></button><a href="javascript:GoodslistRegionChoice()">套餐三</a></div>
+                <div class="treeMenu-two">
+                    <i>&nbsp;</i>
+                    <button>
+                        <img src="__PUBLIC__/manage/images/file.png" alt="">
+                    </button>
+                    <a href="javascript:GoodslistRegionChoice()">套餐三</a>
+                </div>
             </dl>
         </div>
     </div>
@@ -22,16 +50,19 @@
     <h1>活动商品管理</h1>
     <div class="Goodslist-Content-Box">
         <p class="layui-form">
-            <button class="" onclick="AddGoods()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品</button>
-            <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+            <button class="" onclick="AddGoods()">
+                <img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品
+            </button>
             <span>
-                 活动日期：
+                <input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索">
+                <i class="icon-search" onclick="GoodsKeywordSearch('')"></i>
             </span>
-            <!--<input type="datetime-local" name="start_date" value="" id="start_date" style="max-width: 150px;width: 15%"/>-->
-            <input type="text" name="start_date" id="date5" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
-            <label style="color: red"><font size="20px">至</font></label>
+            <span>
+            &nbsp;&nbsp; 活动日期:
+            <input type="text" name="start_date" id="date5" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">&nbsp;至
             <input type="text" name="start_date" id="date6" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
-            <!--<input type="datetime-local" name="end_date" value="" id="end_date" style="max-width: 150px;width: 15%"/>-->
+            <i class="icon-search" onclick="timeSearch('')"></i>
+            </span>
         </p>
         <table class="Goodslist-table">
             <tbody>
@@ -40,56 +71,57 @@
                 <th>商品</th>
                 <th>商品封面</th>
                 <th>套餐名称</th>
-                <th>活动日期</th>
-                <th>待定</th>
+                <th>首页模板图</th>
                 <th>商品详情</th>
-                <th>剩余商品数</th>
                 <th>拼团启用</th>
                 <th>操作</th>
             </tr>
             <tr>
                 <td>{$key+1}</td>
-                <td><h4 >商品名称：<b style="text-decoration: underline;">绵阳欢乐世界双十二狂欢节</b></h4>
-                    <h4 >商品分类：<b style="text-decoration: underline;">旅游</b></h4>
-                    <h4>商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4>
-                    <h4 style="text-decoration:line-through;">商品原价：￥128</h4>
-                    <h4><b style="color: #42b142;text-decoration: underline;">活动价：￥99</b></h4>
-                </td>
-                <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
-                    <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
                 <td>
-                    <p style="overflow: hidden;">套餐一：<a onclick="PackageBox('')" >全家一日游</a></p>
-                    <p style="overflow: hidden;">套餐二：<a onclick="PackageBox('')" >亲情1+1</a></p>
-                    <p style="overflow: hidden;">套餐三：<a onclick="PackageBox('')">豪华单人行</a></p>
-                </td>
-                <td><b>2017.12.01</b>
-                    <b style="color: #42b142">2017.12.31</b>
+                    名称：绵阳欢乐世界双十二狂欢节<br>
+                    分类：旅游<br>
+                    商家：大黄蜂有限公司<br>
+                    价格：￥128&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥138&nbsp;</i><br>
+                    剩余：123张<br>
                 </td>
                 <td>
-                    待定
+                    <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="GoodsImg">
+                <td>
+                    套餐一：<a onclick="PackageBox('')" >全家一日游&nbsp;(￥128)</a><br>
+                    套餐二：<a onclick="PackageBox('')" >亲情1+1&nbsp;(￥128)</a><br>
+                    套餐三：<a onclick="PackageBox('')">豪华单人行&nbsp;(￥128)</a><br>
+                    日期：2017.12.01-2017.12.31
+                </td>
+                <td>
+                    首页模板图
                 </td>
                 <td>
                     <button class="" onclick="GoodsPK()">
-                        <img src="__PUBLIC__/manage/images/icon-add.png">详情
-                    </button>
-                    <div class="SHOW_Praise">
-                        <button class=" icon-thumbs-up" >点赞</button>
+                        <img src="__PUBLIC__/manage/images/icon-details.png">详情
+                    </button><br>
+                    <button onclick="GoodsParameter()">
+                        <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
+                    </button><br>
+                    <button onclick="GoodsComment()">
+                        <img src="__PUBLIC__/manage/images/icon-comment.png" alt="">评论
+                    </button><br>
+
+                        <button class="SHOW_Praise">
+                            <img src="__PUBLIC__/manage/images/icon-laud.png" alt="">
+                            获赞
+                                <span class="GoodsPraise">
+                                    该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
+                                </span>
+                        </button>
                         <!--点赞详情-->
-                        <div class="GoodsPraise">
-                            <p>
-                                该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
-                            </p>
-                        </div>
-                    </div>
-                    <button class=" icon-align-right" onclick="GoodsParameter()">参数</button>
-                    <button class=" icon-comment" onclick="GoodsComment()">评论</button>
-                </td>
-                <td>
-                    <font size="5" color="#42b142">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="#42b142">张</font>
+                        <br>
+
+
                 </td>
                 <td>
                     <span class="GoodsFight" >
-                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}" style="width:100%;">
+                        <input type="hidden" value="" class="status GoodsState{}" style="width:100%;">
                         <button class="GoodsMenu-open" onclick="Up_Menu()">
                             <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
                             启用
@@ -100,18 +132,19 @@
                         </button>
                     </span>
                 </td>
-                <td> <button onclick="EditGoods()" >编辑
+                <td>
+                    <button onclick="EditGoods()" >编辑
                     <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
-                    </button>
+                    </button><br>
                     <button onclick="DelGoods()" >删除
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
-                    </button>
+                    </button><br>
                     <span class="GoodsChoice">
-                        <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
+                        <input type="hidden" value="" class="status GoodsState{">
                         <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
                             上架
-                        </button>
+                        </button><br>
                         <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
                             下架
@@ -127,11 +160,6 @@
         <img src="" alt="">
     </div>
 </div>
-<!--<script>
-    document.getElementById('start_date').valueAsDate = new Date();
-    document.getElementById('end_date').valueAsDate = new Date();
-
-</script>-->
 <!------------------------------------商品添加--------------------------------------->
 <div class="Goods-AddMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
@@ -188,10 +216,8 @@
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
                 <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -243,19 +269,6 @@
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
                 <input type="number" name="number"  value="">
 
-            </span>
-            <!--<span>-->
-            <!--<label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>-->
-            <!--&lt;!&ndash;<script id="container" name="content" type="text/plain" >-->
-            <!--这里写你的初始化内容-->
-            <!--</script>&ndash;&gt;-->
-            <!--<textarea id="newsEditor" name="content" style="height: 200px">请输入新闻内容... </textarea>-->
-            <!--<script type="text/javascript">-->
-            <!--UE.getEditor('newsEditor');-->
-            <!--// var content = UE.getPlainTxt();//content就是编辑器的带格式的内容-->
-            <!--</script>-->
-            <!--</span>-->
-            <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
             <span style="height: 210px;text-align: center;">
@@ -266,10 +279,8 @@
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
                 <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -287,17 +298,28 @@
         这里为解释套餐详细信息
     </p>
 </div>
-<!--商品详情-->
+<!---------------------------------------------商品详情------------------------------>
 <div class="GoodsPK-Menu-Box">
     <p >
         <button class="icon-remove-sign" onclick="closeGoodsPK()">关闭</button>
         <span class="cb"></span>
-    </p><br><br>
-    <p>
-        此处为商品信息详细介绍！
-    </p>
+    </p><br>
+    <h1>商品详情编辑</h1>
+    <div align="center" style="width:90%;margin-left:5%;">
+        <textarea id="newsEditor" name="content" style="height: 100%">请输入新闻内容... </textarea>
+        <script type="text/javascript">
+            UE.getEditor('newsEditor');
+            // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+        </script>
+    </div>
+    <div class="AddMenu-Submit">
+        <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+    </div>
+    <div class="AddMenu-Submit">
+        <button onclick="AddGoodsSubmit()">预&nbsp;&nbsp;&nbsp;览</button>
+    </div>
 </div>
-<!--商品参数详情-->
+<!---------------------------------------商品参数--------------------------------->
 <div class="GoodsParameter-Menu-Box">
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
@@ -325,22 +347,12 @@
             <div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在此处用户可对商品进行详细的评论！
             </div>
-            <!--<img src="" alt="" vocab="用户上传图片">-->
         </div>
         <div style="text-align: right">
             <span >购买的商品：套餐一</span>
         </div>
     </div>
 </div>
-<!-- 配置文件 -->
-<!--<script type="text/javascript" src="ueditor.config.js"></script>
-&lt;!&ndash; 编辑器源码文件 &ndash;&gt;
-<script type="text/javascript" src="ueditor.all.js"></script>-->
-<!-- 实例化编辑器 -->
-<!--<script type="text/javascript">
-    var ue = UE.getEditor('container');
-    var ue=UE.getEditor('GoodsContent');
-</script>-->
 {/block}
 
 
