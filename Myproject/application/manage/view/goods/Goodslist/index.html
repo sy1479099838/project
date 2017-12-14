@@ -298,17 +298,28 @@
         这里为解释套餐详细信息
     </p>
 </div>
-<!--商品详情-->
+<!---------------------------------------------商品详情------------------------------>
 <div class="GoodsPK-Menu-Box">
     <p >
         <button class="icon-remove-sign" onclick="closeGoodsPK()">关闭</button>
         <span class="cb"></span>
-    </p><br><br>
-    <p>
-        此处为商品信息详细介绍！
-    </p>
+    </p><br>
+    <h1>商品详情编辑</h1>
+    <div align="center" style="width:90%;margin-left:5%;">
+        <textarea id="newsEditor" name="content" style="height: 100%">请输入新闻内容... </textarea>
+        <script type="text/javascript">
+            UE.getEditor('newsEditor');
+            // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+        </script>
+    </div>
+    <div class="AddMenu-Submit">
+        <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+    </div>
+    <div class="AddMenu-Submit">
+        <button onclick="AddGoodsSubmit()">预&nbsp;&nbsp;&nbsp;览</button>
+    </div>
 </div>
-<!--商品参数详情-->
+<!---------------------------------------商品参数--------------------------------->
 <div class="GoodsParameter-Menu-Box">
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
@@ -343,15 +354,6 @@
         </div>
     </div>
 </div>
-<!-- 配置文件 -->
-<!--<script type="text/javascript" src="ueditor.config.js"></script>
-&lt;!&ndash; 编辑器源码文件 &ndash;&gt;
-<script type="text/javascript" src="ueditor.all.js"></script>-->
-<!-- 实例化编辑器 -->
-<!--<script type="text/javascript">
-    var ue = UE.getEditor('container');
-    var ue=UE.getEditor('GoodsContent');
-</script>-->
 {/block}
 
 
