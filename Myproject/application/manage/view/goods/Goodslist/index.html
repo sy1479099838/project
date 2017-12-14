@@ -334,17 +334,7 @@
 
 <!-----------------------------------商品详情预览-------------------------------------->
 <div class="GoodsPK-Yulan-Box">
-    <div id='ss' style="height:560px; width:320px; border:1px solid #000000; position:absolute; left:200px; top:0;word-break:break-all;overflow:auto;" >
-        <div id="rRightDown"> </div>
-        <div id="rLeftDown"> </div>
-        <div id="rRightUp"> </div>
-        <div id="rLeftUp"> </div>
-        <div id="rRight"> </div>
-        <div id="rLeft"> </div>
-        <div id="rUp"> </div>
-        <div id="rDown"></div>
-        <div id="YU-content" style="height:100%; width:100%;"></div>
-    </div>
+    <div id="yulan-box"></div>
 </div>
 <!---------------------------------------商品参数--------------------------------->
 <div class="GoodsParameter-Menu-Box">
@@ -371,7 +361,7 @@
             var UEvalue = arr.join( "\n" );
             $(".GoodsPK-Yulan-Box").fadeIn(700);
 //            alert( arr.join( "\n" ) );
-            $("#YU-content").html(UEvalue);
+            $("#yulan-box").html(UEvalue);
         }
     </script>
 </div>

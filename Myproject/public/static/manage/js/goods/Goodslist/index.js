@@ -403,138 +403,89 @@ function Xiangyu(){
 
 
 /*商品详情预览页面*/
-/*var Sys = (function(ua){
-    var s = {};
-    s.IE = ua.match(/msie ([\d.]+)/)?true:false;
-    s.Firefox = ua.match(/firefox\/([\d.]+)/)?true:false;
-    s.Chrome = ua.match(/chrome\/([\d.]+)/)?true:false;
-    s.IE6 = (s.IE&&([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6))?true:false;
-    s.IE7 = (s.IE&&([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 7))?true:false;
-    s.IE8 = (s.IE&&([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 8))?true:false;
-    return s;
-})(navigator.userAgent.toLowerCase());/!*判断是哪一种浏览器,火狐,谷歌,ie*!/*/
+//页面加载完毕后执行页面右边的函数
 $(function () {
-    
+//页面加载完毕后执行页面右边的函数
+    window.onload=function (){
+        //通过ID找到元素 并且将它赋值给 变量oBox
+        var oBox=document.getElementById('yulan-box');
+        //声明X 代表以后要存储的数据类型是字符串 Y同上
+        var X='';
+        var Y='';
+        //当鼠标点击盒子的时候触发 执行右边的函数   ev形参  向浏览器返回当前值 FireFox火狐 Chrome谷歌默认都是有一个值传进来的
+        oBox.onmousedown=function (ev){
+            //兼容IE和FireFox Chrome 只要一个为真就可以执行
+            var iEvent=ev || event;
+            //将盒子点击时获取的宽度赋值给W
+            var W=oBox.offsetWidth;
+            //将盒子点击时获取的宽度赋值给H
+            var H=oBox.offsetHeight;
+            //将盒子点击时获取的鼠标X轴的值赋值给disX
+            var disX=iEvent.clientX;
+            //将盒子点击时获取的鼠标Y轴的值赋值给disY
+            var disY=iEvent.clientY;
+            //将盒子的鼠标点击时的距离左边的距离和盒子的宽度总和 赋值给disW
+            var disxW=oBox.offsetLeft+W;
+            //将盒子的鼠标点击时的距离头部的距离和盒子的高度总和 赋值给dis
+            var disyH=oBox.offsetTop+H;
 
-var $ = function (id) {
-    return document.getElementById(id);
-}; /*获取元素,模仿jQuery*/
-var Css = function(e,o){ /*更改对象的top,left,width,height来控制对象的大小*/
-    for(var i in o)
-        e.style[i] = o[i];
-};
-var Extend = function(destination, source) { /*拷贝对象的属性*/
-    for (var property in source) {
-        destination[property] = source[property];
-    }
-};
-/*直接调用方法*/
-var Bind = function(object, fun) {
-    var args = Array.prototype.slice.call(arguments).slice(2);
-    return function() {
-        return fun.apply(object, args);
-    }
-};
-/*直接调用方法,并将事件的类型传入作为第一个参数*/
-var BindAsEventListener = function(object, fun) {
-    var args = Array.prototype.slice.call(arguments).slice(2);
-    return function(event) {
-        return fun.apply(object, [event || window.event].concat(args));
-    }
-};
-/*获取当前元素的属性*/
-var CurrentStyle = function(element){
-    return element.currentStyle || document.defaultView.getComputedStyle(element, null);
-};
-/*事件监听,执行对应的函数*/
-function addListener(element,e,fn){
-    element.addEventListener?element.addEventListener(e,fn,false):element.attachEvent("on" + e,fn);
-};
-/*事件的移除*/
-function removeListener(element,e,fn){
-    element.removeEventListener?element.removeEventListener(e,fn,false):element.detachEvent("on" + e,fn)
-};
-/*创建一个新的可以拖拽的,变换大小的对象*/
-var Class = function(properties){
-    var _class = function(){return (arguments[0] !== null && this.initialize && typeof(this.initialize) == 'function') ? this.initialize.apply(this, arguments) : this;};
-    _class.prototype = properties;
-    return _class;
-};
-var Resize =new Class({
-    initialize : function(obj){
-        this.obj = obj;
-        this.resizeelm = null;
-        this.fun = null; //记录触发什么事件的索引
-        this.original = []; //记录开始状态的数组
-        this.width = null;
-        this.height = null;
-        this.fR = BindAsEventListener(this,this.resize);  /*拖拽去更改div的大小*/
-        this.fS = Bind(this,this.stop);  /*停止移除监听的事件*/
-    },
-    set : function(elm,direction){
-        if(!elm)return;
-        this.resizeelm = elm;
-        /*点击事件的监听,调用start函数去初始化数据,监听mousemove和mouseup,这两个事件,当mouseover的时候,去更改div的大小,当mouseup,去清除之前监听的两个事件*/
-        addListener(this.resizeelm,'mousedown',BindAsEventListener(this, this.start, this[direction]));
-        return this;
-    },
-    start : function(e,fun){
-        this.fun = fun;
-        this.original = [parseInt(CurrentStyle(this.obj).width),parseInt(CurrentStyle(this.obj).height),parseInt(CurrentStyle(this.obj).left),parseInt(CurrentStyle(this.obj).top)];
-        console.log({width:this.original[0],height:this.original[1],left:this.original[2],top:this.original[3]}) ;
-        this.width = (this.original[2]||0) + this.original[0];
-        this.height = (this.original[3]||0) + this.original[1];
-        addListener(document,"mousemove",this.fR);
-        addListener(document,'mouseup',this.fS);
-    },
-    resize : function(e){
-        this.fun(e);
-        /*失去焦点的时候,调用this.stop去清除监听事件*/
-        Sys.IE?(this.resizeelm.onlosecapture=function(){this.fS(); }):(this.resizeelm.onblur=function(){this.fS();})
-    },
-    stop : function(){
-        removeListener(document, "mousemove", this.fR);
-        removeListener(document, "mousemove", this.fS);
-        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();      /**清除选中的内容*/
-    },
-    up : function(e){
-        this.height>e.clientY?Css(this.obj,{top:e.clientY + "px",height:this.height-e.clientY + "px"}):this.turnDown(e);
-    },
-    down : function(e){
-        e.clientY>this.original[3]?Css(this.obj,{top:this.original[3]+'px',height:e.clientY-this.original[3]+'px'}):this.turnUp(e);
-    },
-    left : function(e){
-        e.clientX<this.width?Css(this.obj,{left:e.clientX +'px',width:this.width-e.clientX + "px"}):this.turnRight(e);
-    },
-    right : function(e){
-        e.clientX>this.original[2]?Css(this.obj,{left:this.original[2]+'px',width:e.clientX-this.original[2]+"px"}):this.turnLeft(e)    ;
-    },
-    leftUp:function(e){
-        this.up(e);this.left(e);
-    },
-    leftDown:function(e){
-        this.left(e);this.down(e);
-    },
-    rightUp:function(e){
-        this.up(e);this.right(e);
-    },
-    rightDown:function(e){
-        this.right(e);this.down(e);
-    },
-    turnDown : function(e){
-        Css(this.obj,{top:this.height+'px',height:e.clientY - this.height + 'px'});
-    },
-    turnUp : function(e){
-        Css(this.obj,{top : e.clientY +'px',height : this.original[3] - e.clientY +'px'});
-    },
-    turnRight : function(e){
-        Css(this.obj,{left:this.width+'px',width:e.clientX- this.width +'px'});
-    },
-    turnLeft : function(e){
-        Css(this.obj,{left:e.clientX +'px',width:this.original[2]-e.clientX+'px'});
-    }
-});
-window.onload = function(){
-    new Resize($('ss')).set($('rUp'),'up').set($('rDown'),'down').set($('rLeft'),'left').set($('rRight'),'right').set($('rLeftUp'),'leftUp').set($('rLeftDown'),'leftDown').set($('rRightDown'),'rightDown').set($('rRightUp'),'rightUp');
-};
+            //这是判断是否当前点击的是盒子的四周
+            //当盒子当前点击X轴的值大于 盒子的距离左边的值加盒子自身的宽度减去10像素时  就是表示已经点击到了盒子的右边框
+            if(iEvent.clientX>oBox.offsetLeft+oBox.offsetWidth-10){
+                //alert('碰到了盒子的右边！');
+                //赋予上面X的值这时等于right  好用于下面的对比
+                X='right';
+                oBox.style.cursor='e-resize';
+            }
+            //当盒子当前点击X轴的值小于 盒子的距离左边的值10像素时  就是表示已经点击到了盒子的左边框
+            else if(iEvent.clientX<oBox.offsetLeft+10){
+                //alert('碰到了盒子的左边！');
+                //赋予上面X的值这时等于left  好用于下面的对比
+                X='left';
+                oBox.style.cursor='e-resize';
+            }
+            //底端判断和顶部判断同上
+            else if(iEvent.clientY>oBox.offsetTop+oBox.offsetHeight-10){
+                //alert('你碰到了盒子的底部！');
+                Y='bottom';
+                oBox.style.cursor='s-resize';
+            }
+            else if(iEvent.clientY<oBox.offsetTop+10){
+                //alert('你碰到了盒子的顶部！');
+                Y='top';
+                oBox.style.cursor='s-resize';
+            }
+
+            //当鼠标每移动一个像素点之时 触发 执行右边的函数  在事件前加document 是为了加大事件的作用域 移动时对整个页面文档有效
+            document.onmousemove=function (ev){
+                var iEvent=ev || event; //当当前的鼠标值减去之前获取的鼠标值为正数 那么正数加正数是增大
+                if (X=='right') {       //当当前的鼠标值减去之前获取的鼠标值为负数 那么正数加负数是变小
+                    oBox.style.width=W+(iEvent.clientX-disX)+'px';
+                }                       //当当前的鼠标值减去之前获取的鼠标值为负数 那么正数减负数是负负得正 增大
+                if(X=='left'){      //当当前的鼠标值减去之前获取的鼠标值为正数 那么正数减正数数是缩小
+                    oBox.style.width=W-(iEvent.clientX-disX)+'px';
+                    //需要修复的bug是左边拖动的时候 光改变宽度 盒子距离左边的值是不变的 这时候特殊的一点是需要改变盒子距离左边的值
+                    //这时我是这样得到盒子在拖动过程中距离左边的值的 通过鼠标点击时 就获取盒子当前距离左边的值加盒子的宽度 然后在这里需要的时候
+                    //换个比喻来说就是 12=5+7  12是盒子的距离左边的值5 加上盒子的宽度 7 得到的    这个时候我们得到了盒子的 距离左边的值和盒子的宽度
+                    //很明显 我们直接用 盒子距离左边的值减去已知盒子的宽度 (这时候盒子的宽度是变化的 )那么就可以得到盒子距离左边的距离值.最后记得加上像素
+                    oBox.style.left=disxW-oBox.offsetWidth+'px';
+
+                }
+                //顶部  和底端的拖动同上  同理可得
+                if(Y=='bottom'){
+                    oBox.style.height=H+(iEvent.clientY-disY)+'px';
+                }
+                if(Y=='top'){
+                    oBox.style.height=H-(iEvent.clientY-disY)+'px';
+                    oBox.style.top=disyH-oBox.offsetHeight+'px';
+                }
+            };
+            //当拖动结束后 我们需要释放鼠标 添加鼠标按下松开事件 onmouseup 让鼠标点击不松 的事件为空 让鼠标每移动
+            document.onmouseup=function (){
+                document.onmousedown=null;
+                document.onmousemove=null;//一像素的触发的事件为空
+            }
+        };
+
+    };
 });
