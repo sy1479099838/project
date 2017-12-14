@@ -33,7 +33,7 @@
 /*
 
 */
-.AddClass-Box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.9);display: none;position:absolute;}
+.AddClass-Box{top: 0;left: 0;right: 0;bottom: 0;z-index: 999;background: rgba(255,255,255,0.9);display: none;position:absolute;}
 .AddClass-Box>.AddClass-head{position: relative;top:15%;border: 1px solid #707070;left: 30%;right: 30%;width: 40%;height: auto;border-radius: 3px;}
 .AddClass-Box>.AddClass-head p{padding: 5px 1%;}
 .AddClass-Box>.AddClass-head p button{float: right;}
@@ -54,13 +54,36 @@
 .AddClass-Box>.AddClass-head>.AddClass-content>.mubanChoice>.muban-box img{display: inline-block;width: 94%;margin-left: 3%;float: left;}
 .clear-Float{clear: both;}
 
+/*图标修改*/
 .Modify-Box{width: 20%;background: rgba(255,255,255,0.9);position: absolute;top: 10%;left: 17%;border: 1px solid #707070;display: none;}
 .Modify-Box>.Modify-Menu-Box{position: relative;height: auto;}
 .Modify-Box>.Modify-Menu-Box p{text-align: right}
 .Modify-Box>.Modify-Menu-Box h1{text-align: center;font-size: 20px;width: 100%;}
-.Modify-Box>.Modify-Menu-Box>.Choice-Img{border: 1px solid #c7ddef;margin: 2%;width: 60%;text-align: center;margin: 0 auto;}
+.Modify-Box>.Modify-Menu-Box>.Choice-Img{border: 2px solid #EFEFEF;margin: 2%;width: 60%;text-align: center;margin: 0 auto;height: 70%}
 .Modify-Box>.Modify-Menu-Box>.ImgButton{text-align: center;display: inline-block;margin: 0 auto;width: 100%;text-align: right;}
 .Modify-Box>.Modify-Menu-Box>.ImgButton button{background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 28px;border-radius: 5px;padding-left: 3px;}
+
+/*编辑操作*/
+.EditClass-Box{top: 0;right: 0; bottom: 0;left: 0;background: rgba(255,255,255,0.9);display: none;position: absolute;}
+.EditClass-Box>.EditClass-head{position: relative;top:15%;border: 1px solid #707070;left: 30%;right: 30%;width: 40%;height: auto;border-radius: 3px;}
+.EditClass-Box>.EditClass-head p{padding: 5px 1%;}
+.EditClass-Box>.EditClass-head p button{float: right;}
+.EditClass-Box>.EditClass-head h1{text-align: center;display: inline-block;width: 100%;font-size: 20px;}
+.EditClass-Box>.EditClass-head>.AddClass-content{margin: 1%;}
+.EditClass-Box>.EditClass-head>.AddClass-content div{height: 40px;margin: 10px 0 0 0;line-height: 40px;border-bottom:1px solid #a4a4a4; font-size: 18px;}
+.EditClass-Box>.EditClass-head>.AddClass-content div span{display: inline-block;width: 30%;height: 100%;font-size: 18px;}
+.EditClass-Box>.EditClass-head>.AddClass-content div input{display: inline-block;width: 50%;height: 100%;background: none;border: none;font-size: 18px;}
+.EditClass-Box>.EditClass-head>.AddClass-content div label{display: none;width: 20%;float: right;height: 100%;}
+.EditClass-Box>.EditClass-head>.AddClass-content div select{display: inline-block;margin-left: 2%;background: none;border: none;width: 30%;height: 100%;-moz-appearance: none;border-radius: 5px;-webkit-appearance: none;  appearance: none;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.submit{border: none;height: 40px;text-align: center;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.submit button{display: inline-block;width: 30%;background: green;border: none;border-radius: 15px;height: 100%;color: #ffffff;font-size: 22px;}
+.EditClass-Box>.EditClass-head>.AddClass-content div>.ClassSelect_2{display: none;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.AddClass-enable input{display: inline-block;width: 10%;height: 80%;padding-top: 5px;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.mubanChoice{margin: 10px 0 0 0;font-size: 18px;border: none;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.mubanChoice>.muban-box{display: inline-block;width: 21.5%; border: 1px solid #c6c6c6;text-align: justify;margin:1%;padding:1px;height: auto;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.mubanChoice>.muban-box input{display: inline-block;height: 15px;background: none;border: none;font-size: 18px;}
+.EditClass-Box>.EditClass-head>.AddClass-content>.mubanChoice>.muban-box img{display: inline-block;width: 94%;margin-left: 3%;float: left;}
+.clear-Float{clear: both;}
 
 
 

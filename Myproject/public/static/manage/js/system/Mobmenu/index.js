@@ -13,9 +13,19 @@ function ImgButton(data) {
         url:"/manage/view/system/Mobmenu",
         type:"post",
         data:({data:data}),
-        success:function (msg) {
-            if(msg=="error"){
-                $(".")
+        success:function (data) {
+            if(data=="success"){
+                $.showBox("图标修改成功！");
+                window.location.reload();
+                $(".Modify-Box").fadeOut(1000);
+            }
+            else if(data=="error"){
+                $.showBox("图标修改失败！");
+                window.location.reload();
+                $(".Modify-Box").fadeOut(1000);
+            }
+            else {
+                $.showBox(data);
             }
         }
     })
@@ -125,4 +135,12 @@ function AddClassSubmit() {
             }
         });
     }
+}
+//编辑按钮 打开
+function EditClass() {
+    $(".EditClass-Box").fadeIn(700);
+}
+// 编辑页面关闭
+function closeEditClass() {
+    $(".EditClass-Box").fadeOut(100);
 }
