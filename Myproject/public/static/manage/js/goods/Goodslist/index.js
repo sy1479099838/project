@@ -307,6 +307,15 @@ $(function(){
     });
 
 });
+
+$(function(){
+    $('.AddLiabilityGoods-Choice_two').change(function () {
+        $(".Choice-hidden").fadeOut(0);//将所有class=hidden的盒子全部隐藏
+        var num=$(this).val();//获取到所选中的option的值
+        $("#Select"+num).fadeIn(700);//将id与所选中的option的值相同相同的盒子显示
+    });
+
+});
 // 拼团启用
 $(document).ready(function(){
 
