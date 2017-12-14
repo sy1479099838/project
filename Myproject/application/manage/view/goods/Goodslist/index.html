@@ -68,7 +68,9 @@
                     待定
                 </td>
                 <td>
-                    <button class=" icon-file-alt" onclick="GoodsPK()">详情</button>
+                    <button class="" onclick="GoodsPK()">
+                        <img src="__PUBLIC__/manage/images/icon-add.png">详情
+                    </button>
                     <div class="SHOW_Praise">
                         <button class=" icon-thumbs-up" >点赞</button>
                         <!--点赞详情-->
@@ -87,30 +89,30 @@
                 <td>
                     <span class="GoodsFight" >
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}" style="width:100%;">
-                        <button class="icon-check" onclick="Up_Menu()">
-                            <!--<img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">-->
+                        <button class="GoodsMenu-open" onclick="Up_Menu()">
+                            <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
                             启用
                         </button>
-                        <button class="icon-check-empty" onclick="End_Menu()">
-                            <!--<img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">-->
+                        <button class="GoodsMenu-off" onclick="End_Menu()">
+                            <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
                             禁用
                         </button>
                     </span>
                 </td>
-                <td> <button onclick="EditGoods()" class=" icon-edit">编辑
-                    <!--<img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">-->
+                <td> <button onclick="EditGoods()" >编辑
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
                     </button>
-                    <button onclick="DelGoods()" class="icon-trash">删除
-                        <!--<img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">-->
+                    <button onclick="DelGoods()" >删除
+                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
                     </button>
                     <span class="GoodsChoice">
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
-                        <button class="icon-cloud-upload" onclick="UpMenu()">
-                            <!--<img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">-->
+                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                            <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
                             上架
                         </button>
-                        <button class="icon-cloud-download" onclick="EndMenu()">
-                            <!--<img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">-->
+                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                            <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
                             下架
                         </button>
                     </span>
