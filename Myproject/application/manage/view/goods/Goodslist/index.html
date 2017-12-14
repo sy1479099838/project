@@ -16,6 +16,7 @@
             </dl>
         </div>
     </div>
+    <div style="clear:both;"></div>
 </div>
 <div class="Goodslist">
     <h1>活动商品管理</h1>
@@ -52,7 +53,7 @@
                     <h4 >商品分类：<b style="text-decoration: underline;">旅游</b></h4>
                     <h4>商家：<b style="text-decoration: underline;">大黄蜂有限公司</b></h4>
                     <h4 style="text-decoration:line-through;">商品原价：￥128</h4>
-                    <h4><b style="color: red;text-decoration: underline;">活动价：￥99</b></h4>
+                    <h4><b style="color: #42b142;text-decoration: underline;">活动价：￥99</b></h4>
                 </td>
                 <td><img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg" alt="" class="BigImagesButton">
                     <input type="hidden" value="__ROTH__/uploads/20171129/2e3c41062c7f28c81bf07ffe95ab8e71.jpg"></td>
@@ -62,13 +63,15 @@
                     <p style="overflow: hidden;">套餐三：<a onclick="PackageBox('')">豪华单人行</a></p>
                 </td>
                 <td><b>2017.12.01</b>
-                    <b style="color: red">2017.12.31</b>
+                    <b style="color: #42b142">2017.12.31</b>
                 </td>
                 <td>
                     待定
                 </td>
                 <td>
-                    <button class=" icon-file-alt" onclick="GoodsPK()">详情</button>
+                    <button class="" onclick="GoodsPK()">
+                        <img src="__PUBLIC__/manage/images/icon-add.png">详情
+                    </button>
                     <div class="SHOW_Praise">
                         <button class=" icon-thumbs-up" >点赞</button>
                         <!--点赞详情-->
@@ -82,32 +85,36 @@
                     <button class=" icon-comment" onclick="GoodsComment()">评论</button>
                 </td>
                 <td>
-                    <font size="5" color="red">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="red">张</font>
+                    <font size="5" color="#42b142">剩余</font>：<b style="text-decoration: underline">118</b><font size="5" face="arial" color="#42b142">张</font>
                 </td>
                 <td>
                     <span class="GoodsFight" >
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{}" style="width:100%;">
-                        <button class="GoodsFight-open" onclick="Up_Menu()">
-                            <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">&nbsp;启用
+                        <button class="GoodsMenu-open" onclick="Up_Menu()">
+                            <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
+                            启用
                         </button>
-                        <button class="GoodsFight-off" onclick="End_Menu()">
-                            <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">禁用&nbsp;
+                        <button class="GoodsMenu-off" onclick="End_Menu()">
+                            <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
+                            禁用
                         </button>
                     </span>
                 </td>
-                <td> <button onclick="EditGoods()">
-                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+                <td> <button onclick="EditGoods()" >编辑
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
                     </button>
-                    <button onclick="DelGoods()">
-                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                    <button onclick="DelGoods()" >删除
+                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
                     </button>
                     <span class="GoodsChoice">
                         <input type="hidden" value="{$vo['Enable']==='1'?'open':'off'}" class="status GoodsState{">
-                        <button class="GoodsMenu-open" onclick="UpMenu()">
-                            <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">&nbsp;上架
+                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                            <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
+                            上架
                         </button>
-                        <button class="GoodsMenu-off" onclick="EndMenu()">
-                            <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">下架&nbsp;
+                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                            <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
+                            下架
                         </button>
                     </span>
                 </td>
@@ -115,6 +122,7 @@
             </tbody>
         </table>
     </div>
+    <div style="clear:both;"></div>
     <div class="SeeBigImages" onclick="closeImage()">
         <img src="" alt="">
     </div>
@@ -158,26 +166,32 @@
                     </select>
             </span><br>
             <span>
+
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="price" id="price" value="" placeholder="实际价格"></input>&nbsp;&nbsp;
-                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
+                <label style="width:20px;">*</label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="activeprice" id="activePrice" value="" placeholder="实际价格"  ></input>&nbsp;
-            </span>
-            <span>
+                <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
                 <input type="number" name="number" id="number" value="">
+
             </span>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>
-            <script id="container" name="content" type="text/plain" >
-这里写你的初始化内容
-            </script>
-            </span>
+            <!--<span>-->
+                <!--<label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>-->
+            <!--&lt;!&ndash;<script id="container" name="content" type="text/plain" >-->
+                        <!--这里写你的初始化内容-->
+            <!--</script>&ndash;&gt;-->
+                <!--<textarea id="newsEditor" name="content" style="height: 200px">请输入新闻内容... </textarea>-->
+                <!--<script type="text/javascript">-->
+                <!--UE.getEditor('newsEditor');-->
+                <!--// var content = UE.getPlainTxt();//content就是编辑器的带格式的内容-->
+                <!--</script>-->
+            <!--</span>-->
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
-            <span style="height: 100px;text-align: center;">
+            <span style="height: 210px;text-align: center;">
                 <div  id="img1">
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
@@ -199,76 +213,79 @@
 <!--商品编辑-->
 <div class="EditGoods-EditMenu-Box">
     <div class="Pcmenu-AddMenu-Window">
-    <p>
-        <button onclick="closeEditGoods()"><b>关闭</b></button>
-        <span class="cb"></span>
-    </p>
-    <h1>商品编辑页面</h1>
-    <div class="Pcmenu-AddMenu">
+        <p>
+            <button class="icon-remove-circle" onclick="closeEditGoods()"><b>关闭</b></button>
+            <span class="cb"></span>
+        </p>
+        <h1>商品编辑</h1>
+        <div class="Pcmenu-AddMenu">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-        </span><br>
-        <span>
+                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
                 <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
-        <span>
+            <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-            <!--<input type="text" name="choice_1" value="">-->
-                    <select class="AddLiabilityGoods-Choice_one">
+                    <select class="AddLiabilityGoods-Choice_two">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>***
-                    <select id="0" class="Choice-hidden">
+                    <select id="Select0" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
-                    <select id="1" class="Choice-hidden">
+                    <select id="Select1" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
-                    <select id="2" class="Choice-hidden">
+                    <select id="Select2" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         <option value="1">--类别--</option>
                     </select>
             </span><br>
-        <span>
+            <span>
+
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="price"  value="" placeholder="实际价格"></input>&nbsp;&nbsp;
-                <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
+                <label style="width:20px;">*</label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                 <input type="text" name="activeprice"  value="" placeholder="实际价格"  ></input>&nbsp;
-            </span>
-        <span>
+                <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
-                <input type="number" name="number" id="" value="">
+                <input type="number" name="number"  value="">
+
             </span>
-        <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label>
-            <!--<input type="text" name="content" id="content" value="此处我有话要说，这个不必再发了！我也这么觉得，你说的对吗？" overflow="hidden">-->
-            <script id="content" name="content" type="text/plain">
-                此处我有话要说，这个不必再发了！我也这么觉得!
-            </script>
-            </span>
-        <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()"  value=""/>
+            <!--<span>-->
+            <!--<label>商&nbsp;&nbsp;品&nbsp;&nbsp;详&nbsp;&nbsp;情</label><br>-->
+            <!--&lt;!&ndash;<script id="container" name="content" type="text/plain" >-->
+            <!--这里写你的初始化内容-->
+            <!--</script>&ndash;&gt;-->
+            <!--<textarea id="newsEditor" name="content" style="height: 200px">请输入新闻内容... </textarea>-->
+            <!--<script type="text/javascript">-->
+            <!--UE.getEditor('newsEditor');-->
+            <!--// var content = UE.getPlainTxt();//content就是编辑器的带格式的内容-->
+            <!--</script>-->
+            <!--</span>-->
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
-        <span style="height: 100px;text-align: center;">
-                <div >
+            <span style="height: 210px;text-align: center;">
+                <div  id="img3">
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-        <span class="layui-form">
-                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;时&nbsp;&nbsp;间</label>
-                <!--<input type="datetime-local" id="starDate" name="start_date" value=""style="max-width: 350px;width: 15%"  />-->
+            <span class="layui-form">
+                <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <label style="width: 5%"><font size="20px" id="red">至</font></label>
+                <!--<input type="datetime-local" name="start_date" value="2015/03/27 10:41" id="date3" style="max-width: 250px;width: 15%" />-->
+                <label style="width: 5%"><font size="20px" color="red">至</font></label>
                 <input type="text" name="end_date" id="date2" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <!--<input type="datetime-local" id="endDate" name="end_date" value="" style="max-width: 350px;width:15%"  />-->
+                <!--<input type="datetime-local" name="end_date" value="2015/03/27 10:41" id="date4" style="max-width: 250px;width: 15%"/>-->
             </span><br>
-        <div class="EditMenu-Submit">
-            <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            <div class="AddMenu-Submit">
+                <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <!--套餐详情-->
@@ -296,10 +313,12 @@
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
         <span class="cb"></span>
-    </p><br><br>
-    <script id="GoodsContent" name="content" type="text/plain" >
-这里写你的初始化内容
-            </script>
+    </p><br>
+    <textarea id="newsEditor1" name="content" style="height: 50%">请输入新闻内容... </textarea>
+    <script type="text/javascript">
+        UE.getEditor('newsEditor1');
+        // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+    </script>
 </div>
 <!--商品评论-->
 <div class="GoodsComment-Menu-Box">
@@ -325,14 +344,14 @@
     </div>
 </div>
 <!-- 配置文件 -->
-<script type="text/javascript" src="ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="ueditor.all.js"></script>
+<!--<script type="text/javascript" src="ueditor.config.js"></script>
+&lt;!&ndash; 编辑器源码文件 &ndash;&gt;
+<script type="text/javascript" src="ueditor.all.js"></script>-->
 <!-- 实例化编辑器 -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     var ue = UE.getEditor('container');
     var ue=UE.getEditor('GoodsContent');
-</script>
+</script>-->
 {/block}
 
 

@@ -182,13 +182,13 @@ $(document).ready(function(){
     $(".GoodsChoice").each(function(){
         if($(this).children(".status").val()==="open")
         {
-            $(this).children(".GoodsMenu-open").fadeIn();
-            $(this).children(".GoodsMenu-off").fadeOut();
+            $(this).children(".GoodsChoiceMenu-open").fadeIn();
+            $(this).children(".GoodsChoiceMenu-off").fadeOut();
         }
         else if($(this).children(".status").val()==="off")
         {
-            $(this).children(".GoodsMenu-off").fadeIn();
-            $(this).children(".GoodsMenu-open").fadeOut();
+            $(this).children(".GoodsChoiceMenu-off").fadeIn();
+            $(this).children(".GoodsChoiceMenu-open").fadeOut();
         }
     })
 
@@ -202,8 +202,8 @@ function UpMenu(id) {
             if (msg==suceess){
                 $.showBox("操作成功！");
                 $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
+                $(".GoodsState"+id).next(".GoodsChoiceMenu-open").next(".GoodsChoiceMenu-off").fadeOut(0);
+                $(".GoodsState"+id).next(".GoodsChoiceMenu-open").fadeIn(1000);
             }
         },error:function (err) {
             $.showBox("上架失败！请重试！！")
@@ -222,8 +222,8 @@ function EndMenu(id) {
                 if (msg==success){
                     $.showBox("操作成功！");
                     $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsMenu-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeIn(1000);
+                    $(".GoodsState"+id).next(".GoodsChoiceMenu-open").fadeOut(0);
+                    $(".GoodsState"+id).next(".GoodsChoiceMenu-open").next(".GoodsChoiceMenu-off").fadeIn(1000);
                 }
             },error:function (err) {
                 $.showBox("下架失败！请重试！！")
@@ -298,19 +298,28 @@ $(function(){
     });
 
 });
+
+$(function(){
+    $('.AddLiabilityGoods-Choice_two').change(function () {
+        $(".Choice-hidden").fadeOut(0);//将所有class=hidden的盒子全部隐藏
+        var num=$(this).val();//获取到所选中的option的值
+        $("#Select"+num).fadeIn(700);//将id与所选中的option的值相同相同的盒子显示
+    });
+
+});
 // 拼团启用
 $(document).ready(function(){
 
     $(".GoodsFight").each(function(){
         if($(this).children(".status").val()==="open")
         {
-            $(this).children(".GoodsFight-open").fadeIn();
-            $(this).children(".GoodsFight-off").fadeOut();
+            $(this).children(".GoodsMenu-open").fadeIn();
+            $(this).children(".GoodsMenu-off").fadeOut();
         }
         else if($(this).children(".status").val()==="off")
         {
-            $(this).children(".GoodsFight-off").fadeIn();
-            $(this).children(".GoodsFight-open").fadeOut();
+            $(this).children(".GoodsMenu-off").fadeIn();
+            $(this).children(".GoodsMenu-open").fadeOut();
         }
     })
 
@@ -324,8 +333,8 @@ function Up_Menu(id) {
             if (msg==suceess){
                 $.showBox("操作成功！");
                 $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsFight-open").fadeIn(1000);
+                $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
+                $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
             }
         },error:function (err) {
             $.showBox("启用失败！请重试！！")
@@ -334,7 +343,7 @@ function Up_Menu(id) {
 }
 function End_Menu(id) {
     if (id=="1"||id=="2"){
-        $.showBox("对不起！你暂时无权限进行上下架操作！")
+        $.showBox("对不起！你暂时无权限进行启动操作！")
     }else {
         $.ajax({
             url:"/manage/goods/Goodslist/End_Menu",
@@ -344,8 +353,8 @@ function End_Menu(id) {
                 if (msg==success){
                     $.showBox("操作成功！");
                     $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsFight-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsFight-open").next(".GoodsFight-off").fadeIn(1000);
+                    $(".GoodsState"+id).next(".GoodsMenu-open").fadeOut(0);
+                    $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeIn(1000);
                 }
             },error:function (err) {
                 $.showBox("启用失败！请重试！！")
