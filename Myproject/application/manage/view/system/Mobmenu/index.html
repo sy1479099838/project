@@ -32,12 +32,13 @@
                 <td>
                     <span class="Mobmenu-Enable">
                             <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="class-switch">
-                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}" onclick="closeMobmenu('{$vo.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
-                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}">
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}" onclick="openMobmenu('{$vo.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
+                         <input type="hidden" value="{$vo['enable']=='1'?'open':'off'}" class="status">
                         </span>
                 </td>
                 <td>
