@@ -98,6 +98,7 @@ function closeMobmenu(date) {
 
 
 }
+
 function AddClass() {
     $(".AddClass-Box").fadeIn(200);
 }
@@ -118,9 +119,24 @@ $(function () {
             $(".mubanChoice").fadeOut(0);
         }
         $("#ClassSelect"+num).fadeIn(700);
+        $("#EditClassSelect"+num).fadeIn(700);
     });
 });
-
+// $(function () {
+//     $(".ClassSelect_5").change(function () {
+//         $(".ClassSelect_6").fadeOut(0);
+//         var num=$(this).val();
+//         if(num=="0")
+//         {
+//             $(".mubanChoice").fadeIn(0);
+//         }
+//         else
+//         {
+//             $(".mubanChoice").fadeOut(0);
+//         }
+//         $("#EditClassSelect"+num).fadeIn(700);
+//     });
+// });
 function AddClassSubmit() {
     var Name=$('input:text[name="ClassName"]').val();
     var enable=$('input:radio[name="ClassEnable"]:checked').val();
@@ -194,4 +210,21 @@ function EditClass() {
 // 编辑页面关闭
 function closeEditClass() {
     $(".EditClass-Box").fadeOut(100);
+}
+// 删除分类
+function DeleteMobmenu(date) {
+    alert("del"+date);
+    // $.ajax({
+    //     url:"",
+    //     type:"POST",
+    //     data:({id:date}),
+    //     sucess:function(msg){
+    //         if (msg==="success"){
+    //             $.showBox("删除成功！");
+    //             $(".Mobmenu-index-Box").fadeIn(700);
+    //         }
+    //     },error:function (err) {
+    //         $.showBox("删除失败！")；
+    //     }
+    // })
 }
