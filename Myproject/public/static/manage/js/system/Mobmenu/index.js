@@ -82,6 +82,7 @@ $(function () {
             $(".mubanChoice").fadeOut(0);
         }
         $("#ClassSelect"+num).fadeIn(700);
+        $("#EditClassSelect"+num).fadeIn(700);
     });
 });
 
@@ -210,4 +211,21 @@ function CloseClass(data) {
             $.showBox("出错啦！");
         }
     });
+}
+// 删除分类
+function DeleteMobmenu(date) {
+    alert("del"+date);
+    // $.ajax({
+    //     url:"",
+    //     type:"POST",
+    //     data:({id:date}),
+    //     sucess:function(msg){
+    //         if (msg==="success"){
+    //             $.showBox("删除成功！");
+    //             $(".Mobmenu-index-Box").fadeIn(700);
+    //         }
+    //     },error:function (err) {
+    //         $.showBox("删除失败！")；
+    //     }
+    // })
 }

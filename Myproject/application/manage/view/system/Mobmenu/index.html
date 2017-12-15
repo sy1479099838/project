@@ -122,7 +122,7 @@
                 </td>
                 <td>
                     <button class="Mobmenu-edit-button"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
-                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                    <button class="Mobmenu-Del-button" onclick="DeleteMobmenu()"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
                 </td>
             </tr>
             {/volist}
@@ -251,13 +251,13 @@
                     {/present}
                 </select>
                 {present name="ClassList.0"}
-                {volist name="ClassList" id="val"}
-                {present name="val.children.0"}
-                {notin name="val.level" value="2"}
-                <select id="ClassSelect{$val.id}" class="ClassSelect_2">
+                {volist name="ClassList" id="va"}
+                {present name="va.children.0"}
+                {notin name="va.level" value="2"}
+                <select id="EditClassSelect{$va.id}" class="ClassSelect_2">
                     <option value="0">---请选择----</option>
-                    {volist name="val.children" id="val_1"}
-                    <option value="{$val_1.id}">----{$val_1.ClassName}----</option>
+                    {volist name="va.children" id="va_1"}
+                    <option value="{$va_1.id}">----{$va_1.ClassName}----</option>
                     {/volist}
                 </select>
                 {/notin}
