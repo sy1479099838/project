@@ -159,3 +159,55 @@ function EditClass() {
 function closeEditClass() {
     $(".EditClass-Box").fadeOut(100);
 }
+
+function OpenClass(data) {
+    $.ajax({
+        url:"OpenClass",
+        type:"post",
+        data:({
+            num:data
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("成功！");
+                $("#MobmenuSwitch_open"+data).fadeOut(0);
+                $("#MobmenuSwitch_off"+data).fadeIn(500);
+
+            }
+            else
+            {
+                $.showBox("失败，请重试！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("出错啦！");
+        }
+    });
+}
+
+function CloseClass(data) {
+    $.ajax({
+        url:"CloseClass",
+        type:"post",
+        data:({
+            num:data
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("成功！");
+                $("#MobmenuSwitch_off"+data).fadeOut(0);
+                $("#MobmenuSwitch_open"+data).fadeIn(500);
+
+            }
+            else
+            {
+                $.showBox("失败，请重试！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("出错啦！");
+        }
+    });
+}
