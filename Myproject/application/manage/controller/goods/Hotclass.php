@@ -1,7 +1,7 @@
 <?php
 namespace app\manage\controller\goods;
 use app\manage\controller\Common;
-class Goodsclass extends Common
+class Hotclass extends Common
 {
     public function index()
     {
