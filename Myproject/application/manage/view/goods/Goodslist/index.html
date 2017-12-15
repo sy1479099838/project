@@ -322,18 +322,69 @@
         <script type="text/javascript">
             UE.getEditor('newsEditor');
             // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+            function createEditor(){
+                enableBtn();
+                UE.getEditor('editor')
+            }
+            //        function getAllHtml() {
+            //            alert( UE.getEditor('newsEditor').getAllHtml() )
+            //        }
+            function getContent() {
+                var arr = [];
+    //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+    //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('newsEditor').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $(".GoodsPK-Yulan-Box").fadeIn(700);
+//            alert( arr.join( "\n" ) );
+                $("#yulan-box").html(UEvalue);
+            }
+            function closeYulan() {
+                $(".GoodsPK-Yulan-Box").fadeOut(1000);
+            }
+            function Xiang_Submit(){
+                var arr = [];
+                //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+                //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('newsEditor').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $.ajax({
+                    url:'Xiangqing',
+                    type:'post',
+                    data:({data:UEvalue}),
+                    success:function (msg) {
+                        if(msg=="error")
+                        {
+                            $.showBox(" 详情提交失败！");
+                        }
+                        else
+                        {
+                            $.showBox(" 详情提交成功！");
+                        }
+                    },
+                    error:function (msg) {
+                        $.showBox("错误，请重试！");
+                    }
+                });
+            }
         </script>
     </div>
-    <div class="AddMenu-Submit">
-        <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
-    </div>
-    <div class="AddMenu-Submit">
-        <button onclick="getContent()">预&nbsp;&nbsp;&nbsp;览</button>
+    <div class="Xiang-Submit">
+        <div class="X-Submit2">
+            <button onclick="Xiang_Submit()">提&nbsp;&nbsp;&nbsp;交</button>
+        </div>
+        <div class="X-Submit1">
+            <button onclick="getContent()">预&nbsp;&nbsp;&nbsp;览</button>
+        </div>
     </div>
 </div>
 
 <!-----------------------------------商品详情预览-------------------------------------->
 <div class="GoodsPK-Yulan-Box">
+    <p >
+        <button class="icon-remove-sign" onclick="closeYulan()">关闭</button>
+        <span class="cb"></span>
+    </p><br>
     <div id="yulan-box"></div>
 </div>
 <!---------------------------------------商品参数--------------------------------->
@@ -346,23 +397,7 @@
     <script type="text/javascript">
         UE.getEditor('newsEditor1');
         // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
-        function createEditor(){
-            enableBtn();
-            UE.getEditor('editor')
-        }
-//        function getAllHtml() {
-//            alert( UE.getEditor('newsEditor').getAllHtml() )
-//        }
-        function getContent() {
-            var arr = [];
-//            arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
-//            arr.push( "内容为：" );
-            arr.push(  UE.getEditor('newsEditor').getContent() );
-            var UEvalue = arr.join( "\n" );
-            $(".GoodsPK-Yulan-Box").fadeIn(700);
-//            alert( arr.join( "\n" ) );
-            $("#yulan-box").html(UEvalue);
-        }
+
     </script>
 </div>
 <!--商品评论-->

@@ -24526,6 +24526,38 @@ UE.plugin.register('simpleupload', function (){
                             loader = me.document.getElementById(loadingId);
                             loader.setAttribute('src', link);
                             loader.setAttribute('_src', link);
+                            /*==================自己添加的代码====================*/
+                            var width='';
+                            var height='';
+                            // 创建对象
+                            var img = new Image();
+                            // 设置图片的src
+                            img.src = link;
+                            //console.log("link:"+link);
+                            img.onload = function(){
+                                // var UEwidth =document.getElementById('newsEditor').scrollWidth;
+                                // var UEheight =document.getElementById('newsEditor').offsetHeight;
+                                width=img.width;
+                                height=img.height;
+                                if(img.width > 898)
+                                {
+                                    loader.setAttribute('width',898);
+                                    loader.setAttribute('height',auto);
+                                }
+                                else
+                                {
+                                    // console.log('width:'+img.width+',height:'+img.height);
+                                    // alert('没有');
+                                    loader.setAttribute('width',width);
+                                    loader.setAttribute('height',auto);
+                                }
+
+                                // alert(typeof (width));
+
+
+                            };
+                            /*===================结束========================*/
+
                             loader.setAttribute('title', json.title || '');
                             loader.setAttribute('alt', json.original || '');
                             loader.setAttribute('style','max-width:320px');//这里就是哥加入的代码

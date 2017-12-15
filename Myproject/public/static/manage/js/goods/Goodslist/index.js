@@ -396,12 +396,6 @@ function closeGoodsComment() {
     $(".GoodsComment-Menu-Box").fadeOut(1000);
 }
 
-function Xiangyu(){
-    var  Value =document.getElementById('newsEditor').innerHTML;
-    alert(Value);
-}
-
-
 /*商品详情预览页面*/
 //页面加载完毕后执行页面右边的函数
 $(function () {
@@ -489,3 +483,6 @@ $(function () {
 
     };
 });
+
+
+/*商品详情预览关闭*/
