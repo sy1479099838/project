@@ -46,7 +46,6 @@ function PreviewFile () {
         imgfile.src = "";
     }
 }
-// 启用时间
 $(document).ready(function(){
 
     $(".Mobmenu-Enable").each(function(){
@@ -62,42 +61,6 @@ $(document).ready(function(){
         }
     })
 });
-function openMobmenu(date) {
-    alert(date);
-    $.ajax({
-        url:"loadMobmenu",
-        type:"POST",
-        data:({id:date}),
-        success:function (msg) {
-            if(msg==="success"){
-                $.showBox("启用成功！以开启！")
-
-                $("#MobmenuSwitch_open"+date).fadeOut(0);
-                $("#MobmenuSwitch_off"+date).fadeIn(1000);
-            }
-        },error:function (err) {
-            $.showBox("启用失败，请重试！")
-        }
-    })
-}
-function closeMobmenu(date) {
-        $.ajax({
-        url:"closeMobmenu",
-        type:"POST",
-        data:({id:date}),
-        success:function (msg){
-            if (msg==="success"){
-                $.showBox("启动成功！以关闭！");
-                $("#MobmenuSwitch_off"+date).fadeOut(0);
-                $("#MobmenuSwitch_open"+date).fadeIn(1000);
-            }
-        },error:function (err) {
-            $.showBox("1启动失败，请重试！")
-        }
-    })
-
-
-}
 
 function AddClass() {
     $(".AddClass-Box").fadeIn(200);
@@ -119,24 +82,9 @@ $(function () {
             $(".mubanChoice").fadeOut(0);
         }
         $("#ClassSelect"+num).fadeIn(700);
-        $("#EditClassSelect"+num).fadeIn(700);
     });
 });
-// $(function () {
-//     $(".ClassSelect_5").change(function () {
-//         $(".ClassSelect_6").fadeOut(0);
-//         var num=$(this).val();
-//         if(num=="0")
-//         {
-//             $(".mubanChoice").fadeIn(0);
-//         }
-//         else
-//         {
-//             $(".mubanChoice").fadeOut(0);
-//         }
-//         $("#EditClassSelect"+num).fadeIn(700);
-//     });
-// });
+
 function AddClassSubmit() {
     var Name=$('input:text[name="ClassName"]').val();
     var enable=$('input:radio[name="ClassEnable"]:checked').val();
@@ -211,20 +159,55 @@ function EditClass() {
 function closeEditClass() {
     $(".EditClass-Box").fadeOut(100);
 }
-// 删除分类
-function DeleteMobmenu(date) {
-    alert("del"+date);
-    // $.ajax({
-    //     url:"",
-    //     type:"POST",
-    //     data:({id:date}),
-    //     sucess:function(msg){
-    //         if (msg==="success"){
-    //             $.showBox("删除成功！");
-    //             $(".Mobmenu-index-Box").fadeIn(700);
-    //         }
-    //     },error:function (err) {
-    //         $.showBox("删除失败！")；
-    //     }
-    // })
+
+function OpenClass(data) {
+    $.ajax({
+        url:"OpenClass",
+        type:"post",
+        data:({
+            num:data
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("成功！");
+                $("#MobmenuSwitch_open"+data).fadeOut(0);
+                $("#MobmenuSwitch_off"+data).fadeIn(500);
+
+            }
+            else
+            {
+                $.showBox("失败，请重试！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("出错啦！");
+        }
+    });
+}
+
+function CloseClass(data) {
+    $.ajax({
+        url:"CloseClass",
+        type:"post",
+        data:({
+            num:data
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("成功！");
+                $("#MobmenuSwitch_off"+data).fadeOut(0);
+                $("#MobmenuSwitch_open"+data).fadeIn(500);
+
+            }
+            else
+            {
+                $.showBox("失败，请重试！");
+            }
+        },
+        error:function (msg) {
+            $.showBox("出错啦！");
+        }
+    });
 }

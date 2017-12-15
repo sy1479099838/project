@@ -43,4 +43,32 @@ class Mobmenu extends Common
             exit("error");
         }
     }
+    public function OpenClass()
+    {
+        $num=input("num");
+        $value=GoodsClassify::where('id', $num)
+            ->update(['Enable' => '1']);
+        if($value=="1")
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
+    public function CloseClass()
+    {
+        $num=input("num");
+        $value=GoodsClassify::where('id', $num)
+            ->update(['Enable' => '0']);
+        if($value=="1")
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
 }

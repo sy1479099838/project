@@ -32,27 +32,26 @@
                 <td>
                     <span class="Mobmenu-Enable">
                             <input type="hidden" value="{$vo['Enable']=='1'?'open':'off'}" class="class-switch">
-                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}" onclick="closeMobmenu('{$vo.id}')">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo.id}"  onclick="CloseClass('{$vo_1.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
-                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}" onclick="openMobmenu('{$vo.id}')">
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo.id}"  onclick="OpenClass('{$vo_1.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
-                         <input type="hidden" value="{$vo['enable']=='1'?'open':'off'}" class="status">
                         </span>
                 </td>
                 <td>
                     {$vo.createTime|date="Y-m-d H:i:s",###}
                 </td>
                 <td>
-                    <input type="radio" value="1" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='1'?'checked':''} >&nbsp;模板1
-                    <input type="radio" value="2" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='2'?'checked':''} >&nbsp;模板2<br>
-                    <input type="radio" value="3" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='3'?'checked':''} >&nbsp;模板3
-                    <input type="radio" value="4" name="muban{$vo.id}" placeholder="" {$vo['PageDisplays_frame']=='4'?'checked':''} >&nbsp;模板4<br>
+                    <input type="radio" value="1" name="muban{$vo.id}" disabled placeholder="" {$vo['PageDisplays_frame']=='1'?'checked':''} >&nbsp;模板1
+                    <input type="radio" value="2" name="muban{$vo.id}" disabled placeholder="" {$vo['PageDisplays_frame']=='2'?'checked':''} >&nbsp;模板2<br>
+                    <input type="radio" value="3" name="muban{$vo.id}" disabled placeholder="" {$vo['PageDisplays_frame']=='3'?'checked':''} >&nbsp;模板3
+                    <input type="radio" value="4" name="muban{$vo.id}" disabled placeholder="" {$vo['PageDisplays_frame']=='4'?'checked':''} >&nbsp;模板4<br>
                 </td>
                 <td>
-                    <button class="Mobmenu-edit-button" onclick="EditClass('{vo.id}')"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
-                    <button class="Mobmenu-Del-button" onclick="DeleteMobmenu('{vo.id}')"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
+                    <button class="Mobmenu-edit-button" onclick="EditClass()"><img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑</button>
+                    <button class="Mobmenu-Del-button"><img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除</button>
                 </td>
             </tr>
             {present name="vo.children.0"}
@@ -72,10 +71,10 @@
                 <td>
                     <span class="Mobmenu-Enable">
                             <input type="hidden" value="{$vo_2['Enable']=='1'?'open':'off'}" class="class-switch">
-                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_2.id}">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_2.id}" onclick="CloseClass('{$vo_2.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
-                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_2.id}">
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_2.id}" onclick="OpenClass('{$vo_2.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
                         </span>
@@ -107,10 +106,10 @@
                 <td>
                     <span class="Mobmenu-Enable">
                             <input type="hidden" value="{$vo_3['Enable']=='1'?'open':'off'}" class="class-switch">
-                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_3.id}">
+                            <button class="Mobmenu-open" id="MobmenuSwitch_off{$vo_3.id}" onclick="CloseClass('{$vo_3.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
-                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_3.id}">
+                            <button class="Mobmenu-off" id="MobmenuSwitch_open{$vo_3.id}" onclick="OpenClass('{$vo_3.id}')">
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
                         </span>
@@ -252,13 +251,13 @@
                     {/present}
                 </select>
                 {present name="ClassList.0"}
-                {volist name="ClassList" id="va"}
-                {present name="va.children.0"}
-                {notin name="va.level" value="2"}
-                <select id="EditClassSelect{$va.id}" class="ClassSelect_2">
+                {volist name="ClassList" id="val"}
+                {present name="val.children.0"}
+                {notin name="val.level" value="2"}
+                <select id="ClassSelect{$val.id}" class="ClassSelect_2">
                     <option value="0">---请选择----</option>
-                    {volist name="va.children" id="va_1"}
-                    <option value="{$va_1.id}">----{$va_1.ClassName}----</option>
+                    {volist name="val.children" id="val_1"}
+                    <option value="{$val_1.id}">----{$val_1.ClassName}----</option>
                     {/volist}
                 </select>
                 {/notin}
