@@ -2,22 +2,103 @@
 {block name="main"}
     <div class="GoodsClass-box">
         <h1>手机端菜单</h1>
-        <p class="operation">
-            <button class="" onclick="AddClass()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">&nbsp;添加菜单&nbsp;</button>
+        <div class="GoodsClass-Box">
+            <p class="operation">
+                <button class="" onclick="Add_fenlei_re()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">&nbsp;添加热门分类&nbsp;</button>
+            </p>
+            <table class="Mobmenu-index-table">
+                <tbody>
+                <tr>
+                    <th>编号</th>
+                    <th>分类名称</th>
+                    <th>分类图标</th>
+                    <th>分类模板</th>
+                    <th>是否启用</th>
+                    <th>排序</th>
+                    <th>商品</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        此处为商品名称
+                    </td>
+                    <td>
+                        <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="title_photo">
+                    </td>
+                    <td>
+                        <input type="radio" value="1" name="muban" disabled placeholder="" checked >&nbsp;模板1
+                        <input type="radio" value="2" name="muban" disabled placeholder="" >&nbsp;模板2<br>
+                        <input type="radio" value="3" name="muban" disabled placeholder="" >&nbsp;模板3
+                        <input type="radio" value="4" name="muban" disabled placeholder="" >&nbsp;模板4<br>
+                    </td>
+                    <td>
+                        <span class="PcMenu-Enable">
+                            <input type="hidden" value="1" class="status">
+                            <button class="PcMenu-open" onclick="OffMenua()">
+                                <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                            </button>
+                            <button class="PcMenu-off" onclick="OpenMenua()">
+                                <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                            </button>
+                        </span>
+                    </td>
+                    <td>
+                        你猜这是几
+                    </td>
+                    <td>
+                        <button class="chakan" onclick="GoodsPK()">
+                            <img src="__PUBLIC__/manage/images/icon-details.png">查看商品
+                        </button>
+                    </td>
+                    <td>
+                        <button onclick="EditGoods()" >编辑
+                            <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="" id="bianji">
+                        </button><br>
+                        <button onclick="DelGoods()" >删除
+                            <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="" id="shanchu">
+                        </button><br>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-----------------------------------添加热门商品分类--------------------------------------->
+    <div class="Add_fenlei_re">
+        <p>
+            <button onclick="closeAdd_fenlei_re()" id="close_window" class="icon-remove-circle"><b>关闭</b></button>
+            <div class="cb"></div>
         </p>
-        <table class="Mobmenu-index-table">
-            <tbody>
-            <tr>
-                <th>编号</th>
-                <th>菜单名称</th>
-                <th>菜单图标</th>
-                <th>图标修改</th>
-                <th>是否启用</th>
-                <th>添加时间</th>
-                <th>列表模板</th>
-                <th>操作</th>
-            </tr>
-            </tbody>
-        </table>
+        <h1>活动商品管理</h1>
+        <br>
+        <div class="clear:both;"></div>
+        <div class="middle">
+            <li>
+            <div>商品分类名称</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <div>分类图标</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <div>分类模板</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <div>是否启用</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <div>排序</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <div>商品</div><input type="text" name="" value=""/>
+            </li>
+            <li>
+            <button class="Add_fenlei_re_submit" onclick="">提交</button>
+            </li>
+        </div>
     </div>
 {/block}
