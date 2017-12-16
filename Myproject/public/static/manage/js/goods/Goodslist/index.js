@@ -6,13 +6,14 @@ function AddGoods() {
 function closeAddGoods() {
     $(".Goods-AddMenu-Box").fadeOut(1000);
 }
-function GoodslistRegionChoice(data) {
+function GoodsClassChoice(data) {
+    alert(data);
     $.ajax({
-        url:"GoodslistRegionChoice",
+        url:"",
         type:"post",
         data:({num:data}),
         success:function (msg) {
-            $(".Goodslist-table").html(msg);
+            // $(".Goodslist-table").html(msg);
         },
         error:function (meg) {
 
@@ -26,7 +27,7 @@ function AddGoodsSubmit(){
     fg.append("upload", 1);
     fg.append("upfile", $("#img2").get(0).files[0]);
     $.ajax({
-        url: "/manage/view/goods/Goodslist/Goods-AddMenu-Box",
+        url: "GoodsImg",
         type: "POST",
         processData: false,
         contentType: false,
@@ -39,7 +40,7 @@ function AddGoodsSubmit(){
             else
             {
                 var GoodsName=$('input:text[name="goodsName"]').val();
-                var SjName=$('input:text[name="sjName"]').val()
+                var SjName=$('input:text[name="sjName"]').val();
                 var AddLiabilityGoodsPid="";
                 var AddLiabilityGoodsCid="";
                 var num=$(".AddLiabilityGoods-Choice_one").val();
@@ -139,25 +140,7 @@ function AddGoodsSubmit(){
         }
     });
 }
-// 商品编辑
-// function EditGoods(data) {
-//     $.ajax({
-//         url:"/manage/view/goods/Goodslist/Goodslist",
-//         type:"post",
-//         data:({num:data}),
-//         success:function (msg) {
-//             if (msg==null)
-//             {
-//                 $.showBox("你暂时没有查询条件！");
-//             }   else {
-//                 $('.EditGoods-EditMenu-Box').html(msg);
-//                 $('.EditGoods-EditMenu-Box').fadeIn(700);
-//             }
-//         },error:function (num) {
-//
-//         }
-//     })
-// }
+
 function EditGoods() {
     $(".EditGoods-EditMenu-Box").fadeIn(700);
 }
@@ -202,6 +185,121 @@ $(document).ready(function(){
     })
 
 });
+
+/*
+* 插入地图
+* */
+$(function () {
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(104.750115,31.472747);
+    map.centerAndZoom(point,12);
+    map.enableScrollWheelZoom(true);
+    var geoc = new BMap.Geocoder();
+
+    map.addEventListener("click", function(e){
+
+        //通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
+        var pt = e.point;
+        geoc.getLocation(pt, function(rs){
+            //addressComponents对象可以获取到详细的地址信息
+            var addComp = rs.addressComponents;
+            var site = addComp.province +  addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber;
+            //将对应的HTML元素设置值
+
+
+
+            $('input:text[name="position-name"]').val(site);
+            $('input:text[name="position-X"]').val(pt.lng);
+            $('input:text[name="position-Y"]').val(pt.lat);
+
+        });
+    });
+
+
+
+
+
+
+
+    map.centerAndZoom(point,11);
+    $("#Map-serch").click(function () {
+        var name=$('input:text[name="Map-serch"]').val();
+        if(name != ""){
+            map.centerAndZoom(name,11);      // 用城市名设置地图中心点
+        }
+    });
+
+    $('input:text[name="position-name"]').change(function () {
+        var X=$('input:text[name="position-X"]').val();
+        var Y=$('input:text[name="position-Y"]').val();
+        alert(X);
+        var map = new BMap.Map("allmap");
+        map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+        map.enableScrollWheelZoom(true);
+        if(X != "" && Y != ""){
+            map.clearOverlays();
+            var new_point = new BMap.Point(X,Y);
+            var marker = new BMap.Marker(new_point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            map.panTo(new_point);
+        }
+    });
+
+    
+
+});
+
+// 用经纬度设置地图中心点
+// function theLocation(){
+//     var X=$('input:text[name="position-X"]').val();
+//     var Y=$('input:text[name="position-Y"]').val();
+//     alert(X);
+//     var map = new BMap.Map("allmap");
+//     map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+//     map.enableScrollWheelZoom(true);
+//     if(X != "" && Y != ""){
+//         map.clearOverlays();
+//         var new_point = new BMap.Point(X,Y);
+//         var marker = new BMap.Marker(new_point);  // 创建标注
+//         map.addOverlay(marker);              // 将标注添加到地图中
+//         map.panTo(new_point);
+//     }
+//     return false;
+// }
+
+
+
+
+/*
+* 点击获取信息
+* */
+
+// function onclickserch() {
+//     var map = new BMap.Map("allmap");
+//     var point = new BMap.Point(104.750115,31.472747);
+//     map.centerAndZoom(point,12);
+//     map.enableScrollWheelZoom(true);
+//     var geoc = new BMap.Geocoder();
+//
+//     map.addEventListener("click", function(e){
+//
+//         //通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
+//         var pt = e.point;
+//         geoc.getLocation(pt, function(rs){
+//             //addressComponents对象可以获取到详细的地址信息
+//             var addComp = rs.addressComponents;
+//             var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+//             //将对应的HTML元素设置值
+//             alert(site);
+//             alert(pt.lng);
+//             alert(pt.lat);
+//             $("#site").val(site);
+//             $("#longitude").val(pt.lng);
+//             $("#latitude").val(pt.lat);
+//         });
+//     });
+// }
+
 function UpMenu(id) {
     $.ajax({
         url:"/manage/goods/Goodslist/UpMenu",
