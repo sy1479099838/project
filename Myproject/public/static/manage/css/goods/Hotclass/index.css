@@ -35,7 +35,7 @@
 .chakan img{float: left;display: inline-block;width:auto;height:25px;margin-left:18%;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td img{display: inline-block;height: 95%;}
-#bianji{float:left;}
+#bianji{float:left; }
 #shanchu{float:left;}
 
 
