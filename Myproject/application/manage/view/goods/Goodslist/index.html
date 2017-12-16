@@ -1,13 +1,15 @@
 {extend name="Public:index"/}
 {block name="main"}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
             <p>
                 <button class="TreeMenuOne-switch">
-                    <img src="__PUBLIC__/manage/images/openFile.png" alt="">
+                    &nbsp;
                 </button>
-                <a href="javascript:GoodsChoice('0')">全部</a>
+                <a href="javascript:GoodsClassChoice('0')">全部</a>
             </p>
         </div>
         {volist name="ClassList" id="list"}
@@ -16,19 +18,20 @@
                 <button class="TreeMenuOne-switch">
                     <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodsChoice('{$list.id}')">{$list.ClassName}</a>
+                <a href="javascript:GoodsClassChoice('{$list.id}')">{$list.ClassName}</a>
             </p>
             {present name="list.children.0"}
-            {volist name="list.children" id="list_2"}
+
 
             <dl class="treeMenu-one" id="treeOpen_1">
+                {volist name="list.children" id="list_2"}
                 {present name="list_2.children.0"}
                 <dt>
                     <span>&nbsp;</span>
                     <button class="TreeMenuTwo-switch">
                         <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                     </button>
-                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </dt>
                 <dd  class="treeMenu-three" id="treeOpen_2">
                     {volist name="list_2.children" id="list_3"}
@@ -37,7 +40,7 @@
                         <button>
                             <img src="__PUBLIC__/manage/images/file.png" alt="">
                         </button>
-                        <a href="javascript:GoodsChoice('{$list_3.id}')">{$list_3.ClassName}</a>
+                        <a href="javascript:GoodsClassChoice('{$list_3.id}')">{$list_3.ClassName}</a>
                     </div>
                     {/volist}
                 </dd>
@@ -47,11 +50,12 @@
                     <button>
                         <img src="__PUBLIC__/manage/images/file.png" alt="">
                     </button>
-                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </div>
                 {/present}
+                {/volist}
             </dl>
-            {/volist}
+
             {/present}
         </div>
         {/volist}
@@ -83,7 +87,7 @@
                 <th>商品</th>
                 <th>商品封面</th>
                 <th>套餐名称</th>
-                <th>首页模板图</th>
+                <th>热门分类</th>
                 <th>商品详情</th>
                 <th>拼团启用</th>
                 <th>操作</th>
@@ -106,7 +110,8 @@
                     日期：2017.12.01-2017.12.31
                 </td>
                 <td>
-                    首页模板图
+                    分类模板选择：<a href="">模板4</a><br>
+
                 </td>
                 <td>
                     <button class="" onclick="GoodsPK()">
@@ -188,34 +193,35 @@
             </span><br>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+
                     <select class="AddLiabilityGoods-Choice_one">
                         <option value="0">--选择--</option>
-                        <option value="1">--类别--</option>
-                    </select>***
-                    <select id="0" class="Choice-hidden">
-                        <option value="0">--选择--</option>
-                        <option value="1">--类别--</option>
+                        {volist name="ClassList" id="choice"}
+                        <option value="{$choice.id}">--{$choice.ClassName}--</option>
+                        {/volist}
                     </select>
-                    <select id="1" class="Choice-hidden">
+                    {volist name="ClassList" id="choice_1"}
+                    {present name="choice_1.children.0"}
+                    <select id="{$choice_1.id}" class="Choice-hidden">
                         <option value="0">--选择--</option>
-                        <option value="1">--类别--</option>
+                        {volist name="choice_1.children" id="choice_2"}
+                        <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
+                        {/volist}
                     </select>
-                    <select id="2" class="Choice-hidden">
-                        <option value="0">--选择--</option>
-                        <option value="1">--类别--</option>
-                    </select>
+                    {/present}
+                    {/volist}
             </span><br>
             <span>
 
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
-                <input type="text" name="price" id="price" value="" placeholder="实际价格"></input>&nbsp;&nbsp;
+                    <input type="text" name="price" id="price" value="" placeholder="实际价格">&nbsp;&nbsp;
                 <label style="width:20px;">*</label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
-                <input type="text" name="activeprice" id="activePrice" value="" placeholder="实际价格"  ></input>&nbsp;
+                    <input type="text" name="activeprice" id="activePrice" value="" placeholder="活动价格"  >&nbsp;
                 <label style="width:20px;">*</label>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
-                <input type="number" name="number" id="number" value="">
-
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量
+                    <input type="number" name="number" id="number" value="" placeholder="数量">
+                </label>
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
@@ -231,6 +237,17 @@
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
                 <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
             </span><br>
+            <span>
+                商品地址（点击地图获取定位）
+            </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
+            <input type="text" value="" placeholder="地名" disabled name="position-name">
+            <input type="text" value="" placeholder="经度" disabled name="position-X">
+            <input type="text" value="" placeholder="纬度" disabled name="position-Y">
+
+            <div id="allmap" style="height:700px;width:800px;"></div>
+            <!--<div id="r-result"></div>-->
+
+
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
             </div>
