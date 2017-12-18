@@ -2,6 +2,7 @@
 namespace app\manage\controller;
 use think\Controller;
 use app\manage\model\Admin;
+use app\manage\model\Business;
 use think\captcha\Captcha;
 use think\Session;
 class Login extends Controller
@@ -23,7 +24,18 @@ class Login extends Controller
             }
             else
             {
-                exit("error");
+                $BusinessAccount=Business::where('Account',$PostAccount)->field("Account")->find();
+
+                $BusinessAccount=json_decode(json_encode($BusinessAccount,true),true);
+//                dump($BusinessAccount);exit;
+                if($PostAccount===$BusinessAccount["Account"])
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
             }
         }
     }
@@ -39,15 +51,35 @@ class Login extends Controller
             {
                 $value=Admin::where('account',$post["account"])->find();
                 $value=json_decode(json_encode($value,true),true);
-                if(MD5($post["password"])===$value["password"])
+                if($value=="" || $value==NULL)
                 {
-                    Session::set('admin',$value);
-                    exit("验证成功");
+                    $result=Business::where("Account",$post["account"])->find();
+                    $result=json_decode(json_encode($result,true),true);
+                    if(MD5("DHF".$post["password"]."PWD")===$result["LoginPwd"])
+                    {
+                        $result["type"]="Business";
+                        Session::set('admin',$result);
+                        exit("验证成功");
+                    }
+                    else
+                    {
+                        exit("验证失败");
+                    }
                 }
                 else
                 {
-                    exit("验证失败");
+                    if(MD5($post["password"])===$value["password"])
+                    {
+                        $value["type"]="admin";
+                        Session::set('admin',$value);
+                        exit("验证成功");
+                    }
+                    else
+                    {
+                        exit("验证失败");
+                    }
                 }
+
 
             }
             else

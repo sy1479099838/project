@@ -43,7 +43,11 @@
         </a>
         <a href="/manage/topmenu/Manageinfor/index">
             <i class="icon-user fl"></i>
+            {if condition="$LoginAdmin.type neq 'admin'"}
+            <p>{$LoginAdmin.LiablePeople}</p>
+            {else /}
             <p>{$LoginAdmin.AdminName}</p>
+            {/if}
             <div class="cb"></div>
         </a>
     </div>

@@ -308,8 +308,9 @@ function SaveBusinessPower(data) {
 
 
 /*商家密码重置*/
-function BuPwd() {
+function BuPwd(data) {
     $(".Business-pwd-Res-Box").fadeIn();
+    $("input:hidden[name='SureBusinessResPwdNum']").val(data);
 }
 /*商家密码关闭*/
 function CloseBuPwd() {
@@ -412,8 +413,36 @@ function BusinessKeywordSearch() {
             $(".BusinessList-table").html(msg);
         },
         error:function (msg) {
-
+            $.showBox("对不起，出错啦！");
         }
     });
 }
 
+/*
+* 确认修改密码
+* */
+function SureBusinessResPwd() {
+    var num=$('input:hidden[name="SureBusinessResPwdNum"]').val();
+    $.ajax({
+        url:"ResBusinessPwd",
+        type:"post",
+        data:({num:num}),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("密码重置成功");
+                $(".Business-pwd-Res-Box").fadeOut(200);
+            }
+            else
+            {
+                $.showBox("密码已重置！");
+                $(".Business-pwd-Res-Box").fadeOut(200);
+            }
+
+        },
+        error:function (msg) {
+            $.showBox("对不起，出错啦！");
+            $(".Business-pwd-Res-Box").fadeOut(200);
+        }
+    });
+}

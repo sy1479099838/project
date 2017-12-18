@@ -11,9 +11,11 @@ class Business extends Common
     {
         $BusinessList=ModelBusiness::where('id','neq',1)
             ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
-            ->limit(3)
+            ->page('1,3')
             ->order('createTime', 'desc')
             ->select();
+        $PageCount=ModelBusiness::count("id");//总条数
+        $page=ceil($PageCount/3);//总页数
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
         $Nowtime=strtotime(date("Y-m-d",time()));
         foreach($BusinessList as $k=>$v)
@@ -22,8 +24,8 @@ class Business extends Common
             $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
             $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
-//        dump($BusinessList);exit;
         $this->assign("BusinessList",$BusinessList);
+        $this->assign("PageCount",$PageCount);
 
         $this->assign("AdminId",Session::get('admin')["id"]);
 
@@ -287,10 +289,14 @@ class Business extends Common
     {
         $key=input("key");
         $list=ModelBusiness::where('LiablePeople|CompanyName|address','like',"%".$key."%")
+            ->where("id","neq","1")
             ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
-            ->limit(10)
+            ->page('1,3')
             ->order('createTime', 'desc')
             ->select();
+        $PageCount=ModelBusiness::where('LiablePeople|CompanyName|address','like',"%".$key."%")
+                ->where("id","neq","1")
+                ->count("id")-1;
         $list=json_decode(json_encode($list,true),true);
         $Nowtime=strtotime(date("Y-m-d",time()));
         foreach($list as $k=>$v)
@@ -333,5 +339,27 @@ class Business extends Common
             exit("error");
         }
 
+    }
+    
+    /*
+     * 密码重置
+     * */
+    public function ResBusinessPwd()
+    {
+        $id=input("num");
+        $Account=json_decode(json_encode(ModelBusiness::where('id', $id)->field("Account")->find(),true),true)["Account"];
+        $password=MD5("DHFPWd".$Account."PWD");
+        $value = ModelBusiness::where('id', $id)
+            ->update([
+                'LoginPwd'=>$password
+            ]);
+        if($value==1)
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
     }
 }

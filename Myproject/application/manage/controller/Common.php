@@ -18,7 +18,15 @@ class Common extends Controller
         else
         {
             $this->assign("LoginAdmin",$admin);
-            $Rule=$admin["AdminRule"];
+            if($admin["type"]=="admin")
+            {
+                $Rule=$admin["AdminRule"];
+            }
+            else
+            {
+                $Rule=$admin["power"];
+            }
+
             $Rule=explode(",",$Rule);
             if(isset($_GET["id"]))
             {
@@ -35,7 +43,15 @@ class Common extends Controller
                     }
                     else
                     {
-                        $value=Managemenu::where("Enable","1")->where("id","in",$admin["AdminRule"])->field("id,MenuName,leval,pid,href,fileName")->select();
+                        if($admin["type"]=="admin")
+                        {
+                            $value=Managemenu::where("Enable","1")->where("id","in",$admin["AdminRule"])->field("id,MenuName,leval,pid,href,fileName")->select();
+                        }
+                        else
+                        {
+                            $value=Managemenu::where("Enable","1")->where("id","in",$admin["power"])->field("id,MenuName,leval,pid,href,fileName")->select();
+                        }
+
                     }
 
                 }

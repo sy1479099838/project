@@ -18,14 +18,23 @@ class Index extends Controller
         else
         {
             $this->assign("LoginAdmin",$admin);
-            if($admin["id"]==1)
+//            dump($admin);exit;
+            if($admin["type"]=="admin")
             {
-                $value=Managemenu::where("Enable","1")->field("id,MenuName,leval,pid,href,fileName")->select();
+                if($admin["id"]==1)
+                {
+                    $value=Managemenu::where("Enable","1")->field("id,MenuName,leval,pid,href,fileName")->select();
+                }
+                else
+                {
+                    $value=Managemenu::where("Enable","1")->where("id","in",$admin["AdminRule"])->field("id,MenuName,leval,pid,href,fileName")->select();
+                }
             }
             else
             {
-                $value=Managemenu::where("Enable","1")->where("id","in",$admin["AdminRule"])->field("id,MenuName,leval,pid,href,fileName")->select();
+                $value=Managemenu::where("Enable","1")->where("id","in",$admin["power"])->field("id,MenuName,leval,pid,href,fileName")->select();
             }
+
 
 
 
