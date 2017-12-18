@@ -72,33 +72,46 @@
     <div class="Add_fenlei_re">
         <p>
             <button onclick="closeAdd_fenlei_re()" id="close_window" class="icon-remove-circle"><b>关闭</b></button>
-            <div class="cb"></div>
+            <span class="cb"></span>
         </p>
+
         <h1>活动商品管理</h1>
         <br>
         <div class="clear:both;"></div>
-        <div class="middle">
+        <ul class="middle">
             <li>
-            <div>商品分类名称</div><input type="text" name="" value=""/>
+            <div>商品分类名称</div><select>
+                <option value ="volvo">Volvo</option>
+                <option value ="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
             </li>
             <li>
             <div>分类图标</div><input type="text" name="" value=""/>
             </li>
+            <div class="img_1"><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></div>
             <li>
             <div>分类模板</div><input type="text" name="" value=""/>
             </li>
+            <div class="moban_1">
+                <label style="margin-left:15%;"><input type="checkbox" name="" value=""/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="checkbox" name="" value=""/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="checkbox" name="" value=""/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="checkbox" name="" value=""/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+            </div>
+            <div style="clear:both;"></div>
             <li>
-            <div>是否启用</div><input type="text" name="" value=""/>
+                <div>是否启用</div><b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="name" value="" class="kaiguan"/>
+                <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="name" value="" class="kaiguan"/>
             </li>
             <li>
             <div>排序</div><input type="text" name="" value=""/>
             </li>
             <li>
-            <div>商品</div><input type="text" name="" value=""/>
-            </li>
-            <li>
             <button class="Add_fenlei_re_submit" onclick="">提交</button>
             </li>
-        </div>
+            <div style="width:100%;height:40px;"></div>
+        </ul>
     </div>
 {/block}
