@@ -75,11 +75,13 @@
                 {/volist}
                 </tbody>
             </table>
-            <div class="fenye" style="float:right;margin-right:2%;width:10.5%;">
+            <input type="hidden" name="BusinessNowPage" value="{$NowPage}">
+            <div class="fenye" style="float:right;margin-right:2%;">
+
                 <a class="icon-double-angle-left" href="#"></a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
+                {volist name="page" id="vo"}
+                <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="FenYe('{$vo}')">{$vo}</a>
+                {/volist}
                 <a class=" icon-double-angle-right"></a>
             </div>
         </div>

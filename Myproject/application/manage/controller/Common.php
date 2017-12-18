@@ -88,5 +88,50 @@ class Common extends Controller
         Session::clear();
         exit("success");
     }
+    public static function Page($NowPage,$Num)
+    {
+        $page=array();
+        if($Num>8)
+        {
+            if($NowPage<6)
+            {
+                for($i=1;$i<=7;$i++)
+                {
+                    $page[]=$i;
+                }
+                $page[]="...";
+                $page[]=$Num;
+            }
+            elseif($NowPage>=6 && $NowPage<$Num-3)
+            {
+                $page[]="1";
+                $page[]="...";
+                for($i=$NowPage-2;$i<=$NowPage+2;$i++)
+                {
+                    $page[]=$i;
+                }
+                $page[]="...";
+                $page[]=$Num;
+            }
+            else
+            {
+                $page[]="1";
+                $page[]="...";
+                for($i=$Num-6;$i<=$Num;$i++)
+                {
+                    $page[]=$i;
+                }
+
+            }
+        }
+        else
+        {
+            for($i=1;$i<=$Num;$i++)
+            {
+                $page[]=$i;
+            }
+        }
+        return $page;
+    }
 
 }

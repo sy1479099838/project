@@ -15,7 +15,9 @@ class Business extends Common
             ->order('createTime', 'desc')
             ->select();
         $PageCount=ModelBusiness::count("id");//总条数
-        $page=ceil($PageCount/3);//总页数
+        $Num=ceil($PageCount/3);//总页数
+        $NowPage=1;
+        $page=Common::Page($NowPage,$Num);
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
         $Nowtime=strtotime(date("Y-m-d",time()));
         foreach($BusinessList as $k=>$v)
@@ -25,7 +27,8 @@ class Business extends Common
             $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
         $this->assign("BusinessList",$BusinessList);
-        $this->assign("PageCount",$PageCount);
+        $this->assign("NowPage",$NowPage);
+        $this->assign("page",$page);
 
         $this->assign("AdminId",Session::get('admin')["id"]);
 
@@ -40,6 +43,33 @@ class Business extends Common
             }
         }
         return $result;
+    }
+
+    /*
+     * 分页
+     * */
+    public function PageSearch()
+    {
+        $page=input("num");
+        $BusinessList=ModelBusiness::where('id','neq',1)
+            ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
+            ->page($page.',3')
+            ->order('createTime', 'desc')
+            ->select();
+        $PageCount=ModelBusiness::count("id");//总条数
+        $Num=ceil($PageCount/3);//总页数
+        $NowPage=$page;
+        $page=Common::Page($NowPage,$Num);
+        $BusinessList=json_decode(json_encode($BusinessList,true),true);
+        $Nowtime=strtotime(date("Y-m-d",time()));
+        foreach($BusinessList as $k=>$v)
+        {
+            $BusinessList[$k]["PeopleImg"]=json_decode($v["PeopleImg"],true);
+            $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
+            $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
+        }
+        return $this->fetch("PageSearch",["BusinessList"=>$BusinessList,"NowPage"=>$NowPage,"page"=>$page,"AdminId"=>Session::get('admin')["id"]]);
+
     }
     public function setImageCss()
     {

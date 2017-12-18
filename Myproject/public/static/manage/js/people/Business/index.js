@@ -446,3 +446,24 @@ function SureBusinessResPwd() {
         }
     });
 }
+
+/*
+* 分页
+* */
+function FenYe(data) {
+    var NowPage=$("input:hidden[name='BusinessNowPage']").val();
+    if(NowPage!=data)
+    {
+        $.ajax({
+            url:"PageSearch",
+            type:"post",
+            data:({num:data}),
+            success:function (msg) {
+                $(".BusinessList-Content-Box").html(msg);
+            },
+            error:function () {
+                $.showBox("对不起，出错啦！");
+            }
+        });
+    }
+}
