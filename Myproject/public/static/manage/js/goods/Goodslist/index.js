@@ -44,12 +44,16 @@ function AddGoodsSubmit(){
                 var AddLiabilityGoodsPid="";
                 var AddLiabilityGoodsCid="";
                 var num=$(".AddLiabilityGoods-Choice_one").val();
+
+
                 var Price=$('#input[name="price"]').val();
                 var ActivePrice=$('#input[name="activeprice"]').val();
                 var Number=$('#input[name="number"]').val();
-                var StartDate=$("input[name='start_date']").val();
-                var EndDate=$("input[name='end_date']").val();
-                var Head=msg;
+                var StartDate=$("input[name='start_time']").val();
+                var EndDate=$("input[name='end_time']").val();
+
+
+                var Img=msg;
                     if(num=="0")
                     {
                         AddLiabilityGoodsPid = 0;
@@ -231,25 +235,9 @@ $(function () {
 });
 
 
-// function theLocation() {
-//     var X=$('input:text[name="position-X"]').val();
-//     var Y=$('input:text[name="position-Y"]').val();
-//     var map = new BMap.Map("allmap");
-//     map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
-//     map.enableScrollWheelZoom(true);
-//     if(X != "" && Y != ""){
-//         map.clearOverlays();
-//         var new_point = new BMap.Point(X,Y);
-//         var marker = new BMap.Marker(new_point);  // 创建标注
-//         map.addOverlay(marker);              // 将标注添加到地图中
-//         map.panTo(new_point);
-//     }
-// }
-
-
 function UpMenu(id) {
     $.ajax({
-        url:"/manage/goods/Goodslist/UpMenu",
+        url:"UpMenu",
         type:"post",
         data:({id:id}),
         success:function (msg) {

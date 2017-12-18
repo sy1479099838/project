@@ -111,7 +111,8 @@
                     日期：2017.12.01-2017.12.31
                 </td>
                 <td>
-                    分类模板选择：<a href="">模板4</a><br>
+                    模板：<a href="">模板4</a><br>
+                    热门分类：限时抢购
 
                 </td>
                 <td>
@@ -234,18 +235,18 @@
             </span><br>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
-                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                <input type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                <input type="text" name="end_time" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
             </span><br>
             <span>
                 商品地址（点击地图获取定位）
             </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
-            <input type="text" value="" placeholder="地名" disabled name="position-name" id="position-name">
+            <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
             <input type="text" value="" placeholder="经度" disabled name="position-X">
             <input type="text" value="" placeholder="纬度" disabled name="position-Y">
 
-            <div id="allmap" style="height:700px;width:800px;"></div>
+            <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
             <!--<div id="r-result"></div>-->
 
 
