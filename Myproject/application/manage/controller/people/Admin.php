@@ -4,6 +4,7 @@ use app\manage\controller\Common;
 use app\manage\model\Admin as ModelAdmin;
 use app\manage\model\Managemenu;
 use app\manage\model\Region;
+use app\manage\model\Business;
 use think\Session;
 use \think\Validate;
 
@@ -183,6 +184,12 @@ class Admin extends Common
     public function Add()
     {
         $information=$_POST;
+        //判断该账号是否是在上架表里面存在了
+        $ISSBusiness=json_decode(json_encode(Business::where("Account",$information["AdminAccount"])->find(),true),true);
+        if($ISSBusiness)
+        {
+            exit("该账号已经存在！");
+        }
         $admin=Session::get('admin');
         $AdminName=$admin["AdminName"];
 //        dump($information);exit;

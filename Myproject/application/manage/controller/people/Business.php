@@ -3,6 +3,7 @@ namespace app\manage\controller\people;
 use app\manage\controller\Common;
 use app\manage\model\Business as ModelBusiness;
 use app\manage\model\Managemenu;
+use app\manage\model\Admin;
 use think\Session;
 class Business extends Common
 {
@@ -10,7 +11,7 @@ class Business extends Common
     {
         $BusinessList=ModelBusiness::where('id','neq',1)
             ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
-            ->limit(10)
+            ->limit(3)
             ->order('createTime', 'desc')
             ->select();
         $BusinessList=json_decode(json_encode($BusinessList,true),true);
@@ -108,6 +109,9 @@ class Business extends Common
 
     }
 
+    /*
+     * 添加商家
+     * */
     public function AddBusiness()
     {
         $information = input();
@@ -118,6 +122,11 @@ class Business extends Common
         if(preg_match("/[0-9-()（）]{7,18}/",$information["Zuonumber"])!='1')
         {
             exit("座机格式错误！");
+        }
+        $IssExist=json_decode(json_encode(Admin::where("account",$information["Zhanghao"])->find(),true));
+        if($IssExist)
+        {
+            exit("账号已存在！");
         }
         $isExistAccount=ModelBusiness::where("Account",$information["Zhanghao"])->field("Account")->find();
         $isExistAccount=json_decode(json_encode($isExistAccount,true),true);
