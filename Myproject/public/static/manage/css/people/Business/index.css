@@ -116,3 +116,7 @@
 /*商家总权限*/
 
 
+/*分页样式*/
+.Business>.BusinessList-Content-Box>.fenye>a{display:block;width:20px;height:20px;font-size:15px;float:left;line-height:20px;margin-top:20px;margin-left:1%;border:1px solid #7B7B7B;text-align:center;}
+
+

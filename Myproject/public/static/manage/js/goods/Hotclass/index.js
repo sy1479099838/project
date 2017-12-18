@@ -65,4 +65,12 @@ function OpenMenua(date) {
         $(".Add_fenlei_re").fadeOut();
     }
 
+    function EditFenleir(){
+        //alert(0);
+        $(".edit_fenlei_re").fadeIn();
+}
+    function closeedit_fenlei_re(){
+        $(".edit_fenlei_re").fadeOut();
+    }
+
 

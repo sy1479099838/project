@@ -35,8 +35,8 @@
 .chakan img{float: left;display: inline-block;width:auto;height:25px;margin-left:18%;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td img{display: inline-block;height: 95%;}
-#bianji{float:left; }
-#shanchu{float:left;}
+.bianji{float:left; }
+.shanchu{float:left;}
 
 
 /*热门商品分类添加*/
@@ -54,3 +54,20 @@
 .Add_fenlei_re>.middle>.moban_1>label>img{width:100%;height:80px;}
 .Add_fenlei_re>.middle>li>.kaiguan{width:5%;}
 .Add_fenlei_re>.middle>li>.Add_fenlei_re_submit{width:70%;height:42px;margin-left:15%;background:#80FFFF;color:white;border:none;}
+
+
+/*热门商品分类编辑*/
+/*热门商品分类添加*/
+.edit_fenlei_re{width:100%;height:100%;position:absolute;top:0;right:0;display:none;background:rgba(255,255,255,1);}
+#close_window1{position:absolute;top:0;right:0;width:60px;height:40px;font-size:18px;background:rgba(255,255,255,1);border:none;}
+.edit_fenlei_re>.middle{width:80%;height:80%;position:absolute;top:80px;left:10%;}
+.edit_fenlei_re>.middle li{display:block;width:100%;height:40px;margin-top:40px;}
+.edit_fenlei_re>.middle li div{float:left;height:42px;font-size:15px;background:#80FFFF;color:white;width:20%;line-height:40px;text-align:center;margin-left:15%;}
+.edit_fenlei_re>.middle li input{float:left;width:50%;height:40px;border:1px solid #80FFFF;}
+.edit_fenlei_re>.middle li select{float:left;width:50%;height:41px;border:1px solid #80FFFF;appearance:none;-moz-appearance:none;-webkit-appearance:none;}
+.edit_fenlei_re h1{display:block;width:30%;height:50px;font-size:20px;margin-left:35%;margin-top:40px;text-align:center;}
+.edit_fenlei_re>.middle>.img_1 img{height:140px;width:49%;margin-left:35%;margin-top:10px;border:5px solid #f0f0f0;}
+.edit_fenlei_re>.middle>.moban_1 label{display:block;width:14.5%;height:100px;float:left;margin-left:4%;}
+.edit_fenlei_re>.middle>.moban_1>label>img{width:100%;height:80px;}
+.edit_fenlei_re>.middle>li>.kaiguan{width:5%;}
+.edit_fenlei_re>.middle>li>.Add_fenlei_re_submit{width:70%;height:42px;margin-left:15%;background:#80FFFF;color:white;border:none;}
