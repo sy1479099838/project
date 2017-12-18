@@ -54,11 +54,11 @@
                         </button>
                     </td>
                     <td>
-                        <button onclick="EditGoods()" >编辑
-                            <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="" id="bianji">
+                        <button onclick="EditFenleir()" >编辑
+                            <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="" class="bianji"/>
                         </button><br>
                         <button onclick="DelGoods()" >删除
-                            <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="" id="shanchu">
+                            <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="" class="shanchu"/>
                         </button><br>
                     </td>
                 </tr>
@@ -95,14 +95,14 @@
             <div>分类模板</div><input type="text" name="" value=""/>
             </li>
             <div class="moban_1">
-                <label style="margin-left:15%;"><input type="checkbox" name="" value=""/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="checkbox" name="" value=""/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="checkbox" name="" value=""/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="checkbox" name="" value=""/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label style="margin-left:15%;"><input type="radio" name="muban" value="" checked/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="muban" value=""/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="muban" value=""/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="muban" value=""/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
             </div>
             <div style="clear:both;"></div>
             <li>
-                <div>是否启用</div><b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="name" value="" class="kaiguan"/>
+                <div>是否启用</div><b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="name" value="" class="kaiguan" checked/>
                 <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="name" value="" class="kaiguan"/>
             </li>
             <li>
@@ -114,4 +114,52 @@
             <div style="width:100%;height:40px;"></div>
         </ul>
     </div>
+
+
+<!-----------------------------------编辑热门商品分类--------------------------------------->
+<div class="edit_fenlei_re">
+    <p>
+        <button onclick="closeedit_fenlei_re()" id="close_window1" class="icon-remove-circle"><b>关闭</b></button>
+        <span class="cb"></span>
+    </p>
+
+    <h1>活动商品编辑</h1>
+    <br>
+    <div class="clear:both;"></div>
+    <ul class="middle">
+        <li>
+            <div>商品分类名称</div><select>
+            <option value ="volvo">Volvo</option>
+            <option value ="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+        </select>
+        </li>
+        <li>
+            <div>分类图标</div><input type="text" name="" value=""/>
+        </li>
+        <div class="img_1"><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></div>
+        <li>
+            <div>分类模板</div><input type="text" name="" value=""/>
+        </li>
+        <div class="moban_1">
+            <label style="margin-left:15%;"><input type="radio" name="muban" value="" checked/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+            <label><input type="radio" name="muban" value=""/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+            <label><input type="radio" name="muban" value=""/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+            <label><input type="radio" name="muban" value=""/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+        </div>
+        <div style="clear:both;"></div>
+        <li>
+            <div>是否启用</div><b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="name" value="" class="kaiguan" checked/>
+            <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="name" value="" class="kaiguan"/>
+        </li>
+        <li>
+            <div>排序</div><input type="text" name="" value=""/>
+        </li>
+        <li>
+            <button class="Add_fenlei_re_submit" onclick="">提交</button>
+        </li>
+        <div style="width:100%;height:40px;"></div>
+    </ul>
+</div>
 {/block}

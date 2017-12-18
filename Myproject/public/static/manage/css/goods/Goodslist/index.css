@@ -36,7 +36,8 @@
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu{width: 98%;float: left;margin: 2%;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:10px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 10%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 21%;height: 100%;display: inline-block;float: left;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;height: 100%;display: inline-block;float: left;width:18%;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span b{float:left;margin-left:2%;}
 #img1{margin:0 auto;width:400px;height:200px;border:2px solid #f0f0f0;}
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;border:1px solid green;background:#f0f0f0;}
@@ -55,6 +56,7 @@
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span{display: inline-block;margin:5px 0;width: 95%;height: 30px;line-height: 30px;border-bottom: 1px solid #bfbfbf;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span label{width: 10%;height: 100%;display: inline-block;float: left; text-align:justify; text-justify:distribute-all-lines;}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span input{background: none;border: none;width: 21%;height: 100%;display: inline-block;float: left;}
+.EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu span b{float:left;}
 #img3{margin:0 auto;width:400px;height:200px;border:2px solid #f0f0f0;}
 .EditMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .EditMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;}

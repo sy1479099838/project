@@ -221,9 +221,17 @@
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
                     <input type="text" name="activeprice" id="activePrice" value="" placeholder="活动价格"  >&nbsp;
                 <label style="width:20px;">*</label>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量
-                    <input type="number" name="number" id="number" value="" placeholder="数量">
-                </label>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
+                    <input type="text" name="number" id="number" value="">
+
+            </span>
+            <span>
+                <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
+                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
+                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
@@ -299,14 +307,23 @@
                 <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
                 <input type="number" name="number"  value="">
-
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
             </span><br>
+            <span>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
+            </span>
             <span style="height: 210px;text-align: center;">
                 <div  id="img3">
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
+            <span>
+                <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
+                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
+                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
+                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
+            </span>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
