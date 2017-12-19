@@ -80,20 +80,17 @@ function previewFile () {
     var reader = new FileReader();
     reader.readAsDataURL(imgfile);
     reader.onload= function (theFile) {
-        //alert(0);
         var image = new Image();
         image.src = theFile.target.result;
         image.onload = function() {
-            //alert("图片的宽度为"+this.width+",长度为"+this.height);
             if (this.width==40 && this.height==40) {
                 prew.src=image.src;
             } else {
                 imgfile.src = "";
+                document.getElementById("u_img").value="";
                 $.showBox("请上传40*40的图标");
             }
-
         };
-        //alert(imgfile.src);
     };
 
 
