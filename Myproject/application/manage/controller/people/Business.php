@@ -29,6 +29,7 @@ class Business extends Common
         $this->assign("BusinessList",$BusinessList);
         $this->assign("NowPage",$NowPage);
         $this->assign("page",$page);
+        $this->assign("AllPage",$Num);
 
         $this->assign("AdminId",Session::get('admin')["id"]);
 
@@ -51,6 +52,7 @@ class Business extends Common
     public function PageSearch()
     {
         $page=input("num");
+//        dump($page);exit;
         $BusinessList=ModelBusiness::where('id','neq',1)
             ->field("Account,LiablePeople,CompanyName,address,PeopleImg,LicenseImg,PhoneNum,EndTime,createTime,id")
             ->page($page.',3')
@@ -68,7 +70,15 @@ class Business extends Common
             $BusinessList[$k]["endDays"]=($v["EndTime"]-$Nowtime)/(24*60*60);
             $BusinessList[$k]["PhoneNum"]=explode(",",$v["PhoneNum"]);
         }
-        return $this->fetch("PageSearch",["BusinessList"=>$BusinessList,"NowPage"=>$NowPage,"page"=>$page,"AdminId"=>Session::get('admin')["id"]]);
+        return $this->fetch("PageSearch",
+            [
+                "BusinessList"=>$BusinessList,
+                "NowPage"=>$NowPage,
+                "page"=>$page,
+                "AdminId"=>Session::get('admin')["id"],
+                "AllPage"=>$Num
+            ]
+        );
 
     }
     public function setImageCss()

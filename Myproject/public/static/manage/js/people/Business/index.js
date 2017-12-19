@@ -452,12 +452,26 @@ function SureBusinessResPwd() {
 * */
 function FenYe(data) {
     var NowPage=$("input:hidden[name='BusinessNowPage']").val();
-    if(NowPage!=data)
+    var AllPage=$("input:hidden[name='BusinessAllPage']").val();
+    var num="";
+    if(data=="Previous" && NowPage!=1)
+    {
+        num=NowPage-1;
+    }
+    else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
+    {
+        num=parseInt(NowPage)+1;
+    }
+    else
+    {
+        num=data;
+    }
+    if(NowPage!=num && num!="" && num!="Previous" && num!="next")
     {
         $.ajax({
             url:"PageSearch",
             type:"post",
-            data:({num:data}),
+            data:({num:num}),
             success:function (msg) {
                 $(".BusinessList-Content-Box").html(msg);
             },
