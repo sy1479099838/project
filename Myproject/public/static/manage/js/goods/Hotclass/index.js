@@ -75,27 +75,28 @@ function OpenMenua(date) {
 
 /*分类图标预览*/
 function previewFile () {
-    var preview = document.getElementById('img_1');
-    var imgfile=preview.getElementsByTagName('img')[0];
-    var file  = document.querySelector('input[type=file]').files[0];
+    var imgfile = document.getElementById("u_img").files[0];
+    var prew=document.getElementById("img_1");
     var reader = new FileReader();
     reader.readAsDataURL(imgfile);
-    reader.onloadend = function () {
+    reader.onload= function (theFile) {
         //alert(0);
         var image = new Image();
-        //imgfile.src = reader.result;
-        //image.src = theFile.target.result;
+        image.src = theFile.target.result;
         image.onload = function() {
-            alert("图片的宽度为"+this.width+",长度为"+this.height);
+            //alert("图片的宽度为"+this.width+",长度为"+this.height);
+            if (this.width==40 && this.height==40) {
+                prew.src=image.src;
+            } else {
+                imgfile.src = "";
+                $.showBox("请上传40*40的图标");
+            }
+
         };
         //alert(imgfile.src);
     };
 
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        imgfile.src = "";
-    }
+
 }
 /*热门商品分类添加*/
 function Add_fenlei_re_submit(){
