@@ -79,6 +79,7 @@ function previewFile () {
     var imgfile=preview.getElementsByTagName('img')[0];
     var file  = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
+    reader.readAsDataURL(imgfile);
     reader.onloadend = function () {
         //alert(0);
         var image = new Image();
