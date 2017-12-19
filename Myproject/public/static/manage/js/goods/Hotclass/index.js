@@ -57,7 +57,6 @@ function OpenMenua(date) {
 }
 
     function Add_fenlei_re(){
-        //alert(11111111);
         $(".Add_fenlei_re").fadeIn();
     }
 
@@ -115,7 +114,7 @@ function Add_fenlei_re_submit(){
 
                     $.ajax({
                         type:'post',
-                        url:'AddBusiness',
+                        url:'AddHotClass',
                         data:({
                             Name:name,
                             Muban:Muban,

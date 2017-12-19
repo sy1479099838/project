@@ -18,10 +18,10 @@ class Admin extends Common
         {
             $AdminList=ModelAdmin::with("AdminRegion")->select();
             $AdminList=json_decode(json_encode($AdminList,true),true);//根据登录人员的区域Id查询出来的用户列表
-            $AdminList=$this->treeData($AdminList,$admin["pid"]);//转换成树状数组
+            $AdminList=Common::treeData($AdminList,$admin["pid"]);//转换成树状数组
 
             $RegionList=json_decode(json_encode(Region::where("enable","1")->select(),true),true);
-            $RegionList=$this->treeData($RegionList);
+            $RegionList=Common::treeData($RegionList);
         }
         else
         {
@@ -40,21 +40,6 @@ class Admin extends Common
         $this->assign("RegionList",$RegionList);
         $this->assign("AdminList",$AdminList);
         return $this->fetch();
-    }
-    /*
-     * 树状数组的生成函数
-     *传入需要循环的数组和pid
-     * */
-
-    public function treeData($data,$pid = 0){
-        $result = array();
-        foreach($data as $v){
-            if($v['pid'] == $pid){
-                $v['children'] = $this->treeData($data,$v['id']);
-                $result[] = $v;
-            }
-        }
-        return $result;
     }
 
     /*
