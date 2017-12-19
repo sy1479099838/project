@@ -29,16 +29,7 @@ class Region extends Common
         }
 
     }
-    public function treeData($data,$pid = 0){
-        $result = array();
-        foreach($data as $v){
-            if($v['pid'] == $pid){
-                $v['children'] = $this->treeData($data,$v['id']);
-                $result[] = $v;
-            }
-        }
-        return $result;
-    }
+
     public function OffRegion()
     {
         $id=input("id");

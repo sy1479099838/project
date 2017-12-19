@@ -72,11 +72,12 @@ class Common extends Controller
     {
 
     }
-    public function treeData($data,$pid = 0){
+
+    public static function treeData($data,$pid = 0){
         $result = array();
         foreach($data as $v){
             if($v['pid'] == $pid){
-                $v['children'] = $this->treeData($data,$v['id']);
+                $v['children'] = self::treeData($data,$v['id']);
                 $result[] = $v;
             }
         }
