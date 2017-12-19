@@ -76,13 +76,14 @@
                 </tbody>
             </table>
             <input type="hidden" name="BusinessNowPage" value="{$NowPage}">
+            <input type="hidden" name="BusinessAllPage" value="{$AllPage}">
             <div class="fenye" style="float:right;margin-right:2%;">
 
-                <a class="icon-double-angle-left" href="#"></a>
+                <a class="icon-double-angle-left" href="javascript:void(0)" onclick="FenYe('Previous')"></a>
                 {volist name="page" id="vo"}
                 <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="FenYe('{$vo}')">{$vo}</a>
                 {/volist}
-                <a class=" icon-double-angle-right"></a>
+                <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="FenYe('next')"></a>
             </div>
         </div>
         <div class="SeeBigImages" onclick="closeImage()">
