@@ -73,89 +73,40 @@ function OpenMenua(date) {
         $(".edit_fenlei_re").fadeOut();
     }
 
+/*分类图标预览*/
+function previewFile () {
+    var preview = document.getElementById('img_1');
+    var imgfile=preview.getElementsByTagName('img')[0];
+    var file  = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        //alert(0);
+        var image = new Image();
+        //imgfile.src = reader.result;
+        //image.src = theFile.target.result;
+        image.onload = function() {
+            alert("图片的宽度为"+this.width+",长度为"+this.height);
+        };
+        //alert(imgfile.src);
+    };
 
-    /*热门商品分类添加*/
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        imgfile.src = "";
+    }
+}
+/*热门商品分类添加*/
 function Add_fenlei_re_submit(){
-    var fd = new FormData();
-    fd.append("upload", 1);
-    fd.append("upfile", $("#img2").get(0).files[0]);
-    $.ajax({
-        url: "UplodeImg",
-        type: "POST",
-        processData: false,
-        contentType: false,
-        data: fd,
-        success: function(msg) {
-            if(msg=="error")
-            {
-                $.showBox("照片上传失败！");
-            }
-            else
-            {
-                var  Name=$("input[name='fenlei_min']").val();
-                var  Muban=$("input[name='fenlei_mu']").val();
-                var  Kaiguan=$("input[name='kaiguan']").val();
-                var  Xu=$("input[name='fenlei_xu']").val();
-                var  Head=msg;
 
-
-               if(Name=="")
-                {
-                    $.showBox('请输入分类名称');
-                }else if(Muban=="")
-                {
-                    $.showBox("请输入所用模板");
-                }else if(Kaiguan==""){
-                    $.showBox("请明确是否启用");
-                }else if(Xu=="")
-                {
-                    $.showBox ("请填写排列序列");
-                }
-                else{
-
-                    $.ajax({
-                        type:'post',
-                        url:'AddBusiness',
-                        data:({
-                            Name:name,
-                            Muban:Muban,
-                            Kaiguan:Kaiguan,
-                            Xu:Xu,
-                            Head:Head
-                        }),
-                        success:function(data){
-                            if(data=="success")
-                            {
-                                $.showBox("热门商品分类添加成功！");
-                                window.location.reload();
-                            }
-                            else if(data=="error")
-                            {
-                                $.showBox("热门商品分类添加失败！");
-                                window.location.reload();
-                            }
-                            else
-                            {
-                                $.showBox(data);
-                            }
-                        }
-
-
-                    });
-                }
-
-
-            }
-        }
-    });
 }
 
 
-/*热门商品分类添加*/
+/*热门商品分类编辑*/
 function Add_fenlei_re_Edit(){
     var fd = new FormData();
     fd.append("upload", 1);
-    fd.append("upfile", $("#img2").get(0).files[0]);
+    fd.append("upfile", $("#img3").get(0).files[0]);
     $.ajax({
         url: "UplodeImg",
         type: "POST",
