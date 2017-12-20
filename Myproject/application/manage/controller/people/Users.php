@@ -17,4 +17,8 @@ class Users extends Common
     {
         return $this->fetch();
     }
+    public function phoneusers()
+    {
+        return $this->fetch();
+    }
 }
