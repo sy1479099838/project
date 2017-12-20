@@ -1,0 +1,36 @@
+.h1_1{display:block;width:20%;height:50px;text-align:center;line-height:50px;font-size:20px;font-family:"微软雅黑";margin:0 auto;}
+.phone_head{width:100%;height:50px;}
+.phone_head_l1{width:20%;height:32px;float:left;border:2px solid green;border-radius:4px;margin-left:3%;}
+.phone_head_l1 input{width:70%;height:32px;border:none;margin-left:2%;}
+.phone_head_l2{width:50%;height:32px;float:right;border:2px solid green;border-radius:4px;margin-right:15%;}
+.phone_head_l2 input{width:41%;height:32px;border:none;margin-left:2%;}
+.phone_head>.phone_head_l1>.icon-search{width:20px;height:20px;font-size:20px;float:right;margin-right:2%;margin-top:6px;}
+.phone_head>.phone_head_l2>.icon-search{width:20px;height:20px;font-size:20px;float:right;margin-right:2%;margin-top:6px;}
+.user_content{width:94%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 3%;}
+.user_content tbody{width:100%;}
+.user_content tbody  tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;text-align:center;}
+.user_content tbody  tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.user_content tbody  tr td:nth-child(1){width: auto;text-align: center;}
+.user_content tbody  tr td:nth-child(2){width: 10%;text-align: center;}
+.user_content tbody  tr td:nth-child(3){width: 8%;text-align: center;padding:0.3%;}
+.user_content tbody  tr td:nth-child(3) img{width:90%}
+.user_content tbody  tr td:nth-child(4){width: 10%;text-align: center;}
+.user_content tbody  tr td:nth-child(5){width: 15%;text-align: center;}
+.user_content tbody  tr td:nth-child(6){width: 8%;text-align: center;}
+.user_content tbody  tr td:nth-child(7){width: 3%;text-align: center;}
+.user_content tbody  tr td:nth-child(8){width: 8%;text-align: center;}
+.user_content tbody  tr td:nth-child(9){width: 8%;text-align: center;}
+.user_content tbody  tr td:nth-child(10){width:12%;text-align: center;position:relative;}
+.user_content tbody  tr td:nth-child(10) button{width:90%;height:34px;line-height:34px;background:none;border:2px solid green;border-radius:4px;}
+.user_content tbody  tr td:nth-child(10) button img{width:30px;height:28px;float:left;margin-left:12%;}
+.user_content tbody  tr td:nth-child(11){width: 12%;text-align: center;position:relative;}
+
+
+/*消费记录弹窗*/
+.tanchuang{display:none;width:100%;text-align:left;border:1px solid #9D9D9D;position:absolute;right:0;top:70px;background:rgba(255,255,255,1);z-index:999;text-indent:30px;}
+.tanchuang ul{border-top:1px dashed #9D9D9D;}
+
+
+/*ip查传弹窗*/
+.check_ip{display:none;width:100%;border:1px solid #9D9D9D;position:absolute;right:0;top:90px;background:rgba(255,255,255,1);text-align:left;text-indent:30px;}
+.check_ip ul{border-top:1px dashed #9D9D9D;}

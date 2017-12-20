@@ -9,14 +9,14 @@
 <ul class="middle">
     <li>
         <div>商品分类名称</div>
-        <input type="text" name="fenlei_min" value="{$message.HotName}" placeholder="">
+        <input type="text" name="edit_fenlei_min" value="{$message.HotName}" placeholder="">
     </li>
     <li>
-        <div>分类图标</div><input type="file" name="" value=""/>
+        <div>分类图标</div><input type="file" name="" value="" onchange="previewFile_1()" id="u_img_1"/>
     </li>
-    <div class="img_1"><img src="__ROTH__/uploads/{$message.icon}"/></div>
+    <div class="img_1"><img src="__ROTH__/uploads/{$message.icon}" id="img_2"/></div>
     <li>
-        <div>分类模板</div><input type="text" name="" value=""/>
+        <div>分类模板</div><input type="text" name="edit_moban" value=""/>
     </li>
     <div class="moban_1">
         <label style="margin-left:15%;">
@@ -43,7 +43,7 @@
         <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="Editkaiguan" value="0" class="kaiguan" {$message['enable']=='0'?'checked':''}/>
     </li>
     <li>
-        <div>排序</div><input type="number" name="" value="{$message.order}" placeholder=""/>
+        <div>排序</div><input type="number" name="edit_xu" value="{$message.order}" placeholder=""/>
     </li>
     <li>
         <button class="Add_fenlei_re_submit" onclick="Add_fenlei_re_Edit()">提交</button>
