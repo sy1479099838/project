@@ -2,6 +2,7 @@
 {block name="main"}
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
@@ -234,13 +235,17 @@
                 <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
             </span>
             <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label>
             </span><br>
-            <span style="height: 210px;text-align: center;">
-                <div  id="img1">
-                    <img src="" height="99" width="71" alt="请上传商品照"/>
-                </div>
-            </span><br>
+            <span>
+                <a href="javascript:;" class="a-upload">
+                    <input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />选择完后点击上传
+                </a>
+                <button onclick="uplode()" style="width:15%;height:25px;">上传</button>
+            </span>
+            <span style="min-height:150px;height:auto;">
+                <div id="dd" style="width:100%;float: left;"></div>
+            </span>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">

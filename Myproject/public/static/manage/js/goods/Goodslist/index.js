@@ -518,4 +518,85 @@ $(function () {
 });
 
 
-/*商品详情预览关闭*/
+/*商品照片批量添加*/
+function uplode(){
+
+
+    var fileCount = document.getElementById("dd").getElementsByTagName("img");
+    for(i=0;i<fileCount.length;i++)
+    {
+        var fd = new FormData();
+        fd.append("upload", 1);
+        fd.append("upfile", $("#doc").get(0).files[0]);
+        $.ajax({
+            url: "UplodeImg.php",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: fd,
+            success: function(msg) {
+            },
+            error:function()
+            {
+
+            }
+        });
+    }
+
+}
+
+
+//下面用于多图片上传预览功能
+function setImagePreviews(avalue) {
+    console.log(avalue);
+    var docObj = document.getElementById("doc");
+//    console.log(docObj.files);
+
+
+    var dd = document.getElementById("dd");
+    dd.innerHTML = "";
+    var fileList = docObj.files;
+
+
+    for (var i = 0; i < fileList.length; i++) {
+        dd.innerHTML += "<div style='float: left;margin-top: 10px;' > <img id='img" + i + "'  /> </div>";
+        var imgObjPreview = document.getElementById("img"+i);
+        if (docObj.files && docObj.files[i]) {
+            //火狐下，直接设img属性
+            // imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '160px';
+            imgObjPreview.style.height = '130px';
+            imgObjPreview.style.margin = '5px';
+            imgObjPreview.style.borderRadius = '5px';
+            //imgObjPreview.src = docObj.files[0].getAsDataURL();
+            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
+        }
+        else {
+            //IE下，使用滤镜
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("img" + i);
+            //必须设置初始大小
+            localImagId.style.width = "160px";
+            localImagId.style.height = "130px";
+            imgObjPreview.style.margin = '5px';
+            imgObjPreview.style.borderRadius = '5px';
+            //图片异常的捕捉，防止用户修改后缀来伪造图片
+            try {
+                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            }
+            catch (e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+    }
+    return true;
+
+}
+
+
