@@ -18,35 +18,36 @@
                     <th>商品</th>
                     <th>操作</th>
                 </tr>
+                {volist name="List" id="vo"}
                 <tr>
                     <td>
-                        1
+                        {$key+1}
                     </td>
                     <td>
-                        此处为商品名称
+                        {$vo.HotName}
                     </td>
                     <td>
-                        <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="title_photo">
+                        <img src="__ROTH__/uploads/{$vo.icon}" class="title_photo">
                     </td>
                     <td>
-                        <input type="radio" value="1" name="muban" disabled placeholder="" checked >&nbsp;模板1
-                        <input type="radio" value="2" name="muban" disabled placeholder="" >&nbsp;模板2<br>
-                        <input type="radio" value="3" name="muban" disabled placeholder="" >&nbsp;模板3
-                        <input type="radio" value="4" name="muban" disabled placeholder="" >&nbsp;模板4<br>
+                        <input type="radio" value="1" name="Hotmuban" disabled placeholder="" {$vo["MubanNum"]=="1"?"checked":""} >&nbsp;模板1
+                        <input type="radio" value="2" name="Hotmuban" disabled placeholder="" {$vo["MubanNum"]=="2"?"checked":""} >&nbsp;模板2<br>
+                        <input type="radio" value="3" name="Hotmuban" disabled placeholder="" {$vo["MubanNum"]=="3"?"checked":""} >&nbsp;模板3
+                        <input type="radio" value="4" name="Hotmuban" disabled placeholder="" {$vo["MubanNum"]=="4"?"checked":""} >&nbsp;模板4<br>
                     </td>
                     <td>
-                        <span class="PcMenu-Enable">
-                            <input type="hidden" value="1" class="status">
-                            <button class="PcMenu-open" onclick="OffMenua()">
+                        <span class="HotClass-Enable">
+                            <input type="hidden" value="{$vo.enable}" class="status">
+                            <button class="HotClass-open" onclick="OffHotClass('{$vo.id}')" id="HotClassClose{$vo.id}">
                                 <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
                             </button>
-                            <button class="PcMenu-off" onclick="OpenMenua()">
+                            <button class="HotClass-off" onclick="OpenHotClass('{$vo.id}')" id="HotClassopen{$vo.id}">
                                 <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
                             </button>
                         </span>
                     </td>
                     <td>
-                        你猜这是几
+                        {$vo.order}
                     </td>
                     <td>
                         <button class="chakan" onclick="GoodsPK()">
@@ -62,6 +63,7 @@
                         </button><br>
                     </td>
                 </tr>
+                {/volist}
                 </tbody>
             </table>
         </div>
@@ -79,31 +81,37 @@
         <div class="clear:both;"></div>
         <ul class="middle">
             <li>
-            <div>商品分类名称</div><input type="text" name="fenlei_min" value="">
+                <div>商品分类名称</div>
+                <input type="text" name="fenlei_min" value="">
             </li>
             <li>
-            <div>分类图标</div><input type="file" name="fenlei_type" value="" id="u_img" onchange="previewFile('')"/>
+                <div>分类图标</div>
+                <input type="file" name="fenlei_type" value="" id="u_img" onchange="previewFile('')"/>
             </li>
-            <div class="img_1"><img src=""   alt="请上传分类图标" id="img_1"/></div>
+            <div class="img_1">
+                <img src=""   alt="请上传分类图标" id="img_1"/>
+            </div>
             <li>
                 <div>分类模板</div><input type="text" name="" value="请选择下面模板" disabled style="background:white;"/>
             </li>
             <div class="moban_1">
-                <label style="margin-left:15%;"><input type="radio" name="muban" value="" checked/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="radio" name="muban" value=""/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="radio" name="muban" value=""/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
-                <label><input type="radio" name="muban" value=""/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label style="margin-left:15%;"><input type="radio" name="ClassMuBan" value="1" checked/>模板一<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="ClassMuBan" value="2"/>模板二<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="ClassMuBan" value="3"/>模板三<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
+                <label><input type="radio" name="ClassMuBan" value="4"/>模板四<br><img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/></label>
             </div>
+
             <div style="clear:both;"></div>
             <li>
-                <div>是否启用</div><b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="kaiguan" value="" class="kaiguan" checked/>
-                <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="kaiguan" value="" class="kaiguan"/>
+                <div>是否启用</div>
+                <b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="kaiguan" value="1" class="kaiguan" checked/>
+                <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="kaiguan" value="0" class="kaiguan"/>
             </li>
             <li>
-            <div>排序</div><input type="text" name="fenlei_xu" value=""/>
+                <div>排序</div><input type="text" name="fenlei_xu" value=""/>
             </li>
             <li>
-            <button class="Add_fenlei_re_submit" onclick="Add_fenlei_re_submit()">提交</button>
+                <button class="Add_fenlei_re_submit" onclick="Add_fenlei_re_submit()">提交</button>
             </li>
             <div style="width:100%;height:40px;"></div>
         </ul>
