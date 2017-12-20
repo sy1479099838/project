@@ -71,8 +71,29 @@ function OpenHotClass(date) {
         $(".Add_fenlei_re").fadeOut();
     }
 
-    function EditFenleir(){
-        $(".edit_fenlei_re").fadeIn();
+    function EditFenleir(id){
+        $.ajax({
+            url:"EditHotClass",
+            type:"post",
+            data:({
+                num:id
+            }),
+            success:function (msg) {
+                if(msg=="error")
+                {
+                    $.showBox("失败！");
+                }
+                else
+                {
+                    $(".edit_fenlei_re").html(msg);
+                    $(".edit_fenlei_re").fadeIn();
+                }
+            },
+            error:function (msg) {
+                $.showBox("出错啦，请重试！");
+            }
+        });
+
     }
     function closeedit_fenlei_re(){
         $(".edit_fenlei_re").fadeOut();

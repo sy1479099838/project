@@ -1,0 +1,52 @@
+<p>
+    <button onclick="closeedit_fenlei_re()" id="close_window1" class="icon-remove-circle"><b>关闭</b></button>
+    <span class="cb"></span>
+</p>
+
+<h1>活动商品编辑</h1>
+<br>
+<div class="clear:both;"></div>
+<ul class="middle">
+    <li>
+        <div>商品分类名称</div>
+        <input type="text" name="fenlei_min" value="{$message.HotName}" placeholder="">
+    </li>
+    <li>
+        <div>分类图标</div><input type="file" name="" value=""/>
+    </li>
+    <div class="img_1"><img src="__ROTH__/uploads/{$message.icon}"/></div>
+    <li>
+        <div>分类模板</div><input type="text" name="" value=""/>
+    </li>
+    <div class="moban_1">
+        <label style="margin-left:15%;">
+            <input type="radio" name="EditClassMuBan" value="1" {$message['MubanNum']=='1'?'checked':''}/>模板一<br>
+            <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/>
+        </label>
+        <label>
+            <input type="radio" name="EditClassMuBan" value="2" {$message['MubanNum']=='2'?'checked':''}/>模板二<br>
+            <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/>
+        </label>
+        <label>
+            <input type="radio" name="EditClassMuBan" value="3" {$message['MubanNum']=='3'?'checked':''}/>模板三<br>
+            <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/>
+        </label>
+        <label>
+            <input type="radio" name="EditClassMuBan" value="4" {$message['MubanNum']=='4'?'checked':''}/>模板四<br>
+            <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg"/>
+        </label>
+    </div>
+    <div style="clear:both;"></div>
+    <li>
+        <div>是否启用</div>
+        <b style="float:left;margin-top:10px;margin-left:5%;">启用：</b><input type="radio" name="Editkaiguan" value="1" class="kaiguan" {$message['enable']=='1'?'checked':''}/>
+        <b style="float:left;margin-top:10px;margin-left:15%;">关闭：</b><input type="radio" name="Editkaiguan" value="0" class="kaiguan" {$message['enable']=='0'?'checked':''}/>
+    </li>
+    <li>
+        <div>排序</div><input type="number" name="" value="{$message.order}" placeholder=""/>
+    </li>
+    <li>
+        <button class="Add_fenlei_re_submit" onclick="Add_fenlei_re_Edit()">提交</button>
+    </li>
+    <div style="width:100%;height:40px;"></div>
+</ul>

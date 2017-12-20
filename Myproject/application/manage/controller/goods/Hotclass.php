@@ -87,4 +87,22 @@ class Hotclass extends Common
             }
         }
     }
+
+    /*
+     * 编辑前查询
+     * 模板渲染
+     * */
+    public function EditHotClass()
+    {
+        $id=input("num");
+        $value=ModelHotclass::where("id",$id)->find();
+        if($value)
+        {
+            return $this->fetch("EditHotClass",["message"=>$value]);
+        }
+        else
+        {
+            exit("error");
+        }
+    }
 }
