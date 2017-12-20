@@ -32,10 +32,11 @@ function AddGoodsSubmit(){
         SjName="Business";
     }
     var Cid="";
+    var pid="";
     var num_1=$(".AddLiabilityGoods-Choice_one").val();//获取第一个下拉框的值
-    var Price=$('#input[name="price"]').val();
-    var ActivePrice=$('#input[name="activeprice"]').val();
-    var Number=$('#input[name="number"]').val();
+    var Price=$('input[name="price"]').val();
+    var ActivePrice=$('input[name="activeprice"]').val();
+    var Number=$('input[name="number"]').val();
     var StartDate=$("input[name='start_time']").val();
     var EndDate=$("input[name='end_time']").val();
     var positionName=$("input:text[name='position-name']").val();
@@ -51,8 +52,10 @@ function AddGoodsSubmit(){
         var num_2=$("#AddLiabilityGoods"+num_1).val();
         if(num_2=="0"){
             Cid=num_1;
+            pid=num_1;
         }else{
             Cid=num_1+","+num_2;
+            pid=num_2;
         }
     }
     if(GoodsName==""){
@@ -85,6 +88,7 @@ function AddGoodsSubmit(){
     }
     else{
          var result=uplode("doc","UploadImg");
+        // var result="";
          if(result=="success")
          {
              $.ajax({
@@ -102,7 +106,8 @@ function AddGoodsSubmit(){
                      positionName:positionName,
                      X:X,
                      Y:Y,
-                     HotClass:HotClass
+                     HotClass:HotClass,
+                     pid:pid
                  }),
                  success:function(data){
                      if(data=="success")

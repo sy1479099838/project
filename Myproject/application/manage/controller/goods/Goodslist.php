@@ -101,6 +101,7 @@ class Goodslist extends Common
             {
                 $Img=Session::get("GoodsImgUpload");
                 $Img[]=array($head,$ImgName);
+//                dump($Img);
                 Session::set('GoodsImgUpload',$Img);
                 exit("success");
             }
@@ -110,6 +111,7 @@ class Goodslist extends Common
                     0=>array($head,$ImgName)
                 );
                 Session::set('GoodsImgUpload',$Img);
+//                dump($Img);
                 exit("success");
             }
         }
@@ -129,6 +131,7 @@ class Goodslist extends Common
         $information=input();
         $Img=Session::get("GoodsImgUpload");
         $Img=json_encode($Img);
+//        dump($Img);
         $value=Goods::create([
             'GoodsName'  =>  $information["GoodsName"],
             'cid' =>  $information["Cid"],
@@ -142,7 +145,10 @@ class Goodslist extends Common
             'addTime' =>  time(),
             'HotClass' =>  $information["HotClass"],
             'startTime'=>strtotime($information["StartDate"]),
-            'endTime'=>strtotime($information["EndDate"])
+            'endTime'=>strtotime($information["EndDate"]),
+            'oldPrice'=>$information["Price"],
+            'activityPrice'=>$information["ActivePrice"],
+            'pid'=>$information["pid"]
         ]);
         Session::delete('GoodsImgUpload');
         if($value)
