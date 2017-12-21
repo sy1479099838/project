@@ -527,16 +527,17 @@ function uplode(idName,url){
                 contentType: false,
                 data: fd,
                 success: function(msg) {
-                    if(i==fileCount.length-1)
-                    {
-                        return "success";
-                    }
+
                 },
                 error:function()
                 {
                     $.showBox("第"+i+"张照片上传失败！");
                 }
             });
+            if(i==fileCount.length-1)
+            {
+                return "success";
+            }
         }
 
     }

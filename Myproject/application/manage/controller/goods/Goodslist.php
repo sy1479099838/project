@@ -212,7 +212,10 @@ class Goodslist extends Common
                 ->page($page.',4')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
+                ->field("
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,
+                c.CompanyName")
                 ->select();
             $PageCount=Goods::count("id");//总条数
         }
