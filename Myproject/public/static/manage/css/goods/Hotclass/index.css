@@ -23,7 +23,7 @@
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(4){width:13%;text-align: center}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(5){width:15%;text-align: center}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(6){width:9% ;text-align: center}
-.GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(7){width:17% ;text-align: center}
+.GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(7){width:17% ;text-align: center;position:relative;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td:nth-child(8){width:10% ;text-align: center}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td>.GoodsImg{display: inline-block;width: 100%;}
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td>.HotClass-Enable{display: inline-block;width: 100%;text-align: center;padding: 3px 0;}
@@ -37,6 +37,9 @@
 .GoodsClass-box>.GoodsClass-Box>.Mobmenu-index-table tbody tr td img{display: inline-block;height: 95%;}
 .bianji{float:left; }
 .shanchu{float:left;}
+.check_goods{display:none;position:absolute;top:50px;right:0;width:100%;border:1px solid #8B8B8B;z-index:999;background:white;}
+.check_goods ul{border-top:1px dashed #8B8B8B;}
+
 
 
 /*热门商品分类添加*/

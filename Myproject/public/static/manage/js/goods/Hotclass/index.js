@@ -121,6 +121,17 @@ function previewFile () {
 
 
 }
+/*查看商品详情*/
+   function check_fenlei(num){
+        //
+       $("#CH"+num).fadeIn();
+   }
+function close_check_fenlei(num){
+    //
+    $("#CH"+num).fadeOut();
+}
+
+
 /*热门商品分类添加*/
 function Add_fenlei_re_submit() {
     var Name = $("input[name='fenlei_min']").val();

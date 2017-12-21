@@ -50,9 +50,24 @@
                         {$vo.order}
                     </td>
                     <td>
-                        <button class="chakan" onclick="GoodsPK()">
+                        <button class="chakan"  onclick="check_fenlei('{$vo.id}')">
                             <img src="__PUBLIC__/manage/images/icon-details.png">查看商品
                         </button>
+                        <div class="check_goods" id="CH{$vo.id}">
+                            <li class="icon-remove-circle" onclick="close_check_fenlei('{$vo.id}')">关闭</li>
+                            <ul>
+                                <li>商品名称:XXXXXXXXX</li>
+                                <li>所属分类:XXXXXXXXX</li>
+                            </ul>
+                            <ul>
+                                <li>商品名称:XXXXXXXXX</li>
+                                <li>所属分类:XXXXXXXXX</li>
+                            </ul>
+                            <ul>
+                                <li>商品名称:XXXXXXXXX</li>
+                                <li>所属分类:XXXXXXXXX</li>
+                            </ul>
+                        </div>
                     </td>
                     <td>
                         <button onclick="EditFenleir('{$vo.id}')" >编辑
