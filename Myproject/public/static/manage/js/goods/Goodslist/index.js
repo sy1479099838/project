@@ -23,126 +23,114 @@ function GoodsClassChoice(data) {
 }
 // 商品添加的提交按钮
 function AddGoodsSubmit(){
-    var fg = new FormData();
-    fg.append("upload", 1);
-    fg.append("upfile", $("#img2").get(0).files[0]);
-    $.ajax({
-        url: "GoodsImg",
-        type: "POST",
-        processData: false,
-        contentType: false,
-        data: fg,
-        success: function(msg) {
-            if(msg=="error")
-            {
-                $.showBox("照片上传失败！");
-            }
-            else
-            {
-                var GoodsName=$('input:text[name="goodsName"]').val();
-                var SjName=$('input:text[name="sjName"]').val();
-                var AddLiabilityGoodsPid="";
-                var AddLiabilityGoodsCid="";
-                var num=$(".AddLiabilityGoods-Choice_one").val();
+    var GoodsName=$('input:text[name="goodsName"]').val();
+    var ISBusiness=$("#BusinessChoice").length;
+    var SjName="";
+    if(ISBusiness=="1"){
+        SjName=$('#BusinessChoice').val();
+    }else{
+        SjName="Business";
+    }
+    var Cid="";
+    var pid="";
+    var num_1=$(".AddLiabilityGoods-Choice_one").val();//获取第一个下拉框的值
+    var Price=$('input[name="price"]').val();
+    var ActivePrice=$('input[name="activeprice"]').val();
+    var Number=$('input[name="number"]').val();
+    var StartDate=$("input[name='start_time']").val();
+    var EndDate=$("input[name='end_time']").val();
+    var positionName=$("input:text[name='position-name']").val();
+    var X=$("input:text[name='position-X']").val();
+    var Y=$("input:text[name='position-Y']").val();
+    var HotClass = $("input:checkbox[name='AddHot']:checked").map(function(index,elem) {
+        return $(elem).val();
+    }).get().join(',');
 
-
-                var Price=$('#input[name="price"]').val();
-                var ActivePrice=$('#input[name="activeprice"]').val();
-                var Number=$('#input[name="number"]').val();
-                var StartDate=$("input[name='start_time']").val();
-                var EndDate=$("input[name='end_time']").val();
-
-
-                var Img=msg;
-                    if(num=="0")
-                    {
-                        AddLiabilityGoodsPid = 0;
-                        AddLiabilityGoodsCid = 0;
-                    }
-                    else if(num!="0" && $("#AddLiabilityGoods" + num).length<=0)
-                    {
-                        AddLiabilityPeoplePid = num;
-                        AddLiabilityPeopleCid = num;
-                    }
-                    else {
-                        var num_2 = $("#AddLiabilityGoods" + num).val();
-                        if (num_2 == "0") {
-                            AddLiabilityGoodsPid = num;
-                            AddLiabilityGoodsCid = num;
-                        }
-                        else {
-                            AddLiabilityGoodsPid = num_2;
-                            AddLiabilityGoodsCid = num + "," + num_2;
-                        }
-                    }
-                if(GoodsName==""){
-                    $.showBox('请输入商品名');
-                }else if(SjName=="")
-                {
-                    $.showBox('请输商家名称');
-                }
-                else if(Head=="")
-                {
-                    $.showBox("请上传头像");
-                }else if (Price=="")
-                {
-                    $.showBox("请输入商品原价")
-                }
-                else if (ActivePrice==""){
-                    $.showBox("请输入商品活动价")
-                }
-                else if (Number=="")
-                {
-                    $.showBox("请输商品数量")
-                }
-                else if(StartDate=="")
-                {
-                    $.showBox ("填写活动开始日期");
-                }
-                else if(EndDate=="")
-                {
-                    $.showBox ("填写活动结束日期");
-                }
-                else{
-                    $.ajax({
-                        type:'post',
-                        url:'AddGoods',
-                        data:({
-                            GoodsName:GoodsName,
-                            SjName:SjName,
-                            AddLiabilityGoodsPid:AddLiabilityGoodsPid,
-                            AddLiabilityGoodsCid:AddLiabilityGoodsCid,
-                            Price:Price,
-                            ActivePrice:ActivePrice,
-                            Number:Number,
-                            Head:Head,
-                            StartDate:StartDate,
-                            EndDate:EndDate,
-                        }),
-                        success:function(data){
-                            if(data=="success")
-                            {
-                                $.showBox("商家添加成功！");
-                                window.location.reload();
-                            }
-                            else if(data=="error")
-                            {
-                                $.showBox("商家添加失败！");
-                                window.location.reload();
-                            }
-                            else
-                            {
-                                $.showBox(data);
-                            }
-                        }
-                        });
-
-                }
-
-
-            }
+    if(num_1=="0"){
+        $.showBox('请选择商品分类');
+    }else{
+        var num_2=$("#AddLiabilityGoods"+num_1).val();
+        if(num_2=="0"){
+            Cid=num_1;
+            pid=num_1;
+        }else{
+            Cid=num_1+","+num_2;
+            pid=num_2;
         }
-    });
+    }
+    if(GoodsName==""){
+        $.showBox('请输入商品名');
+    }else if(SjName=="")
+    {
+        $.showBox('请输商家名称');
+    }else if (Price=="")
+    {
+        $.showBox("请输入商品原价")
+    }
+    else if (ActivePrice==""){
+        $.showBox("请输入商品活动价")
+    }
+    else if (Number=="")
+    {
+        $.showBox("请输商品数量")
+    }
+    else if(StartDate=="")
+    {
+        $.showBox ("填写活动开始日期");
+    }
+    else if(EndDate=="")
+    {
+        $.showBox ("填写活动结束日期");
+    }
+    else if(positionName=="" || X=="" || Y=="")
+    {
+        $.showBox ("请选择商品位置！");
+    }
+    else{
+         var result=uplode("doc","UploadImg");
+         if(result=="success")
+         {
+             $.ajax({
+                 type:'post',
+                 url:'AddGoods',
+                 data:({
+                     GoodsName:GoodsName,
+                     SjName:SjName,
+                     Price:Price,
+                     Cid:Cid,
+                     ActivePrice:ActivePrice,
+                     Number:Number,
+                     StartDate:StartDate,
+                     EndDate:EndDate,
+                     positionName:positionName,
+                     X:X,
+                     Y:Y,
+                     HotClass:HotClass,
+                     pid:pid
+                 }),
+                 success:function(data){
+                     if(data=="success")
+                     {
+                         $.showBox("商品添加成功！");
+                         window.location.reload();
+                     }
+                     else if(data=="error")
+                     {
+                         $.showBox("商品添加失败！");
+                         window.location.reload();
+                     }
+                     else
+                     {
+                         $.showBox(data);
+                     }
+                 }
+             });
+         }
+         else
+         {
+             $.showBox("请选择照片！");
+         }
+    }
 }
 
 function EditGoods() {
@@ -336,7 +324,7 @@ $(function(){
     $('.AddLiabilityGoods-Choice_one').change(function () {
         $(".Choice-hidden").fadeOut(0);//将所有class=hidden的盒子全部隐藏
         var num=$(this).val();//获取到所选中的option的值
-        $("#"+num).fadeIn(700);//将id与所选中的option的值相同相同的盒子显示
+        $("#AddLiabilityGoods"+num).fadeIn(700);//将id与所选中的option的值相同相同的盒子显示
     });
 
 });
@@ -519,29 +507,40 @@ $(function () {
 
 
 /*商品照片批量添加*/
-function uplode(){
-
-
+function uplode(idName,url){
     var fileCount = document.getElementById("dd").getElementsByTagName("img");
-    for(i=0;i<fileCount.length;i++)
+    if(fileCount.length<1)
     {
-        var fd = new FormData();
-        fd.append("upload", 1);
-        fd.append("upfile", $("#doc").get(0).files[0]);
-        $.ajax({
-            url: "UplodeImg.php",
-            type: "POST",
-            processData: false,
-            contentType: false,
-            data: fd,
-            success: function(msg) {
-            },
-            error:function()
-            {
-
-            }
-        });
+        return "error";
     }
+    else
+    {
+        for(i=0;i<fileCount.length;i++)
+        {
+            var fd = new FormData();
+            fd.append("upload", 1);
+            fd.append("upfile", $("#"+idName).get(0).files[i]);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: fd,
+                success: function(msg) {
+                    if(i==fileCount.length-1)
+                    {
+                        return "success";
+                    }
+                },
+                error:function()
+                {
+                    $.showBox("第"+i+"张照片上传失败！");
+                }
+            });
+        }
+
+    }
+
 
 }
 
@@ -599,4 +598,38 @@ function setImagePreviews(avalue) {
 
 }
 
+/*
+* 分页
+* */
+function GoodsFenYe(data) {
+    var NowPage=$("input:hidden[name='GoodsNowPage']").val();
+    var AllPage=$("input:hidden[name='GoodsAllPage']").val();
+    var num="";
+    if(data=="Previous" && NowPage!=1)
+    {
+        num=NowPage-1;
+    }
+    else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
+    {
+        num=parseInt(NowPage)+1;
+    }
+    else
+    {
+        num=data;
+    }
+    if(NowPage!=num && num!="" && num!="Previous" && num!="next")
+    {
+        $.ajax({
+            url:"PageSearch",
+            type:"post",
+            data:({num:num}),
+            success:function (msg) {
+                $(".Goodslist").html(msg);
+            },
+            error:function () {
+                $.showBox("对不起，出错啦！");
+            }
+        });
+    }
+}
 

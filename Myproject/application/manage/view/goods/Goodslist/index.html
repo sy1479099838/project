@@ -86,46 +86,54 @@
             <tr>
                 <th>编号</th>
                 <th>商品</th>
-                <th>商品封面</th>
-                <th>套餐名称</th>
+                <th>商家</th>
+                <th>热门分类模板</th>
+                <th>套餐</th>
+                <th>活动日期</th>
                 <th>热门分类</th>
                 <th>商品详情</th>
                 <th>拼团启用</th>
                 <th>操作</th>
             </tr>
+            {volist name="GoodsList" id="value"}
             <tr>
                 <td>{$key+1}</td>
                 <td>
-                    名称：绵阳欢乐世界双十二狂欢节<br>
-                    分类：旅游<br>
-                    商家：大黄蜂有限公司<br>
-                    价格：￥128&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥138&nbsp;</i><br>
-                    剩余：123张<br>
+                    名称：{$value.GoodsName}<br>
+                    分类：{$value.ClassName}<br>
+                    价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
                 </td>
                 <td>
-                    <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="GoodsImg">
+                    商家：{$value.CompanyName}<br>
                 </td>
                 <td>
-                    套餐一：<a onclick="PackageBox('')" >全家一日游&nbsp;(￥128)</a><br>
-                    套餐二：<a onclick="PackageBox('')" >亲情1+1&nbsp;(￥128)</a><br>
-                    套餐三：<a onclick="PackageBox('')">豪华单人行&nbsp;(￥128)</a><br>
-                    日期：2017.12.01-2017.12.31
+                    <a href="">查看</a><br>
+                    模板1
                 </td>
                 <td>
-                    模板：<a href="">模板4</a><br>
-                    热门分类：限时抢购
+                    <a href="">查看</a><br>
+                </td>
+                <td>
+                    {$value['startTime']|date="Y/m/d H:i",###}<br>
+                    至 <br>
+                    {$value['endTime']|date="Y/m/d H:i",###}
+                </td>
+                <td>
+                    {volist name="value.HotClass" id="res"}
+                        【{$res.HotName}】<br>
+                    {/volist}
 
                 </td>
                 <td>
                     <button class="" onclick="GoodsPK()">
                         <img src="__PUBLIC__/manage/images/icon-details.png">详情
-                    </button><br>
+                    </button>
                     <button onclick="GoodsParameter()">
                         <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
                     </button><br>
                     <button onclick="GoodsComment()">
                         <img src="__PUBLIC__/manage/images/icon-comment.png" alt="">评论
-                    </button><br>
+                    </button>
 
                         <button class="SHOW_Praise">
                             <img src="__PUBLIC__/manage/images/icon-laud.png" alt="">
@@ -172,8 +180,19 @@
                     </span>
                 </td>
             </tr>
+            {/volist}
             </tbody>
         </table>
+        <input type="hidden" name="GoodsNowPage" value="{$NowPage}">
+        <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
+        <div class="fenye" style="float:right;margin-right:2%;">
+
+            <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenYe('Previous')"></a>
+            {volist name="page" id="vo"}
+            <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenYe('{$vo}')">{$vo}</a>
+            {/volist}
+            <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenYe('next')"></a>
+        </div>
     </div>
     <div style="clear:both;"></div>
     <div class="SeeBigImages" onclick="closeImage()">
@@ -192,7 +211,17 @@
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
                 <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
-                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
+                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label>
+                {if condition="$peopleType neq 'admin'"}
+                <input type="text" name="sjName" value="{$businessName}" disabled placeholder="请输入商家名称">
+                {else /}
+                <select name="sjName" id="BusinessChoice">
+                    <option value="0">--请选择--</option>
+                    {volist name="BusinessList" id="BU"}
+                    <option value="{$BU.id}">{$BU.CompanyName}</option>
+                    {/volist}
+                </select>
+                {/if}
             </span><br>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
@@ -205,7 +234,7 @@
                     </select>
                     {volist name="ClassList" id="choice_1"}
                     {present name="choice_1.children.0"}
-                    <select id="{$choice_1.id}" class="Choice-hidden">
+                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden">
                         <option value="0">--选择--</option>
                         {volist name="choice_1.children" id="choice_2"}
                         <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
@@ -228,11 +257,9 @@
             </span>
             <span>
                 <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
+                {volist name="HotClass" id="Hot"}
+                <b>{$Hot.HotName}</b><input type="checkbox" name="AddHot" value="{$Hot.id}" style="width:2%;">
+                {/volist}
             </span>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label>

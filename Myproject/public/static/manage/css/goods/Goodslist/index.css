@@ -12,16 +12,18 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody{width: 100%;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height:30px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(1){width: 6%;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(1){width: 4%;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(2){width:auto;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td h4{float: left;line-height: 20px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td p{line-height: 20px;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:12%;text-align:center;padding: 1px 1px}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:20%;overflow: hidden;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:15%;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:9% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(7){width:7% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(8){width:7% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(3){width:15%;padding: 1px 1px}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(4){width:7%;overflow: hidden;text-align:center;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(5){width:5%;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(6){width:12% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(7){width:12% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(8){width:14% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9){width:7% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:7% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td>.GoodsImg{display: inline-block;width: 100%;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display: inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;}
