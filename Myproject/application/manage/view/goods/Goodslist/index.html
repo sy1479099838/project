@@ -86,8 +86,10 @@
             <tr>
                 <th>编号</th>
                 <th>商品</th>
-                <th>商品封面</th>
-                <th>套餐名称</th>
+                <th>商家</th>
+                <th>热门分类模板</th>
+                <th>套餐</th>
+                <th>活动日期</th>
                 <th>热门分类</th>
                 <th>商品详情</th>
                 <th>拼团启用</th>
@@ -99,37 +101,39 @@
                 <td>
                     名称：{$value.GoodsName}<br>
                     分类：{$value.ClassName}<br>
+                    价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
+                </td>
+                <td>
                     商家：{$value.CompanyName}<br>
-                    价格：￥{$value.oldPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.activityPrice}&nbsp;</i><br>
-                    剩余：123张<br>
                 </td>
                 <td>
-                    <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="GoodsImg">
+                    <a href="">查看</a><br>
+                    模板1
                 </td>
                 <td>
-                    套餐一：<a onclick="PackageBox('')" >全家一日游&nbsp;(￥128)</a><br>
-                    套餐二：<a onclick="PackageBox('')" >亲情1+1&nbsp;(￥128)</a><br>
-                    套餐三：<a onclick="PackageBox('')">豪华单人行&nbsp;(￥128)</a><br>
-                    日期：{$value['startTime']|date="Y/m/d",###}-{$value['endTime']|date="Y/m/d",###}
+                    <a href="">查看</a><br>
                 </td>
                 <td>
-                    模板：<a href="">模板4</a><br>
-                    热门分类：
+                    {$value['startTime']|date="Y/m/d H:i",###}<br>
+                    至 <br>
+                    {$value['endTime']|date="Y/m/d H:i",###}
+                </td>
+                <td>
                     {volist name="value.HotClass" id="res"}
-                        【{$res.HotName}】
+                        【{$res.HotName}】<br>
                     {/volist}
 
                 </td>
                 <td>
                     <button class="" onclick="GoodsPK()">
                         <img src="__PUBLIC__/manage/images/icon-details.png">详情
-                    </button><br>
+                    </button>
                     <button onclick="GoodsParameter()">
                         <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
                     </button><br>
                     <button onclick="GoodsComment()">
                         <img src="__PUBLIC__/manage/images/icon-comment.png" alt="">评论
-                    </button><br>
+                    </button>
 
                         <button class="SHOW_Praise">
                             <img src="__PUBLIC__/manage/images/icon-laud.png" alt="">
