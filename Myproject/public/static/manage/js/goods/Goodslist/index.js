@@ -598,4 +598,38 @@ function setImagePreviews(avalue) {
 
 }
 
+/*
+* 分页
+* */
+function GoodsFenYe(data) {
+    var NowPage=$("input:hidden[name='GoodsNowPage']").val();
+    var AllPage=$("input:hidden[name='GoodsAllPage']").val();
+    var num="";
+    if(data=="Previous" && NowPage!=1)
+    {
+        num=NowPage-1;
+    }
+    else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
+    {
+        num=parseInt(NowPage)+1;
+    }
+    else
+    {
+        num=data;
+    }
+    if(NowPage!=num && num!="" && num!="Previous" && num!="next")
+    {
+        $.ajax({
+            url:"PageSearch",
+            type:"post",
+            data:({num:num}),
+            success:function (msg) {
+                $(".Goodslist").html(msg);
+            },
+            error:function () {
+                $.showBox("对不起，出错啦！");
+            }
+        });
+    }
+}
 

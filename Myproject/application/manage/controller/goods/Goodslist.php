@@ -13,13 +13,40 @@ class Goodslist extends Common
     {
         $people=Session::get('admin');
         $HotClass=json_decode(json_encode(Hotclass::field("id,HotName")->select(),true),true);
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->page('1,4')
+                ->alias("a")
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->alias("a")
+                ->page('1,4')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
+                ->select();
+            $PageCount=Goods::count("id");//总条数
+        }
 
-        $GoodsList=Db::table('t_goods')
-            ->alias("a")
-            ->join('t_goods_classify b','a.pid = b.id')
-            ->join('t_business c','a.BusinessId=c.id')
-            ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
-            ->select();
+
+        $Num=ceil($PageCount/4);//总页数
+        $NowPage=1;
+        $page=Common::Page($NowPage,$Num);
+        $this->assign("NowPage",$NowPage);
+        $this->assign("page",$page);
+        $this->assign("AllPage",$Num);
+
+
+
         foreach ($GoodsList as $key=>$value)
         {
             $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
@@ -159,6 +186,52 @@ class Goodslist extends Common
         {
             exit("error");
         }
+
+    }
+
+    public function PageSearch()
+    {
+        $page=input("num");
+        $people=Session::get('admin');
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->page($page.',4')
+                ->alias("a")
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->alias("a")
+                ->page($page.',4')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,b.ClassName,c.CompanyName")
+                ->select();
+            $PageCount=Goods::count("id");//总条数
+        }
+        $Num=ceil($PageCount/4);//总页数
+        $NowPage=$page;
+        $page=Common::Page($NowPage,$Num);
+        foreach ($GoodsList as $key=>$value)
+        {
+            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
+            $GoodsList[$key]["HotClass"]=$res;
+        }
+        return $this->fetch("PageSearch",
+            [
+                "GoodsList"=>$GoodsList,
+                "NowPage"=>$NowPage,
+                "page"=>$page,
+                "AllPage"=>$Num
+            ]
+        );
 
     }
 

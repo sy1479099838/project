@@ -179,6 +179,16 @@
             {/volist}
             </tbody>
         </table>
+        <input type="hidden" name="GoodsNowPage" value="{$NowPage}">
+        <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
+        <div class="fenye" style="float:right;margin-right:2%;">
+
+            <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenYe('Previous')"></a>
+            {volist name="page" id="vo"}
+            <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenYe('{$vo}')">{$vo}</a>
+            {/volist}
+            <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenYe('next')"></a>
+        </div>
     </div>
     <div style="clear:both;"></div>
     <div class="SeeBigImages" onclick="closeImage()">
