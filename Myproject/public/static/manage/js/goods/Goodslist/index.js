@@ -88,7 +88,6 @@ function AddGoodsSubmit(){
     }
     else{
          var result=uplode("doc","UploadImg");
-        // var result="";
          if(result=="success")
          {
              $.ajax({
@@ -528,6 +527,10 @@ function uplode(idName,url){
                 contentType: false,
                 data: fd,
                 success: function(msg) {
+                    if(i==fileCount.length-1)
+                    {
+                        return "success";
+                    }
                 },
                 error:function()
                 {
@@ -535,7 +538,7 @@ function uplode(idName,url){
                 }
             });
         }
-        return "success";
+
     }
 
 
