@@ -124,7 +124,21 @@ function previewFile () {
 /*查看商品详情*/
    function check_fenlei(num){
         //
-       $("#CH"+num).fadeIn();
+       $(".check_goods").fadeOut();
+       $.ajax({
+           url:"selectGoods",
+           type:"post",
+           data:({
+               num:num
+           }),
+           success:function (msg) {
+               $("#CH"+num).html(msg);
+               $("#CH"+num).fadeIn();
+           },
+           error:function (msg) {
+               $.showBox("出错啦！");
+           }
+       });
 
    }
 function close_check_fenlei(num){
@@ -344,5 +358,67 @@ function Add_fenlei_re_Edit(){
     }
 
 }
+
+function GoodsHotFenYe(data) {
+    var HotBoxNum=$("input:hidden[name='HotBoxNum']").val();
+    var NowPage=$("input:hidden[name='GoodsHotNowPage']").val();
+    var AllPage=$("input:hidden[name='GoodsHotAllPage']").val();
+    var num="";
+    if(data=="Previous" && NowPage!=1)
+    {
+        num=NowPage-1;
+    }
+    else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
+    {
+        num=parseInt(NowPage)+1;
+    }
+    else
+    {
+        num=data;
+    }
+    if(NowPage!=num && num!="" && num!="Previous" && num!="next")
+    {
+        $.ajax({
+            url:"PageSearch",
+            type:"post",
+            data:({
+                num:num,
+                HotBoxNum:HotBoxNum
+            }),
+            success:function (msg) {
+                $("#CH"+HotBoxNum).html(msg);
+            },
+            error:function () {
+                $.showBox("对不起，出错啦！");
+            }
+        });
+    }
+}
+
+function saveHotOrder(data) {
+    var order=$("input:text[name='HotGoodsOrder"+data+"']").val();
+    $.ajax({
+        url:"GoodsOrder",
+        type:"post",
+        data:({
+            GID:data,
+            order:order
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("排序成功！");
+            }
+            else if(msg=="error")
+            {
+                $.showBox("排序失败");
+            }
+        },
+        error:function (msg) {
+            $.showBox("对不起，出错啦！");
+        }
+    });
+}
+
 
 

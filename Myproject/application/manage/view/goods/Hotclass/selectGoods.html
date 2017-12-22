@@ -1,0 +1,32 @@
+<li class="icon-remove-circle" onclick="close_check_fenlei('{$Id}')" style="cursor: pointer;display: inline-block;width: 100%;text-align: right;">关闭&nbsp;</li>
+
+{if condition="$type neq 'admin'"}
+    {volist name="List" id="vol"}
+    <ul>
+        <li>商品名称:{$vol.GoodsName}</li>
+        <li>
+            排序：<input type="text" placeholder="排序" value="{$vol.HotOrder}" disabled>
+        </li>
+    </ul>
+    {/volist}
+{else /}
+    {volist name="List" id="vo"}
+    <ul>
+        <li style="display: inline-block;width: 100%;text-align: left;">{$key+1}.&nbsp;商品名称&nbsp;:&nbsp;{$vo.GoodsName}</li>
+        <li style="display: inline-block;width: 100%;text-align: left;">
+            排序：<input type="text" placeholder="排序" value="{$vo.HotOrder}"  name="HotGoodsOrder{$Id}|+|{$vo.id}" style="display:inline-block;width: 55%; ">
+            <input type="button" value="保存" onclick="saveHotOrder('{$Id}|+|{$vo.id}')" style="cursor: pointer;">
+        </li>
+    </ul>
+    {/volist}
+{/if}
+<input type="hidden" name="GoodsNowPage" value="{$NowPage}">
+<input type="hidden" name="GoodsAllPage" value="{$AllPage}">
+<div class="fenye" style="float:right;margin-right:2%;">
+    <input type="hidden" value="{$Id}" disabled name="HotBoxNum">
+    <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsHotFenYe('Previous')"></a>
+    {volist name="page" id="value"}
+    <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsHotFenYe('{$value}')">{$value}</a>
+    {/volist}
+    <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsHotFenYe('next')"></a>
+</div>
