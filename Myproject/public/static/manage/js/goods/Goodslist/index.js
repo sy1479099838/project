@@ -634,3 +634,34 @@ function GoodsFenYe(data) {
     }
 }
 
+
+/*商品详情查看*/
+function check_muban(){
+    $(".muban").fadeIn();
+}
+
+/**/
+function close_check_muban(){
+    $(".muban").fadeOut();
+
+}
+
+function previewFile1 () {
+    var preview = document.getElementById('yulan_1');
+    var imgfile=preview.getElementsByTagName('img')[0];
+    var file=document.getElementById('abc').files[0];
+    //console.log(abc);
+    // var file  = document.querySelector("input:file[name='tupian']").files[0];
+
+    // console.log(file);
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        imgfile.src = reader.result;
+    };
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        imgfile.src = "";
+    }
+}
+

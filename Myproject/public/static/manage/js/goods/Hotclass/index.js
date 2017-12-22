@@ -125,6 +125,7 @@ function previewFile () {
    function check_fenlei(num){
         //
        $("#CH"+num).fadeIn();
+
    }
 function close_check_fenlei(num){
     //
