@@ -1,4 +1,4 @@
-<li class="icon-remove-circle" onclick="close_check_fenlei('{$Id}')">关闭</li>
+<li class="icon-remove-circle" onclick="close_check_fenlei('{$Id}')" style="cursor: pointer;display: inline-block;width: 100%;text-align: right;">关闭&nbsp;</li>
 
 {if condition="$type neq 'admin'"}
     {volist name="List" id="vol"}
@@ -12,10 +12,10 @@
 {else /}
     {volist name="List" id="vo"}
     <ul>
-        <li>商品名称:{$vo.GoodsName}</li>
-        <li>
-            排序：<input type="text" placeholder="排序" value="{$vo.HotOrder}" name="HotGoodsOrder{$Id}|+|{$vo.id}">
-            <input type="button" value="保存" onclick="saveHotOrder('{$Id}|+|{$vo.id}')">
+        <li style="display: inline-block;width: 100%;text-align: left;">{$key+1}.&nbsp;商品名称&nbsp;:&nbsp;{$vo.GoodsName}</li>
+        <li style="display: inline-block;width: 100%;text-align: left;">
+            排序：<input type="text" placeholder="排序" value="{$vo.HotOrder}"  name="HotGoodsOrder{$Id}|+|{$vo.id}" style="display:inline-block;width: 55%; ">
+            <input type="button" value="保存" onclick="saveHotOrder('{$Id}|+|{$vo.id}')" style="cursor: pointer;">
         </li>
     </ul>
     {/volist}
