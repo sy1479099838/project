@@ -63,7 +63,7 @@ function AddGoodsSubmit(){
     }else if(SjName=="")
     {
         $.showBox('请输商家名称');
-    }else if (Price=="")
+    }else if (Price=="0")
     {
         $.showBox("请输入商品原价")
     }
