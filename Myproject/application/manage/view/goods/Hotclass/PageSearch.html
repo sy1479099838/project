@@ -3,7 +3,7 @@
 {if condition="$type neq 'admin'"}
     {volist name="List" id="vol"}
     <ul>
-        <li>商品名称:{$vol.GoodsName}/li>
+        <li>商品名称:{$vol.GoodsName}</li>
         <li>
             排序：<input type="text" placeholder="排序" value="{$vol.HotOrder}" disabled>
         </li>

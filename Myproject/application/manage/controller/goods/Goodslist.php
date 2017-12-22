@@ -17,7 +17,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->where("BusinessId",$people["id"])
-                ->page('1,4')
+                ->page('1,8')
                 ->alias("a")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
@@ -31,7 +31,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
-                ->page('1,4')
+                ->page('1,8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
@@ -42,7 +42,7 @@ class Goodslist extends Common
         }
 
 
-        $Num=ceil($PageCount/4);//总页数
+        $Num=ceil($PageCount/8);//总页数
         $NowPage=1;
         $page=Common::Page($NowPage,$Num);
         $this->assign("NowPage",$NowPage);
@@ -201,7 +201,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->where("BusinessId",$people["id"])
-                ->page($page.',4')
+                ->page($page.',8')
                 ->alias("a")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
@@ -215,7 +215,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
-                ->page($page.',4')
+                ->page($page.',8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("
@@ -225,7 +225,7 @@ class Goodslist extends Common
                 ->select();
             $PageCount=Goods::count("id");//总条数
         }
-        $Num=ceil($PageCount/4);//总页数
+        $Num=ceil($PageCount/8);//总页数
 //        dump($PageCount);
         $NowPage=$page;
         $page=Common::Page($NowPage,$Num);
