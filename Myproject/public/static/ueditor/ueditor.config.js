@@ -90,14 +90,14 @@
         //,indentValue:'2em'
 
         ,initialFrameWidth:'60%'  //初始化编辑器宽度,默认1000
-        ,initialFrameHeight:'500'  //初始化编辑器高度,默认320
+        ,initialFrameHeight:'640'  //初始化编辑器高度,默认320
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
         //,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
 
         //启用自动保存
-        //,enableAutoSave: true
+        ,enableAutoSave: false
         //自动保存间隔时间， 单位ms
         //,saveInterval: 500
 
@@ -322,7 +322,7 @@
 
         //tableDragable
         //表格是否可以拖拽
-        //,tableDragable: true
+        ,tableDragable: true
 
 
 
