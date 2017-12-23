@@ -114,7 +114,7 @@
 .anniu div{border:1px solid #8D8D8D;margin-left:6%;margin-top:4px;text-align:center;}
 
 /*模板查询照片修改*/
-.mu_edit{width:40%;height:600px;border:1px  solid #8D8D8D;position:absolute;top:100px;left:30%;border-radius:3px;background:rgba(255,255,255,1);z-index:200;}
+.mu_edit{width:40%;height:600px;border:1px  solid #8D8D8D;position:absolute;top:100px;left:30%;border-radius:3px;background:rgba(255,255,255,1);z-index:200;display:none;}
 .mu_edit>.biao_ti{text-align:center;height:40px;font-size:20px;line-height:40px;border-bottom:1px dashed #8D8D8D;}
 .mu_edit>.Mo_file{margin-left:10%;border-bottom:1px dashed #8D8D8D;margin-top:20px;}
 .mu_edit img{margin-top:40px;width:80%;height:200px;margin-left:10%;border:1px dashed #8D8D8D;z-index:200;}

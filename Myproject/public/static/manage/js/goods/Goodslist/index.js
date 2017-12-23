@@ -643,7 +643,6 @@ function check_muban(){
 /**/
 function close_check_muban(){
     $(".muban").fadeOut();
-
 }
 
 function previewFile1 () {
@@ -663,5 +662,11 @@ function previewFile1 () {
     } else {
         imgfile.src = "";
     }
+}
+function xiugai(){
+    $(".mu_edit").fadeIn();
+}
+function closexiugai(){
+    $(".mu_edit").fadeOut();
 }
 
