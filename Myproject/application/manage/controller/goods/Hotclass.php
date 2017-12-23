@@ -280,4 +280,49 @@ class Hotclass extends Common
             exit("error");
         }
     }
+    /*
+     * 更新热门分类
+     * */
+    public function UpdateHot()
+    {
+        $message=input();
+        if(isset($message["Head"]))
+        {
+            $oldImg=ModelHotclass::where("id",$message["id"])->field("icon")->find()->icon;
+            $value=ModelHotclass::where("id",$message["id"])->update([
+                'HotName'  =>  $message["Name"],
+                'MubanNum' =>  $message["Muban"],
+                'enable' =>  $message["Kaiguan"],
+                'icon' =>  $message["Head"],
+                'order' =>  $message["Xu"]
+            ]);
+            if($value=="1")
+            {
+                unlink("public/uploads/".$oldImg);
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $value=ModelHotclass::where("id",$message["id"])->update([
+                'HotName'  =>  $message["Name"],
+                'MubanNum' =>  $message["Muban"],
+                'enable' =>  $message["Kaiguan"],
+                'order' =>  $message["Xu"]
+            ]);
+            if($value=="1")
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+
+    }
 }
