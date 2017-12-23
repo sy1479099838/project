@@ -636,8 +636,22 @@ function GoodsFenYe(data) {
 
 
 /*商品详情查看*/
-function check_muban(){
-    $(".muban").fadeIn();
+function check_muban(data){
+    $.ajax({
+        url:"Muban",
+        type:"post",
+        data:({
+            Id:data
+        }),
+        success:function (msg) {
+            $(".muban").html(msg);
+            $(".muban").fadeIn();
+        },
+        error:function (msg) {
+            
+        }
+    });
+
 }
 
 /**/
@@ -663,10 +677,54 @@ function previewFile1 () {
         imgfile.src = "";
     }
 }
-function xiugai(){
-    $(".mu_edit").fadeIn();
+function xiugai(data,b){
+    $.ajax({
+        url:"MubanEdit",
+        type:"post",
+        data:({
+            tmp:data,
+            GoodId:b
+        }),
+        success:function (msg) {
+            $(".mu_edit").html(msg);
+            $(".mu_edit").fadeIn();
+        },
+        error:function (msg) {
+
+        }
+    });
+
 }
 function closexiugai(){
     $(".mu_edit").fadeOut();
+}
+
+function SaveImg(good,tmp) {
+    var fd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#abc").get(0).files[0]);
+    $.ajax({
+        url: 'SaveImg/good/'+good+'/tmp/'+tmp,
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data:fd,
+        success: function(msg) {
+            if(msg=="success")
+            {
+                $.showBox("照片上传成功！");
+                window.location.reload();
+            }
+            else
+            {
+                $.showBox("照片上传失败！");
+                window.location.reload();
+            }
+        },
+        error:function()
+        {
+            $.showBox("照片上传失败！");
+        }
+    });
 }
 

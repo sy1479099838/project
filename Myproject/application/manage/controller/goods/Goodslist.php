@@ -245,4 +245,129 @@ class Goodslist extends Common
 
     }
 
+    /*
+     * 模板查看
+     * */
+
+    public function Muban()
+    {
+        $goodid=input('Id');
+        $people=Session::get('admin');
+        if($people["type"]=="admin")
+        {
+            $goodImg=Goods::where("id",$goodid)->field("Template_1,Template_2,Template_3,Template_4")->find();
+        }
+        else
+        {
+            $BusinessId=Goods::where("id",$goodid)->field("BusinessId")->find()->BusinessId;
+            if($BusinessId==$people["id"])
+            {
+                $goodImg=Goods::where("id",$goodid)->field("Template_1,Template_2,Template_3,Template_4")->find();
+            }
+            else
+            {
+                exit("对不起，您没有权限!");
+            }
+        }
+        return $this->fetch("Muban",["goodImg"=>$goodImg,"goodId"=>$goodid]);
+    }
+    /*
+     * 模板照片修改
+     * */
+    public function MubanEdit()
+    {
+        $value=input();
+        $MubanId=$value["tmp"];
+        $goodId=$value["GoodId"];
+        switch ($MubanId)
+        {
+            case 1:
+                $Img=Goods::where("id",$goodId)->field("Template_1")->find()->Template_1;
+                break;
+            case 2:
+                $Img=Goods::where("id",$goodId)->field("Template_2")->find()->Template_2;
+                break;
+            case 3:
+                $Img=Goods::where("id",$goodId)->field("Template_3")->find()->Template_3;
+                break;
+            case 4:
+                $Img=Goods::where("id",$goodId)->field("Template_4")->find()->Template_4;
+                break;
+            default:
+                exit("error");
+        }
+        return $this->fetch("MubanEdit",["Img"=>$Img,"goodId"=>$goodId,"tmp"=>$MubanId]);
+    }
+
+
+    public function SaveImg($good,$tmp)
+    {
+        $file = request()->file("upfile");
+        if($file=="" || $file==NULL)
+        {
+            exit("error");
+        }
+        else
+        {
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            $ruth="public/uploads/";
+            if($info)
+            {
+                $value=$info->getSaveName();// 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
+                $length=strlen($value);
+                $head=substr($value, 0, 8);
+                $ImgName=substr($value, 9, $length-9);
+                $TmpImg=$head."/".$ImgName;
+            }
+        }
+        if($TmpImg && strlen($TmpImg)>15)
+        {
+
+            switch ($tmp)
+            {
+                case 1:
+                    $OldImg=Goods::where("id",$good)->field("Template_1")->find()->Template_1;
+                    $Img=Goods::where("id",$good)->update([
+                        "Template_1"=>$TmpImg
+                    ]);
+                    if($Img==1 && $OldImg!="")
+                    {
+                        unlink("public/uploads/".$OldImg);
+                    }
+                    break;
+                case 2:
+                    $OldImg=Goods::where("id",$good)->field("Template_2")->find()->Template_2;
+                    $Img=Goods::where("id",$good)->update([
+                        "Template_2"=>$TmpImg
+                    ]);
+                    if($Img==1 && $OldImg!="")
+                    {
+                        unlink("public/uploads/".$OldImg);
+                    }
+                    break;
+                case 3:
+                    $OldImg=Goods::where("id",$good)->field("Template_3")->find()->Template_3;
+                    $Img=Goods::where("id",$good)->update([
+                        "Template_3"=>$TmpImg
+                    ]);
+                    if($Img==1 && $OldImg!="")
+                    {
+                        unlink("public/uploads/".$OldImg);
+                    }
+                    break;
+                case 4:
+                    $OldImg=Goods::where("id",$good)->field("Template_4")->find()->Template_4;
+                    $Img=Goods::where("id",$good)->update([
+                        "Template_4"=>$TmpImg
+                    ]);
+                    if($Img==1 && $OldImg!="")
+                    {
+                        unlink("public/uploads/".$OldImg);
+                    }
+                    break;
+            }
+            exit("success");
+        }
+
+    }
 }
