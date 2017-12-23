@@ -143,7 +143,7 @@ function closeEditGoods() {
 
 // 商品删除
 function DelGoods(data) {
-    alert("del"+date);
+    alert(data);
 }
 /*
  * 关键字搜索

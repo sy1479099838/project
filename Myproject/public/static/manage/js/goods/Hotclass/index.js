@@ -70,7 +70,14 @@ function OpenHotClass(date) {
     function closeAdd_fenlei_re(){
         $(".Add_fenlei_re").fadeOut();
     }
-
+    /*
+    * 删除热门分类
+    * */
+    function DelHotClass(data)
+    {
+        alert(data);
+    }
+    
     function EditFenleir(id){
         $.ajax({
             url:"EditHotClass",
@@ -228,15 +235,16 @@ function previewFile_1 () {
 }
 
 /*热门商品分类编辑*/
-function Add_fenlei_re_Edit(){
+function Add_fenlei_re_Edit(data){
 
     var fd = new FormData();
     fd.append("upload", 1);
     fd.append("upfile", $("#u_img_1").get(0).files[0]);
-    var pan_photo=fd.append("upfile", $("#u_img_1").get(0).files[0]);
+    var pan_photo=$("#u_img_1").val();
     if(pan_photo!=''){
+        fd.append("upfile", $("#u_img_1").get(0).files[0]);
         $.ajax({
-            url: "UplodeImg",
+            url: "UplodeImg",//UplodeImg
             type: "POST",
             processData: false,
             contentType: false,
@@ -249,11 +257,10 @@ function Add_fenlei_re_Edit(){
                 else
                 {
                     var  Name=$("input[name='edit_fenlei_min']").val();
-                    var  Muban=$("input[name='edit_moban']").val();
-                    var  Kaiguan=$("input[name='Editkaiguan']").val();
+                    var  Muban=$("input[name='EditClassMuBan']:checked").val();
+                    var  Kaiguan=$("input[name='Editkaiguan']:checked").val();
                     var  Xu=$("input[name='edit_xu']").val();
                     var  Head=msg;
-
 
                     if(Name=="")
                     {
@@ -269,26 +276,26 @@ function Add_fenlei_re_Edit(){
                         $.showBox ("请填写排列序列");
                     }
                     else{
-
                         $.ajax({
                             type:'post',
-                            url:'AddBusiness',
+                            url:'UpdateHot',
                             data:({
-                                Name:name,
+                                Name:Name,
                                 Muban:Muban,
                                 Kaiguan:Kaiguan,
                                 Xu:Xu,
-                                Head:Head
+                                Head:Head,
+                                id:data
                             }),
                             success:function(data){
                                 if(data=="success")
                                 {
-                                    $.showBox("热门商品分类添加成功！");
+                                    $.showBox("热门商品分类编辑成功！");
                                     window.location.reload();
                                 }
                                 else if(data=="error")
                                 {
-                                    $.showBox("热门商品分类添加失败！");
+                                    $.showBox("热门商品分类编辑失败！");
                                     window.location.reload();
                                 }
                                 else
@@ -305,12 +312,12 @@ function Add_fenlei_re_Edit(){
                 }
             }
         });
-    }else{
+    }
+    else{
         var  Name=$("input[name='edit_fenlei_min']").val();
-        var  Muban=$("input[name='edit_moban']").val();
-        var  Kaiguan=$("input[name='Editkaiguan']").val();
+        var  Muban=$("input[name='EditClassMuBan']:checked").val();
+        var  Kaiguan=$("input[name='Editkaiguan']:checked").val();
         var  Xu=$("input[name='edit_xu']").val();
-
         if(Name=="")
         {
             $.showBox('请输入分类名称');
@@ -325,25 +332,25 @@ function Add_fenlei_re_Edit(){
             $.showBox ("请填写排列序列");
         }
         else{
-
             $.ajax({
                 type:'post',
-                url:'AddBusiness',
+                url:'UpdateHot',
                 data:({
-                    Name:name,
+                    Name:Name,
                     Muban:Muban,
                     Kaiguan:Kaiguan,
-                    Xu:Xu
+                    Xu:Xu,
+                    id:data
                 }),
                 success:function(data){
                     if(data=="success")
                     {
-                        $.showBox("热门商品分类添加成功！");
+                        $.showBox("热门商品分类编辑成功！");
                         window.location.reload();
                     }
                     else if(data=="error")
                     {
-                        $.showBox("热门商品分类添加失败！");
+                        $.showBox("热门商品分类编辑失败！");
                         window.location.reload();
                     }
                     else
