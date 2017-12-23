@@ -73,7 +73,7 @@
 .GoodsPK-Menu-Box h1{text-align: center;font-size: 20px;font-weight: bold;}
 
 /*商品详情预览*/
-.GoodsPK-Yulan-Box{display:none;z-index: 999999;position:fixed;top:100px;right:0;width:85%;height:85%;background:rgba(255,255,255,1.0);}
+.GoodsPK-Yulan-Box{display:none;z-index: 999999;position:absolute;top:0;right:0;width:100%;height:85%;background:rgba(255,255,255,1.0);}
 #yulan-box{width: 320px; height: 568px; position: absolute; left: 30%; top: 100px; border: 2px solid aqua; box-sizing: border-box;}
 #yulan-box img{max-width:98%;height:auto;margin-left:1%;}
 .GoodsPK-Yulan-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
@@ -84,12 +84,12 @@
 
 /*点赞参数*/
 .SHOW_Praise{position:relative;}
-.GoodsPraise{background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;position:absolute;top:24px;left:0;width: 300%;}
+.GoodsPraise{background: rgba(255,255,255,1.0);z-index: 999;display: none;position:absolute;top:24px;left:0;width: 300%;}
 .SHOW_Praise:hover .GoodsPraise{display: block;}
 /*商品参数*/
 .GoodsParameter-Menu-Box{width: 100%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top:0;position:absolute;}
-.GoodsParameter-Menu-Box p{width:100%;}
-.GoodsParameter-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+.GoodsParameter-Menu-Box p{width:100%;height:40px;}
+.GoodsParameter-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;height:40px;}
 /*商品评论*/
 .GoodsComment-Menu-Box{width: 17%;height: 100%;background: rgba(255,255,255,1.0);z-index: 999;display: none;border: 1px solid #959595;top: 10%;position:absolute;}
 .GoodsComment-Menu-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
@@ -123,3 +123,10 @@
 
 
 
+/*商品参数预览*/
+.C_GoodsPK-Yulan-Box{display:none;z-index: 999999;position:fixed;top:100px;right:0;width:85%;height:85%;background:rgba(255,255,255,1.0);}
+#Cyulan-box{width: 320px; height: 568px; position: absolute; left: 30%; top: 100px; border: 2px solid aqua; box-sizing: border-box;}
+#Cyulan-box img{max-width:98%;height:auto;margin-left:1%;}
+.C_GoodsPK-Yulan-Box p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;font-size: 18px;border: none;background-color: #FFFFFF;}
+.X-Submit1 button{display: inline-block;width: 30%;height: 95%;font-size: 20px;border-radius: 5px;border:1px solid green;background:#f0f0f0;float:left;margin-left:5%;margin-top:30px;}
+.X-Submit2 button{display: inline-block;width: 30%;height: 95%;font-size: 20px;border-radius: 5px;border:1px solid green;background:#f0f0f0;float:right;margin-right:5%;margin-top:30px;}

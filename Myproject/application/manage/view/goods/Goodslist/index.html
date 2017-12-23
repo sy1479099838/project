@@ -456,18 +456,63 @@
     </p><br>
     <div id="yulan-box"></div>
 </div>
+
+<!-----------------------------------商品参数预览-------------------------------------->
+
 <!---------------------------------------商品参数--------------------------------->
 <div class="GoodsParameter-Menu-Box">
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
         <span class="cb"></span>
     </p><br>
-    <textarea id="newsEditor1" name="content" style="height: 50%">请输入新闻内容... </textarea>
+    <textarea id="newsEditor1" name="content" style="height: 50%" width:98%;>请输入新闻内容... </textarea>
     <script type="text/javascript">
         UE.getEditor('newsEditor1');
         // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
-
+        function getContent2() {
+            var arr = [];
+            //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+            //          arr.push( "内容为：" );
+            arr.push(  UE.getEditor('newsEditor1').getContent() );
+            var UEvalue = arr.join( "\n" );
+            $(".GoodsPK-Yulan-Box").fadeIn(700);
+//            alert( arr.join( "\n" ) );
+            $("#yulan-box").html(UEvalue);
+        }
+        function Xiang_Submit2(){
+            var arr = [];
+            //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+            //          arr.push( "内容为：" );
+            arr.push(  UE.getEditor('newsEditor').getContent() );
+            var UEvalue = arr.join( "\n" );
+            $.ajax({
+                url:'Xiangqing',
+                type:'post',
+                data:({data:UEvalue}),
+                success:function (msg) {
+                    if(msg=="error")
+                    {
+                        $.showBox(" 详情提交失败！");
+                    }
+                    else
+                    {
+                        $.showBox(" 详情提交成功！");
+                    }
+                },
+                error:function (msg) {
+                    $.showBox("错误，请重试！");
+                }
+            });
+        }
     </script>
+    <div class="Xiang-Submit">
+        <div class="X-Submit2">
+            <button onclick="Xiang_Submit2()">提&nbsp;&nbsp;&nbsp;交</button>
+        </div>
+        <div class="X-Submit1">
+            <button onclick="getContent2()">预&nbsp;&nbsp;&nbsp;览</button>
+        </div>
+    </div>
 </div>
 <!--商品评论-->
 <div class="GoodsComment-Menu-Box">
