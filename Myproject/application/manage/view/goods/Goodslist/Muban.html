@@ -1,0 +1,65 @@
+<li class="icon-remove-sign" style="display:block;width:20%;float:right;" onclick="close_check_muban()">
+    关闭
+</li>
+<div style="clear:both;"></div>
+<ul>
+    <li>
+        <div>模板一&nbsp;(尺寸：640*480)</div>
+        <div class="anniu">
+            <div onclick="xiugai(1,'{$goodId}')">修改</div>
+        </div>
+    </li>
+    <li style="margin-top:30px;" id="m_img_1">
+        {empty name="goodImg.Template_1"}
+        <img src="__PUBLIC__/manage/images/qq_158258525856.jpg">
+        {else /}
+        <img src="__ROTH__/uploads/{$goodImg.Template_1}">
+        {/empty}
+    </li>
+</ul>
+<ul>
+    <li>
+        <div>模板二&nbsp;(尺寸：320*320)</div>
+        <div class="anniu">
+            <div onclick="xiugai(2,'{$goodId}')">修改</div>
+        </div>
+    </li>
+    <li style="margin-top:30px;" id="m_img_2">
+        {empty name="goodImg.Template_2"}
+        <img src="__PUBLIC__/manage/images/978684a9018de9d75fd1fecfc789208d.jpg">
+        {else /}
+        <img src="__ROTH__/uploads/{$goodImg.Template_2}">
+        {/empty}
+    </li>
+</ul>
+<ul>
+    <li>
+        <div>模板三&nbsp;(尺寸：620*228)</div>
+        <div class="anniu">
+            <div onclick="xiugai(3,'{$goodId}')">修改</div>
+        </div>
+    </li>
+    <li style="margin-top:30px;" id="m_img_3">
+        {empty name="goodImg.Template_3"}
+        <img src="__PUBLIC__/manage/images/act1.jpg">
+        {else /}
+        <img src="__ROTH__/uploads/{$goodImg.Template_3}">
+        {/empty}
+    </li>
+</ul>
+<ul>
+    <li>
+        <div>模板四&nbsp;(尺寸：320*320)</div>
+        <div class="anniu">
+            <div onclick="xiugai(4,'{$goodId}')">修改</div>
+        </div>
+    </li>
+    <li style="margin-top:30px;" id="m_img_4">
+        {empty name="goodImg.Template_4"}
+        <img src="__PUBLIC__/manage/images/978684a9018de9d75fd1fecfc789208d.jpg">
+        {else /}
+        <img src="__ROTH__/uploads/{$goodImg.Template_4}">
+        {/empty}
+    </li>
+    <li style="clear:both;"></li>
+</ul>

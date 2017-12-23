@@ -1,0 +1,28 @@
+<li class="icon-remove-sign" style="width:20%;float:right;margin-right:5%;height:40px;font-size:18px;text-align:center;line-height:40px;" onclick="closexiugai()">关闭</li>
+<li style="clear:both;"></li>
+<li class="biao_ti">模板照片修改</li>
+<div style="border-bottom:1px dashed #8D8D8D;">
+    <input type="file"  onchange="previewFile1('')"  class="Mo_file"  id="abc">
+    <label>
+        (
+        {switch name="tmp"}
+        {case value="1"}图片尺寸：640*480{/case}
+        {case value="2"}图片尺寸：320*320{/case}
+        {case value="3"}图片尺寸：620*228{/case}
+        {case value="4"}图片尺寸：320*320{/case}
+        {default /}default
+        {/switch}
+        )
+    </label>
+</div>
+
+
+
+<div style="text-align: center;">
+    {empty name="Img"}
+    <img src="" alt="请上传商品照片"/>
+    {else /}
+    <img src="__ROTH__/uploads/{$Img}" alt="请在这上传商品照片"/>
+    {/empty}
+</div>
+<input type="button" value="上传" class="button" onclick="SaveImg('{$goodId}','{$tmp}')">

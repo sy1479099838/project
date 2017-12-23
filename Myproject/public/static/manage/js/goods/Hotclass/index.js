@@ -230,8 +230,6 @@ function previewFile_1 () {
             }
         };
     };
-
-
 }
 
 /*热门商品分类编辑*/
