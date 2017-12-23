@@ -112,7 +112,7 @@
                     模板1
                 </td>
                 <td>
-                    <a href="">查看</a><br>
+                    <a href="javascript:void(0);" onclick="Package('123')">查看</a><br>
                 </td>
                 <td>
                     {$value['startTime']|date="Y/m/d H:i",###}<br>
@@ -465,7 +465,6 @@
     <textarea id="newsEditor1" name="content" style="height: 50%">请输入新闻内容... </textarea>
     <script type="text/javascript">
         UE.getEditor('newsEditor1');
-        // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
 
     </script>
 </div>

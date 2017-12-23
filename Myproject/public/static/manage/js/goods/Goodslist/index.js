@@ -727,4 +727,7 @@ function SaveImg(good,tmp) {
         }
     });
 }
+function Package(data) {
+    alert(data);
+}
 
