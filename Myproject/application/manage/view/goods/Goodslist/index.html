@@ -388,55 +388,7 @@
     <h1>商品详情编辑</h1>
     <div align="center" style="width:90%;margin-left:5%;">
         <textarea id="newsEditor" name="content" style="height: 100%">请输入新闻内容... </textarea>
-        <script type="text/javascript">
-            UE.getEditor('newsEditor');
-            // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
-            function createEditor(){
-                enableBtn();
-                UE.getEditor('editor')
-            }
-            //        function getAllHtml() {
-            //            alert( UE.getEditor('newsEditor').getAllHtml() )
-            //        }
-            function getContent() {
-                var arr = [];
-    //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
-    //          arr.push( "内容为：" );
-                arr.push(  UE.getEditor('newsEditor').getContent() );
-                var UEvalue = arr.join( "\n" );
-                $(".GoodsPK-Yulan-Box").fadeIn(700);
-//            alert( arr.join( "\n" ) );
-                $("#yulan-box").html(UEvalue);
-            }
-            function closeYulan() {
-                $(".GoodsPK-Yulan-Box").fadeOut(1000);
-            }
-            function Xiang_Submit(){
-                var arr = [];
-                //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
-                //          arr.push( "内容为：" );
-                arr.push(  UE.getEditor('newsEditor').getContent() );
-                var UEvalue = arr.join( "\n" );
-                $.ajax({
-                    url:'Xiangqing',
-                    type:'post',
-                    data:({data:UEvalue}),
-                    success:function (msg) {
-                        if(msg=="error")
-                        {
-                            $.showBox(" 详情提交失败！");
-                        }
-                        else
-                        {
-                            $.showBox(" 详情提交成功！");
-                        }
-                    },
-                    error:function (msg) {
-                        $.showBox("错误，请重试！");
-                    }
-                });
-            }
-        </script>
+        <script type="text/javascript" src="__PUBLIC__/manage/js/goods/Goodslist/editor.js"></script>
     </div>
     <div class="Xiang-Submit">
         <div class="X-Submit2">
@@ -465,46 +417,11 @@
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
         <span class="cb"></span>
     </p><br>
-    <textarea id="newsEditor1" name="content" style="height: 50%" width:98%;>请输入新闻内容... </textarea>
-    <script type="text/javascript">
-        UE.getEditor('newsEditor1');
-        // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
-        function getContent2() {
-            var arr = [];
-            //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
-            //          arr.push( "内容为：" );
-            arr.push(  UE.getEditor('newsEditor1').getContent() );
-            var UEvalue = arr.join( "\n" );
-            $(".GoodsPK-Yulan-Box").fadeIn(700);
-//            alert( arr.join( "\n" ) );
-            $("#yulan-box").html(UEvalue);
-        }
-        function Xiang_Submit2(){
-            var arr = [];
-            //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
-            //          arr.push( "内容为：" );
-            arr.push(  UE.getEditor('newsEditor').getContent() );
-            var UEvalue = arr.join( "\n" );
-            $.ajax({
-                url:'Xiangqing',
-                type:'post',
-                data:({data:UEvalue}),
-                success:function (msg) {
-                    if(msg=="error")
-                    {
-                        $.showBox(" 详情提交失败！");
-                    }
-                    else
-                    {
-                        $.showBox(" 详情提交成功！");
-                    }
-                },
-                error:function (msg) {
-                    $.showBox("错误，请重试！");
-                }
-            });
-        }
-    </script>
+    <h1 style="text-align: center;font-size: 22px;">商品参数编辑</h1>
+    <div align="center" style="width:90%;margin-left:5%;">
+        <textarea id="newsEditor1" name="content" style="height: 50%; width:98%;">请输入新闻内容... </textarea>
+        <script type="text/javascript"  src="__PUBLIC__/manage/js/goods/Goodslist/editor.js" ></script>
+    </div>
     <div class="Xiang-Submit">
         <div class="X-Submit2">
             <button onclick="Xiang_Submit2()">提&nbsp;&nbsp;&nbsp;交</button>
@@ -553,13 +470,32 @@
 
 
 <!---------------------------商品模板选择----------------------------->
-<div class="muban">
-
-</div>
+<div class="muban"></div>
 
 <!-------------------模板照片修改--------------------->
-<div class="mu_edit" id="yulan_1">
-
+<div class="mu_edit" id="yulan_1"></div>
+<!--------------------预览--------------------->
+<div class="changeWidth">
+    <h1 class="change-h1"><button class="icon-remove-circle" onclick="closeYulan()">&nbsp关闭</button></h1>
+    <h1 class="change-p">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        请选择手机模型，或拖动边框查看效果！
+    </h1>
+    <div class="changeWidth-head">
+        <button onclick="changeBox(326,486)">iPhone4</button>
+        <button onclick="changeBox(326,574)">iPhone5</button>
+        <button onclick="changeBox(381,673)">iPhone6</button>
+        <button onclick="changeBox(420,742)">iPhone6 plus</button>
+        <span class="showBoxWidth"></span>
+    </div>
+    <div class="MoveBox">
+        <div class="moveTop"></div>
+        <div class="moveLeft"></div>
+        <div class="moveRight"></div>
+        <div class="moveBottom"></div>
+        <div class="moveContent"></div>
+    </div>
+    <span class="mousePosition"></span>
 </div>
 {/block}
 
