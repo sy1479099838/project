@@ -5,6 +5,7 @@ use app\manage\model\GoodsClassify;
 use app\manage\model\Business;
 use app\manage\model\Hotclass;
 use app\manage\model\Goods;
+use app\manage\model\Parameter;
 use think\Session;
 use think\Db;
 class Goodslist extends Common
@@ -369,5 +370,57 @@ class Goodslist extends Common
             exit("success");
         }
 
+    }
+    /*
+     * 商品详情预览
+     * */
+    public function GoodsDetails()
+    {
+        $id=input("id");
+        $val=Parameter::where("GoodsId",$id)->field("id,GoodsDetails")->find();
+        if($val=="" || $val==NULL)
+        {
+            $value="请在这儿输入商品详情！";
+        }
+        else
+        {
+            $value=$val->GoodsDetails;
+        }
+
+        exit($value);
+    }
+    public function Xiangqing()
+    {
+        $value=input();
+        $val=Parameter::where("GoodsId",$value["goodsId"])->field("id,GoodsDetails")->find();
+        if($val=="" || $val==NULL)
+        {
+            $result=Parameter::create([
+                'GoodsId'=>$value["goodsId"],
+                'GoodsDetails'  =>  $value["data"]
+            ]);
+            if($result)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $result=Parameter::where("GoodsId",$value["goodsId"])->update([
+                'GoodsDetails'  =>  $value["data"]
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
     }
 }

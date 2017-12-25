@@ -16,22 +16,27 @@ function getContent() {
 function closeYulan() {
     $(".changeWidth").fadeOut(200);
 }
-function Xiang_Submit(){
+function Xiang_Submit(num){
     var arr = [];
     arr.push(  UE.getEditor('newsEditor').getContent() );
     var UEvalue = arr.join( "\n" );
     $.ajax({
         url:'Xiangqing',
         type:'post',
-        data:({data:UEvalue}),
+        data:({
+            data:UEvalue,
+            goodsId:num
+        }),
         success:function (msg) {
             if(msg=="error")
             {
                 $.showBox(" 详情提交失败！");
+                window.location.reload();
             }
             else
             {
                 $.showBox(" 详情提交成功！");
+                window.location.reload();
             }
         },
         error:function (msg) {
@@ -51,7 +56,7 @@ function getContent2() {
     $(".changeWidth").fadeIn(700);
     $(".changeWidth>.MoveBox>.moveContent").html(UEvalue);
 }
-function Xiang_Submit2(){
+function Xiang_Submit2(data){
     var arr = [];
     arr.push(  UE.getEditor('newsEditor').getContent() );
     var UEvalue = arr.join( "\n" );
@@ -60,17 +65,37 @@ function Xiang_Submit2(){
         type:'post',
         data:({data:UEvalue}),
         success:function (msg) {
-            if(msg=="error")
-            {
-                $.showBox(" 详情提交失败！");
-            }
-            else
-            {
-                $.showBox(" 详情提交成功！");
-            }
+            // setContent(msg);
+            alert(msg);
         },
         error:function (msg) {
             $.showBox("错误，请重试！");
         }
     });
+}
+
+var ue = UE.getEditor('newsEditor');
+function setContent(text) {
+    UE.getEditor('newsEditor').setContent(text);
+}
+
+// 商品详情打开
+function GoodsPK(data) {
+    var Html= '<button onclick="Xiang_Submit('+data+')">提&nbsp;&nbsp;&nbsp;交</button>';
+    $.ajax({
+        url:"GoodsDetails",
+        type:"post",
+        data:({
+            id:data
+        }),
+        success:function (msg) {
+            setContent(msg);
+            $(".X-Submit2").append(Html);
+            $(".GoodsPK-Menu-Box").fadeIn(700);
+        },
+        error:function (msg) {
+
+        }
+    });
+
 }

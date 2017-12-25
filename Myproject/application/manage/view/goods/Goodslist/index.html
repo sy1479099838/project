@@ -126,7 +126,7 @@
 
                 </td>
                 <td>
-                    <button class="" onclick="GoodsPK()">
+                    <button class="" onclick="GoodsPK('{$value.id}')">
                         <img src="__PUBLIC__/manage/images/icon-details.png">详情
                     </button>
                     <button onclick="GoodsParameter()">
@@ -392,10 +392,10 @@
     </div>
     <div class="Xiang-Submit">
         <div class="X-Submit2">
-            <button onclick="Xiang_Submit()">提&nbsp;&nbsp;&nbsp;交</button>
+
         </div>
         <div class="X-Submit1">
-            <button onclick="getContent()">预&nbsp;&nbsp;&nbsp;览</button>
+            <button onclick="getContent('')">预&nbsp;&nbsp;&nbsp;览</button>
         </div>
     </div>
 </div>
@@ -479,7 +479,7 @@
     <h1 class="change-h1"><button class="icon-remove-circle" onclick="closeYulan()">&nbsp关闭</button></h1>
     <h1 class="change-p">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        请选择手机模型，或拖动边框查看效果！
+        请选择屏幕下方手机类型，或拖动边框查看效果！
     </h1>
     <div class="changeWidth-head">
         <button onclick="changeBox(326,486)">iPhone4</button>

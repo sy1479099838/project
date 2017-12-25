@@ -392,13 +392,11 @@ function End_Menu(id) {
         })
     }
 }
-// 商品详情打开
-function GoodsPK() {
-    $(".GoodsPK-Menu-Box").fadeIn(700);
-}
+
 // 商品详情关闭
 function closeGoodsPK() {
     $(".GoodsPK-Menu-Box").fadeOut(1000);
+    $(".X-Submit2").html("");
 }
 // 商品参数打开
 function GoodsParameter() {
@@ -769,7 +767,3 @@ function changeBox(width,height) {
 function showWidth() {
     $(".showBoxWidth").text("宽度："+$(".MoveBox").width()+"， 高度："+$(".MoveBox").height());
 }
-
-/*
-* 获取富文本内容
-* */
