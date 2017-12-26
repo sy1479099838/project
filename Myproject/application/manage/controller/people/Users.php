@@ -20,7 +20,7 @@ class Users extends Common
     }
     public function phoneusers()
     {
-        $PhoneUser=User::where("Registration","1")->select();
+        $PhoneUser=User::where("Registration","1")->order("RegisterTime desc")->select();
         $this->assign("PhoneUserList",$PhoneUser);
         return $this->fetch();
     }
