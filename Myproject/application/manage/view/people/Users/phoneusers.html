@@ -38,19 +38,19 @@
                 <li>姓名：{$vo.UserName}</li>
             </td>
             <td>
-                {empty name="name"}
-                name为空
-                {else /}
-                name不为空
-                {/empty}
+                {empty name="vo.UserImg"}
                 <img src="__PUBLIC__/manage/images/default.png">
+                {else /}
+                <img src="__ROTH__/uploads/{$vo.UserImg}">
+                {/empty}
+
             </td>
-            <td>18718745623</td>
+            <td>{$vo.PhoneNum}</td>
             <td>965478854152@qq.com</td>
-            <td>2018-01-01</td>
+            <td>{$vo['RegisterTime']|date="Y-m-d",###}</td>
             <td>Lv3</td>
-            <td>2018年5月1日</td>
-            <td>￥:200</td>
+            <td>2018-05-01</td>
+            <td>￥:12200</td>
             <td>
                 <button onclick="Check_xiaofei()">
                     <img src="__PUBLIC__/manage/images/icon-details.png" alt="">查看
