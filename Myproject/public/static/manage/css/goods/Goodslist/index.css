@@ -25,7 +25,8 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9){width:6.5% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:6.5% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td>.GoodsImg{display: inline-block;width: 100%;}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display:none;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9)>button{display:none;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display:inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;}
 .Goods-AddMenu-Box{width:100%;height: 100%;position:absolute;top:0;right:0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{background: #ffffff;border-radius: 10px;}
