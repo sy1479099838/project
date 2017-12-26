@@ -423,4 +423,13 @@ class Goodslist extends Common
             }
         }
     }
+
+    /*
+     * 参数查询
+     * */
+    public function GoodsCS()
+    {
+        $value="这里是参数编辑...";
+        exit($value);
+    }
 }
