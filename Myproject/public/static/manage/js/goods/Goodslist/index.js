@@ -404,6 +404,7 @@ function GoodsParameter() {
 // 商品参数关闭
 function closeGoodsParameter() {
     $(".GoodsParameter-Menu-Box").fadeOut(1000);
+    $(".X-Submit2").html("");
 }
 // 商品评论打开
 function GoodsComment() {
@@ -680,4 +681,68 @@ function changeBox(width,height) {
 }
 function showWidth() {
     $(".showBoxWidth").text("宽度："+$(".MoveBox").width()+"， 高度："+$(".MoveBox").height());
+}
+
+
+$(document).ready(function(){
+
+    $(".GoodsFight").each(function(){
+        // alert($(this).children(".status").val());
+        if($(this).children(".status").val()=="1")
+        {
+            $(this).children(".GoodsMenu-open").fadeIn();
+            $(this).children(".GoodsMenu-off").fadeOut();
+        }
+        else if($(this).children(".status").val()!="1")
+        {
+            $(this).children(".GoodsMenu-off").fadeIn();
+            $(this).children(".GoodsMenu-open").fadeOut();
+        }
+    })
+
+});
+
+function End_Menu(date) {
+    $.ajax({
+        type: "POST",
+        url: 'SwitchClass',
+        data:({
+            id:date,
+            switch:1
+        }),
+        success: function(msg){
+            if(msg==="success")
+            {
+                $.showBox("操作成功！");
+                $("#HotClassClose"+date).fadeOut(0);
+                $("#HotClassopen"+date).fadeIn(400);
+
+            }
+        },
+        error:function (err){
+            $.showBox("失败，请重试！");
+        }
+    });
+}
+function Up_Menu(date) {
+    $.ajax({
+        type: "POST",
+        url: 'SwitchClass',
+        data:({
+            id:date,
+            switch:0
+        }),
+        success: function(msg){
+            if(msg==="success")
+            {
+                $.showBox("操作成功！");
+                $("#HotClassopen"+date).fadeOut(0);
+                $("#HotClassClose"+date).fadeIn(400);
+
+            }
+        },
+        error:function (err){
+            $.showBox("失败，请重试！");
+        }
+    });
 }
