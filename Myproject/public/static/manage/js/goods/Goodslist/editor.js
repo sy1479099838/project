@@ -99,3 +99,24 @@ function GoodsPK(data) {
     });
 
 }
+
+// 商品参数打开
+function GoodsCS(data) {
+    var Html= '<button onclick="Xiang_Submit2('+data+')">提&nbsp;&nbsp;&nbsp;交</button>';
+    $.ajax({
+        url:"GoodsCS",
+        type:"post",
+        data:({
+            id:data
+        }),
+        success:function (msg) {
+            setContent(msg);
+            $(".X-Submit2").append(Html);
+            $(".GoodsParameter-Menu-Box").fadeIn(700);
+        },
+        error:function (msg) {
+
+        }
+    });
+
+}
