@@ -405,6 +405,7 @@ function GoodsParameter() {
 // 商品参数关闭
 function closeGoodsParameter() {
     $(".GoodsParameter-Menu-Box").fadeOut(1000);
+    $(".X-Submit2").html("");
 }
 // 商品评论打开
 function GoodsComment() {
