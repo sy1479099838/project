@@ -31,108 +31,101 @@
         </div>
     </div><br>
 
-    <div class="Index_HotShop_Box">
-        <div class="Index_styleBox_1">
-            <p><img src="__PUBLIC__/admin/images/hot.png" alt="">&nbsp;热门旅游地</p>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
-                <span>花荄</span>
-            </a>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
-                <span>花荄</span>
-            </a>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
-                <span>花荄</span>
-            </a>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
-                <span>花荄</span>
-            </a>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_158258525856.jpg">
-                <span>花荄</span>
-            </a>
-            <a href="javascript:;">
-                <img src="__PUBLIC__/admin/images/qq_bjhjhhd123.png">
-                <b><i class="icon-double-angle-right"></i><br>点击查看更多</b>
-            </a>
-
-        </div>
-    </div><br>
-
-    <div class="MAXwidth Index_HotShop_Box">
-        <div class="Index_styleBox_2">
-            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;限时抢购
-                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
-            </p>
-            <a href="">
-                <img src="__PUBLIC__/admin/images/978684a9018de9d75fd1fecfc789208d.jpg" alt="">
-                <div>
-                    <p>&lt;丽江+大理+香格里拉6日5晚跟团游丽江&gt;</p>
-                    <p>hjsdkahfrjsdkchjafrhyejsh的积分卡掉了第三个快递反馈</p>
-                    <span class="fl">
-                        ￥45起<br>仅限1000份
+    {volist name="GoodsList" id="vo"}
+        {switch name="vo.MubanNum"}
+        {case value="1"}
+        <div class="Index_HotShop_Box">
+            <div class="Index_styleBox_1">
+                <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}</p>
+                {volist name="vo.goods" id="vo_2"}
+                <a href="javascript:findGoods('{$vo_2.id}');">
+                    <img src="__ROTH__/uploads/{$vo_2.Template_1}">
+                    <span>{$vo_2.GoodsName}</span>
+                </a>
+                {/volist}
+                <a href="javascript:;">
+                    <img src="__PUBLIC__/admin/images/qq_bjhjhhd123.png">
+                    <b><i class="icon-double-angle-right"></i><br>点击查看更多</b>
+                </a>
+            </div>
+        </div><br>
+        {/case}
+        {case value="2"}
+        <div class="MAXwidth Index_HotShop_Box">
+            <div class="Index_styleBox_2">
+                <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
+                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                </p>
+                {volist name="vo.goods" id="vo_3"}
+                <a href="">
+                    <img src="__ROTH__/uploads/{$vo_3.Template_2}" alt="">
+                    <div>
+                        <p>&lt;{$vo_3.GoodsName}&gt;</p>
+                        <p>hjsdkahfrjsdkchjafrhyejsh的积分卡掉了第三个快递反馈</p>
+                        <span class="fl">
+                                ￥
+                            {if condition="($NowTime > $vo_3['endTime']) or ($NowTime < $vo_3['startTime']) "} {$vo_3.oldPrice}
+                            {else /} {$vo_3.activityPrice}
+                            {/if}
+                            起<br>仅限1000份
+                            </span>
+                        <span id="timer" class="timer-simple-seconds fl" timer='
+                        {if condition="($NowTime > $vo_3.endTime) "} 0
+                            {else /} {$vo_3.endTime-$NowTime}
+                            {/if}
+                            '>
+                                <i>距离结束：<br></i><span class="day">0</span>天<span class="hour">0</span>时<span class="minute">0</span>分<span class="second">0</span>秒
+                            </span>
+                    </div>
+                </a>
+                {/volist}
+            </div>
+        </div><br>
+        {/case}
+        {case value="3"}
+        <div class="Index_HotShop_Box">
+            <div class="Index_styleBox_3">
+                <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
+                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                </p>
+                {volist name="vo.goods" id="vo_4"}
+                <a href="javascript:HotShop(1)">
+                    <img src="__ROTH__/uploads/{$vo_4.Template_3}" alt="">
+                    <p>{$vo_4.GoodsName}&nbsp;&nbsp;1234浏览&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>生命在于运动</p>
+                    <p>偶尔在工作学习之余，运动运动，看看雪，心旷神怡，好不安逸！</p>
+                </a>
+                {/volist}
+            </div>
+        </div><br>
+        {/case}
+        {case value="4"}
+        <div class="Index_HotShop_Box">
+            <div class="Index_styleBox_4">
+                <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
+                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                </p>
+                {volist name="vo.goods" id="vo_5"}
+                <a class="Index_classify" href="{:url('/admin/goods/Details/index')}">
+                    <img src="__ROTH__/uploads/{$vo_5.Template_4}"><br />
+                    <span class="Index_classify_shopName">
+                        <span class="fl">{$vo_5.GoodsName}<br /><sub>4.5分</sub></span>
+                        <span class="fr">￥
+                            {if condition="($NowTime > $vo_5['endTime']) or ($NowTime < $vo_5['startTime']) "} {$vo_5.oldPrice}
+                            {else /} {$vo_5.activityPrice}
+                            {/if}
+                            <sub>
+                            {if condition="($NowTime < $vo_5['endTime']) and ($NowTime > $vo_5['startTime']) "}{$vo_5.oldPrice}
+                            {else /}
+                            {/if}
+                            </sub>
+                        </span>
                     </span>
-                    <span id="timer" class="timer-simple-seconds fl" timer="600">
-                        <i>距离结束：<br></i><span class="day">0</span>天<span class="hour">0</span>时<span class="minute">0</span>分<span class="second">0</span>秒
-                    </span>
-                </div>
-            </a>
+                </a>
+                {/volist}
+            </div>
         </div>
-    </div><br>
-
-    <div class="Index_HotShop_Box">
-        <div class="Index_styleBox_3">
-            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;热门攻略
-                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
-            </p>
-            <a href="javascript:HotShop(1)">
-                <img src="__PUBLIC__/admin/images/act1.jpg" alt="">
-                <p>绵阳千佛山风景区&nbsp;&nbsp;1234浏览&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>生命在于运动</p>
-                <p>偶尔在工作学习之余，运动运动，看看雪，心旷神怡，好不安逸！</p>
-            </a>
-        </div>
-    </div><br>
-    <div class="Index_HotShop_Box">
-        <div class="Index_styleBox_4">
-            <p><img src="__PUBLIC__/admin/images/90sheji_linggan_13227134.png" alt="">&nbsp;旅游门票
-                <a href="">查看更多<i class="icon-double-angle-right"></i></a>
-            </p>
-            <a class="Index_classify" href="{:url('/admin/goods/Details/index')}">
-                <img src="__PUBLIC__/admin/images/p1.jpg"><br />
-                <span class="Index_classify_shopName">
-                    <span class="fl">千佛山<br /><sub>4.5分</sub></span>
-                    <span class="fr">￥88<sub>￥122</sub></span>
-                </span>
-            </a>
-
-            <a class="Index_classify" href="javascript:refreshVerify(8)">
-                <img src="__PUBLIC__/admin/images/ban1.png"><br />
-                <span class="Index_classify_shopName">
-                    <span class="fl">九皇山<br /><sub>4.8分</sub></span>
-                    <span class="fr">￥88<sub>￥122</sub></span>
-                </span>
-            </a>
-            <a class="Index_classify" href="{:url('Goods/details')}">
-                <img src="__PUBLIC__/admin/images/p1.jpg"><br />
-                <span class="Index_classify_shopName">
-                    <span class="fl">千佛山<br /><sub>4.5分</sub></span>
-                    <span class="fr">￥88<sub>￥122</sub></span>
-                </span>
-            </a>
-
-            <a class="Index_classify" href="javascript:refreshVerify(8)">
-                <img src="__PUBLIC__/admin/images/p2.jpg"><br />
-                <span class="Index_classify_shopName">
-                    <span class="fl">九皇山<br /><sub>4.8分</sub></span>
-                    <span class="fr">￥88<sub>￥122</sub></span>
-                </span>
-            </a>
-
-
-        </div>
-    </div>
+        {/case}
+        {/switch}
+    {/volist}
 {/block}

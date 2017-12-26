@@ -95,4 +95,8 @@ window.onresize = function(){
     $(".Index_styleBox_2 a img").css("height",Lheight);
 };
 
+function findGoods(id) {
+    alert(id);
+}
+
 

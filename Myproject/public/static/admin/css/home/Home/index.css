@@ -39,7 +39,7 @@
 .Index_classify{display:inline-block;width: 49%;color: black;}
 .Index_classify img{width: 100%;height: 100%;}
 .Index_classify_shopName{display: inline-block;width: 100%;height: 50px;}
-.Index_classify_shopName span:nth-child(1){display: inline-block;width: 49.5%;line-height: 25px;}
+.Index_classify_shopName span:nth-child(1){display: inline-block;width: 49.5%;line-height: 25px;font-size:14px;}
 .Index_classify_shopName span:nth-child(1) sub{font-size: 13px;color: #888888;}
 .Index_classify_shopName span:nth-child(2){display: inline-block;width: 49.5%;line-height: 50px;font-size: 20px;color: #65a031;}
 .Index_classify_shopName span:nth-child(2) sub{font-size: 13px;text-decoration:line-through;color: #888888;}
