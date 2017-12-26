@@ -30,19 +30,24 @@
             <th>消费记录查询</th>
             <th>IP查看</th>
         </tr>
-
+        {volist name="PhoneUserList" id="vo"}
         <tr>
-            <td>1</td>
+            <td>{$key+1}</td>
             <td>
-                <li>账号：asadasj12</li>
-                <li>姓名：某某某</li>
+                <li>账号：{$vo.UserAccount}</li>
+                <li>姓名：{$vo.UserName}</li>
             </td>
             <td>
-                <img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg">
+                {empty name="name"}
+                name为空
+                {else /}
+                name不为空
+                {/empty}
+                <img src="__PUBLIC__/manage/images/default.png">
             </td>
             <td>18718745623</td>
             <td>965478854152@qq.com</td>
-            <td>2018年1月1日</td>
+            <td>2018-01-01</td>
             <td>Lv3</td>
             <td>2018年5月1日</td>
             <td>￥:200</td>
@@ -84,23 +89,9 @@
                         <li>XX省XC市</li>
                         <li>255.255.255.255</li>
                     </ul>
-                    <ul>
-                        <li>2017年3月3日</li>
-                        <li>XX省XC市</li>
-                        <li>255.255.255.255</li>
-                    </ul>
-                    <ul>
-                        <li>2017年3月3日</li>
-                        <li>XX省XC市</li>
-                        <li>255.255.255.255</li>
-                    </ul>
-                    <ul>
-                        <li>2017年3月3日</li>
-                        <li>XX省XC市</li>
-                        <li>255.255.255.255</li>
-                    </ul>
                 </div>
             </td>
+            {/volist}
         </tr>
 
     </tobody>

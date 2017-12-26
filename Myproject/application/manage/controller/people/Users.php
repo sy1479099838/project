@@ -1,6 +1,7 @@
 <?php
 namespace app\manage\controller\people;
 use app\manage\controller\Common;
+use app\manage\model\User;
 class Users extends Common
 {
     public function index()
@@ -19,6 +20,8 @@ class Users extends Common
     }
     public function phoneusers()
     {
+        $PhoneUser=User::where("Registration","1")->select();
+        $this->assign("PhoneUserList",$PhoneUser);
         return $this->fetch();
     }
 }
