@@ -78,6 +78,9 @@ var ue = UE.getEditor('newsEditor');
 function setContent(text) {
     UE.getEditor('newsEditor').setContent(text);
 }
+function setContent2(text) {
+    UE.getEditor('newsEditor1').setContent(text);
+}
 
 // 商品详情打开
 function GoodsPK(data) {
@@ -110,7 +113,7 @@ function GoodsCS(data) {
             id:data
         }),
         success:function (msg) {
-            setContent(msg);
+            setContent2(msg);
             $(".X-Submit2").append(Html);
             $(".GoodsParameter-Menu-Box").fadeIn(700);
         },
