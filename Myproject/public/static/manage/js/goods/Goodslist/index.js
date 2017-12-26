@@ -7,13 +7,12 @@ function closeAddGoods() {
     $(".Goods-AddMenu-Box").fadeOut(1000);
 }
 function GoodsClassChoice(data) {
-    alert(data);
     $.ajax({
-        url:"",
+        url:"GoodsClassChoice",
         type:"post",
         data:({num:data}),
         success:function (msg) {
-            // $(".Goodslist-table").html(msg);
+            $(".Goodslist").html(msg);
         },
         error:function (meg) {
 
@@ -512,7 +511,7 @@ function setImagePreviews(avalue) {
 /*
 * 分页
 * */
-function GoodsFenYe(data) {
+function GoodsFenYe(data,cid) {
     var NowPage=$("input:hidden[name='GoodsNowPage']").val();
     var AllPage=$("input:hidden[name='GoodsAllPage']").val();
     var num="";
@@ -533,7 +532,10 @@ function GoodsFenYe(data) {
         $.ajax({
             url:"PageSearch",
             type:"post",
-            data:({num:num}),
+            data:({
+                num:num,
+                cid:cid
+            }),
             success:function (msg) {
                 $(".Goodslist").html(msg);
             },

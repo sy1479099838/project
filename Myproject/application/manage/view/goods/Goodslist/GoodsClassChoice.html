@@ -1,0 +1,133 @@
+<h1>活动商品管理</h1>
+<div class="Goodslist-Content-Box">
+    <p class="layui-form">
+        <button class="" onclick="AddGoods()">
+            <img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品
+        </button>
+        <span>
+                <input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索">
+                <i class="icon-search" onclick="GoodsKeywordSearch('')"></i>
+            </span>
+        <span>
+            &nbsp;&nbsp; 活动日期:
+            <input type="text" name="start_date" id="date5" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">&nbsp;至
+            <input type="text" name="start_date" id="date6" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
+            <i class="icon-search" onclick="timeSearch('')"></i>
+            </span>
+    </p>
+    <table class="Goodslist-table">
+        <tbody>
+        <tr>
+            <th>编号</th>
+            <th>商品</th>
+            <th>商家</th>
+            <th>热门分类模板</th>
+            <th>套餐</th>
+            <th>活动日期</th>
+            <th>热门分类</th>
+            <th>商品详情</th>
+            <th>拼团启用</th>
+            <th>操作</th>
+        </tr>
+        {volist name="GoodsList" id="value"}
+        <tr>
+            <td>{$key+1}</td>
+            <td>
+                名称：{$value.GoodsName}<br>
+                分类：{$value.ClassName}<br>
+                价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
+            </td>
+            <td>
+                商家：{$value.CompanyName}<br>
+                负责人：{$value.LiablePeople}
+            </td>
+            <td>
+                <a href="">查看</a><br>
+                模板1
+            </td>
+            <td>
+                <a href="">查看</a><br>
+            </td>
+            <td>
+                {$value['startTime']|date="Y/m/d H:i",###}<br>
+                至 <br>
+                {$value['endTime']|date="Y/m/d H:i",###}
+            </td>
+            <td>
+                {volist name="value.HotClass" id="res"}
+                【{$res.HotName}】<br>
+                {/volist}
+
+            </td>
+            <td>
+                <button class="" onclick="GoodsPK()">
+                    <img src="__PUBLIC__/manage/images/icon-details.png">详情
+                </button>
+                <button onclick="GoodsParameter()">
+                    <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
+                </button><br>
+                <button onclick="GoodsComment()">
+                    <img src="__PUBLIC__/manage/images/icon-comment.png" alt="">评论
+                </button>
+
+                <button class="SHOW_Praise">
+                    <img src="__PUBLIC__/manage/images/icon-laud.png" alt="">
+                    获赞
+                    <span class="GoodsPraise">
+                                    该商品共获赞：<b style="text-decoration: underline;">789</b>&nbsp;次
+                                </span>
+                </button>
+                <!--点赞详情-->
+                <br>
+            </td>
+            <td>
+                    <span class="GoodsFight" >
+                        <input type="hidden" value="" class="status GoodsState{}" style="width:100%;">
+                        <button class="GoodsMenu-open" onclick="Up_Menu('{$value.id}')">
+                            <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
+                            启用
+                        </button>
+                        <button class="GoodsMenu-off" onclick="End_Menu()">
+                            <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
+                            禁用
+                        </button>
+                    </span>
+            </td>
+            <td>
+                <button onclick="EditGoods()" >编辑
+                    <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
+                </button><br>
+                <button onclick="DelGoods()" >删除
+                    <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
+                </button><br>
+                <span class="GoodsChoice">
+                        <input type="hidden" value="" class="status GoodsState">
+                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                            <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
+                            上架
+                        </button><br>
+                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                            <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
+                            下架
+                        </button>
+                    </span>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <input type="hidden" name="GoodsNowPage" value="{$NowPage}">
+    <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
+    <div class="fenye" style="float:right;margin-right:2%;">
+
+        <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenYe('Previous','{$cid}')"></a>
+        {volist name="page" id="vo"}
+        <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenYe('{$vo}','{$cid}')">{$vo}</a>
+        {/volist}
+        <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenYe('next','{$cid}')"></a>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div class="SeeBigImages" onclick="closeImage()">
+    <img src="" alt="">
+</div>

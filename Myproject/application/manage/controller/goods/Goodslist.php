@@ -197,36 +197,79 @@ class Goodslist extends Common
     public function PageSearch()
     {
         $page=input("num");
+        $cid=input("cid");
         $people=Session::get('admin');
-        if($people["type"]!="admin")
+        if($cid=="" || $cid==NULL)
         {
-            $GoodsList=Db::table('t_goods')
-                ->where("BusinessId",$people["id"])
-                ->page($page.',8')
-                ->alias("a")
-                ->join('t_goods_classify b','a.pid = b.id')
-                ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+            if($people["type"]!="admin")
+            {
+                $GoodsList=Db::table('t_goods')
+                    ->where("BusinessId",$people["id"])
+                    ->page($page.',8')
+                    ->alias("a")
+                    ->join('t_goods_classify b','a.pid = b.id')
+                    ->join('t_business c','a.BusinessId=c.id')
+                    ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
-                ->select();
-            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数
-        }
-        else
-        {
-            $GoodsList=Db::table('t_goods')
-                ->alias("a")
-                ->page($page.',8')
-                ->join('t_goods_classify b','a.pid = b.id')
-                ->join('t_business c','a.BusinessId=c.id')
-                ->field("
+                    ->select();
+                $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数
+            }
+            else
+            {
+                $GoodsList=Db::table('t_goods')
+                    ->alias("a")
+                    ->page($page.',8')
+                    ->join('t_goods_classify b','a.pid = b.id')
+                    ->join('t_business c','a.BusinessId=c.id')
+                    ->field("
                 a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
-                ->select();
-            $PageCount=Goods::count("id");//总条数
+                    ->select();
+                $PageCount=Goods::count("id");//总条数
+            }
+            $number=8;
         }
-        $Num=ceil($PageCount/8);//总页数
+        else
+        {
+            $map[]=['exp',"FIND_IN_SET($cid,a.cid)"];
+            $map1[]=['exp',"FIND_IN_SET($cid,cid)"];
+            if($people["type"]!="admin")
+            {
+                $GoodsList=Db::table('t_goods')
+                    ->where("BusinessId",$people["id"])
+                    ->page('1,5')
+                    ->where($map)
+                    ->alias("a")
+                    ->join('t_goods_classify b','a.pid = b.id')
+                    ->join('t_business c','a.BusinessId=c.id')
+                    ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                    ->select();
+                $PageCount=Goods::where("BusinessId",$people["id"])->where($map1)->count("id");//总条数
+            }
+            else
+            {
+                $GoodsList=Db::table('t_goods')
+                    ->alias("a")
+                    ->where($map)
+                    ->page('1,5')
+                    ->join('t_goods_classify b','a.pid = b.id')
+                    ->join('t_business c','a.BusinessId=c.id')
+                    ->field("
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                    ->select();
+                $PageCount=Goods::where($map1)->count("id");//总条数
+
+            }
+            $number=5;
+        }
+
+        $Num=ceil($PageCount/$number);//总页数
 //        dump($PageCount);
         $NowPage=$page;
         $page=Common::Page($NowPage,$Num);
@@ -240,7 +283,8 @@ class Goodslist extends Common
                 "GoodsList"=>$GoodsList,
                 "NowPage"=>$NowPage,
                 "page"=>$page,
-                "AllPage"=>$Num
+                "AllPage"=>$Num,
+                "cid"=>$cid
             ]
         );
 
@@ -431,5 +475,65 @@ class Goodslist extends Common
     {
         $value="这里是参数编辑...";
         exit($value);
+    }
+    /*
+     *商品分类搜索
+     * */
+    public function GoodsClassChoice()
+    {
+        $cid=input("num");
+        $people=Session::get('admin');
+        $map[]=['exp',"FIND_IN_SET($cid,a.cid)"];
+        $map1[]=['exp',"FIND_IN_SET($cid,cid)"];
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->page('1,5')
+                ->where($map)
+                ->alias("a")
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->where($map1)->count("id");//总条数
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->alias("a")
+                ->where($map)
+                ->page('1,5')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                ->select();
+            $PageCount=Goods::where($map1)->count("id");//总条数
+
+        }
+        $Num=ceil($PageCount/5);//总页数
+//        dump($PageCount);
+        $NowPage=1;
+        $page=Common::Page($NowPage,$Num);
+        foreach ($GoodsList as $key=>$value)
+        {
+            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
+            $GoodsList[$key]["HotClass"]=$res;
+        }
+//        dump($GoodsList);exit;
+        return $this->fetch("GoodsClassChoice",
+            [
+                "GoodsList"=>$GoodsList,
+                "NowPage"=>$NowPage,
+                "page"=>$page,
+                "AllPage"=>$Num,
+                "cid"=>$cid
+            ]
+        );
     }
 }
