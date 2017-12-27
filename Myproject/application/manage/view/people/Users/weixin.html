@@ -1,6 +1,9 @@
 {extend name="Public:index"/}
 {block name="main"}
-
+<form action="submit" id="test" method="post">
+    <input type="text" name="test1" value="" placeholder="测试1"><br>
+    <input type="text" name="test2" value="" placeholder="测试2"><br>
+    <input type="text" name="test3" value="" placeholder="测试3"><br>
+</form>
+<button onclick="getFormInfo()">获取</button>
 {/block}
-
-
