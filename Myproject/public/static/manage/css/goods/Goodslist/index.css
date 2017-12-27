@@ -153,4 +153,5 @@
 .changeWidth>.changeWidth-head span{display: inline-block;}
 .changeWidth>.MoveBox>.moveContent img{max-width:98%;height:auto;margin-left:1%;}
 
-
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td>.GoodsFight>.GoodsGroup-open{display: none;}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td>.GoodsFight>.GoodsGroup-off{display: none;}

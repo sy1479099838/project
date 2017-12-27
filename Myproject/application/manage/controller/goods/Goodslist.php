@@ -536,4 +536,50 @@ class Goodslist extends Common
             ]
         );
     }
+    
+    /*
+     * 是否拼团
+     * */
+    public function SwitchClass()
+    {
+        $num=input();
+        $people=Session::get('admin');
+        if($people["type"]=="admin")
+        {
+            $value=Goods::where("id",$num["id"])->update([
+                "groups"=>$num["Style"]
+            ]);
+            if($value==0)
+            {
+                exit("error");
+            }
+            else
+            {
+                exit("success");
+            }
+        }
+        else
+        {
+            $Businessid=Goods::where("id",$num["id"])->field("BusinessId")->find()->BusinessId;
+            if($Businessid==$people["id"])
+            {
+                $value=Goods::where("id",$num["id"])->update([
+                   "groups"=>$num["Style"]
+                ]);
+                if($value==0)
+                {
+                    exit("error");
+                }
+                else
+                {
+                    exit("success");
+                }
+            }
+            else
+            {
+                exit("对不起，不可以随便改！");
+            }
+        }
+
+    }
 }

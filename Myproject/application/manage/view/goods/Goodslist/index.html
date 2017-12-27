@@ -150,12 +150,12 @@
                 </td>
                 <td>
                     <span class="GoodsFight" >
-                        <input type="hidden" value="1" class="status" style="width:100%;">
-                        <button class="GoodsMenu-open" onclick="Up_Menu()">
+                        <input type="hidden" value="{$value.groups}" class="status" style="width:100%;">
+                        <button class="GoodsGroup-open" onclick="switch_Menu('{$value.id}',0)" id="GoodsGroup-open{$value.id}">
                             <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
                             启用
                         </button>
-                        <button class="GoodsMenu-off" onclick="End_Menu()">
+                        <button class="GoodsGroup-off" onclick="switch_Menu('{$value.id}',1)" id="GoodsGroup-off{$value.id}">
                             <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
                             禁用
                         </button>

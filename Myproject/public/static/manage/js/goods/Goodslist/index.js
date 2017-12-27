@@ -340,36 +340,36 @@ $(function(){
 $(document).ready(function(){
 
     $(".GoodsFight").each(function(){
-        if($(this).children(".status").val()==="open")
+        if($(this).children(".status").val()=="1")
         {
-            $(this).children(".GoodsMenu-open").fadeIn();
-            $(this).children(".GoodsMenu-off").fadeOut();
+            $(this).children(".GoodsGroup-open").fadeIn();
+            $(this).children(".GoodsGroup-off").fadeOut();
         }
-        else if($(this).children(".status").val()==="off")
+        else if($(this).children(".status").val()=="0")
         {
-            $(this).children(".GoodsMenu-off").fadeIn();
-            $(this).children(".GoodsMenu-open").fadeOut();
+            $(this).children(".GoodsGroup-off").fadeIn();
+            $(this).children(".GoodsGroup-open").fadeOut();
         }
     })
 
 });
-function Up_Menu(id) {
-    $.ajax({
-        url:"/manage/goods/Goodslist/Up_Menu",
-        type:"post",
-        data:({id:id}),
-        success:function (msg) {
-            if (msg==suceess){
-                $.showBox("操作成功！");
-                $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
-            }
-        },error:function (err) {
-            $.showBox("启用失败！请重试！！")
-        }
-    })
-}
+// function Up_Menu(id) {
+//     $.ajax({
+//         url:"/manage/goods/Goodslist/Up_Menu",
+//         type:"post",
+//         data:({id:id}),
+//         success:function (msg) {
+//             if (msg==suceess){
+//                 $.showBox("操作成功！");
+//                 $(".GoodsState"+id).val("open");
+//                 $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
+//                 $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
+//             }
+//         },error:function (err) {
+//             $.showBox("启用失败！请重试！！")
+//         }
+//     })
+// }
 function End_Menu(id) {
     if (id=="1"||id=="2"){
         $.showBox("对不起！你暂时无权限进行启动操作！")
@@ -702,43 +702,38 @@ $(document).ready(function(){
 
 });
 
-function End_Menu(date) {
+
+function switch_Menu(id,OpenStyle) {
     $.ajax({
         type: "POST",
         url: 'SwitchClass',
         data:({
-            id:date,
-            switch:1
+            id:id,
+            Style:OpenStyle
         }),
         success: function(msg){
-            if(msg==="success")
+            if(msg=="success")
             {
                 $.showBox("操作成功！");
-                $("#HotClassClose"+date).fadeOut(0);
-                $("#HotClassopen"+date).fadeIn(400);
+                if(OpenStyle==0)
+                {
+                    $("#GoodsGroup-open"+id).fadeOut(0);
+                    $("#GoodsGroup-off"+id).fadeIn(200);
+                }
+                else
+                {
+                    $("#GoodsGroup-off"+id).fadeOut(0);
+                    $("#GoodsGroup-open"+id).fadeIn(200);
+                }
 
             }
-        },
-        error:function (err){
-            $.showBox("失败，请重试！");
-        }
-    });
-}
-function Up_Menu(date) {
-    $.ajax({
-        type: "POST",
-        url: 'SwitchClass',
-        data:({
-            id:date,
-            switch:0
-        }),
-        success: function(msg){
-            if(msg==="success")
+            else if(msg=="error")
             {
-                $.showBox("操作成功！");
-                $("#HotClassopen"+date).fadeOut(0);
-                $("#HotClassClose"+date).fadeIn(400);
-
+                $.showBox("操作失败！");
+            }
+            else
+            {
+                $.showBox(msg);
             }
         },
         error:function (err){
