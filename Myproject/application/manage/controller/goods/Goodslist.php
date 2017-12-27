@@ -19,14 +19,14 @@ class Goodslist extends Common
             $GoodsList=Db::table('t_goods')
                 ->where("BusinessId",$people["id"])
                 ->page('1,8')
-                ->alias("a")
+                ->alias("a")//给表添加别名
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
-                c.CompanyName")
+                c.CompanyName")//此处为查询多个表中的某些字段
                 ->select();
-            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数
+            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数   模型查询
         }
         else
         {
@@ -78,7 +78,7 @@ class Goodslist extends Common
         $this->assign("ClassList",$ClassList);
         $this->assign("HotClass",$HotClass);
         $this->assign("GoodsList",$GoodsList);
-        return $this->fetch();
+        return $this->fetch();//模板渲染   tp3为display();
     }
 
     public function GoodsImg()
@@ -314,7 +314,7 @@ class Goodslist extends Common
                 exit("对不起，您没有权限!");
             }
         }
-        return $this->fetch("Muban",["goodImg"=>$goodImg,"goodId"=>$goodid]);
+        return $this->fetch("Muban",["goodImg"=>$goodImg,"goodId"=>$goodid]);//此处也为模板查询   用于弹窗渲染
     }
     /*
      * 模板照片修改

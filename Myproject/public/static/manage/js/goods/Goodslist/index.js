@@ -741,3 +741,18 @@ function switch_Menu(id,OpenStyle) {
         }
     });
 }
+function check_tao(){
+    //alert(1111111);
+    $(".taocan_1").fadeIn();
+}
+function cl_check_tao(){
+    //alert(1111111);
+    $(".taocan_1").fadeOut();
+}
+
+function Add_tao() {
+    alert(123456);
+    var  TAo=document.getElementById('taocan');
+
+    TAo.innerHTML='<input type="text" name="Name" value="">';
+}
