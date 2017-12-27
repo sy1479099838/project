@@ -771,9 +771,20 @@ function cl_check_tao(){
 }
 
 function Add_tao() {
-    var text1='<li>名称：<input type="text" name="Min" value="">' +
+    var count=$("input:hidden[name=PackageCount]").val();
+    var text1='<form action="PackageSubmit" method="post" id="PackageSubmit'+count+'" ><li>名称：<input type="text" name="Min" value="">' +
               '提醒：<input type="text" name="Tix" value="">' +
               '价格：<input type="text" name="Price" value="">' +
-              '活动价：<input type="text" name="AcPrice" value=""></li>';
+              '活动价：<input type="text" name="AcPrice" value="">' +
+              '<input type="hidden" name="PackageID" value="0"></li></form><button class="Dle1" onclick="DEl(0,'+count+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:00F7DE;">删除</button>';
     $("#taocan").append(text1);
+    $("input:hidden[name=PackageCount]").val(parseInt(count)+1);
+}
+function DEl(data,count){
+    alert(count);
+    if(data==0){
+        //alert(1111111111);
+            $('#PackageSubmit'+count).remove();
+            $('#Del'+count).remove();
+    }
 }

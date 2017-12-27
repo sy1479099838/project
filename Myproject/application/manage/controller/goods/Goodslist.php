@@ -593,10 +593,12 @@ class Goodslist extends Common
         $people=Session::get('admin');
         if($people["type"]=="admin") {
             $package = GoodsPackage::where("GoodsID", $id)->select();
+            $count=count($package)+1;
+//            dump($count);
             if ($package) {
-                return $this->fetch("package", ["package" => $package]);
+                return $this->fetch("package", ["package" => $package,'count'=>$count]);
             } else {
-                return $this->fetch("package", ["package" => ""]);
+                return $this->fetch("package", ["package" => "",'count'=>$count]);
             }
         }
         else{
@@ -604,10 +606,11 @@ class Goodslist extends Common
             if($Businessid==$people["id"])
             {
                 $package = GoodsPackage::where("GoodsID", $id)->select();
+                $count=count($package)+1;
                 if ($package) {
-                    return $this->fetch("package", ["package" => $package]);
+                    return $this->fetch("package", ["package" => $package,'count'=>$count]);
                 } else {
-                    return $this->fetch("package", ["package" => ""]);
+                    return $this->fetch("package", ["package" => "",'count'=>$count]);
                 }
             }
             else
