@@ -741,9 +741,29 @@ function switch_Menu(id,OpenStyle) {
         }
     });
 }
-function check_tao(){
-    //alert(1111111);
-    $(".taocan_1").fadeIn();
+function check_tao(GoodsId){
+    $.ajax({
+        url:"package",
+        type:"post",
+        data:({
+            GoodsId:GoodsId
+        }),
+        success:function (msg) {
+            if(msg=="error")
+            {
+                $.showBox("失败，请重试！");
+            }
+            else
+            {
+                $(".taocan_1").html(msg);
+                $(".taocan_1").fadeIn();
+            }
+        },
+        error:function (msg) {
+            $.showBox("失败，请重试！");
+        }
+    });
+
 }
 function cl_check_tao(){
     //alert(1111111);

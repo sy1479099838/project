@@ -8,6 +8,7 @@ use app\manage\model\Goods;
 use app\manage\model\Parameter;
 use think\Session;
 use think\Db;
+use app\manage\model\GoodsPackage;
 class Goodslist extends Common
 {
     public function index()
@@ -578,6 +579,40 @@ class Goodslist extends Common
             else
             {
                 exit("对不起，不可以随便改！");
+            }
+        }
+
+    }
+
+    /*
+     * 套餐查询
+     * */
+    public function package()
+    {
+        $id=input("GoodsId");
+        $people=Session::get('admin');
+        if($people["type"]=="admin") {
+            $package = GoodsPackage::where("GoodsID", $id)->select();
+            if ($package) {
+                return $this->fetch("package", ["package" => $package]);
+            } else {
+                return $this->fetch("package", ["package" => ""]);
+            }
+        }
+        else{
+            $Businessid=Goods::where("id",$id)->field("BusinessId")->find()->BusinessId;
+            if($Businessid==$people["id"])
+            {
+                $package = GoodsPackage::where("GoodsID", $id)->select();
+                if ($package) {
+                    return $this->fetch("package", ["package" => $package]);
+                } else {
+                    return $this->fetch("package", ["package" => ""]);
+                }
+            }
+            else
+            {
+                exit("error");
             }
         }
 

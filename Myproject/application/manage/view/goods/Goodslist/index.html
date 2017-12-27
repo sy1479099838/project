@@ -112,7 +112,7 @@
                     模板1
                 </td>
                 <td>
-                    <a href="javascript:void(0)" onclick="check_tao()">查看</a><br>
+                    <a href="javascript:void(0)" onclick="check_tao('{$value.id}')">查看</a><br>
                 </td>
                 <td>
                     {$value['startTime']|date="Y/m/d H:i",###}<br>
@@ -501,15 +501,7 @@
 
 <!-------------------------套餐--------------------------->
 <div class="taocan_1" >
-    <li class="icon-remove-sign" onclick="cl_check_tao()" style="width:20%;height:40px;float:right;margin-right:2%;text-align:center;line-height:40px;font-size:20px;cursor:pointer">关闭</li>
-    <div style="clear:both;"></div>
-    <li class="taocan_l1">套餐详情添加</li>
-    <button  class="Bton" onclick="Add_tao()">点击添加</button>
-    <button  class="Bton" onclick="Add_tao()">点击保存</button>
-    <br>
-    <div id="taocan">
 
-    </div>
 </div>
 {/block}
 
