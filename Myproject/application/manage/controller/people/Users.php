@@ -24,4 +24,9 @@ class Users extends Common
         $this->assign("PhoneUserList",$PhoneUser);
         return $this->fetch();
     }
+
+    public function submit()
+    {
+        dump($_POST);
+    }
 }
