@@ -751,8 +751,9 @@ function cl_check_tao(){
 }
 
 function Add_tao() {
-    alert(123456);
-    var  TAo=document.getElementById('taocan');
-
-    TAo.innerHTML='<input type="text" name="Name" value="">';
+    var text1='<li>名称：<input type="text" name="Min" value="">' +
+              '提醒：<input type="text" name="Tix" value="">' +
+              '价格：<input type="text" name="Price" value="">' +
+              '活动价：<input type="text" name="AcPrice" value=""></li>';
+    $("#taocan").append(text1);
 }
