@@ -606,9 +606,9 @@ class Goodslist extends Common
             $count=count($package)+1;
 //            dump($count);
             if ($package) {
-                return $this->fetch("package", ["package" => $package,'count'=>$count]);
+                return $this->fetch("package", ["package" => $package,'count'=>$count,"id"=>$id]);
             } else {
-                return $this->fetch("package", ["package" => "",'count'=>$count]);
+                return $this->fetch("package", ["package" => "",'count'=>$count,"id"=>$id]);
             }
         }
         else{
@@ -618,9 +618,9 @@ class Goodslist extends Common
                 $package = GoodsPackage::where("GoodsID", $id)->select();
                 $count=count($package)+1;
                 if ($package) {
-                    return $this->fetch("package", ["package" => $package,'count'=>$count]);
+                    return $this->fetch("package", ["package" => $package,'count'=>$count,"id"=>$id]);
                 } else {
-                    return $this->fetch("package", ["package" => "",'count'=>$count]);
+                    return $this->fetch("package", ["package" => "",'count'=>$count,"id"=>$id]);
                 }
             }
             else
@@ -666,6 +666,65 @@ class Goodslist extends Common
             else
             {
                 exit("error");
+            }
+        }
+    }
+    /*
+     * 保存套餐
+     * */
+    public function savePackage($id)
+    {
+        $value=input();
+        if($value["Min"]=="" || $value["Min"]==NULL)
+        {
+            exit("请输入套餐名！");
+        }
+        if($value["Price"]=="" || $value["Price"]==NULL)
+        {
+            exit("请输入价格！");
+        }
+        if($value["AcPrice"]=="" || $value["AcPrice"]==NULL)
+        {
+            exit("请输入价格！");
+        }
+        if($value["PackageID"]=="" || $value["PackageID"]==NULL || $value["PackageID"]=="0" )
+        {
+            $result=GoodsPackage::create([
+                "GoodsID"=>$id,
+                "PackageName"=>$value["Min"],
+                "careful"=>$value["Tix"],
+                "OldPrice"=>$value["Price"],
+                "ActivityPrice"=>$value["AcPrice"]
+            ]);
+            if($result)
+            {
+                exit($result->PackageId);
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $is=GoodsPackage::where("PackageId",$value["PackageID"])->field("GoodsID")->find()->GoodsID;
+            if($is==$id)
+            {
+                $result=GoodsPackage::where("PackageId",$value["PackageID"])->update([
+                    "GoodsID"=>$id,
+                    "PackageName"=>$value["Min"],
+                    "careful"=>$value["Tix"],
+                    "OldPrice"=>$value["Price"],
+                    "ActivityPrice"=>$value["AcPrice"]
+                ]);
+                if($result=="1")
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("none");
+                }
             }
         }
     }

@@ -184,3 +184,25 @@ $(document).ready(function(){
     $("#treeOpen_2").prev("dt").children(".TreeMenuTwo-switch").children("img").attr('src',"/public/static/manage/images/closeFile.png");
 });
 
+
+function FormInfo(forname,url,id){
+    var form = new FormData(document.getElementById(forname));
+    var result;
+    $.ajax({
+        url:url+"/id/"+id,
+        type:"post",
+        data:form,
+        processData:false,
+        contentType:false,
+        async:false,
+        success:function(data){
+            result=data;
+        },
+        error:function(e){
+            alert("错误！！");
+            result="error";
+        }
+    });
+    return result;
+}
+

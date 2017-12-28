@@ -772,7 +772,7 @@ function cl_check_tao(){
 
 function Add_tao() {
     var count=$("input:hidden[name=PackageCount]").val();
-    var text1='<form action="PackageSubmit" method="post" id="PackageSubmit'+count+'" ><li>名称：<input type="text" name="Min" value="">' +
+    var text1='<form action="PackageSubmit" method="post" id="PackageSubmit'+count+'" class="Package-From" ><li>名称：<input type="text" name="Min" value="">' +
               '&nbsp;提醒：<input type="text" name="Tix" value="">' +
               '&nbsp;价格：<input type="text" name="Price" value="">' +
               '&nbsp;活动价：<input type="text" name="AcPrice" value="">' +
@@ -781,10 +781,45 @@ function Add_tao() {
     $("input:hidden[name=PackageCount]").val(parseInt(count)+1);
 }
 function DEl(data,count){
-    // alert(count);
     if(data==0){
-        //alert(1111111111);
             $('#PackageSubmit'+count).remove();
             $('#Del'+count).remove();
     }
+}
+
+function savePackage(goodsId) {
+    $(".Package-From").each(function(){
+        var formName=$(this).attr('id');
+        var result=FormInfo(formName,"savePackage",goodsId);
+        var text="";
+        if(result=="error")
+        {
+            $(this).find("label").remove();
+            text='<label style="color: red;">添加失败！</label>';
+            $(this).append(text);
+        }
+        else if(result=="success")
+        {
+            $(this).find("label").remove();
+            text='<label style="color: green;">更新成功！</label>';
+            $(this).append(text);
+        }
+        else if(result=="none")
+        {
+            $(this).find("label").remove();
+        }
+        else if(!isNaN(result))
+        {
+            $(this).find("label").remove();
+            $(this).find("input:hidden[name=PackageID]").val(result);
+            text='<label style="color: green;">添加成功！</label>';
+            $(this).append(text);
+        }
+        else
+        {
+            $(this).find("label").remove();
+            text='<label style="color: green;">'+result+'</label>';
+            $(this).append(text);
+        }
+    });
 }

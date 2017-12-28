@@ -2,7 +2,7 @@
 <div style="clear:both;"></div>
 <li class="taocan_l1">套餐详情添加</li>
 <button  class="Bton" onclick="Add_tao()">点击添加</button>
-<button  class="Bton" onclick="Add_tao()">点击保存</button>
+<button  class="Bton" onclick="savePackage('{$id}')">点击保存</button>
 <br>
 <div id="taocan">
     <input type="hidden" value="{$count}" name="PackageCount">
@@ -10,7 +10,7 @@
 
     {else /}
     {volist name="package" id="vo"}
-    <form action="PackageSubmit" method="post" id="PackageSubmit{$key+1}" >
+    <form action="PackageSubmit" method="post" id="PackageSubmit{$key+1}" class="Package-From" >
         <li>
         名称：<input type="text" name="Min" value="{$vo.PackageName}">
         提醒：<input type="text" name="Tix" value="{$vo.careful}">
