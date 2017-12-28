@@ -26,13 +26,13 @@
 				{else /} {$GoodsInformation.activityPrice}
 				{/if}
 			</span>
-			<span>￥
-					{if condition="($NowTime < $GoodsInformation['endTime']) and ($NowTime > $GoodsInformation['startTime']) "}{$GoodsInformation.oldPrice}
+			<span>
+					{if condition="($NowTime < $GoodsInformation['endTime']) and ($NowTime > $GoodsInformation['startTime']) "}￥{$GoodsInformation.oldPrice}
 					{else /}
 					{/if}
 			</span>
 
-			<span class="fr"><i class="icon-time">&nbsp;</i>剩余:00天00:00:00</span>
+			<span class="fr"></span>
 		</div>
 		<div class="Goods_info_content1">
 			<span><i class="icon-tags">&nbsp;</i>已售123</span>
