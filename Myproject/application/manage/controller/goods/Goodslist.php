@@ -423,7 +423,7 @@ class Goodslist extends Common
     {
         $id=input("id");
         $val=Parameter::where("GoodsId",$id)->field("id,GoodsDetails")->find();
-        if($val=="" || $val==NULL)
+        if($val=="" || $val==NULL || $val->GoodsDetails=="" || $val->GoodsDetails==NULL)
         {
             $value="请在这儿输入商品详情！";
         }
@@ -474,7 +474,17 @@ class Goodslist extends Common
      * */
     public function GoodsCS()
     {
-        $value="这里是参数编辑...";
+        $id=input("id");
+        $val=Parameter::where("GoodsId",$id)->field("id,GoodsParameter")->find();
+        if($val=="" || $val==NULL || $val->GoodsParameter=="" || $val->GoodsParameter==NULL)
+        {
+            $value="请在这儿输入商品参数...";
+        }
+        else
+        {
+            $value=$val->GoodsParameter;
+        }
+
         exit($value);
     }
     /*
@@ -596,9 +606,9 @@ class Goodslist extends Common
             $count=count($package)+1;
 //            dump($count);
             if ($package) {
-                return $this->fetch("package", ["package" => $package,'count'=>$count]);
+                return $this->fetch("package", ["package" => $package,'count'=>$count,"id"=>$id]);
             } else {
-                return $this->fetch("package", ["package" => "",'count'=>$count]);
+                return $this->fetch("package", ["package" => "",'count'=>$count,"id"=>$id]);
             }
         }
         else{
@@ -608,9 +618,9 @@ class Goodslist extends Common
                 $package = GoodsPackage::where("GoodsID", $id)->select();
                 $count=count($package)+1;
                 if ($package) {
-                    return $this->fetch("package", ["package" => $package,'count'=>$count]);
+                    return $this->fetch("package", ["package" => $package,'count'=>$count,"id"=>$id]);
                 } else {
-                    return $this->fetch("package", ["package" => "",'count'=>$count]);
+                    return $this->fetch("package", ["package" => "",'count'=>$count,"id"=>$id]);
                 }
             }
             else
@@ -619,5 +629,128 @@ class Goodslist extends Common
             }
         }
 
+    }
+
+    /*
+     * 商品参数保存
+     * */
+    public function GoodsCsSubmit()
+    {
+        $value=input();
+//        dump($value);exit;
+        $val=Parameter::where("GoodsId",$value["goodsId"])->field("id,GoodsParameter")->find();
+        if($val=="" || $val==NULL)
+        {
+            $result=Parameter::create([
+                'GoodsId'=>$value["goodsId"],
+                'GoodsParameter'  =>  $value["data"]
+            ]);
+            if($result)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $result=Parameter::where("GoodsId",$value["goodsId"])->update([
+                'GoodsParameter'  =>  $value["data"]
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+    }
+    /*
+     * 保存套餐
+     * */
+    public function savePackage($id)
+    {
+        $value=input();
+        if($value["Min"]=="" || $value["Min"]==NULL)
+        {
+            exit("请输入套餐名！");
+        }
+        if($value["Price"]=="" || $value["Price"]==NULL)
+        {
+            exit("请输入价格！");
+        }
+        if($value["AcPrice"]=="" || $value["AcPrice"]==NULL)
+        {
+            exit("请输入价格！");
+        }
+        if($value["PackageID"]=="" || $value["PackageID"]==NULL || $value["PackageID"]=="0" )
+        {
+            $result=GoodsPackage::create([
+                "GoodsID"=>$id,
+                "PackageName"=>$value["Min"],
+                "careful"=>$value["Tix"],
+                "OldPrice"=>$value["Price"],
+                "ActivityPrice"=>$value["AcPrice"]
+            ]);
+            if($result)
+            {
+                exit($result->PackageId);
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $is=GoodsPackage::where("PackageId",$value["PackageID"])->field("GoodsID")->find()->GoodsID;
+            if($is==$id)
+            {
+                $result=GoodsPackage::where("PackageId",$value["PackageID"])->update([
+                    "GoodsID"=>$id,
+                    "PackageName"=>$value["Min"],
+                    "careful"=>$value["Tix"],
+                    "OldPrice"=>$value["Price"],
+                    "ActivityPrice"=>$value["AcPrice"]
+                ]);
+                if($result=="1")
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("none");
+                }
+            }
+        }
+    }
+
+    /*
+     * 删除套餐
+     * */
+    public function DelPackage()
+    {
+        $var=input();
+        $goodsid=GoodsPackage::where("PackageId",$var["packageId"])->field("GoodsID")->find()->GoodsID;
+        if($goodsid==$var["goodsId"])
+        {
+            $result=GoodsPackage::where('PackageId',$var["packageId"])->delete();
+            if($result=="1")
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            exit("error");
+        }
     }
 }

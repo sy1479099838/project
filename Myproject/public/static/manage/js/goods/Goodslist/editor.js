@@ -58,15 +58,26 @@ function getContent2() {
 }
 function Xiang_Submit2(data){
     var arr = [];
-    arr.push(  UE.getEditor('newsEditor').getContent() );
+    arr.push(  UE.getEditor('newsEditor1').getContent() );
     var UEvalue = arr.join( "\n" );
     $.ajax({
-        url:'Xiangqing',
+        url:'GoodsCsSubmit',
         type:'post',
-        data:({data:UEvalue}),
+        data:({
+            data:UEvalue,
+            goodsId:data
+        }),
         success:function (msg) {
-            // setContent(msg);
-            alert(msg);
+            if(msg=="error")
+            {
+                $.showBox(" 参数提交失败！");
+                window.location.reload();
+            }
+            else
+            {
+                $.showBox(" 参数提交成功！");
+                window.location.reload();
+            }
         },
         error:function (msg) {
             $.showBox("错误，请重试！");

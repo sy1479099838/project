@@ -74,3 +74,6 @@
 .edit_fenlei_re>.middle>.moban_1>label>img{width:100%;height:80px;}
 .edit_fenlei_re>.middle>li>.kaiguan{width:5%;}
 .edit_fenlei_re>.middle>li>.Add_fenlei_re_submit{width:70%;height:42px;margin-left:15%;background:#80FFFF;color:white;border:none;}
+/*分页*/
+.fenye>a{display:block;width:30px;height:20px;font-size:15px;float:left;line-height:20px;margin:20px 1px 0 0;border:1px solid #7B7B7B;text-align:center;color: blue;}
+.fenye>#NowPage{color:black;}
