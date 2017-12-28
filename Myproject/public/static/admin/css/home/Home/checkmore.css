@@ -1,0 +1,12 @@
+/*--------------------------------点击查询更多(模板一)-----------------------------*/
+.content{background:none;}
+.content li{list-style:none;}
+.cont_zhan{display:block;float:left;margin-left:2.5%;width:25%;height:1.5em;text-align:center;line-height:1.5em;font-size:.8em;margin-top:.3em;}
+.content_dao{width:100%;height:1.8em;background:#9D9D9D;}
+.content_dao p{color:white;margin-left:15%;}
+.con_s1{display:block;width:18%;height:1.5em;border-radius:2px;float:left;margin-left:2.5%;font-size:1.2em;color:white;text-align:center;line-height:1.5em;}
+.content-check li a img{width:100%;height:auto;border-radius:3px;}
+.content-check li a{display:block;width:45%;float:left;margin-left:5%;}
+.M_1_r{width:40%;float:left;}
+.M_1_r span{display:block;width:90%;margin-left:10%;font-size:.6em;height:1.1em;text-indent:30%;border-left:1px dashed #8D8D8D;}
+.content-check{width:100%;height:auto;border:1px dashed #f4f4f4;margin-top:.8em;}

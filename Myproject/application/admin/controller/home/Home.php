@@ -71,4 +71,9 @@ class Home extends Common
         $this->assign("JsName","home/Home/checkmore3");
         return $this->fetch();
     }
+    public function checkmore4(){
+        $this->assign("Title","查询");
+        $this->assign("JsName","home/Home/checkmore4");
+        return $this->fetch();
+    }
 }
