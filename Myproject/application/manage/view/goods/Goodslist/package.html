@@ -18,8 +18,8 @@
         活动价：<input type="text" name="AcPrice" value="{$vo.ActivityPrice}">
             <input type="hidden" name="PackageID" value="{$vo.PackageId}">
         </li>
-        <button class="Dle1" onclick="DEl('{$vo.PackageId}','{$key+1}')" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>
     </form>
+    <button class="Dle1" onclick="DEl('{$vo.PackageId}','{$key+1}','{$id}')" id="Del{$key+1}" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>
     {/volist}
     {/empty}
 </div>

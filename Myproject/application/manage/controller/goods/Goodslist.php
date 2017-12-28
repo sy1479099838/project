@@ -728,4 +728,29 @@ class Goodslist extends Common
             }
         }
     }
+
+    /*
+     * 删除套餐
+     * */
+    public function DelPackage()
+    {
+        $var=input();
+        $goodsid=GoodsPackage::where("PackageId",$var["packageId"])->field("GoodsID")->find()->GoodsID;
+        if($goodsid==$var["goodsId"])
+        {
+            $result=GoodsPackage::where('PackageId',$var["packageId"])->delete();
+            if($result=="1")
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            exit("error");
+        }
+    }
 }

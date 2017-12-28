@@ -776,20 +776,58 @@ function Add_tao() {
               '&nbsp;提醒：<input type="text" name="Tix" value="">' +
               '&nbsp;价格：<input type="text" name="Price" value="">' +
               '&nbsp;活动价：<input type="text" name="AcPrice" value="">' +
-              '<input type="hidden" name="PackageID" value="0"></li></form><button class="Dle1" onclick="DEl(0,'+count+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>';
+              '<input type="hidden" name="PackageID" value="0"></li></form><button class="Dle1" onclick="DEl(0,'+count+','+0+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>';
     $("#taocan").append(text1);
     $("input:hidden[name=PackageCount]").val(parseInt(count)+1);
 }
-function DEl(data,count){
+function DEl(data,count,id){
+    var msg="真的删除吗？";
+    var hanshu="delPackage("+data+","+count+","+id+")";
+    affirm(msg,hanshu);//自定义的弹窗函数
+}
+/*确认删除*/
+function delPackage(data,count,id) {
     if(data==0){
-            $('#PackageSubmit'+count).remove();
-            $('#Del'+count).remove();
+        $('#PackageSubmit'+count).remove();
+        $('#Del'+count).remove();
+        closeSure();
     }
+    else
+    {
+        $.ajax({
+            url:"DelPackage",
+            type:"post",
+            data:({
+                packageId:data,
+                goodsId:id
+            }),
+            success:function (msg) {
+                if(msg=="success")
+                {
+                    $('#PackageSubmit'+count).remove();
+                    $('#Del'+count).remove();
+                    closeSure();
+                }
+                else
+                {
+                    closeSure();
+                    $.showBox("删除失败，请重试！");
+                }
+            },
+            error:function (msg) {
+                closeSure();
+                $.showBox("删除失败，请重试！");
+            }
+        });
+
+    }
+
 }
 
 function savePackage(goodsId) {
     $(".Package-From").each(function(){
         var formName=$(this).attr('id');
+        var count= formName.replace(/[^0-9]/ig,"");
         var result=FormInfo(formName,"savePackage",goodsId);
         var text="";
         if(result=="error")
@@ -813,6 +851,9 @@ function savePackage(goodsId) {
             $(this).find("label").remove();
             $(this).find("input:hidden[name=PackageID]").val(result);
             text='<label style="color: green;">添加成功！</label>';
+            $(this).next("button").remove();
+            var button='<button class="Dle1" onclick="DEl('+result+','+count+','+goodsId+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>';
+            $(this).append(button);
             $(this).append(text);
         }
         else

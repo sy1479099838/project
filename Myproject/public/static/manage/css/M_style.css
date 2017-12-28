@@ -5,6 +5,11 @@
 ul li{list-style-type:none;}
 a{text-decoration:none;}
 
+/*----------以下是确认框----------*/
+.Sure-Box{position: fixed;top:25%;left: 36%;width: 26%;height: auto;background: rgba(255,255,255,1);border:1px solid red;border-radius: 5px;padding-bottom: 20px;display: none;}
+.Sure-Box>.sure-text{margin: 10px;text-align: center;font-weight: 600;font-size: 22px;}
+.Sure-Box>.sure-button{margin-top: 60px;text-align: center;}
+.Sure-Box>.sure-button button{display: inline-block;width: 15%;background: none;border: 1px solid green;border-radius: 5px;margin: 5px;}
 /*------------以下为首页部分------------*/
 .index_box{display:none;position: fixed;top:15%;left:15%;width:70%;height:70%;}
 .test_box{border:1px solid red ;display: inline-block;width:100%;height:100%;}

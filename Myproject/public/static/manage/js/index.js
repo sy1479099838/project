@@ -206,3 +206,15 @@ function FormInfo(forname,url,id){
     return result;
 }
 
+function affirm(msg,hanshu) {
+    var text='<button onclick="'+hanshu+'">确&nbsp;&nbsp;认</button>' +
+        '&nbsp;&nbsp;&nbsp;' +
+        '<button onclick="closeSure()">取&nbsp;&nbsp;消</button>';
+    $(".Sure-Box>.sure-button").append(text);
+    $(".Sure-Box>.sure-text").html(msg);
+    $(".Sure-Box").fadeIn(100);
+}
+function closeSure() {
+    $(".Sure-Box").fadeOut(100);
+    $(".Sure-Box>.sure-button").html("");
+}
