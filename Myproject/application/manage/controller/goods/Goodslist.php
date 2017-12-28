@@ -423,7 +423,7 @@ class Goodslist extends Common
     {
         $id=input("id");
         $val=Parameter::where("GoodsId",$id)->field("id,GoodsDetails")->find();
-        if($val=="" || $val==NULL)
+        if($val=="" || $val==NULL || $val->GoodsDetails=="" || $val->GoodsDetails==NULL)
         {
             $value="请在这儿输入商品详情！";
         }
@@ -474,7 +474,17 @@ class Goodslist extends Common
      * */
     public function GoodsCS()
     {
-        $value="这里是参数编辑...";
+        $id=input("id");
+        $val=Parameter::where("GoodsId",$id)->field("id,GoodsParameter")->find();
+        if($val=="" || $val==NULL || $val->GoodsParameter=="" || $val->GoodsParameter==NULL)
+        {
+            $value="请在这儿输入商品参数...";
+        }
+        else
+        {
+            $value=$val->GoodsParameter;
+        }
+
         exit($value);
     }
     /*
@@ -619,5 +629,44 @@ class Goodslist extends Common
             }
         }
 
+    }
+
+    /*
+     * 商品参数保存
+     * */
+    public function GoodsCsSubmit()
+    {
+        $value=input();
+//        dump($value);exit;
+        $val=Parameter::where("GoodsId",$value["goodsId"])->field("id,GoodsParameter")->find();
+        if($val=="" || $val==NULL)
+        {
+            $result=Parameter::create([
+                'GoodsId'=>$value["goodsId"],
+                'GoodsParameter'  =>  $value["data"]
+            ]);
+            if($result)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $result=Parameter::where("GoodsId",$value["goodsId"])->update([
+                'GoodsParameter'  =>  $value["data"]
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
     }
 }

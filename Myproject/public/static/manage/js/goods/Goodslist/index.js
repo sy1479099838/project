@@ -776,7 +776,7 @@ function Add_tao() {
               '&nbsp;提醒：<input type="text" name="Tix" value="">' +
               '&nbsp;价格：<input type="text" name="Price" value="">' +
               '&nbsp;活动价：<input type="text" name="AcPrice" value="">' +
-              '<input type="hidden" name="PackageID" value="0"></li></form><button class="Dle1" onclick="DEl(0,'+count+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;">删除</button>';
+              '<input type="hidden" name="PackageID" value="0"></li></form><button class="Dle1" onclick="DEl(0,'+count+')" id="Del'+count+'" style="float:right;margin-top:-40px;width:10%;margin-right:5%;background:#00F7DE;border:none;border-radius: 3px;">删除</button>';
     $("#taocan").append(text1);
     $("input:hidden[name=PackageCount]").val(parseInt(count)+1);
 }
