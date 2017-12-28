@@ -38,7 +38,7 @@
             <div class="Index_styleBox_1">
                 <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}</p>
                 {volist name="vo.goods" id="vo_2"}
-                <a href="javascript:findGoods('{$vo_2.id}');">
+                <a href="{:url('/admin/goods/Details/index/Goods/'.$vo_2['id'])}">
                     <img src="__ROTH__/uploads/{$vo_2.Template_1}">
                     <span>{$vo_2.GoodsName}</span>
                 </a>
@@ -57,7 +57,7 @@
                     <a href="{:url('/admin/home/home/checkmore2')}">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_3"}
-                <a href="">
+                <a href="{:url('/admin/goods/Details/index/Goods/'.$vo_3['id'])}">
                     <img src="__ROTH__/uploads/{$vo_3.Template_2}" alt="">
                     <div>
                         <p>&lt;{$vo_3.GoodsName}&gt;</p>
@@ -89,7 +89,7 @@
                     <a href="">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_4"}
-                <a href="javascript:HotShop(1)">
+                <a href="{:url('/admin/goods/Details/index/Goods/'.$vo_4['id'])}">
                     <img src="__ROTH__/uploads/{$vo_4.Template_3}" alt="">
                     <p>{$vo_4.GoodsName}&nbsp;&nbsp;1234浏览&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     <p>生命在于运动</p>
@@ -106,7 +106,8 @@
                     <a href="">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_5"}
-                <a class="Index_classify" href="{:url('/admin/goods/Details/index')}">
+                <a class="Index_classify" href="{:url('/admin/goods/Details/index/Goods/'.$vo_5['id'])}">
+                    <!--{:url('/admin/goods/Details/index')}-->
                     <img src="__ROTH__/uploads/{$vo_5.Template_4}"><br />
                     <span class="Index_classify_shopName">
                         <span class="fl">{$vo_5.GoodsName}<br /><sub>4.5分</sub></span>

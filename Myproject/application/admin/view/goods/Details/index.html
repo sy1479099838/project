@@ -4,47 +4,64 @@
 <div class="Goods-Details-BigBox">
 	<div class="swiper-container fl">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide"><img src="__PUBLIC__/admin/images/slider1-1.png"></div>
-			<div class="swiper-slide"><img src="__PUBLIC__/admin/images/slider1-2.png"></div>
-			<div class="swiper-slide"><img src="__PUBLIC__/admin/images/3.png"></div>
+			{volist name="GoodsInformation.DetailsImage|json_decode" id="vo"}
+			<div class="swiper-slide"><img src="__ROTH__/uploads/{$vo.0}/{$vo.1}"></div>
+			{/volist}
 		</div>
 		<div class="pagination"></div>
 		<div class="cb"></div>
 	</div>
 	<div class="Goods_info_Box fl">
+		<input type="hidden" value=
+		'
+		{if condition="($NowTime > $GoodsInformation.endTime) or ($NowTime < $GoodsInformation.startTime) "}0
+		{else /} {$GoodsInformation.endTime-$NowTime}
+		{/if}
+		'
+			   name="daojishi">
 		<div class="Goods_info_content">
-			<p>这里是商品的炉体名称</p>
-			<span>现价：￥25.2</span>
-			<span>￥40.00</span>
+			<p>{$GoodsInformation.GoodsName}</p>
+			<span>现价：￥
+				{if condition="($NowTime > $GoodsInformation['endTime']) or ($NowTime < $GoodsInformation['startTime']) "} {$GoodsInformation.oldPrice}
+				{else /} {$GoodsInformation.activityPrice}
+				{/if}
+			</span>
+			<span>￥
+					{if condition="($NowTime < $GoodsInformation['endTime']) and ($NowTime > $GoodsInformation['startTime']) "}{$GoodsInformation.oldPrice}
+					{else /}
+					{/if}
+			</span>
+
 			<span class="fr"><i class="icon-time">&nbsp;</i>剩余:00天00:00:00</span>
 		</div>
 		<div class="Goods_info_content1">
 			<span><i class="icon-tags">&nbsp;</i>已售123</span>
-			<span><i class="icon-map-marker">&nbsp;</i>这里是景区的位置</span>
+			<span><i class="icon-map-marker">&nbsp;</i>{$GoodsInformation.PositionName}</span>
 			<span class="cb"></span>
 			<p>会当凌绝顶，一览众山小！会当凌绝顶，一览众山小！</p>
-			<p><i class="icon-bullhorn">&nbsp;</i>有效期：2017.10.10 - 2017.11.11</p>
+			<p><i class="icon-bullhorn">&nbsp;</i>有效期：{$GoodsInformation.startTime|date="Y/m/d",###} - {$GoodsInformation.endTime|date="Y/m/d",###}</p>
 		</div>
 		<div class="Goods_info_remind">
-			<p><i class="icon-warning-sign">&nbsp;&nbsp;</i>这里是购买提醒!</p>
-			<p><i class="icon-warning-sign">&nbsp;&nbsp;</i>这里是购买提醒!</p>
-			<p><i class="icon-warning-sign">&nbsp;&nbsp;</i>这里是购买提醒!</p>
+			{volist name="GoodsInformation.comments" id="vo_1"}
+			{notempty name="vo_1.careful"}
+			<p><i class="icon-warning-sign">&nbsp;&nbsp;</i>{$vo_1.careful}</p>
+			{/notempty}
+			{/volist}
 		</div>
 		<div class="Goods_info_block"></div>
 		<table class="Goods_info_Package">
 			<tbody>
+			{volist name="GoodsInformation.comments" id="vo_2"}
 			<tr>
-				<td><span>套餐1</span></td>
-				<td>这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情</td>
+				<td><span>套餐{$key+1}</span></td>
+				<td style="text-align: left;">
+					{$vo_2.PackageName},价格：￥{$vo_2.OldPrice}
+					{if condition="($NowTime > $GoodsInformation.endTime) or ($NowTime < $GoodsInformation.startTime) "}
+					{else /},活动价格：￥{$vo_2.ActivityPrice}
+					{/if}
+				</td>
 			</tr>
-			<tr>
-				<td><span>套餐2</span></td>
-				<td>这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情</td>
-			</tr>
-			<tr>
-				<td><span>套餐3</span></td>
-				<td>这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情这里是套餐详情</td>
-			</tr>
+			{/volist}
 			</tbody>
 		</table>
 		<div class="Goods_info_block"></div>

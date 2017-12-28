@@ -8,12 +8,12 @@ $(function () {
 });
 
 $(document).ready(function(){
-    var i = 266465;
+    var i=parseInt($("input:hidden[name=daojishi]").val());
 
     var timer = setInterval(function(){
         if(i===0){
             clearInterval(timer);
-            $(".Goods_info_Box>.Goods_info_content span:nth-child(4)").html("活动结束");
+            $(".Goods_info_Box>.Goods_info_content span:nth-child(4)").html("");
         }else{
             --i;
             var day=parseInt(i/(24*60*60));
