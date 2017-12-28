@@ -86,7 +86,7 @@
         <div class="Index_HotShop_Box">
             <div class="Index_styleBox_3">
                 <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
-                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                    <a href="{:url('/admin/home/home/checkmore3')}">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_4"}
                 <a href="javascript:HotShop(1)">
@@ -103,7 +103,7 @@
         <div class="Index_HotShop_Box">
             <div class="Index_styleBox_4">
                 <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
-                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                    <a href="{:url('/admin/home/home/checkmore4')}">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_5"}
                 <a class="Index_classify" href="{:url('/admin/goods/Details/index')}">
