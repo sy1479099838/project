@@ -55,4 +55,20 @@ class Home extends Common
         $this->assign("NowTime",time());
         return $this->fetch();
     }
+    public function checkmore(){
+        $this->assign("Title","查询");
+        $this->assign("JsName","home/Home/checkmore");
+        return $this->fetch();
+    }
+    public function checkmore2(){
+        $this->assign("Title","查询");
+        $this->assign("JsName","home/Home/checkmore2");
+        return $this->fetch();
+    }
+
+    public function checkmore3(){
+        $this->assign("Title","查询");
+        $this->assign("JsName","home/Home/checkmore3");
+        return $this->fetch();
+    }
 }

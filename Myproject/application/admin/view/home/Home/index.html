@@ -43,7 +43,7 @@
                     <span>{$vo_2.GoodsName}</span>
                 </a>
                 {/volist}
-                <a href="#">
+                <a href="{:url('/admin/home/home/checkmore')}">
                     <img src="__PUBLIC__/admin/images/qq_bjhjhhd123.png">
                     <b><i class="icon-double-angle-right"></i><br>点击查看更多</b>
                 </a>
@@ -54,7 +54,7 @@
         <div class="MAXwidth Index_HotShop_Box">
             <div class="Index_styleBox_2">
                 <p><img src="__ROTH__/uploads/{$vo.icon}" alt="">&nbsp;{$vo.HotName}
-                    <a href="">查看更多<i class="icon-double-angle-right"></i></a>
+                    <a href="{:url('/admin/home/home/checkmore2')}">查看更多<i class="icon-double-angle-right"></i></a>
                 </p>
                 {volist name="vo.goods" id="vo_3"}
                 <a href="">
