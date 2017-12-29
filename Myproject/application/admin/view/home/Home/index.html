@@ -62,7 +62,7 @@
                     <div>
                         <p>&lt;{$vo_3.GoodsName}&gt;</p>
                         <p>hjsdkahfrjsdkchjafrhyejsh的积分卡掉了第三个快递反馈</p>
-                        <span class="fl">
+                        <span class="fl" style="height: 33%;">
                                 ￥
                             {if condition="($NowTime > $vo_3['endTime']) or ($NowTime < $vo_3['startTime']) "} {$vo_3.oldPrice}
                             {else /} {$vo_3.activityPrice}
@@ -73,7 +73,7 @@
                         {if condition="($NowTime > $vo_3.endTime) "} 0
                             {else /} {$vo_3.endTime-$NowTime}
                             {/if}
-                            '>
+                            '  style="height: 33%;">
                                 <i>距离结束：<br></i><span class="day">0</span>天<span class="hour">0</span>时<span class="minute">0</span>分<span class="second">0</span>秒
                             </span>
                     </div>

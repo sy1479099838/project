@@ -31,7 +31,7 @@
 .Index_styleBox_2 a{display: inline-block;width: 100%;position: relative;}
 .Index_styleBox_2 a img{display: inline-block;width: 30%;padding: 5px 0;float: left;}
 .Index_styleBox_2 div{position: absolute;top:0;left: 35%;right:0;bottom:0;color:black;text-align: left;font-size: 12px;}
-.Index_styleBox_2 div p{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;padding-bottom: 0;}
+.Index_styleBox_2 div p{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;padding-bottom: 0;height: 33.2%;font-size: 14px;float: left;}
 .Index_styleBox_2 div span:nth-child(1){display:inline-block;width: 40%;}
 .timer-simple-seconds{color:#FF4040;font-size:12px;float: right;}
 .day,.hour,.minute,.second{font-size:12px;}
