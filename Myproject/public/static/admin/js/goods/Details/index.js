@@ -28,67 +28,30 @@ $(document).ready(function(){
 $(function () {
     $("#hd_referrer").val(document.referrer);
 });
-/*---------点击显示图片详情--------*/
-// function referurl() {
-//     var ref = $("#hd_referrer").val();
-//     if (ref !== "" && ref !== "undefined") {
-//         window.location.href  = ref;
-//     }
-//     else {
-//         window.location.href  = history.back(-1);
-//     }
-// }
-
-// function SeeImg(date) {
-//     var display=$("#SeeImg").css("top");
-//     var wid=-$(window).width();
-//     if(display!=="0px")
-//     {
-//         $("#SeeImg").css("top","0");
-//         var WinHeight=$(window).height();
-//         var hei=$(".swiper-container").height();
-//         $("#SeeImg>.SeeImgBox").css("top",(WinHeight-hei)/2+"px");
-//         $(".swiper-container").css("line-height",hei+"px");
-//         $(".swiper-container").css("margin-top",(WinHeight-hei)/2+"px");
-//         $(".swiper-wrapper").css("transform","translate3d("+date*wid+"px, 0px, 0px)");
-//     }
-//     else
-//     {
-//         $("#SeeImg").fadeIn(200);
-//         $(".swiper-wrapper").css("transform","translate3d("+date*wid+"px, 0px, 0px)");
-//     }
-// }
 
 function GoodsDetails(data) {
-    $.ajax({
-        type: "POST",
-        url: "GoodsDetails",
-        data: ({num:data
-        }),
-        success: function(msg){
-            $(".Goods-Details-BigBox").html(msg);
-            var mySwiper = new Swiper('.swiper-container',{
-                pagination: '.pagination',
-                loop:true,
-                grabCursor: true,
-                paginationClickable: true
-            });
-        },
-        error:function (err){
-            $.showBox("账号验证失败！");
-        }
+    $(".Goods-xiangqing-BigBox").html("").fadeOut(0);
+    $(".Goods-Evaluate-BigBox").html("").fadeOut(0);
+    $(".Goods-Details-BigBox").fadeIn(200);
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.pagination',
+        loop:true,
+        grabCursor: true,
+        paginationClickable: true
     });
 }
-
-
 function goodsEvaluate (data) {
     $.ajax({
         type: "POST",
-        url: "evaluate",
-        data: ({num:data
+        url: "/admin/goods/Details/evaluate",
+        data: ({
+            num:data
         }),
         success: function(msg){
-            $(".Goods-Details-BigBox").html(msg);
+            $(".Goods-Details-BigBox").fadeOut(0);
+            $(".Goods-xiangqing-BigBox").html("").fadeOut(0);
+            $(".Goods-Evaluate-BigBox").html(msg);
+            $(".Goods-Evaluate-BigBox").fadeIn(200);
         },
         error:function (err){
             $.showBox("账号验证失败！");
@@ -96,13 +59,18 @@ function goodsEvaluate (data) {
     });
 }
 function goodsParameter(data) {
+    $(".Goods-Details-BigBox").fadeOut(0);
     $.ajax({
         type: "POST",
-        url: "parameter",
-        data: ({num:data
+        url: "/admin/goods/Details/parameter",
+        data: ({
+            num:data
         }),
         success: function(msg){
-            $(".Goods-Details-BigBox").html(msg);
+            $(".Goods-Details-BigBox").fadeOut(0);
+            $(".Goods-Evaluate-BigBox").html("").fadeOut(0);
+            $(".Goods-xiangqing-BigBox").html(msg);
+            $(".Goods-xiangqing-BigBox").fadeIn(200);
         },
         error:function (err){
             $.showBox("账号验证失败！");

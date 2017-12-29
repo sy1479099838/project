@@ -9,22 +9,22 @@ class Goods extends Common
         $this->assign("JsName","goods/Goods/index");
         return $this->fetch();
     }
-    public function details()
-    {
-        $this->assign("Title","商品详情");
-        $this->assign("JsName","Goods/details");
-        return $this->fetch();
-    }
-    public function parameter()
-    {
-        $this->assign("Title","商品详情");
-        $this->assign("JsName","Goods/details");
-        return $this->fetch();
-    }
-    public function evaluate()
-    {
-        $this->assign("Title","商品详情");
-        $this->assign("JsName","Goods/details");
-        return $this->fetch();
-    }
+//    public function details()
+//    {
+//        $this->assign("Title","商品详情");
+//        $this->assign("JsName","Goods/details");
+//        return $this->fetch();
+//    }
+//    public function parameter()
+//    {
+//        $this->assign("Title","商品详情");
+//        $this->assign("JsName","Goods/details");
+//        return $this->fetch();
+//    }
+//    public function evaluate()
+//    {
+//        $this->assign("Title","商品详情");
+//        $this->assign("JsName","Goods/details");
+//        return $this->fetch();
+//    }
 }
