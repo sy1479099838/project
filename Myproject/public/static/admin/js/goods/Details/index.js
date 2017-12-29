@@ -78,3 +78,27 @@ function goodsParameter(data) {
     });
 }
 
+function goback() {
+    window.history.back(-1);
+}
+
+$(document).on('scroll', function () {
+    var wScrollY = window.scrollY; // 当前滚动条位置
+    var wInnerH = window.innerHeight; // 设备窗口的高度（不会变）
+    var bScrollH = document.body.scrollHeight; // 滚动条总高度
+    if (wScrollY + wInnerH >= bScrollH) {
+        // $loadMore.click();  //加载数据
+        // alert(123456789);
+        // x=$("p").offset();//获取当前盒子的位移 x.top
+    }
+});
+
+
+$(function () {
+    $(".Goods_info_content1").click(function(){
+        var t = $(window).scrollTop();
+        $('body,html').animate({'scrollTop':t+400},2000);
+    });
+});
+
+
