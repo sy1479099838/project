@@ -4,6 +4,7 @@ use think\Controller;
 use think\Request;
 use think\Session;
 use app\manage\model\Managemenu;
+use app\manage\model\Accesstoken;
 class Common extends Controller
 {
     public function __construct(Request $request = null)
@@ -133,6 +134,64 @@ class Common extends Controller
             }
         }
         return $page;
+    }
+
+    public static function http_request($url,$method="get",$data=null,$https=true)
+    {
+        $ch=curl_init();//初始化
+        curl_setopt($ch,CURLOPT_URL,$url);//设置访问的url
+        curl_setopt($ch,CURLOPT_HEADER,false);//设置不需要头信息
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);//只获取页面类容，但不输出
+        if($https)
+        {
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);//不做服务器认证
+            curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);//不做客户端认证
+        }
+        if($method=="post")
+        {
+            curl_setopt($ch,CURLOPT_POST,true);//设置请求是post方式
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$data);//设置post请求的数据
+        }
+        $str=curl_exec($ch);//执行访问，返回结果
+        curl_close($ch);//关闭curl,释放资源
+        return $str;
+    }
+    public function getAccessToken()
+    {
+        $Amax=Accesstoken::max("createTime");
+        if($Amax==0)
+        {
+            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx128a1dc9cf653ec1&secret=9d2a74eda105821467e413e1b4602247";
+            $method="get";
+            $accessToken=$this->http_request($url,$method);
+            $res=json_decode($accessToken,true);
+            $access_token=$res["access_token"];
+            $user = Accesstoken::create([
+                'createTime'  =>  time(),
+                'AccessToken' =>  $access_token
+            ]);
+        }
+        else
+        {
+            $accessToken=Accesstoken::where("createTime",$Amax)->find();
+            if(time()-$accessToken->createTime>6000)
+            {
+                $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx128a1dc9cf653ec1&secret=9d2a74eda105821467e413e1b4602247";
+                $method="get";
+                $accessToken=$this->http_request($url,$method);
+                $res=json_decode($accessToken,true);
+                $access_token=$res["access_token"];
+                $user = Accesstoken::create([
+                    'createTime'  =>  time(),
+                    'AccessToken' =>  $access_token
+                ]);
+            }
+            else
+            {
+                $access_token=$accessToken->AccessToken;
+            }
+        }
+        return $access_token;
     }
 
 }

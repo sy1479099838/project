@@ -1,6 +1,7 @@
 <?php
-namespace app\WeiXin\model;
+namespace app\manage\model;
 use think\Model;
+
 class Accesstoken extends Model
 {
 

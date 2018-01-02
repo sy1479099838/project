@@ -1,9 +1,9 @@
 <?php
 namespace app\manage\controller\weixin;
-use app\WeiXin\model\Receive;
+use app\manage\model\Receive;
 use think\Controller;
-use app\WeiXin\model\Accesstoken;
-use app\WeiXin\model\Reply;
+use app\manage\model\Accesstoken;
+use app\manage\model\Reply;
 define("TOKEN", "weixin");//自己定义的token 就是个通信的私钥
 header("content-type:text/html;charset=utf-8;");
 class Linkwx extends Controller
