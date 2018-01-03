@@ -1,0 +1,38 @@
+{extend name="Public:index"/}
+{block name="main"}
+    <div class="WeixinMenu-bigBox">
+        <h1 class="Head">微信公众号菜单生成</h1>
+        <form class="Menu-form">
+            <button class="addMenu">添加一级菜单</button><label class="addMenu-label">（最多添加3个一级菜单，且名称不超过4个汉字）</label><br>
+            {volist name="menuList" id="vo"}
+            <div class="menuBox" id="MenuBox1">
+                <p id="topMenu{$key+1}" class="topmenu">
+                    {$key+1}、<input type="text" value="{$vo.name}" placeholder="请输入菜单名称" name="topMenu{$key+1}">
+                    跳转链接：<input type="radio" name="topMenu{$key+1}-checkbox" placeholder="" value="1" onclick="addbutton(1)"
+                                {present name="vo.type"}{$vo['type']=='view'?'checked':''}{/present}>
+                    点击事件：<input type="radio" name="topMenu{$key+1}-checkbox" placeholder="" value="0" onclick="addbutton(0)"
+                                {present name="vo.type"}{$vo['type']=='click'?'checked':''}{/present}>
+                    {present name="vo.type"}
+                    {if condition="($vo.type == 'view')"} 链接：<input type="text" value="http://" placeholder="链接">
+                    {else /} <button onclick="addSecondMenu()">添加子菜单</button>
+                    {/if}
+                    {/present}
+
+                </p>
+                <div>
+                    {volist name="vo.sub_button" id="vo_1"}
+                    <p class="SecondMenu">
+                        ({$key+1})<input type="text" value="{$vo_1.name}" placeholder="二级菜单名称">
+                        跳转链接：<input type="radio" name="SecondMenu{$key+1}-checkbox" placeholder="" value="1" onclick="addbutton(1)"
+                                    {present name="vo_1.type"}{$vo_1['type']=='view'?'checked':''}{/present}>
+                        点击按钮：<input type="radio" name="SecondMenu{$key+1}-checkbox" placeholder="" value="0" onclick="addbutton(0)"
+                                    {present name="vo_1.type"}{$vo_1['type']=='click'?'checked':''}{/present}><br>
+                    </p>
+                    {/volist}
+                </div>
+            </div>
+            {/volist}
+        </form>
+        <input type="hidden" value="{$count}">
+    </div>
+{/block}

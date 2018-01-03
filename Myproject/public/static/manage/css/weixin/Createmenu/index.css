@@ -1,0 +1,6 @@
+.WeixinMenu-bigBox{border:1px solid red;}
+.WeixinMenu-bigBox>.Head{width: 100%;padding:20px;text-align: center;font-size: 22px;font-weight: 600;}
+.WeixinMenu-bigBox>.Menu-form{width: 80%;margin-left: 10%;}
+.WeixinMenu-bigBox>.Menu-form>.addMenu{background: none;border: 1px solid green;border-radius: 5px;padding:3px 5px;}
+.WeixinMenu-bigBox>.Menu-form>.addMenu-label{color: #959595;}
+

@@ -1,12 +1,12 @@
 <?php
-namespace app\WeiXin\controller;
-use app\WeiXin\model\Receive;
+namespace app\manage\controller\weixin;
+use app\manage\model\Receive;
 use think\Controller;
-use app\WeiXin\model\Accesstoken;
-use app\WeiXin\model\Reply;
+use app\manage\model\Accesstoken;
+use app\manage\model\Reply;
 define("TOKEN", "weixin");//自己定义的token 就是个通信的私钥
 header("content-type:text/html;charset=utf-8;");
-class Index extends Controller
+class Linkwx extends Controller
 {
     public function index()
     {
@@ -87,9 +87,9 @@ class Index extends Controller
         $fromUsername = $postObj->FromUserName;
         $toUsername = $postObj->ToUserName;
         $time = time();
-       if($megType=="text")
-       {
-                $textTpl = "<xml>
+        if($megType=="text")
+        {
+            $textTpl = "<xml>
                     <ToUserName><![CDATA[%s]]></ToUserName>
                     <FromUserName><![CDATA[%s]]></FromUserName>
                     <CreateTime>%s</CreateTime>
@@ -97,10 +97,10 @@ class Index extends Controller
                     <Content><![CDATA[%s]]></Content>
                     <FuncFlag>0<FuncFlag>
                     </xml>";
-                $contentStr=Reply::where("id",$ReplyID)->field("ReplyContent")->find();
-                $contentStr=$contentStr->ReplyContent;
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $megType, $contentStr);
-                echo $resultStr;
+            $contentStr=Reply::where("id",$ReplyID)->field("ReplyContent")->find();
+            $contentStr=$contentStr->ReplyContent;
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $megType, $contentStr);
+            echo $resultStr;
         }
     }
     public function http_request($url,$method="get",$data=null,$https=true)
@@ -148,4 +148,3 @@ class Index extends Controller
 
 
 }
-
