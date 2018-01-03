@@ -5,7 +5,9 @@ $(function () {
         grabCursor: true,
         paginationClickable: true
     });
+
 });
+
 
 $(document).ready(function(){
     $(".A-1").css("background","#d2d2d2");
@@ -177,6 +179,9 @@ $(document).on('scroll', function () {
         var data=$("input:hidden[name=ThisGoodsId]").val();
         if(pinglun==0)
         {
+            $(".A-2").css("background","#d2d2d2");
+            $(".A-1").css("background","none");
+            $(".A-3").css("background","none");
             $.ajax({
                 type: "POST",
                 url: "/admin/goods/Details/evaluate",
@@ -186,6 +191,7 @@ $(document).on('scroll', function () {
                 success: function(msg){
                     $(".Goods-Evaluate-BigBox").html(msg);
                     $("input:hidden[name=ThisGoodsHidden]").val("1");
+
                 },
                 error:function (err){
                     $.showBox("账号验证失败！");
@@ -195,6 +201,9 @@ $(document).on('scroll', function () {
         }
         else if(pinglun==1)
         {
+            $(".A-3").css("background","#d2d2d2");
+            $(".A-1").css("background","none");
+            $(".A-2").css("background","none");
             $.ajax({
                 type: "POST",
                 url: "/admin/goods/Details/parameter",
@@ -206,6 +215,7 @@ $(document).on('scroll', function () {
                     {
                         $(".Goods-xiangqing-BigBox").html(msg);
                         $("input:hidden[name=ThisGoodsHidden]").val("2");
+
                     }
 
                 },
@@ -216,6 +226,29 @@ $(document).on('scroll', function () {
         }
         // x=$("p").offset();//获取当前盒子的位移 x.top
     }
+
+    var a=$(".Goods-Evaluate-BigBox").offset().top;//获取当前盒子的位移 x.top
+    var b=$(".Goods-xiangqing-BigBox").offset().top;//获取当前盒子的位移 x.top
+    var c=wScrollY + wInnerH;
+    if(c>=(a+55) && c<b)
+    {
+        $(".A-2").css("background","#d2d2d2");
+        $(".A-1").css("background","none");
+        $(".A-3").css("background","none");
+    }
+    else if(c>=(b+55))
+    {
+        $(".A-3").css("background","#d2d2d2");
+        $(".A-1").css("background","none");
+        $(".A-2").css("background","none");
+    }
+    else if(c<b)
+    {
+        $(".A-1").css("background","#d2d2d2");
+        $(".A-2").css("background","none");
+        $(".A-3").css("background","none");
+    }
+
 });
 
 
