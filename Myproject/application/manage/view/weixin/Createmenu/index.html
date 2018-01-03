@@ -2,8 +2,8 @@
 {block name="main"}
     <div class="WeixinMenu-bigBox">
         <h1 class="Head">微信公众号菜单生成</h1>
-        <form class="Menu-form">
-            <button class="addMenu">添加一级菜单</button><label class="addMenu-label">（最多添加3个一级菜单，且名称不超过4个汉字）</label><br>
+        <!--<form class="Menu-form">-->
+            <button class="addMenu" onclick="Add_menu()">添加一级菜单</button><label class="addMenu-label">（最多添加3个一级菜单，且名称不超过4个汉字）</label><br>
             {volist name="menuList" id="vo"}
             <div class="menuBox" id="MenuBox1">
                 <p id="topMenu{$key+1}" class="topmenu">
@@ -32,7 +32,23 @@
                 </div>
             </div>
             {/volist}
-        </form>
+        <!--</form>-->
         <input type="hidden" value="{$count}">
     </div>
+
+<!---------------------添加公众号菜单---------------------->
+    <div class="GZ_menu">
+        <p>
+            <button class="icon-remove-sign" onclick="closeGZ_menu()">关闭</button>
+            <span class="cb"></span>
+        </p><br><br>
+
+        <p>微信公众号餐单生成</p>
+
+        <button  class="Bton1" onclick="Add_menu_list()">点击添加</button>
+        <button  class="Bton2" onclick="savePackage()">点击保存</button>
+        <div class="jiange" id="jiange"></div>
+        <br>
+    </div>
+
 {/block}
