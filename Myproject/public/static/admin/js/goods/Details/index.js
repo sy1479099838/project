@@ -41,22 +41,35 @@ function GoodsDetails(data) {
     });
 }
 function goodsEvaluate (data) {
-    $.ajax({
-        type: "POST",
-        url: "/admin/goods/Details/evaluate",
-        data: ({
-            num:data
-        }),
-        success: function(msg){
-            $(".Goods-Details-BigBox").fadeOut(0);
-            $(".Goods-xiangqing-BigBox").html("").fadeOut(0);
-            $(".Goods-Evaluate-BigBox").html(msg);
-            $(".Goods-Evaluate-BigBox").fadeIn(200);
-        },
-        error:function (err){
-            $.showBox("账号验证失败！");
-        }
-    });
+    var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
+    if(pinglun=="1")
+    {
+        var x=$(".Goods-Evaluate-BigBox").offset();//获取当前盒子的位移 x.top
+        var top=x.top;
+        $('body,html').animate({'scrollTop':top},2000);
+    }
+    else
+    {
+        $.ajax({
+            type: "POST",
+            url: "/admin/goods/Details/evaluate",
+            data: ({
+                num:data
+            }),
+            success: function(msg){
+                $(".Goods-Evaluate-BigBox").html(msg);
+                $("input:hidden[name=ThisGoodsHidden]").val("1");
+                var x=$(".Goods-Evaluate-BigBox").offset();//获取当前盒子的位移 x.top
+                var t = $(window).height();
+                var top=x.top;
+                $('body,html').animate({'scrollTop':top-(t-60)},2000);
+            },
+            error:function (err){
+                $.showBox("账号验证失败！");
+            }
+        });
+    }
+
 }
 function goodsParameter(data) {
     $(".Goods-Details-BigBox").fadeOut(0);
@@ -87,8 +100,47 @@ $(document).on('scroll', function () {
     var wInnerH = window.innerHeight; // 设备窗口的高度（不会变）
     var bScrollH = document.body.scrollHeight; // 滚动条总高度
     if (wScrollY + wInnerH >= bScrollH) {
-        // $loadMore.click();  //加载数据
-        // alert(123456789);
+        var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
+        var data=$("input:hidden[name=ThisGoodsId]").val();
+        if(pinglun==0)
+        {
+            $.ajax({
+                type: "POST",
+                url: "/admin/goods/Details/evaluate",
+                data: ({
+                    num:data
+                }),
+                success: function(msg){
+                    $(".Goods-Evaluate-BigBox").html(msg);
+                    $("input:hidden[name=ThisGoodsHidden]").val("1");
+                },
+                error:function (err){
+                    $.showBox("账号验证失败！");
+                }
+            });
+            return 0;
+        }
+        else if(pinglun==1)
+        {
+            $.ajax({
+                type: "POST",
+                url: "/admin/goods/Details/parameter",
+                data: ({
+                    num:data
+                }),
+                success: function(msg){
+                    if(msg!="error")
+                    {
+                        $(".Goods-xiangqing-BigBox").html(msg);
+                        $("input:hidden[name=ThisGoodsHidden]").val("2");
+                    }
+
+                },
+                error:function (err){
+                    $.showBox("账号验证失败！");
+                }
+            });
+        }
         // x=$("p").offset();//获取当前盒子的位移 x.top
     }
 });

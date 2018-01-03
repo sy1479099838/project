@@ -65,11 +65,11 @@
 .Comment_Box_button button i{font-size: 16px;color: #a4a4a4;}
 
 /*----------------以下是商品详情页面---------------*/
-.Goods-xiangqing-BigBox{width: 100%;height: auto;display: none;}
+.Goods-xiangqing-BigBox{width: 100%;height: auto;}
 .Goods-xiangqing-BigBox img{max-width: 100%;height: auto;}
 table {border-collapse:collapse;}
 .Goods-xiangqing-BigBox>.Goods-canshu{width: 100%;height: auto;}
 .Goods-xiangqing-BigBox>.Goods-xiangqing{width: 100%;height: auto;}
 
 /*----------------------------*/
-.Goods-Evaluate-BigBox{width: 100%;height: auto;display: none;}
+.Goods-Evaluate-BigBox{width: 100%;height: auto;}
