@@ -29,6 +29,14 @@ class Details extends Common
     {
         $GoodId=input("num");
         $text=Parameter::where("GoodsId",$GoodId)->field("GoodsDetails,GoodsParameter")->find();
-        return $this->fetch("parameter",["text"=>$text]);
+        if($text=="" || $text==NULL)
+        {
+            exit("error");
+        }
+        else
+        {
+            return $this->fetch("parameter",["text"=>$text]);
+        }
+
     }
 }

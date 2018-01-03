@@ -23,7 +23,7 @@ class Createmenu extends Common
 //                       {
 //                           "type":"view",
 //                           "name":"商城",
-//                           "url":"http://www.hfyiqiwan.top"
+//                           "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx128a1dc9cf653ec1&redirect_uri=http://www.hfyiqiwan.top/admin/login/Weixin/index&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
 //                        },
 //                        {
 //                           "type":"click",

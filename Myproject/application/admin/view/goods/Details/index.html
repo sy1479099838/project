@@ -3,9 +3,9 @@
 <div class="Goods_guide">
 	<input id="hd_referrer" type="hidden" />
 	<button  onclick="history.go(-1)"><i class="icon-chevron-left"><a href="javascript:void(0);"></a></i></button>
-	<a href="javascript:void(0);" onclick="GoodsDetails('{$GoodsInformation.id}')">商品</a>
-	<a href="javascript:void(0);" onclick="goodsParameter('{$GoodsInformation.id}')">详情</a>
-	<a href="javascript:void(0);" onclick="goodsEvaluate('{$GoodsInformation.id}')">评价</a>
+	<a href="javascript:void(0);" onclick="GoodsDetails('{$GoodsInformation.id}')" class="A-1">商品</a>
+	<a href="javascript:void(0);" onclick="goodsEvaluate('{$GoodsInformation.id}')" class="A-2">评价</a>
+	<a href="javascript:void(0);" onclick="goodsParameter('{$GoodsInformation.id}')" class="A-3">详情</a>
 	<a href="{:url('Index/index')}"><i class="icon-home"></i></a>
 </div>
 
@@ -85,9 +85,12 @@
 	</div>
 	<div class="cb"></div>
 </div>
-<!---------以下是商品详情盒子---------->
-<div class="Goods-xiangqing-BigBox"></div>
+
 <!----------以下是商品评价盒子---------------->
 <div class="Goods-Evaluate-BigBox"></div>
+<!---------以下是商品详情盒子---------->
+<div class="Goods-xiangqing-BigBox"></div>
+<input type="hidden" value="{$GoodsInformation.id}" name="ThisGoodsId">
+<input type="hidden" value="0" name="ThisGoodsHidden">
 {/block}
 

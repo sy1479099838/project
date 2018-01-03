@@ -1,9 +1,96 @@
 {extend name="Public:index"/}
 {block name="main"}
-<form action="submit" id="test" method="post">
-    <input type="text" name="test1" value="" placeholder="测试1"><br>
-    <input type="text" name="test2" value="" placeholder="测试2"><br>
-    <input type="text" name="test3" value="" placeholder="测试3"><br>
-</form>
-<button onclick="getFormInfo()">获取</button>
+<h1 class="h1_1">微信用户查询</h1>
+<div class="phone_head">
+    <div class="phone_head_l1">
+        <input type="text" />
+        <div class="icon-search"></div>
+    </div>
+    <div class="phone_head_l2">
+        <input type="text" name="date" id="zdate1" class="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
+        <span>至</span>
+        <input type="text" name="date" id="zdate2" class="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"/>
+        <div class="icon-search"></div>
+    </div>
+</div>
+
+<!------------------------------手机用户列表--------------------------------->
+<table class="user_content">
+    <tbody>
+    <tr>
+        <th>编号</th>
+        <th>账号</th>
+        <th>头像</th>
+        <th>地址</th>
+        <th>注册时间</th>
+        <th>会员等级</th>
+        <th>会员到期时间</th>
+        <th>消费金额</th>
+        <th>消费记录查询</th>
+        <th>IP查看</th>
+    </tr>
+    {volist name="PhoneUserList" id="vo"}
+    <tr>
+        <td>{$key+1}</td>
+        <td>
+            <li>账号：{$vo.UserAccount}</li>
+            <li>姓名：{$vo.UserName}</li>
+        </td>
+        <td>
+            {empty name="vo.UserImg"}
+            <img src="__PUBLIC__/manage/images/default.png">
+            {else /}
+            <img src="{$vo.UserImg}">
+            {/empty}
+
+        </td>
+        <td>{$vo.UserAddress}</td>
+        <td>{$vo['RegisterTime']|date="Y-m-d",###}</td>
+        <td>Lv3</td>
+        <td>2018-05-01</td>
+        <td>￥:12200</td>
+        <td>
+            <button onclick="Check_xiaofei()">
+                <img src="__PUBLIC__/manage/images/icon-details.png" alt="">查看
+            </button>
+            <div class="tanchuang">
+                <li class="icon-remove-circle" onclick="close_Check_xiaofei()">关闭</li>
+                <ul>
+                    <li>2017年3月3日</li>
+                    <li>买了个零食</li>
+                    <li>￥:200</li>
+                </ul>
+                <ul>
+                    <li>2017年3月3日</li>
+                    <li>买了个零食</li>
+                    <li>￥:200</li>
+                </ul>
+                <ul>
+                    <li>2017年3月3日</li>
+                    <li>买了个零食</li>
+                    <li>￥:200</li>
+                </ul>
+                <ul>
+                    <li>2017年3月3日</li>
+                    <li>买了个零食</li>
+                    <li>￥:200</li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <span onclick="Check_ip()">255.255.255.255</span>
+
+            <div class="check_ip">
+                <li class="icon-remove-circle" onclick="close_Check_ip()">关闭</li>
+                <ul>
+                    <li>2017年3月3日</li>
+                    <li>XX省XC市</li>
+                    <li>255.255.255.255</li>
+                </ul>
+            </div>
+        </td>
+        {/volist}
+    </tr>
+    </tbody>
+</table>
 {/block}
