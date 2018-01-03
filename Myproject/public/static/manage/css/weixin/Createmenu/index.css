@@ -1,6 +1,18 @@
-.WeixinMenu-bigBox{border:1px solid red;}
+.WeixinMenu-bigBox{border:1px solid red;width:99%;}
 .WeixinMenu-bigBox>.Head{width: 100%;padding:20px;text-align: center;font-size: 22px;font-weight: 600;}
 .WeixinMenu-bigBox>.Menu-form{width: 80%;margin-left: 10%;}
 .WeixinMenu-bigBox>.Menu-form>.addMenu{background: none;border: 1px solid green;border-radius: 5px;padding:3px 5px;}
 .WeixinMenu-bigBox>.Menu-form>.addMenu-label{color: #959595;}
+
+.GZ_menu{width:100%;height:100%;display:none;position:absolute;background:rgba(255,255,255,1);top:0;right:0;}
+.GZ_menu p button{border:none;background:white;float:right;font-size:20px;}
+.GZ_menu p{width:100%;height:30px;font-size:20px;text-align:center;}
+.Bton1{width:15%;height:30px;background:#00F7DE;color:white;margin-left:3%;border:none;}
+.Bton2{width:15%;height:30px;background:#00F7DE;color:white;margin-left:3%;border:none;}
+.jiange{width:100%;height:3px;}
+.Add_menu_list_1{width:100%;height:auto;text-indent:10%;line-height:50px;}
+.Add_menu_list_1 input{width:20%;}
+.del{width:10%;height:30px;background:#00F7DE;color:white;margin-left:3%;border:none;}
+.er_Menu{width:100%;height:50px;text-indent:10%;line-height:50px;}
+.Add_menu_list_2{width:100%;}
 
