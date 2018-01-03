@@ -11,6 +11,8 @@ class Users extends Common
 
     public function weixin()
     {
+        $PhoneUser=User::where("Registration","2")->order("RegisterTime desc")->select();
+        $this->assign("PhoneUserList",$PhoneUser);
         return $this->fetch();
     }
 
