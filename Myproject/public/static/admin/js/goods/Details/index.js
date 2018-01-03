@@ -8,6 +8,9 @@ $(function () {
 });
 
 $(document).ready(function(){
+    $(".A-1").css("background","#d2d2d2");
+    $(".A-2").css("background","none");
+    $(".A-3").css("background","none");
     var i=parseInt($("input:hidden[name=daojishi]").val());
 
     var timer = setInterval(function(){
@@ -30,23 +33,28 @@ $(function () {
 });
 
 function GoodsDetails(data) {
-    $(".Goods-xiangqing-BigBox").html("").fadeOut(0);
-    $(".Goods-Evaluate-BigBox").html("").fadeOut(0);
-    $(".Goods-Details-BigBox").fadeIn(200);
-    var mySwiper = new Swiper('.swiper-container',{
-        pagination: '.pagination',
-        loop:true,
-        grabCursor: true,
-        paginationClickable: true
-    });
+    // var mySwiper = new Swiper('.swiper-container',{
+    //     pagination: '.pagination',
+    //     loop:true,
+    //     grabCursor: true,
+    //     paginationClickable: true
+    // });
+    $(".A-1").css("background","#d2d2d2");
+    $(".A-2").css("background","none");
+    $(".A-3").css("background","none");
+    $('body,html').animate({'scrollTop':0},500);
 }
 function goodsEvaluate (data) {
+    $(".A-2").css("background","#d2d2d2");
+    $(".A-1").css("background","none");
+    $(".A-3").css("background","none");
     var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
-    if(pinglun=="1")
+    if(pinglun!="0")
     {
         var x=$(".Goods-Evaluate-BigBox").offset();//获取当前盒子的位移 x.top
+        var t = $(window).height();
         var top=x.top;
-        $('body,html').animate({'scrollTop':top},2000);
+        $('body,html').animate({'scrollTop':top-(t-60)},500);
     }
     else
     {
@@ -57,12 +65,15 @@ function goodsEvaluate (data) {
                 num:data
             }),
             success: function(msg){
-                $(".Goods-Evaluate-BigBox").html(msg);
-                $("input:hidden[name=ThisGoodsHidden]").val("1");
-                var x=$(".Goods-Evaluate-BigBox").offset();//获取当前盒子的位移 x.top
-                var t = $(window).height();
-                var top=x.top;
-                $('body,html').animate({'scrollTop':top-(t-60)},2000);
+                if(msg!="error")
+                {
+                    $(".Goods-Evaluate-BigBox").html(msg);
+                    $("input:hidden[name=ThisGoodsHidden]").val("1");
+                    var x=$(".Goods-Evaluate-BigBox").offset();//获取当前盒子的位移 x.top
+                    var t = $(window).height();
+                    var top=x.top;
+                    $('body,html').animate({'scrollTop':top-(t-60)},500);
+                }
             },
             error:function (err){
                 $.showBox("账号验证失败！");
@@ -72,23 +83,85 @@ function goodsEvaluate (data) {
 
 }
 function goodsParameter(data) {
-    $(".Goods-Details-BigBox").fadeOut(0);
-    $.ajax({
-        type: "POST",
-        url: "/admin/goods/Details/parameter",
-        data: ({
-            num:data
-        }),
-        success: function(msg){
-            $(".Goods-Details-BigBox").fadeOut(0);
-            $(".Goods-Evaluate-BigBox").html("").fadeOut(0);
-            $(".Goods-xiangqing-BigBox").html(msg);
-            $(".Goods-xiangqing-BigBox").fadeIn(200);
-        },
-        error:function (err){
-            $.showBox("账号验证失败！");
-        }
-    });
+    $(".A-3").css("background","#d2d2d2");
+    $(".A-1").css("background","none");
+    $(".A-2").css("background","none");
+    var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
+    if(pinglun=="0")
+    {
+        $.ajax({
+            type: "POST",
+            url: "/admin/goods/Details/evaluate",
+            data: ({
+                num:data
+            }),
+            success: function(msg){
+                if(msg!="error")
+                {
+                    $(".Goods-Evaluate-BigBox").html(msg);
+                    $("input:hidden[name=ThisGoodsHidden]").val("1");
+                    $.ajax({
+                        type: "POST",
+                        url: "/admin/goods/Details/parameter",
+                        data: ({
+                            num:data
+                        }),
+                        success: function(msg){
+                            if(msg!="error")
+                            {
+                                $(".Goods-xiangqing-BigBox").html(msg);
+                                $("input:hidden[name=ThisGoodsHidden]").val("2");
+                                var x=$(".Goods-xiangqing-BigBox").offset();//获取当前盒子的位移 x.top
+                                var t = $(window).height();
+                                var top=x.top;
+                                $('body,html').animate({'scrollTop':top-(t-60)},500);
+                            }
+
+                        },
+                        error:function (err){
+                            $.showBox("账号验证失败！");
+                        }
+                    });
+                }
+
+            },
+            error:function (err){
+                $.showBox("账号验证失败！");
+            }
+        });
+    }
+    else if(pinglun=="1")
+    {
+        $.ajax({
+            type: "POST",
+            url: "/admin/goods/Details/parameter",
+            data: ({
+                num:data
+            }),
+            success: function(msg){
+                if(msg!="error")
+                {
+                    $(".Goods-xiangqing-BigBox").html(msg);
+                    $("input:hidden[name=ThisGoodsHidden]").val("2");
+                    var x=$(".Goods-xiangqing-BigBox").offset();//获取当前盒子的位移 x.top
+                    var t = $(window).height();
+                    var top=x.top;
+                    $('body,html').animate({'scrollTop':top-(t-60)},500);
+                }
+
+            },
+            error:function (err){
+                $.showBox("账号验证失败！");
+            }
+        });
+    }
+    else
+    {
+        var x=$(".Goods-xiangqing-BigBox").offset();//获取当前盒子的位移 x.top
+        var t = $(window).height();
+        var top=x.top;
+        $('body,html').animate({'scrollTop':top-(t-60)},500);
+    }
 }
 
 function goback() {
