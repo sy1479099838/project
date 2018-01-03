@@ -29,7 +29,7 @@ class Linkwx extends Controller
     }
     public function responseMsg()
     {
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        $postStr = file_get_contents("php://input");
         $this->saveFile($postStr);
         if (!empty($postStr)){
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
@@ -46,7 +46,7 @@ class Linkwx extends Controller
                 }
                 else
                 {
-                    $this->resMsg(3,"text",$postObj);
+                    $this->resMsg(1,"text",$postObj);
                 }
 
             }
@@ -73,7 +73,7 @@ class Linkwx extends Controller
     }
     public function saveFile($value)
     {
-        file_put_contents("xmlReceive.txt",$value);
+        file_put_contents("xmlReceive.txt",$value."\r\n",FILE_APPEND);
         $fileName="xmlReceive.txt";
         $size = filesize($fileName);
         if($size>=10000)
@@ -145,6 +145,4 @@ class Linkwx extends Controller
         }
         return $access_token;
     }
-
-
 }
