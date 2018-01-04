@@ -50,7 +50,7 @@ function qi_yong(num){
 function guan_bi(num){
     $('#A'+num).remove();
 }
-function Add_lianjie(num){
+function Add_lianjie(num ){
     //alert(11111111);
     var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;border:1px solid black;" id="C'+num+'">';
     $('#B'+num).append(lianjie_1);
