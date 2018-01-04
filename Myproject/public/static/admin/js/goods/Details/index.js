@@ -35,21 +35,9 @@ $(function () {
 });
 
 function GoodsDetails(data) {
-    // var mySwiper = new Swiper('.swiper-container',{
-    //     pagination: '.pagination',
-    //     loop:true,
-    //     grabCursor: true,
-    //     paginationClickable: true
-    // });
-    $(".A-1").css("background","#d2d2d2");
-    $(".A-2").css("background","none");
-    $(".A-3").css("background","none");
     $('body,html').animate({'scrollTop':0},500);
 }
 function goodsEvaluate (data) {
-    $(".A-2").css("background","#d2d2d2");
-    $(".A-1").css("background","none");
-    $(".A-3").css("background","none");
     var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
     if(pinglun!="0")
     {
@@ -85,9 +73,6 @@ function goodsEvaluate (data) {
 
 }
 function goodsParameter(data) {
-    $(".A-3").css("background","#d2d2d2");
-    $(".A-1").css("background","none");
-    $(".A-2").css("background","none");
     var pinglun=$("input:hidden[name=ThisGoodsHidden]").val();
     if(pinglun=="0")
     {
@@ -179,9 +164,6 @@ $(document).on('scroll', function () {
         var data=$("input:hidden[name=ThisGoodsId]").val();
         if(pinglun==0)
         {
-            $(".A-2").css("background","#d2d2d2");
-            $(".A-1").css("background","none");
-            $(".A-3").css("background","none");
             $.ajax({
                 type: "POST",
                 url: "/admin/goods/Details/evaluate",
@@ -201,9 +183,6 @@ $(document).on('scroll', function () {
         }
         else if(pinglun==1)
         {
-            $(".A-3").css("background","#d2d2d2");
-            $(".A-1").css("background","none");
-            $(".A-2").css("background","none");
             $.ajax({
                 type: "POST",
                 url: "/admin/goods/Details/parameter",

@@ -3,7 +3,17 @@
 		<!-- 头像部分 -->
 		<div class="MAXwidth HeadPortraitBox">
 			<div class="HeadPortrait">
+				{empty name="user.UserImg"}
 				<img class="fl" src="__PUBLIC__/admin/images/default.png"/>
+				{else /}
+					{eq name="user.count" value="1"}
+					<img class="fl" src="{$user.UserImg}"/>
+					{else/}
+					<img class="fl" src="__ROTH__/{$user.UserImg}"/>
+					{/eq}
+
+				{/empty}
+
 				<span class="UserMember">
 					<b>v</b>1
 				</span>
@@ -13,7 +23,7 @@
 			</a>
 		</div>
 		<!-- 电话号码（账号） -->
-		<div class="MAXwidth PhoneNum">187****6325</div>
+		<div class="MAXwidth PhoneNum">{$user.UserName}</div>
 		<!-- 积分、余额、优惠 -->
 		<div class="MAXwidth IntegralBox">
 			<span class="Integral fl">
