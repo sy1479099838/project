@@ -82,7 +82,7 @@ $(function () {
             $(".mubanChoice").fadeOut(0);
         }
         $("#ClassSelect"+num).fadeIn(700);
-        $("#EditClassSelect"+num).fadeIn(700);
+        $("#Edit                    ClassSelect"+num).fadeIn(700);
     });
 });
 

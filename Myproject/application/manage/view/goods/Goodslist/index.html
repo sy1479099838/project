@@ -1,16 +1,13 @@
 {extend name="Public:index"/}
 {block name="main"}
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
-
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
             <p>
                 <button class="TreeMenuOne-switch">
-                    &nbsp;
+                    <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodsClassChoice('0')">全部</a>
+                <a href="javascript:GoodsChoice('0')">全部</a>
             </p>
         </div>
         {volist name="ClassList" id="list"}
@@ -19,20 +16,19 @@
                 <button class="TreeMenuOne-switch">
                     <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodsClassChoice('{$list.id}')">{$list.ClassName}</a>
+                <a href="javascript:GoodsChoice('{$list.id}')">{$list.ClassName}</a>
             </p>
             {present name="list.children.0"}
-
+            {volist name="list.children" id="list_2"}
 
             <dl class="treeMenu-one" id="treeOpen_1">
-                {volist name="list.children" id="list_2"}
                 {present name="list_2.children.0"}
                 <dt>
                     <span>&nbsp;</span>
                     <button class="TreeMenuTwo-switch">
                         <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                     </button>
-                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </dt>
                 <dd  class="treeMenu-three" id="treeOpen_2">
                     {volist name="list_2.children" id="list_3"}
@@ -41,7 +37,7 @@
                         <button>
                             <img src="__PUBLIC__/manage/images/file.png" alt="">
                         </button>
-                        <a href="javascript:GoodsClassChoice('{$list_3.id}')">{$list_3.ClassName}</a>
+                        <a href="javascript:GoodsChoice('{$list_3.id}')">{$list_3.ClassName}</a>
                     </div>
                     {/volist}
                 </dd>
@@ -51,12 +47,11 @@
                     <button>
                         <img src="__PUBLIC__/manage/images/file.png" alt="">
                     </button>
-                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:GoodsChoice('{$list_2.id}')">{$list_2.ClassName}</a>
                 </div>
                 {/present}
-                {/volist}
             </dl>
-
+            {/volist}
             {/present}
         </div>
         {/volist}
@@ -86,55 +81,43 @@
             <tr>
                 <th>编号</th>
                 <th>商品</th>
-                <th>商家</th>
-                <th>热门分类模板</th>
-                <th>套餐</th>
-                <th>活动日期</th>
-                <th>热门分类</th>
+                <th>商品封面</th>
+                <th>套餐名称</th>
+                <th>首页模板图</th>
                 <th>商品详情</th>
                 <th>拼团启用</th>
                 <th>操作</th>
             </tr>
-            {volist name="GoodsList" id="value"}
             <tr>
                 <td>{$key+1}</td>
                 <td>
-                    名称：{$value.GoodsName}<br>
-                    分类：{$value.ClassName}<br>
-                    价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
+                    名称：绵阳欢乐世界双十二狂欢节<br>
+                    分类：旅游<br>
+                    商家：大黄蜂有限公司<br>
+                    价格：￥128&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥138&nbsp;</i><br>
+                    剩余：123张<br>
                 </td>
                 <td>
-                    商家：{$value.CompanyName}<br>
-                    负责人：{$value.LiablePeople}
+                    <img src="__ROTH__/uploads/20171129/E5cff76e1ce50935a2d0bb221088d2e7f.jpg" class="GoodsImg">
+                <td>
+                    套餐一：<a onclick="PackageBox('')" >全家一日游&nbsp;(￥128)</a><br>
+                    套餐二：<a onclick="PackageBox('')" >亲情1+1&nbsp;(￥128)</a><br>
+                    套餐三：<a onclick="PackageBox('')">豪华单人行&nbsp;(￥128)</a><br>
+                    日期：2017.12.01-2017.12.31
                 </td>
                 <td>
-                    <a href="javascript:void(0);" onclick="check_muban('{$value.id}')" >查看</a><br>
-                    模板1
+                    首页模板图
                 </td>
                 <td>
-                    <a href="javascript:void(0)" onclick="check_tao('{$value.id}')">查看</a><br>
-                </td>
-                <td>
-                    {$value['startTime']|date="Y/m/d H:i",###}<br>
-                    至 <br>
-                    {$value['endTime']|date="Y/m/d H:i",###}
-                </td>
-                <td>
-                    {volist name="value.HotClass" id="res"}
-                        【{$res.HotName}】<br>
-                    {/volist}
-
-                </td>
-                <td>
-                    <button class="" onclick="GoodsPK('{$value.id}')">
+                    <button class="" onclick="GoodsPK()">
                         <img src="__PUBLIC__/manage/images/icon-details.png">详情
-                    </button>
-                    <button onclick="GoodsCS('{$value.id}')">
+                    </button><br>
+                    <button onclick="GoodsParameter()">
                         <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
                     </button><br>
                     <button onclick="GoodsComment()">
                         <img src="__PUBLIC__/manage/images/icon-comment.png" alt="">评论
-                    </button>
+                    </button><br>
 
                         <button class="SHOW_Praise">
                             <img src="__PUBLIC__/manage/images/icon-laud.png" alt="">
@@ -150,12 +133,12 @@
                 </td>
                 <td>
                     <span class="GoodsFight" >
-                        <input type="hidden" value="{$value.groups}" class="status" style="width:100%;">
-                        <button class="GoodsGroup-open" onclick="switch_Menu('{$value.id}',0)" id="GoodsGroup-open{$value.id}">
+                        <input type="hidden" value="" class="status GoodsState{}" style="width:100%;">
+                        <button class="GoodsMenu-open" onclick="Up_Menu()">
                             <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
                             启用
                         </button>
-                        <button class="GoodsGroup-off" onclick="switch_Menu('{$value.id}',1)" id="GoodsGroup-off{$value.id}">
+                        <button class="GoodsMenu-off" onclick="End_Menu()">
                             <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
                             禁用
                         </button>
@@ -181,19 +164,8 @@
                     </span>
                 </td>
             </tr>
-            {/volist}
             </tbody>
         </table>
-        <input type="hidden" name="GoodsNowPage" value="{$NowPage}">
-        <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
-        <div class="fenye" style="float:right;margin-right:2%;">
-
-            <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenYe('Previous')"></a>
-            {volist name="page" id="vo"}
-            <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenYe('{$vo}')">{$vo}</a>
-            {/volist}
-            <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenYe('next')"></a>
-        </div>
     </div>
     <div style="clear:both;"></div>
     <div class="SeeBigImages" onclick="closeImage()">
@@ -212,85 +184,53 @@
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
                 <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
-                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label>
-                {if condition="$peopleType neq 'admin'"}
-                <input type="text" name="sjName" value="{$businessName}" disabled placeholder="请输入商家名称">
-                {else /}
-                <select name="sjName" id="BusinessChoice">
-                    <option value="0">--请选择--</option>
-                    {volist name="BusinessList" id="BU"}
-                    <option value="{$BU.id}">{$BU.CompanyName}</option>
-                    {/volist}
-                </select>
-                {/if}
+                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家</label><input type="text" name="sjName" value="" placeholder="请输入商家名称">
             </span><br>
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-
                     <select class="AddLiabilityGoods-Choice_one">
                         <option value="0">--选择--</option>
-                        {volist name="ClassList" id="choice"}
-                        <option value="{$choice.id}">--{$choice.ClassName}--</option>
-                        {/volist}
-                    </select>
-                    {volist name="ClassList" id="choice_1"}
-                    {present name="choice_1.children.0"}
-                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden">
+                        <option value="1">--类别--</option>
+                    </select>***
+                    <select id="0" class="Choice-hidden">
                         <option value="0">--选择--</option>
-                        {volist name="choice_1.children" id="choice_2"}
-                        <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
-                        {/volist}
+                        <option value="1">--类别--</option>
                     </select>
-                    {/present}
-                    {/volist}
+                    <select id="1" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
+                    <select id="2" class="Choice-hidden">
+                        <option value="0">--选择--</option>
+                        <option value="1">--类别--</option>
+                    </select>
             </span><br>
             <span>
 
                 <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
-                    <input type="text" name="price" id="price" value="" placeholder="实际价格">&nbsp;&nbsp;
+                <input type="text" name="price" id="price" value="" placeholder="实际价格"></input>&nbsp;&nbsp;
                 <label style="width:20px;">*</label>
                 <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格</label>
-                    <input type="text" name="activeprice" id="activePrice" value="" placeholder="活动价格"  >&nbsp;
+                <input type="text" name="activeprice" id="activePrice" value="" placeholder="实际价格"  ></input>&nbsp;
                 <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
-                    <input type="text" name="number" id="number" value="">
+                <input type="number" name="number" id="number" value="">
 
             </span>
             <span>
-                <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                {volist name="HotClass" id="Hot"}
-                <b>{$Hot.HotName}</b><input type="checkbox" name="AddHot" value="{$Hot.id}" style="width:2%;">
-                {/volist}
-            </span>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label>
+                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile('')" id="img4"/>
             </span><br>
-            <span>
-                <a href="javascript:;" class="a-upload">
-                    <input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />
-                </a>
-                <button onclick="uplode()" style="width:15%;height:25px;">上传</button>
-            </span>
-            <span style="height:150px;">
-                <div id="dd" style=" width:990px;float: left;"></div>
-            </span>
+            <span style="height: 210px;text-align: center;">
+                <div  id="img1">
+                    <img src="" height="80%" width="80%" alt="请上传商品照"/>
+                </div>
+            </span><br>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
-                <input type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                <input type="text" name="start_date" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
                 <label style="width: 5%"><font size="20px" color="red">至</font></label>
-                <input type="text" name="end_time" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                <input type="text" name="end_date" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
             </span><br>
-            <span>
-                商品地址（点击地图获取定位）
-            </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
-            <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
-            <input type="text" value="" placeholder="经度" disabled name="position-X">
-            <input type="text" value="" placeholder="纬度" disabled name="position-Y">
-
-            <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
-            <!--<div id="r-result"></div>-->
-
-
             <div class="AddMenu-Submit">
                 <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
             </div>
@@ -340,23 +280,14 @@
                 <label style="width:20px;">*</label>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量</label>
                 <input type="number" name="number"  value="">
-            </span><br>
-            <span>
+
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片</label><input type="file" name="head" onchange="previewFile()" id="img2"/>
-            </span>
+            </span><br>
             <span style="height: 210px;text-align: center;">
                 <div  id="img3">
                     <img src="" height="99" width="71" alt="请上传商品照"/>
                 </div>
             </span><br>
-            <span>
-                <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
-            </span>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_date" id="date1" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
@@ -388,14 +319,62 @@
     <h1>商品详情编辑</h1>
     <div align="center" style="width:90%;margin-left:5%;">
         <textarea id="newsEditor" name="content" style="height: 100%">请输入新闻内容... </textarea>
-        <script type="text/javascript" src="__PUBLIC__/manage/js/goods/Goodslist/editor.js"></script>
+        <script type="text/javascript">
+            UE.getEditor('newsEditor');
+            // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+            function createEditor(){
+                enableBtn();
+                UE.getEditor('editor')
+            }
+            //        function getAllHtml() {
+            //            alert( UE.getEditor('newsEditor').getAllHtml() )
+            //        }
+            function getContent() {
+                var arr = [];
+    //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+    //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('newsEditor').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $(".GoodsPK-Yulan-Box").fadeIn(700);
+//            alert( arr.join( "\n" ) );
+                $("#yulan-box").html(UEvalue);
+            }
+            function closeYulan() {
+                $(".GoodsPK-Yulan-Box").fadeOut(1000);
+            }
+            function Xiang_Submit(){
+                var arr = [];
+                //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+                //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('newsEditor').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $.ajax({
+                    url:'Xiangqing',
+                    type:'post',
+                    data:({data:UEvalue}),
+                    success:function (msg) {
+                        if(msg=="error")
+                        {
+                            $.showBox(" 详情提交失败！");
+                        }
+                        else
+                        {
+                            $.showBox(" 详情提交成功！");
+                        }
+                    },
+                    error:function (msg) {
+                        $.showBox("错误，请重试！");
+                    }
+                });
+            }
+        </script>
     </div>
     <div class="Xiang-Submit">
         <div class="X-Submit2">
-
+            <button onclick="Xiang_Submit()">提&nbsp;&nbsp;&nbsp;交</button>
         </div>
         <div class="X-Submit1">
-            <button onclick="getContent('')">预&nbsp;&nbsp;&nbsp;览</button>
+            <button onclick="getContent()">预&nbsp;&nbsp;&nbsp;览</button>
         </div>
     </div>
 </div>
@@ -408,26 +387,71 @@
     </p><br>
     <div id="yulan-box"></div>
 </div>
-
-<!-----------------------------------商品参数预览-------------------------------------->
-
 <!---------------------------------------商品参数--------------------------------->
 <div class="GoodsParameter-Menu-Box">
     <p>
         <button class="icon-remove-sign" onclick="closeGoodsParameter()">关闭</button>
         <span class="cb"></span>
     </p><br>
-    <h1 style="text-align: center;font-size: 22px;">商品参数编辑</h1>
+    <h1>商品参数编辑</h1>
     <div align="center" style="width:90%;margin-left:5%;">
-        <textarea id="newsEditor1" name="content" style="height: 50%; width:98%;">请输入新闻内容... </textarea>
-        <script type="text/javascript"  src="__PUBLIC__/manage/js/goods/Goodslist/editor.js" ></script>
+        <textarea id="EditParameter" name="content" style="height: 100%">请输入新闻内容... </textarea>
+        <script type="text/javascript">
+            UE.getEditor('EditParameter');
+            // var content = UE.getPlainTxt();//content就是编辑器的带格式的内容
+            function createEditor(){
+                enableBtn();
+                UE.getEditor('editor')
+            }
+            //        function getAllHtml() {
+            //            alert( UE.getEditor('newsEditor').getAllHtml() )
+            //        }
+            function getContent() {
+                var arr = [];
+                //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+                //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('EditParameter').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $(".GoodsPK-Yulan-Box").fadeIn(700);
+//            alert( arr.join( "\n" ) );
+                $("#yulan-box").html(UEvalue);
+            }
+            function closeYulan() {
+                $(".GoodsPK-Yulan-Box").fadeOut(1000);
+            }
+            function Xiang_Submit(){
+                var arr = [];
+                //          arr.push( "使用editor.getContent()方法可以获得编辑器的内容" );
+                //          arr.push( "内容为：" );
+                arr.push(  UE.getEditor('EditParameter').getContent() );
+                var UEvalue = arr.join( "\n" );
+                $.ajax({
+                    url:'Xiangqing',
+                    type:'post',
+                    data:({data:UEvalue}),
+                    success:function (msg) {
+                        if(msg=="error")
+                        {
+                            $.showBox(" 详情提交失败！");
+                        }
+                        else
+                        {
+                            $.showBox(" 详情提交成功！");
+                        }
+                    },
+                    error:function (msg) {
+                        $.showBox("错误，请重试！");
+                    }
+                });
+            }
+        </script>
     </div>
     <div class="Xiang-Submit">
-        <div class="X-Submit2">
-
+        <div class="PX-Submit2">
+            <button onclick="Xiang_Submit()">提&nbsp;&nbsp;&nbsp;交</button>
         </div>
-        <div class="X-Submit1">
-            <button onclick="getContent2()">预&nbsp;&nbsp;&nbsp;览</button>
+        <div class="PX-Submit1">
+            <button onclick="getContent()">预&nbsp;&nbsp;&nbsp;览</button>
         </div>
     </div>
 </div>
@@ -440,68 +464,18 @@
     <div class="Message-Number">
      <p><b>累计留言</b><span>&nbsp;288&nbsp;</span><b>条</b></p>
     </div>
-    <ul class="pinglun_1">
-        <li>
-            <img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg">
-            <span style="margin-left:5%;">评论人:XXXX</span>
-            <span class="huifu">回复</span>
-            <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
-        </li>
-        <p>回复内容：这是个回复这是个回复这是个回复这是个回复
-            这是个回复这是个回复
-            这是个回复这是个回复</p>
-
-    </ul>
-    <ul class="pinglun_1">
-        <li>
-            <img src="__ROTH__/uploads/20171129/E2e3c41062c7f28c81bf07ffe95ab8e71.jpg">
-            <span style="margin-left:5%;">评论人:XXXX</span>
-            <span class="huifu">回复</span>
-            <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
-        </li>
-        <p>回复内容：这是个回复这是个回复这是个回复这是个回复
-            这是个回复这是个回复
-            这是个回复这是个回复</p>
-
-    </ul>
-</div>
-
-
-<!---------------------------商品模板选择----------------------------->
-<div class="muban"></div>
-
-<!-------------------模板照片修改--------------------->
-<div class="mu_edit" id="yulan_1"></div>
-<!--------------------预览--------------------->
-<div class="changeWidth">
-    <h1 class="change-h1"><button class="icon-remove-circle" onclick="closeYulan()">&nbsp关闭</button></h1>
-    <h1 class="change-p">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        请选择屏幕下方手机类型，或拖动边框查看效果！
-    </h1>
-    <div class="changeWidth-head">
-        <button onclick="changeBox(326,486)">iPhone4</button>
-        <button onclick="changeBox(326,574)">iPhone5</button>
-        <button onclick="changeBox(381,673)">iPhone6</button>
-        <button onclick="changeBox(420,742)">iPhone6 plus</button>
-        <span class="showBoxWidth"></span>
+    <div class="user-Message">
+        <span>用户1号</span><br>
+        <span>2017/12/13 19:20</span>
+        <div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在此处用户可对商品进行详细的评论！
+            </div>
+        </div>
+        <div style="text-align: right">
+            <span >购买的商品：套餐一</span>
+        </div>
     </div>
-    <div class="MoveBox">
-        <div class="moveTop"></div>
-        <div class="moveLeft"></div>
-        <div class="moveRight"></div>
-        <div class="moveBottom"></div>
-        <div class="moveContent"></div>
-    </div>
-    <span class="mousePosition"></span>
-</div>
-
-
-<!-------------------------套餐--------------------------->
-<div class="taocan_1" >
-
 </div>
 {/block}
 

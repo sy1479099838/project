@@ -10,14 +10,22 @@ function closeGZ_menu(){
     //alert(111111);
     $(".GZ_menu").fadeOut();
 }
+
+/*以下A、B、C、D为餐单下传值参数*/
 function Add_menu_list(){
+
     var num=document.getElementsByClassName('Add_menu_list_1').length;
     //alert(num);
-    var menu='<div class="Add_menu_list_1">餐单名称：<input type="text" name="WX_name" value="" onchange="check_name()">' +
-        '&nbsp;&nbsp;&nbsp;启用：<input type="radio" name="qiyong" value="1" style="width:5%;" onclick="qi_yong('+num+')">' +
-        '关闭：<input type="radio" name="qiyong" value="0" checked style="width:5%;" onclick="guan_bi('+num+')">' +
-        '<button class="del">删除</button><div id="A'+num+'"></div></div>';
-    $('.jiange').after(menu);
+    if(num<5)
+        {
+            var menu='<div class="Add_menu_list_1" id="A'+num+'">餐单名称：<input type="text" name="WX_name" value="" onchange="check_name()">' +
+            '&nbsp;&nbsp;&nbsp;启用：<input type="radio" name="qiyong" value="1" style="width:5%;" onchange="qi_yong('+num+')">' +
+            '关闭：<input type="radio" name="qiyong" value="0" checked style="width:5%;" onchange="guan_bi('+num+')"></div>';
+            $('.jiange').after(menu);
+        }else{
+        $.showBox('最多只能有5个二级餐单');
+    }
+
 }
 function check_name(){
     //alert(111);
@@ -32,28 +40,38 @@ function check_name(){
 
 function qi_yong(num){
     //alert(111111111);
-    var kaiguan=true;
-    if(kaiguan){
-        var ermenu='<div class="er_Menu">跳转链接：<input type="radio" name="tiaozhan" value="0" style="width:2%;" onclick="Add_lianjie()" class="lianjie">'+
-            '添加二级餐单:<input type="radio" name="tiaozhan" value="1" style="width:2%;" onclick="Add_er()" class="tianjie_e"></div>'
+        var ermenu='<div class="er_Menu" id="B'+num+'">跳转链接：<input type="radio" name="tiaozhan" value="0" style="width:2%;" onchange="Add_lianjie('+num+')" class="lianjie">'+
+            '点击事件:<input type="radio" name="tiaozhan" value="1" style="width:2%;" onclick="Add_sj('+num+')" class="tianjie_e"></div>'
         ;
         $('#A'+num).append(ermenu);
-        kaiguan=false;
+
+
+}
+function guan_bi(num){
+    $('#A'+num).remove();
+}
+function Add_lianjie(num){
+    //alert(11111111);
+    var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;border:1px solid black;" id="C'+num+'">';
+    $('#B'+num).append(lianjie_1);
+    $('#D'+num).remove();
+}
+function Add_sj(num){
+    $('#C'+num).remove();
+}
+function Add_er(num){
+    var erji='<button class="Add_er_1" onclick="Add_er_1('+num+')" id="D'+num+'">点击此处添加餐单</button>';
+    $('#B'+num).append(erji);
+    $('#C'+num).remove();
+}
+
+function Add_er_1(num){
+    var num_san=document.getElementsByClassName('sanji_1').length;
+    if(num_san<7){
+        var  sanji='<div class="sanji_1">请输入三级餐单名称<input name="sanji" type="text" value="" class="sanji_candan"></div><br>';
+        $('#D'+num).after(sanji);
+    }else{
+        $.showBox('三级餐单只能有7个');
     }
 
-}
-function guan_bi(){
-    $(".er_Menu").remove();
-}
-function Add_lianjie(){
-    //alert(11111111);
-    var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;">';
-    $('.lianjie').append(lianjie_1);
-    $('.tianjie_e').remove();
-}
-
-function Add_er(){
-    var erji='<button class="Add_er_1" onclick="Add_er_1">添加二级餐单</button>';
-    $('.tianjie_e').append(erji);
-    $('.lianjie_1').remove();
 }
