@@ -6,11 +6,17 @@
 
 
 .Menu_list_1{width:30%;float:left;}
+.Menu_list_2{width:30%;float:left;}
+.Menu_list_3{width:30%;float:left;}
 .Bton1{width:8%;height:20px;background:#00F7DE;color:white;margin-left:3%;border:none;float:left;}
 .Bton2{width:8%;height:20px;background:#00F7DE;color:white;margin-left:3%;border:none;float:left;}
 .jiange{width:100%;height:3px;}
 .Add_menu_list_1{width:100%;height:auto;text-indent:15%;line-height:50px;}
 .Add_menu_list_1 input{width:20%;}
+.Add_menu_list_2{width:100%;height:auto;text-indent:15%;line-height:50px;}
+.Add_menu_list_2 input{width:20%;}
+.Add_menu_list_3{width:100%;height:auto;text-indent:15%;line-height:50px;}
+.Add_menu_list_3 input{width:20%;}
 .del{width:10%;height:30px;background:#00F7DE;color:white;margin-left:3%;border:none;}
 .er_Menu{width:100%;height:50px;text-indent:15%;line-height:50px;}
 .Add_menu_list_2{width:100%;}
