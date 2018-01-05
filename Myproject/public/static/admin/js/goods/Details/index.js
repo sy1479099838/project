@@ -254,7 +254,7 @@ $(function (){
     var n1=Number(Num.value);
     console.log(n1);
     Obu[0].onclick=function(){
-        alert(1111);
+        //alert(1111);
         n1--;
         if(n1<1){
             n1=1;
@@ -263,7 +263,7 @@ $(function (){
         document.getElementById("ccid").value=n1;
     };
     Obu[1].onclick=function(){
-        alert(111);
+        //alert(111);
         n1++;
         //console.log(n1);
         document.getElementById("ccid").value=n1;
