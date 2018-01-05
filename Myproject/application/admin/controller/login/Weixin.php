@@ -9,8 +9,8 @@ class Weixin extends Controller
     public function index()
     {
         $code=$_GET["code"];
-        $appid="wx128a1dc9cf653ec1";
-        $as="9d2a74eda105821467e413e1b4602247";
+        $appid="wxdfb8f36560c95e58";
+        $as="4066c3ac32329cabcea685e03abbbe39";
         $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$as&code=$code&grant_type=authorization_code";
         $accesstoken=Common::http_request($url);
         $accesstoken=json_decode($accesstoken,true)["access_token"];
