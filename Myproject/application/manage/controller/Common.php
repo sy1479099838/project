@@ -161,7 +161,7 @@ class Common extends Controller
         $Amax=Accesstoken::max("createTime");
         if($Amax==0)
         {
-            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx128a1dc9cf653ec1&secret=9d2a74eda105821467e413e1b4602247";
+            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxdfb8f36560c95e58&secret=4066c3ac32329cabcea685e03abbbe39";
             $method="get";
             $accessToken=$this->http_request($url,$method);
             $res=json_decode($accessToken,true);
@@ -176,7 +176,7 @@ class Common extends Controller
             $accessToken=Accesstoken::where("createTime",$Amax)->find();
             if(time()-$accessToken->createTime>6000)
             {
-                $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx128a1dc9cf653ec1&secret=9d2a74eda105821467e413e1b4602247";
+                $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxdfb8f36560c95e58&secret=4066c3ac32329cabcea685e03abbbe39";
                 $method="get";
                 $accessToken=$this->http_request($url,$method);
                 $res=json_decode($accessToken,true);
