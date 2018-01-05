@@ -98,7 +98,7 @@ window.onload=function(){
         //商品数量减到0时删除
         function deleteGoods(){
             if(n1==0){
-                alert(11111);
+                //alert(11111);
                 Onum[0].parentNode.remove();
             }
         };
