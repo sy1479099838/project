@@ -18,4 +18,6 @@
 .TotalAmount{display:inline-block;width:90%;height:80px;text-align:left;color:#ff992e;line-height:80px;font-size:30px;}
 .TotalAmount button{display:inline-block;width:50%;height:40px;background:#ff992e;border:1px solid #ff992e;border-radius:40px;float:right;position:relative;top:25%;font-size:20px;color:#ffffff;}
 .en_none{display:none;}
+#BoughtFruitBox>.BoughtFruit>.check_one{float:left;margin-top:40px;margin-right:10px;}
+#BoughtFruitBox>.BoughtFruit>.check{float:left;margin-top:40px;margin-right:10px;}
 
