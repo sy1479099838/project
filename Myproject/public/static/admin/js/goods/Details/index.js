@@ -238,4 +238,38 @@ $(function () {
     });
 });
 
+/*商品添加到购物车时候弹出套餐*/
+
+function Add_Tao() {
+    //alert(1111);
+    $(".Tao_can_list").fadeIn();
+}
+function Tao_que(){
+    $(".Tao_can_list").fadeOut();
+};
+$(function (){
+    var list=document.getElementById('third_2');
+    var Obu=list.getElementsByTagName('button');
+    var Num=list.getElementsByTagName('input')[0];
+    var n1=Number(Num.value);
+    console.log(n1);
+    Obu[0].onclick=function(){
+        alert(1111);
+        n1--;
+        if(n1<1){
+            n1=1;
+        }
+        //console.log(n1);
+        document.getElementById("ccid").value=n1;
+    };
+    Obu[1].onclick=function(){
+        alert(111);
+        n1++;
+        //console.log(n1);
+        document.getElementById("ccid").value=n1;
+    };
+});
+
+
+
 
