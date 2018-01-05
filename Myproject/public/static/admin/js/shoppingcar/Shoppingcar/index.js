@@ -37,8 +37,6 @@ window.onload=function(){
     var checkInput = document.getElementByClassName('check');
     var checkAllInput=document.getElementByClassName('check_all');
     var checkInput = document.getElementByClassName('check');
-    var heji=document.getElementByClassName('heji');
-    console.log(heji.innerHTML);
 
     for(var i=0;i<Ol.length;i++){
         fn1(Ol[i]);//重复调用
@@ -74,27 +72,36 @@ window.onload=function(){
             }
             Onum[1].value=n1;
             Xprice();
+            deleteGoods();
         };
-        //删除
+       /* //删除
         Ospan[2].onclick=function(){
             var conf = confirm("确定删除这个商品？");
             if (conf) {
                 //alert(1111111111);
                 this.parentNode.remove();
             }
-        };
+        };*/
         //手动输入
         Onum[1].onchange=function(){
             //alert(111111);
             n1=Onum[1].value;
             Xprice();
+            deleteGoods();
+
         };
 
         //计算小计
         function Xprice(){
             Oe.innerHTML=n1*n2+'元';
-        }
-
+        };
+        //商品数量减到0时删除
+        function deleteGoods(){
+            if(n1==0){
+                //alert(11111);
+                Onum[0].parentNode.remove();
+            }
+        };
 
     }
 
