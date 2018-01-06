@@ -1,4 +1,31 @@
 {extend name="Public:index"/}
 {block name="main"}
-123456789
+<div class="Reply-BigBox">
+    <h1 class="top-head">微信消息回复管理</h1>
+    <p>
+        <button class="" onclick="AddReply()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加回复消息</button>
+        <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;姓名/电话"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+    </p>
+    <table class="Reply-table">
+    <tbody>
+        <tr>
+            <th>编号</th>
+            <th>接收内容</th>
+            <th>关联公众号</th>
+            <th>回复类型</th>
+            <th>回复内容</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+
+    </tbody>
+    </table>
+</div>
 {/block}
