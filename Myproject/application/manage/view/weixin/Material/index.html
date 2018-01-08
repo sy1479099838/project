@@ -12,7 +12,7 @@
             <th>图文摘要</th>
             <th>图文地址</th>
             <th>最后更新时间</th>
-            <th>图文消息内容</th>
+            <th>操作</th>
         </tr>
         {volist name="news.item" id="vo"}
         <tr>
@@ -27,13 +27,15 @@
                     <i class=" icon-remove-circle" onclick="closeNewsId()" style="float: right;padding:2px 10px;cursor: hand;font-size: 20px;color: green;"></i><br>
                 {$vo.media_id}
                 </span>
-
-
             </td>
             <td>{$vo.content.news_item.0.digest}</td>
             <td><a href="{$vo.content.news_item.0.url}" target="view_window">点击查看</a></td>
             <td>{$vo.update_time}</td>
-            <td><a href="javascript:void (0);" onclick="showContent('{$vo.media_id}')">查看</a></td>
+            <td>
+                <button onclick="DelNews('{$vo.media_id}')">
+                    <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                </button>
+            </td>
         </tr>
         {/volist}
 
@@ -41,28 +43,5 @@
     </table>
 </div>
 
-<!--------------------预览--------------------->
-<div class="changeWidth">
-    <h1 class="change-h1"><button class="icon-remove-circle" onclick="closenews()">&nbsp关闭</button></h1>
-    <h1 class="change-p">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        请选择屏幕下方手机类型，或拖动边框查看效果！
-    </h1>
-    <div class="changeWidth-head">
-        <button onclick="changeBox(326,486)">iPhone4</button>
-        <button onclick="changeBox(326,574)">iPhone5</button>
-        <button onclick="changeBox(381,673)">iPhone6</button>
-        <button onclick="changeBox(420,742)">iPhone6 plus</button>
-        <span class="showBoxWidth"></span>
-    </div>
-    <div class="MoveBox">
-        <div  class="moveTop"></div>
-        <div class="moveLeft"></div>
-        <div class="moveRight"></div>
-        <div class="moveBottom"></div>
-        <div class="moveContent"></div>
-    </div>
-    <span class="mousePosition"></span>
-</div>
 
 {/block}
