@@ -88,7 +88,7 @@ table {border-collapse:collapse;}
 .Tao_second ul,li{list-style:none;}
 .Tao_second ul li{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:#00F7DE;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
 .active{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:#00F7DE;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
-.l_change{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:#00F7DE;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
+.l_change{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:orange;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
 .third{width:90%;height:30px;margin-left:5%;border-top:1px solid #7B7B7B;border-bottom:1px solid #7B7B7B;margin-top:8px;}
 #third_2{width:25%;float:right;}
 #third_2 span{font-size:.8em;color:#7B7B7B;}
