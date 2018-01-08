@@ -1,0 +1,16 @@
+.cont_zhan{display:block;float:left;margin-left:2.5%;width:25%;height:1.5em;text-align:center;line-height:1.5em;font-size:.8em;margin-top:.3em;}
+.content_dao{width:100%;height:1.8em;background:#e0e0e0;}
+.content_dao p{color:white;float:right;margin-right:35%;}
+.con_s1{display:block;float:left;margin-left:6%;font-size:1.6em;color:white;}
+.Me_head{width:90%;height:110px;margin-left:5%;border-bottom:1px solid #7B7B7B;}
+.Me_head img{width:80px;height:80px;float:left;border-radius:40px;border:1px solid #e0e0e0;margin-left:3%;margin-top:1em;}
+.Me_head_1{width:50%;float:left;margin-left:5%;height:80px;margin-top:1em;}
+.Me_head_1 span{width:100%;line-height:80px;text-align:left;font-size:.8em;color:#7B7B7B;}
+.Me_address{width:100%;height:50px;border-bottom:8px solid #e0e0e0;}
+.Me_address p{width:80%;text-indent:7%;font-size:.8em;height:50px;line-height:50px;float:left;}
+.icon-angle-right{float:right;margin-right:5%;font-size:2em;margin-top:9px;}
+.Me_shuxing{width:100%;height:50px;}
+.Me_shuxing p{width:80%;text-indent:7%;font-size:.8em;height:50px;line-height:50px;float:left;}
+.Me_jian{width:90%;border:0.5px solid #BEBEBE;margin-left:5%;clear:both;}
+.Me_jian_1{width:100%;border:4px solid #e0e0e0;clear:both;}
+.bottom{width:100%;height:52px;position:fixed;background:orangered;color:white;text-align:center;line-height:52px;bottom:0;z-index:999999;}
