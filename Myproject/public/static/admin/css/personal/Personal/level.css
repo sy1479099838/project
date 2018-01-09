@@ -1,0 +1,28 @@
+.cont_zhan{display:block;float:left;margin-left:2.5%;width:25%;height:1.5em;text-align:center;line-height:1.5em;font-size:.8em;margin-top:.3em;}
+.content_dao{width:100%;height:1.8em;background:#e0e0e0;}
+.content_dao p{color:white;float:right;margin-right:35%;}
+.con_s1{display:block;float:left;margin-left:6%;font-size:1.6em;color:white;}
+.le_first{width:100%;height:160px;background:#FF5809;}
+.kong{width:100%;height:10px;}
+.le_first_1{width:80px;height:80px;margin:0 auto;border:1px solid #BEBEBE;border-radius:40px;}
+.le_first img{width:80px;height:80px;border-radius:40px;}
+.le_first span{display:block;width:100%;height:20px;text-align:center;line-height:20px;font-size:.6em;color:white;}
+.le_first p{display:block;width:100%;height:20px;text-align:center;line-height:20px;font-size:1.2em;color:#BEBEBE;}
+.le_second{width:100%;height:40px;background:#FF8F59;color:#7B7B7B;border-bottom:8px solid #e0e0e0;}
+.le_second_span{display:block;width:49.5%;height:40px;float:left;text-align:center;line-height:40px;border-right:1px solid #BEBEBE;}
+.le_second_span_1{display:block;width:49.5%;height:40px;float:left;text-align:center;line-height:40px;}
+.le_third{width:100%;}
+.le_third p{width:100%;height:40px;text-align:center;line-height:40px;border-bottom:1px solid #7B7B7B;}
+.le_third_1{display:block;width:27.9%;height:120px;float:left;margin-left:4%;border:1px dashed #7B7B7B;border-radius:3px;margin-top:10px;}
+.le_third_1_img{width:70px;height:70px;margin:0 auto;border-radius:35px;border:1px solid #BEBEBE;}
+.le_third_1_img img{width:70px;height:70px;border-radius:35px;}
+.le_third_1 span{display:block;width:100%;height:20px;text-align:center;line-height:20px;font-size:.8em;color:#7B7B7B;margin-top:10px;}
+.bian{width:100%;height:10px;border-bottom:8px solid #BEBEBE;clear:both;}
+.level_forth{width:100%;}
+.level_forth p{width:100%;height:40px;text-align:center;line-height:40px;font-size:1em;}
+.level_forth_1{width:100%;background:#e0e0e0;height:auto;}
+.level_forth_2{width:45.5%;float:left;margin-left:3%;margin-top:8px;}
+.level_forth_2 img{width:94%;margin-left:3%;}
+.level_forth_2 span{color:red;font-size:.8em;text-indent:8px;}
+.level_forth_2 i{text-decoration:line-through;font-size:.5em;text-indent:8px;}
+.level_forth_2 li{width:100%;font-size:.6em;list-style:none;}

@@ -1,0 +1,16 @@
+{extend name="Public:public_2"/}
+{block name="main"}
+	<div class="content_dao">
+		<a href="{:url('/admin/personal/Personal/index')}" class="icon-angle-left" style="float:left;margin-top:4px;margin-left:3%;color:white;"></a>
+		<p class="cont_zhan">我的订单</p>
+		<div><input type="text" name="" value=""><i class="icon-search" style="margin-top:11.5px;color:white;margin-left:3%;float:left;"></i></div>
+	</div>
+
+	<div id="dingdan_list">
+		<div class="active">全部</div>
+		<div class="active">代付款</div>
+		<div class="active">待发货</div>
+		<div class="active">待收货</div>
+		<div class="active">待评价</div>
+	</div>
+{/block}

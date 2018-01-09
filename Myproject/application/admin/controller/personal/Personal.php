@@ -21,4 +21,22 @@ class Personal extends Common
         $this->assign("user",$user);
         return $this->fetch();
     }
+    public function member()
+    {
+        $this->assign("Title","个人中心");
+        $this->assign("JsName","personal/Personal/member");
+        return $this->fetch();
+    }
+    public function level()
+    {
+        $this->assign("Title","个人中心");
+        $this->assign("JsName","personal/Personal/level");
+        return $this->fetch();
+    }
+    public function orderform()
+    {
+        $this->assign("Title","个人中心");
+        $this->assign("JsName","personal/Personal/orderform");
+        return $this->fetch();
+    }
 }
