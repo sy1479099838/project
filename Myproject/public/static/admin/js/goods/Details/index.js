@@ -246,7 +246,7 @@ function Add_Tao() {
 }
 function Tao_que(){
     $(".Tao_can_list").fadeOut();
-};
+}
 $(function (){
     var list=document.getElementById('third_2');
     var Obu=list.getElementsByTagName('button');
@@ -283,14 +283,28 @@ $(function (){
             Oldli=this;
             this.className="l_change";
             console.log(Oldli);
-
-
         };
-
-
     }
 });
 
+function WXpay() {
 
-
+    $.ajax({
+        url:"/manage/weixin/Pay/pay",
+        type:"post",
+        data:({
+            num:'1',
+            goodsId:'1'
+        }),
+        success:function (msg) {
+            if(msg!="error")
+            {
+                console.log(msg);
+            }
+        },
+        error:function (msg) {
+            $.showBox("失败，请重试！");
+        }
+    });
+}
 

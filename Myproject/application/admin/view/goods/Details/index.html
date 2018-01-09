@@ -109,11 +109,11 @@
 	<div class="Tao_second">
 		<p>请选择套餐</p>
 		<div id="Tao_second_2">
-			<div class="active">套餐一【成人票】</div>
-			<div class="active">套餐一【成人票】</div>
-			<div class="active">套餐一【成人票】</div>
-			<div class="active">套餐一【成人票】</div>
-			<div class="active">套餐一【成人票】</div>
+			{volist name="GoodsInformation.comments" id="vol"}
+			<div class="active">
+				套餐{$key+1}【{$vol.PackageName}】
+			</div>
+			{/volist}
 		</div>
 		<div style="clear:both;"></div>
 	</div>
@@ -122,15 +122,14 @@
 		<span>购买数量</span>
 		<div id="third_2">
 			<button>-</button>
-			<input type="text" name="taocan" value="1" id="ccid"/>
+			<input type="text" name="taocan" value="1" id="ccid" style="text-align: center;"/>
 			<button>+</button>
 		</div>
 	</div>
 	<div style="width:100%;height:90px;"></div>
 	<div class="Tao_bottom">确定</div>
-
-
-
 </div>
 {/block}
+
+
 

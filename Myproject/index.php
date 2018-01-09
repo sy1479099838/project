@@ -18,4 +18,5 @@ require __DIR__ . '/thinkphp/start.php';
 define('APP_AUTO_BUILD',true); //开启自动生成
 define('APP_DEBUG', true);// 开启调试模式
 define('MODULE','module');
+define('PAY_PATH', __DIR__.'/pay/'); //支付路径
 //\think\Build::module('manage');
