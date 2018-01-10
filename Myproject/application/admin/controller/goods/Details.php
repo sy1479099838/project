@@ -4,6 +4,7 @@ use app\admin\controller\common\Common;
 use app\manage\model\Goods;
 use app\manage\model\Parameter;
 use think\Db;
+use app\manage\model\GoodsPackage;
 class Details extends Common
 {
     public function index()
@@ -38,5 +39,27 @@ class Details extends Common
             return $this->fetch("parameter",["text"=>$text]);
         }
 
+    }
+    public function getPackage()
+    {
+        $id=input("id");
+        $value=GoodsPackage::where("PackageId",$id)->field("GoodsID,PackageName,ActivityPrice,OldPrice")->find();
+        if(!$value)
+        {
+            exit("error");
+        }
+        $value=json_decode(json_encode($value,true),true);
+        $time=json_decode(json_encode(Goods::where("id",$value["GoodsID"])->field("startTime,endTime")->find(),true),true);
+        $nowTime=time();
+        if($nowTime>$time["startTime"] && $nowTime<$time["endTime"])
+        {
+            $value["price"]=$value["ActivityPrice"];
+        }
+        else
+        {
+            $value["price"]=$value["OldPrice"];
+        }
+        $value=json_encode($value,true);
+        exit($value);
     }
 }

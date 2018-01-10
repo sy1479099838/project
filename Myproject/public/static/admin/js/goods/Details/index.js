@@ -287,6 +287,13 @@ $(function (){
     }
 });
 
+function Taoqueren(){
+    $(".Tao_queren").fadeIn();
+}
+
+function Tao_que_1(){
+    $(".Tao_queren").fadeOut();
+}
 function WXpay() {
     $.ajax({
         url:"/manage/weixin/Pay/goodspay",
@@ -312,5 +319,74 @@ function WXpay() {
     });
 }
 
+$(function (){
+    var list=document.getElementById('queren_third_2');
+    var Obu=list.getElementsByTagName('button');
+    var Num=list.getElementsByTagName('input')[0];
+    var n1=Number(Num.value);
+    console.log(n1);
+    Obu[0].onclick=function(){
+        //alert(1111);
+        n1--;
+        if(n1<1){
+            n1=1;
+        }
+        //console.log(n1);
+        document.getElementById("queren1").value=n1;
+    };
+    Obu[1].onclick=function(){
+        //alert(111);
+        n1++;
+        //console.log(n1);
+        document.getElementById("queren1").value=n1;
+    };
+
+    /*var lis=document.getElementById('Tao_queren_3');
+    var Ole=lis.getElementsByTagName('div');
+    var num=0;
+    var Oldli=null;
+    Oldli=Ole[num];
+    //console.log(Ole);
+    //Ole[num].className='oldclass';
+    for(var i=0;i<Ole.length;i++){
+        Ole[i].onclick=function(){
+            //console.log(Ole[i]);
+            Oldli.className="active";
+            Oldli=this;
+            this.className="l_change";
+            console.log(Oldli);
+        };
+    }*/
+});
+
+function Change_price(data){
+    $.ajax({
+        url:"/admin/goods/Details/getPackage",
+        type:"post",
+        data:({
+            id:data
+        }),
+        success:function (msg) {
+            if(msg!="error")
+            {
+                $(".active").css("background","#00F7DE");
+                $(".Package"+data).css("background","orange");
+                $("input:hidden[name=pacageId]").val(data);
+
+                var obj = JSON.parse(msg);
+                // console.log(obj);
+                $("#GoodPrice").html("￥"+obj.price);
+            }
+            else
+            {
+                $.showBox("请重新选择");
+            }
+        },
+        error:function (msg) {
+            $.showBox("请重新选择");
+        }
+    });
+
+}
 
 
