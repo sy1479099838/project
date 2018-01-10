@@ -288,9 +288,8 @@ $(function (){
 });
 
 function WXpay() {
-
     $.ajax({
-        url:"/manage/weixin/Pay/pay",
+        url:"/manage/weixin/Pay/goodspay",
         type:"post",
         data:({
             num:'1',
@@ -302,6 +301,10 @@ function WXpay() {
                 var obj = JSON.parse(msg);
                 callpay(obj.jsApiParameters);
             }
+            else 
+            {
+                $.showBox("请正确选择商品！");
+            }
         },
         error:function (msg) {
             $.showBox("失败，请重试！");
@@ -310,29 +313,4 @@ function WXpay() {
 }
 
 
-function jsApiCall(data)
-{
-    var val = JSON.parse(data);
-    WeixinJSBridge.invoke(
-        'getBrandWCPayRequest',
-        val,
-        function(res){
-            WeixinJSBridge.log(res.err_msg);
-            alert(res.err_code+res.err_desc+res.err_msg);
-        }
-    );
-}
 
-function callpay(data)
-{
-    if (typeof WeixinJSBridge == "undefined"){
-        if( document.addEventListener ){
-            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
-        }else if (document.attachEvent){
-            document.attachEvent('WeixinJSBridgeReady', jsApiCall);
-            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
-        }
-    }else{
-        jsApiCall(data);
-    }
-}

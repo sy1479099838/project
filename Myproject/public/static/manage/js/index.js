@@ -218,3 +218,5 @@ function closeSure() {
     $(".Sure-Box").fadeOut(100);
     $(".Sure-Box>.sure-button").html("");
 }
+
+
