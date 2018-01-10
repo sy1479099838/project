@@ -39,4 +39,10 @@ class Personal extends Common
         $this->assign("JsName","personal/Personal/orderform");
         return $this->fetch();
     }
+    public function quan()
+    {
+        $this->assign("Title","个人中心");
+        $this->assign("JsName","personal/Personal/quan");
+        return $this->fetch();
+    }
 }

@@ -17,3 +17,14 @@
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(4){width: 25%;text-align: center;}
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(5){width: 25%;text-align: center;}
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(6){width: 15%;text-align: center;}
+
+.Appaly_box{width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(255,255,255,1);z-index:999;}
+.Appaly_first{width:100%;height:200px;}
+.Appaly_first p{width:60%;height:80px;margin:0 auto;text-align:center;line-height:80px;font-size:20px;}
+.Appaly_first i{font-size:1.5em;display:block;width:10%;}
+.Appaly_Second {width:80%;margin-left:10%;border:1px solid #00CC99;border-radius:3px;height:auto;}
+.Appaly_Second_1 button{display:block;width:20%;height:40px;text-align:center;line-height:40px;color:white;background:#7B7B7B;float:right;margin-right:5%;margin-top:20px;border:none;}
+.Appaly_Second_2 li{width:100%;height:60px;}
+.Appaly_Second_2 li span{display:block;width:10%;height:30px;float:left;margin-left:10%;background:#BEBEBE;color:white;text-align:center;line-height:30px;}
+.Appaly_Second_2 li input{display:block;width:40%;float:left;height:28px;border:1px solid #7B7B7B;}
+.Appaly_Second_2 li select{display:block;width:40%;float:left;height:28px;border:1px solid #7B7B7B;text-align:center;}
