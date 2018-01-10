@@ -37,7 +37,7 @@ class Pay extends Controller
         }
 
     }
-    public function pay($openId,$outTradeNo,$goodsName,$totalPrice)//参数分别为：用户ID、订单号、商品名称、价格
+    public static function pay($openId,$outTradeNo,$goodsName,$totalPrice)//参数分别为：用户ID、订单号、商品名称、价格
     {
         $wxpayDate='pay/wxpay/lib/WxPay.Data.php';//引入
         include($wxpayDate);
