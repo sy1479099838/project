@@ -1,14 +1,22 @@
 <?php
 namespace app\manage\controller\weixin;
 use think\Controller;
+use think\Session;
 class Pay extends Controller
 {
-    public function pay()
+    public function goodspay()
+    {
+        $openId=Session::get("UserInformation");
+        $openId=$openId["UserAccount"];
+        $value=$this->pay($openId);
+        exit($value);
+    }
+    public function pay($openId)
     {
         $shangHuId="1483747952";
         $outTradeNo=$shangHuId.date("YmdHis");//创建订单表的时候注意要有这样一个生成唯一订单号的字段，并且不能太短，不然会报错的
         //商品名称
-        $openId="oNqUrwRmDJslHtb9wlOmcJQUekLc";
+//        $openId="oNqUrwRmDJslHtb9wlOmcJQUekLc";
         $goodsName="九皇山";
         $totalPrice=0.01;
         $wxpayDate='pay/wxpay/lib/WxPay.Data.php';//引入
@@ -39,7 +47,7 @@ class Pay extends Controller
             "editAddress"=>$editAddress
         );
         $value=json_encode($value);
-        exit($value);
+        return $value;
     }
 
     public function notify()
