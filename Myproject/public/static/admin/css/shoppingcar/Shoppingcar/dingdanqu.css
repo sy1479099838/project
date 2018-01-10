@@ -21,10 +21,10 @@ a{color:black;}
 .Dqux_third_1 i{float:right;margin-right:5%;font-size:.6em;display:block;width:20%;}
 .Dqux_forth{width:100%;border-top:1px solid #BEBEBE;margin-top:40px;}
 .Dqux_forth_1{width:100%;height:60px;border-bottom:1px solid #BEBEBE;}
-.Dqux_forth_1 span{width:15%;float:left;display:block;height:60px;font-size:.8em;margin-left:5%;line-height:60px;}
+.Dqux_forth_1 span{width:18%;float:left;display:block;height:60px;font-size:.8em;margin-left:5%;line-height:60px;}
 .Dqux_forth_1 p{width:60%;height:60px;float:left;text-align:right;margin-left:5%;font-size:.8em;color:#7B7B7B;line-height:60px;}
 .icon-angle-right{font-size:2em;}
 .Dqux_bottom{position:fixed;bottom:0;width:100%;height:60px;}
 .Dqux_bottom_1{width:70%;height:60px;float:left;line-height:60px;text-align:right;font-size:.8em;}
-.Dqux_bottom_1 span{color:red;}
+.Dqux_bottom_1 span{color:red;background:white;}
 .Dqux_bottom button{display:block;width:30%;float:left;line-height:60px;text-align:center;background:orangered;color:white;font-size:.8em;border:none;}

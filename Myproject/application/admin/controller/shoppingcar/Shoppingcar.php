@@ -9,8 +9,9 @@ class Shoppingcar extends Common
         $this->assign("JsName","shoppingcar/Shoppingcar/index");
         return $this->fetch();
     }
-    public function dingdanqu()
+    public function dingdanqu($taocan,$num)
     {
+//        dump("taocan".$taocan);dump("数量".$num);
         $this->assign("Title","购物车");
         $this->assign("JsName","shoppingcar/Shoppingcar/dingdanqu");
         return $this->fetch();
