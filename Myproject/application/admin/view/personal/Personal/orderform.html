@@ -1,16 +1,101 @@
 {extend name="Public:public_2"/}
 {block name="main"}
+	<script>
+        $(function(){
+            var lis=document.getElementById('Tao_second_2');
+            var Ole=lis.getElementsByTagName('div');
+            var num=0;
+            var Oldli=null;
+            Oldli=Ole[num];
+            //console.log(Ole);
+            //Ole[num].className='oldclass';
+            for(var i=0;i<Ole.length;i++){
+                Ole[i].onclick=function(){
+                    //console.log(Ole[i]);
+                    Oldli.className="active";
+                    Oldli=this;
+                    this.className="l_change";
+                    console.log(Oldli);
+
+
+                };
+
+
+            }
+        });
+	</script>
 	<div class="content_dao">
 		<a href="{:url('/admin/personal/Personal/index')}" class="icon-angle-left" style="float:left;margin-top:4px;margin-left:3%;color:white;"></a>
 		<p class="cont_zhan">我的订单</p>
 		<div><input type="text" name="" value=""><i class="icon-search" style="margin-top:11.5px;color:white;margin-left:3%;float:left;"></i></div>
 	</div>
 
-	<div id="dingdan_list">
-		<div class="active">全部</div>
+	<div id="Tao_second_2">
+		<div class="l_change">全部</div>
 		<div class="active">代付款</div>
 		<div class="active">待发货</div>
 		<div class="active">待收货</div>
 		<div class="active">待评价</div>
+	</div>
+	<div style="clear:both;"></div>
+
+	<div class="tiao"></div>
+	<div class="Tao_second_3">
+		<div class="Tao_second_3_1">
+			<p>XX订单</p>
+			<i class="icon-angle-right" style="float:left;margin-top:12.5px;margin-left:5%;"></i>
+			<span>支付成功</span>
+		</div>
+
+		<div class="Tao_second_3_1_1">
+			<img src="__PUBLIC__/admin/images/sc.jpg">
+			<p>此处是商品描述描述此处是商品描述描述此处是商品描述描述</p>
+			<div class="Tao_second_3_1_little">
+				<span>￥:200</span>
+				<i>￥:300</i>
+			</div>
+			<div style="clear:both;"></div>
+			<li>共计买了1件商品1111111111111111111</li>
+			<div class="form_kong"></div>
+		</div>
+	</div>
+
+	<div class="Tao_second_3">
+		<div class="Tao_second_3_1">
+			<p>XX订单</p>
+			<i class="icon-angle-right" style="float:left;margin-top:12.5px;margin-left:5%;"></i>
+			<span>支付成功</span>
+		</div>
+
+		<div class="Tao_second_3_1_1">
+			<img src="__PUBLIC__/admin/images/sc.jpg">
+			<p>此处是商品描述描述此处是商品描述描述此处是商品描述描述</p>
+			<div class="Tao_second_3_1_little">
+				<span>￥:200</span>
+				<i>￥:300</i>
+			</div>
+			<div style="clear:both;"></div>
+			<li>共计买了1件商品1111111111111111111</li>
+			<div class="form_kong"></div>
+		</div>
+	</div>
+
+	<div class="Tao_second_3">
+		<div class="Tao_second_3_1">
+			<p>XX订单</p>
+			<i class="icon-angle-right" style="float:left;margin-top:12.5px;margin-left:5%;"></i>
+			<span>支付成功</span>
+		</div>
+
+		<div class="Tao_second_3_1_1">
+			<img src="__PUBLIC__/admin/images/sc.jpg">
+			<p>此处是商品描述描述此处是商品描述描述此处是商品描述描述</p>
+			<div class="Tao_second_3_1_little">
+				<span>￥:200</span>
+				<i>￥:300</i>
+			</div>
+			<div style="clear:both;"></div>
+			<li>共计买了1件商品1111111111111111111</li>
+		</div>
 	</div>
 {/block}
