@@ -301,6 +301,10 @@ function WXpay() {
                 var obj = JSON.parse(msg);
                 callpay(obj.jsApiParameters);
             }
+            else 
+            {
+                $.showBox("请正确选择商品！");
+            }
         },
         error:function (msg) {
             $.showBox("失败，请重试！");
