@@ -3,20 +3,19 @@ namespace app\manage\controller\weixin;
 use think\Controller;
 class Pay extends Controller
 {
-    public function pay($orderId)
+    public function pay()
     {
-//        $orderId=1;//订单id
         $shangHuId="1483747952";
         $outTradeNo=$shangHuId.date("YmdHis");//创建订单表的时候注意要有这样一个生成唯一订单号的字段，并且不能太短，不然会报错的
         //商品名称
         $openId="oNqUrwRmDJslHtb9wlOmcJQUekLc";
         $goodsName="九皇山";
         $totalPrice=0.01;
-        $wxpayApi=PAY_PATH.'wxpay/lib/WxPay.Api.php';//引入
-        include($wxpayApi);
+        $wxpayDate='pay/wxpay/lib/WxPay.Data.php';//引入
+        include($wxpayDate);
         $input = new \WxPayUnifiedOrder();
-        $input->SetBody($goodsName);
         $input->SetAttach($goodsName);
+        $input->SetBody($goodsName);
         $input->SetOut_trade_no($outTradeNo);//订单号
         $totalPrice=($totalPrice*100);
         $input->SetTotal_fee($totalPrice);//总额 int  单位 分
@@ -24,10 +23,14 @@ class Pay extends Controller
         // $input->SetTime_expire(date("YmdHis", time() + 600));//失效时间
         // $input->SetGoods_tag("test");
         $input->SetNotify_url("http://www.hfyiqiwan.top/manage/weixin/Pay/notify");
-        $input->SetTrade_type("NATIVE");
+        $input->SetTrade_type("JSAPI");
 //        $input->SetProduct_id($orderId);//商品id
         $input->SetOpenid($openId);
+        $wxpayApi='pay/wxpay/lib/WxPay.Api.php';//引入
+        include($wxpayApi);
         $result = \WxPayApi::unifiedOrder($input);
+        $wxpay_jsapipay='pay/wxpay/example/WxPay.JsApiPay.php';
+        include($wxpay_jsapipay);
         $tools= new \JsApiPay;
         $jsApiParameters=$tools->GetJsApiParameters($result);
         $editAddress = $tools->GetEditAddressParameters();
@@ -35,7 +38,7 @@ class Pay extends Controller
             "jsApiParameters"=>$jsApiParameters,
             "editAddress"=>$editAddress
         );
-        $value=json_encode($value,true);
+        $value=json_encode($value);
         exit($value);
     }
 

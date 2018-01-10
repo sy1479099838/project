@@ -299,7 +299,8 @@ function WXpay() {
         success:function (msg) {
             if(msg!="error")
             {
-                console.log(msg);
+                var obj = JSON.parse(msg);
+                callpay(obj.jsApiParameters);
             }
         },
         error:function (msg) {
@@ -308,3 +309,30 @@ function WXpay() {
     });
 }
 
+
+function jsApiCall(data)
+{
+    var val = JSON.parse(data);
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        val,
+        function(res){
+            WeixinJSBridge.log(res.err_msg);
+            alert(res.err_code+res.err_desc+res.err_msg);
+        }
+    );
+}
+
+function callpay(data)
+{
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        jsApiCall(data);
+    }
+}
