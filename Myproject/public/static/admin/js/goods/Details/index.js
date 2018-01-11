@@ -391,7 +391,7 @@ function Change_price(data){
  function Tao_Qu(){
     var packgeId=$("input:hidden[name=pacageId]").val();
     var num=$("#queren1").val();
-     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu/taocan/'+packgeId+'/num/'+num;
+     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu/taocan/'+packgeId+'/num/'+num+".html";
  }
 
 
