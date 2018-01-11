@@ -51,12 +51,26 @@
             </li>
             <li>
                 <span>回复类型</span>
-                <select>
-                    <option   name="" value="图文">图文</option>
-                    <option   name="" value="图片">图片</option>
-                    <option   name="" value="文字">文字</option>
+                <select  onchange="Huifu('mune_x'+this.value)">
+                    <option   name="" value="1">图文</option>
+                    <option   name="" value="2">图片</option>
+                    <option   name="" value="3">文字</option>
                 </select>
             </li>
+
+            <!--------------图片输入--------------->
+            <div class="list" id="x1" style="display:block">
+                <p>图文/图片(点击添加在下面写入添加内容)</p>
+                <button onclick="Add_reply()">点击添加</button>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="list" id="x2" style="display:none">
+                2222222222222
+            </div>
+            <div class="list" id="x3" style="display:none">
+                3333333333333333
+            </div>
+
         </div>
     </div>
 </div>
