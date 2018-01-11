@@ -269,7 +269,7 @@ $(function (){
         document.getElementById("ccid").value=n1;
     };
 
-    var lis=document.getElementById('Tao_second_2');
+   /* var lis=document.getElementById('Tao_second_2');
     var Ole=lis.getElementsByTagName('div');
     var num=0;
     var Oldli=null;
@@ -284,7 +284,7 @@ $(function (){
             this.className="l_change";
             console.log(Oldli);
         };
-    }
+    }*/
 });
 
 function Taoqueren(){
@@ -353,6 +353,7 @@ function Change_price(data){
                 var obj = JSON.parse(msg);
                 // console.log(obj);
                 $("#GoodPrice").html("￥"+obj.price);
+                $("#GoodPrice1").html("￥"+obj.price);
             }
             else
             {
@@ -370,6 +371,29 @@ function Change_price(data){
     var num=$("#queren1").val();
      self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?taocan='+packgeId+'&num='+num;
  }
+function Add_gouwu(){
+     //alert(1111111110);
+    var packgeId=$("input:hidden[name=pacageId1]").val();
+    var packgeNum=$("input:text[name=taocan]").val();
+    $.ajax({
+        url:"/admin/goods/Details/",
+        type:"post",
+        data:({
+            packgeId:packgeId,
+            packgeNum:packgeNum
+        }),
+        success:function(msg){
+            if(msg!="error"){
+                $.showBox("添加成功");
+            }else{
+                $.showBox("添加失败");
+            }
+        },
+        error:function(msg){
+            $.showBox("添加失败");
+        }
+    })
+}
 
 
 
