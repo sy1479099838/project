@@ -99,7 +99,7 @@
 	<div class="Tao_can_first">
 		<img src="__PUBLIC__/admin/images/sc.jpg"/>
 		<div class="Tao_can_first_1">
-			<span>¥50</span>
+			<span id="GoodPrice1">¥50</span>
 			<span>库存30</span>
 		</div>
 		<i class="icon-remove-circle" onclick="Tao_que()"></i>
@@ -110,7 +110,7 @@
 		<p>请选择套餐</p>
 		<div id="Tao_second_2">
 			{volist name="GoodsInformation.comments" id="vol"}
-			<div class="active">
+			<div class="active Package{$vol.PackageId}" onclick="Change_price('{$vol.PackageId}')">
 				套餐{$key+1}【{$vol.PackageName}】
 			</div>
 			{/volist}
@@ -127,7 +127,7 @@
 		</div>
 	</div>
 	<div style="width:100%;height:90px;"></div>
-	<div class="Tao_bottom">确定</div>
+	<div class="Tao_bottom" onclick="Add_gouwu()">确定</div>
 </div>
 
 <!----------------确认---------------->
