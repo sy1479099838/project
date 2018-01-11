@@ -396,7 +396,7 @@ function Change_price(data){
  }
 function Add_gouwu(){
      //alert(1111111110);
-    var packgeId=$("input:hidden[name=pacageId]").val();
+    var packgeId=$("input:hidden[name=pacageId1]").val();
     var packgeNum=$("input:text[name=taocan]").val();
     $.ajax({
         url:"/admin/goods/Details/",
