@@ -21,8 +21,6 @@ class Shoppingcar extends Common
         }
         else
         {
-
-
             $goods=json_decode(json_encode(Db::table('t_goods_package')
                 ->alias('a')
                 ->where("a.PackageId",$taocan)
