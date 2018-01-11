@@ -24,12 +24,12 @@
 </div>
 
 <div class="Dqux_third">
-	<li>XX品牌</li>
+	<li>{$goods.GoodsName}</li>
 	<div class="Dqux_third_1">
 		<img src="__PUBLIC__/admin/images/sc.jpg">
-		<p>这里是航拍描述这里是商品描述这里是商品描述这里是商品描述这里是商品描述</p>
-        <i>X2</i>
-		<span>￥:400</span>
+		<p>商品描述</p>
+		<i><b style="color:black;">{$goods.PackageName}</b>&nbsp;X{$num}</i>
+		<span>￥:{$goods.price}</span>
 	</div>
 </div>
 
@@ -51,8 +51,8 @@
 	</div>
 	<div style="width:100%;height:60px;"></div>
 	<div class="Dqux_bottom">
-		<div class="Dqux_bottom_1">合计：<span>￥321.00</span></div>
-		<button onclick="PayGoods('{$value.jsApiParameters}')">提交订单</button>
+		<div class="Dqux_bottom_1">合计：<span>{$goods.AllPrice}</span></div>
+		<button onclick="WXpay('{$taocan}','{$num}')">提交订单</button>
 	</div>
 </div>
 

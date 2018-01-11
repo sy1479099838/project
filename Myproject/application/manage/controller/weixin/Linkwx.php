@@ -3,6 +3,8 @@ namespace app\manage\controller\weixin;
 use app\manage\model\Receive;
 use think\Controller;
 use app\manage\model\Accesstoken;
+use think\Session;
+use app\admin\model\GoodsOrder;
 use app\manage\model\Reply;
 define("TOKEN", "weixin");//自己定义的token 就是个通信的私钥
 header("content-type:text/html;charset=utf-8;");
@@ -144,5 +146,46 @@ class Linkwx extends Controller
             $access_token=$accessToken->AccessToken;
         }
         return $access_token;
+    }
+/*
+ * 微信支付回调函数
+ * */
+    public function notify()
+    {
+        $data=file_get_contents("php://input");
+        $result = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $this->saveFile($data);
+        $result=json_decode(json_encode($result,true),true);
+//        $result=xmlToArray($data);
+        $outTradeTo = $result['out_trade_no'];
+        if($result['return_code'] == 'FAIL'){
+
+            $failResult="
+                <xml>
+                    <return_code><![CDATA[FAIL]]></return_code>
+                    <return_msg><![CDATA[OK]]></return_msg>
+                </xml>
+            ";
+            echo $failResult;
+            exit;
+        }else{
+            if($result['result_code'] == 'FAIL'){
+            }else{;
+                $value=GoodsOrder::where("GoodsOrderID",$outTradeTo)->update([
+                    "lastUpdateTime"=>time(),
+                    "state"=>2,
+                ]);
+            }
+        }
+
+        $failResult="
+                <xml>
+                    <return_code><![CDATA[FAIL]]></return_code>
+                    <return_msg><![CDATA[OK]]></return_msg>
+                </xml>
+            ";
+        echo $failResult;
+        exit;
+
     }
 }

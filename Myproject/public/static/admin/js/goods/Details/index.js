@@ -294,30 +294,7 @@ function Taoqueren(){
 function Tao_que_1(){
     $(".Tao_queren").fadeOut();
 }
-function WXpay() {
-    $.ajax({
-        url:"/manage/weixin/Pay/goodspay",
-        type:"post",
-        data:({
-            num:'1',
-            goodsId:'1'
-        }),
-        success:function (msg) {
-            if(msg!="error")
-            {
-                var obj = JSON.parse(msg);
-                callpay(obj.jsApiParameters);
-            }
-            else 
-            {
-                $.showBox("请正确选择商品！");
-            }
-        },
-        error:function (msg) {
-            $.showBox("失败，请重试！");
-        }
-    });
-}
+
 
 $(function (){
     var list=document.getElementById('queren_third_2');
@@ -392,7 +369,7 @@ function Change_price(data){
  function Tao_Qu(){
     var packgeId=$("input:hidden[name=pacageId]").val();
     var num=$("#queren1").val();
-     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu/taocan/'+packgeId+'/num/'+num+".html";
+     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?taocan='+packgeId+'&num='+num;
  }
 function Add_gouwu(){
      //alert(1111111110);

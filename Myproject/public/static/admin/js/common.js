@@ -15,12 +15,19 @@ function jsApiCall(data)
         val,
         function(res){
             WeixinJSBridge.log(res.err_msg);
-            alert(res.err_code+res.err_desc+res.err_msg);
+            if(res.err_msg == "get_brand_wcpay_request:ok"){
+                $.showBox("支付成功！");
+                self.location='/admin/personal/Personal/orderform.html';
+            }else{
+                $.showBox("支付失败！");
+                window.history.go(-1);
+
+            }
         }
     );
 }
 
-function callpay(data)
+function Goodspay(data)
 {
     if (typeof WeixinJSBridge == "undefined"){
         if( document.addEventListener ){
