@@ -30,5 +30,10 @@
 .Appaly_Second_2 li select{display:block;width:40%;float:left;height:28px;border:1px solid #7B7B7B;text-align:center;}
 
 .list{width:80%;height:auto;margin-left:10%;border:1px solid #7B7B7B;}
-.list p{width:50%;float:left;height:30px;line-height:30px;text-align:center;margin-top:10px;}
-.list button{display:block;width:20%;float:right;height:30px;border:none;margin-right:5%;background:#7B7B7B;color:white;margin-top:10px;}
+.list p{width:100%;height:30px;line-height:30px;text-align:center;margin-top:10px;}
+#tuwen{width:90%;margin-top:20px;margin-left:5%;border:1px solid #00F7DE;}
+#tuwen td:nth-child(1){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tuwen td:nth-child(2){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tuwen td:nth-child(3){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tuwen td:nth-child(4){width:auto;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+
