@@ -35,7 +35,7 @@ class Personal extends Common
     }
     public function orderform()
     {
-        $this->assign("Title","个人中心");
+        $this->assign("Title","订单详情");
         $this->assign("JsName","personal/Personal/orderform");
         return $this->fetch();
     }
