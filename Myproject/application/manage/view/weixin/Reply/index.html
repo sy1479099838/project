@@ -30,12 +30,11 @@
 </div>
 
 <div class="Appaly_box">
-    <div class="Appaly_first">
-        <p>此处为公众号回复消息添加</p>
-        <i class="icon-remove-circle" style="position:absolute;top:20px;right:3%;">关闭</i>
-    </div>
-
     <div class="Appaly_Second">
+        <div class="Appaly_first">
+            <p>此处为公众号回复消息添加</p>
+            <i class="icon-remove-circle" style="position:absolute;top:20px;right:3%;" onclick="Appaly_close()">关闭</i>
+        </div>
         <div class="Appaly_Second_1">
             <button>提交</button>
         </div>
@@ -52,6 +51,7 @@
             <li>
                 <span>回复类型</span>
                 <select  onchange="Huifu('mune_x'+this.value)">
+                    <option   name="" value="0">点击选择回复类型</option>
                     <option   name="" value="1">图文</option>
                     <option   name="" value="2">图片</option>
                     <option   name="" value="3">文字</option>
@@ -59,19 +59,25 @@
             </li>
 
             <!--------------图片输入--------------->
-            <div class="list" id="x1" style="display:block">
+            <div class="list" id="x1" style="display:none">
                 <p>图文/图片(在下面图表中选择回复的内容)</p>
                 <table id="tuwen">
                     <tr>
                         <td>编号</td>
-                        <td>单选</td>
+                        <td>点击选择</td>
                         <td>标题</td>
                         <td>消息Id</td>
                     </tr>
                     <tr>
                         <td>11</td>
-                        <td><input type="radio" name="xuanze" value="1"></td>
-                        <td>这里是标题</td>
+                        <td>
+                            <span>点击选择：<input type="radio" name="tu_xuanze" value="1"></span>
+
+                        </td>
+                        <td>
+                            <img src="__PUBLIC__/admin/images/sc.jpg">
+                            <span>此处为图文标题</span>
+                        </td>
                         <td>这里是消息ID</td>
                     </tr>
                 </table>
@@ -79,10 +85,48 @@
                 <div style="clear:both;"></div>
             </div>
             <div class="list" id="x2"  style="display:none">
-                2222222222222
+                <p>图片(在下面图表中选择回复的内容)</p>
+                <table id="tupian">
+                    <tr>
+                        <td>编号</td>
+                        <td>点击选择</td>
+                        <td>标题</td>
+                        <td>消息Id</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <span>点击选择：<input type="radio" name="pian_xuanze" value="1"></span>
+                        </td>
+                        <td>
+                            <img src="__PUBLIC__/admin/images/sc.jpg">
+                        </td>
+                        <td>这里是消息ID</td>
+                    </tr>
+                </table>
+                <div style="width:100%;height:50px;"></div>
+                <div style="clear:both;"></div>
             </div>
             <div class="list" id="x3" style="display:none">
-                3333333333333333
+                <p>文字(在下面图表中选择回复的内容)</p>
+                <table id="wenzi">
+                    <tr>
+                        <td>编号</td>
+                        <td>点击选择</td>
+                        <td>标题</td>
+                        <td>消息Id</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <span>点击选择：<input type="radio" name="wen_xuanze" value="1"></span>
+                        </td>
+                        <td>这里是标题</td>
+                        <td>这里是消息ID</td>
+                    </tr>
+                </table>
+                <div style="width:100%;height:50px;"></div>
+                <div style="clear:both;"></div>
             </div>
 
         </div>

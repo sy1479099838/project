@@ -15,7 +15,9 @@ function Huifu(Names){
     }
 
 }
-
+function Appaly_close(){
+    $(".Appaly_box").fadeOut();
+}
 function AddReply(){
-
+    $(".Appaly_box").fadeIn();
 }

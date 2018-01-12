@@ -19,7 +19,7 @@
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(6){width: 15%;text-align: center;}
 
 .Appaly_box{width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(255,255,255,1);z-index:999;}
-.Appaly_first{width:100%;height:200px;}
+.Appaly_first{width:100%;height:100px;position:relative;}
 .Appaly_first p{width:60%;height:80px;margin:0 auto;text-align:center;line-height:80px;font-size:20px;}
 .Appaly_first i{font-size:1.5em;display:block;width:10%;}
 .Appaly_Second {width:80%;margin-left:10%;border:1px solid #00CC99;border-radius:3px;height:auto;}
@@ -34,6 +34,24 @@
 #tuwen{width:90%;margin-top:20px;margin-left:5%;border:1px solid #00F7DE;}
 #tuwen td:nth-child(1){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
 #tuwen td:nth-child(2){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tuwen td:nth-child(2) span{width:100%;display:block;}
 #tuwen td:nth-child(3){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tuwen td:nth-child(3) img{width:90%;margin-left:2%;}
 #tuwen td:nth-child(4){width:auto;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+
+#tupian{width:90%;margin-top:20px;margin-left:5%;border:1px solid #00F7DE;}
+#tupian td:nth-child(1){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tupian td:nth-child(2){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tupian td:nth-child(2) span{width:100%;display:block;}
+#tupian td:nth-child(3){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#tupian td:nth-child(3) img{width:90%;margin-left:2%;}
+#tupian td:nth-child(4){width:auto;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+
+#wenzi{width:90%;margin-top:20px;margin-left:5%;border:1px solid #00F7DE;}
+#wenzi td:nth-child(1){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#wenzi td:nth-child(2){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#wenzi td:nth-child(2) span{width:100%;display:block;}
+#wenzi td:nth-child(3){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+#wenzi td:nth-child(4){width:auto;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+
 
