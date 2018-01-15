@@ -1,25 +1,5 @@
 {extend name="Public:public_2"/}
 {block name="main"}
-	<script>
-        document.body.style.overflow="hidden";
-        function $(v){return document.getElementById(v);}
-        var x=0;
-        var i=0;
-        function c(y){
-            //alert(11111110);
-
-            $("Ding"+x).style.display = "none";
-            $("Ding"+y).style.display = "";
-            x=y;
-            var lis=document.getElementById('Tao_second_2');
-            var Ole=lis.getElementsByTagName('div');
-            for( var i=0;i<Ole.length;i++){
-                Ole[i].className="active";
-                Ole[y].className="l_change";
-            }
-
-        }
-	</script>
 	<div class="content_dao">
 		<a href="{:url('/admin/personal/Personal/index')}" class="icon-angle-left" style="float:left;margin-top:4px;margin-left:3%;color:white;"></a>
 		<p class="cont_zhan">我的订单</p>
