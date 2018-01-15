@@ -1,14 +1,20 @@
-
-
-    function $(v){return document.getElementById(v);}
-    var x=0;
-    var i=0;
-
-function c(y){
-    alert(11111110);
+function getId(v){return document.getElementById(v);}
+var x=0;
+var i=0;
+function clc(y,data){
+    $("#order"+y).removeAttr('onclick').attr("onclick","clc("+y+","+(data+1)+");");
+    var num=data%3;
+    if(num==0)
+    {
+        alert("可以传值");
+    }
+    else
+    {
+        alert("对不起，暂时不能传值");
+    }
     document.body.style.overflow="hidden";
-    $("Ding"+x).style.display = "none";
-    $("Ding"+y).style.display = "";
+    getId("Ding"+x).style.display = "none";
+    getId("Ding"+y).style.display = "";
     x=y;
     var lis=document.getElementById('Tao_second_2');
     var Ole=lis.getElementsByTagName('div');
@@ -16,5 +22,4 @@ function c(y){
         Ole[i].className="active";
         Ole[y].className="l_change";
     }
-
 }
