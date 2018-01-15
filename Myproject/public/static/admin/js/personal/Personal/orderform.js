@@ -5,15 +5,14 @@ function clc(y,data){
     var num=data%3;
     if(num==0)
     {
-        alert("可以传值");
         $.ajax({
-            url:"check_all",
+            url:"orderCheck",
             data:({
-                y:y
+                num:y
             }),
             type:"post",
             success:function (msg) {
-                if(msg=="sucess"){
+                if(msg!="error"){
                     document.body.style.overflow="hidden";
                     getId("Ding"+x).style.display = "none";
                     getId("Ding"+y).style.display = "";
@@ -24,18 +23,16 @@ function clc(y,data){
                         Ole[i].className="active";
                         Ole[y].className="l_change";
                     }
+                    $("#Ding"+y).html(msg);
                     $("#order"+y).removeAttr('onclick').attr("onclick","clc("+y+","+(data+1)+");");
                 }
-
             },
             error:function (msg) {
-                //alert("请刷新页面");
             }
         })
     }
     else
     {
-        //alert("对不起，暂时不能传值");
         document.body.style.overflow="hidden";
         getId("Ding"+x).style.display = "none";
         getId("Ding"+y).style.display = "";
