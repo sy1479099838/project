@@ -12,6 +12,14 @@ a{text-decoration:none;}
 .Bottom_Menu_Box{position: fixed;bottom:0;z-index: 1000;width:100%;height: 50px;text-align: center;border-top: 2px solid #c8c8c8;background: rgba(255,255,255,0.9);}
 .Bottom_Menu_Box a{display: inline-block;width: 18.8%;height:100%;text-align: center;color: #a4a4a4;font-size: 15px;}
 .Bottom_Menu_Box a span{font-size: 30px;}
+
+/*-------------------------拼团菜单-------------------------*/
+.Groups_Bottom_Menu_Box{position: fixed;bottom:0;z-index: 1000;width:100%;height: 50px;text-align: center;border-top: 2px solid #c8c8c8;background: rgba(255,255,255,0.9);}
+.Groups_Bottom_Menu_Box a{display: inline-block;width: 23.8%;height:100%;text-align: center;color: #a4a4a4;font-size: 15px;}
+.Groups_Bottom_Menu_Box a span{font-size: 30px;}
+
+
+
 .bottom_margin_Box{height:50px;}
 .guide_block_Box{height:31px;}
 /*------------------以下是首页部分---------------------*/
