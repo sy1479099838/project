@@ -1,12 +1,12 @@
 
-    document.body.style.overflow="hidden";
+
     function $(v){return document.getElementById(v);}
     var x=0;
     var i=0;
 
 function c(y){
     alert(11111110);
-
+    document.body.style.overflow="hidden";
     $("Ding"+x).style.display = "none";
     $("Ding"+y).style.display = "";
     x=y;
