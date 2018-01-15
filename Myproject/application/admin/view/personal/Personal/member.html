@@ -1,11 +1,11 @@
-{extend name="Public:public"/}
+{extend name="Public:public_2"/}
 {block name="main"}
-	<div class="content_dao">
+		<div class="content_dao">
 		<a href="{:url('/admin/personal/Personal/index')}" class="con_s1 icon-angle-left"></a>
 		<p class="cont_zhan">会员资料</p>
 	</div>
 	<div class="Me_head">
-			<img src="__PUBLIC__/admin/images/sc.jpg">
+			<img src="__PUBLIC__/admin/images/sc.jpg" onclick="xiugai_img()">
 			<div class="Me_head_1">
 				<span>huiyuan1213312312431</span>
 			</div>
@@ -37,4 +37,9 @@
 	<div class="Me_jian_1"></div>
 
 	<div class="bottom">退出登录</div>
+
+	<!---------------------图片裁剪弹窗----------------------------->
+	<div>
+
+	</div>
 {/block}
