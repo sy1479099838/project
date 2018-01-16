@@ -43,7 +43,7 @@ var clipArea =  new bjj.PhotoClip("#clipArea", {
                 }
 
             },
-            error:function(mgs){
+            error:function(msg){
 
             }
 
