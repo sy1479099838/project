@@ -5,7 +5,7 @@ function xiugai_img(){
 $(function () {
 
 
-var clipArea = new bjj.PhotoClip("#clipArea", {
+var clipArea =  new bjj.PhotoClip("#clipArea", {
     size: [200, 200],// 截取框的宽和高组成的数组。默认值为[260,260]
     outputSize: [200, 200], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
     //outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
