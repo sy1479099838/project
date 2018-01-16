@@ -28,7 +28,7 @@ var clipArea =  new bjj.PhotoClip("#clipArea", {
         $('.cover-wrap').fadeOut();
         $('#view').css('background-size','100% 100%');
         console.log(dataURL);
-        //alert(1111111);
+        //alert(1111111);以下为生成数据提交
         $.ajax({
             url:"caijian",
             data:({
