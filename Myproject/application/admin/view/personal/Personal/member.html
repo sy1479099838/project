@@ -1,6 +1,8 @@
-{extend name="Public:public_2"/}
+{extend name="Public:public_3"/}
 {block name="main"}
-		<div class="content_dao">
+
+<div class="member-BigBox">
+	<div class="content_dao">
 		<a href="{:url('/admin/personal/Personal/index')}" class="con_s1 icon-angle-left"></a>
 		<p class="cont_zhan">会员资料</p>
 	</div>
@@ -39,7 +41,12 @@
 	<div class="bottom">退出登录</div>
 
 	<!---------------------图片裁剪弹窗----------------------------->
-	<div class="img_caijian">
-
+	<div class="img_caijian" onclick="closeCaijian()" id="test">
+		<input type="file"  onchange="previewF('')"  class="Mo_file"  id="abc">
+		<span class="test"></span>
+		<div style="text-align: center;" id="img-Box" >
+			<img src="" alt="请上传商品照片" id="asdfg"/>
+		</div>
 	</div>
+</div>
 {/block}
