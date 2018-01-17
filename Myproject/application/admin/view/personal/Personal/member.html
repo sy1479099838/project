@@ -1,4 +1,4 @@
-{extend name="Public:public_3"/}
+{extend name="Public:public_2"/}
 {block name="main"}
 
 <div class="member-BigBox">
@@ -43,13 +43,11 @@
 	<!---------------------图片裁剪弹窗----------------------------->
 	<div class="img_caijian" id="test">
 		<input type="file"  onchange="previewF('')"  class="Mo_file"  id="abc">
-		<span class="test"></span>
+		<button onclick="caiHead()">裁剪</button><button id="saveHead">保存</button><button id="cancalImg">取消</button>
 		<div style="text-align: center;" id="img-Box" >
 			<span id="imgBox">
 				<img src="" alt="请上传照片" id="asdfg"/>
-				<span id="CaiJianBox">
-
-				</span>
+				<span id="CaiJianBox"></span>
 			</span>
 		</div>
 	</div>

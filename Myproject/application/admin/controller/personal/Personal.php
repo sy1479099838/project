@@ -2,6 +2,7 @@
 namespace app\admin\controller\personal;
 use app\admin\controller\common\Common;
 use think\Db;
+use app\admin\model\User;
 use think\Session;
 class Personal extends Common
 {
@@ -141,5 +142,104 @@ class Personal extends Common
                 break;
         }
         return $this->fetch("orderCheck",["num"=>$data,"orderCheck"=>$order]);
+    }
+
+    public function saveHeade($CaiLeft,$CaiTop,$caiWidth,$CaiHeight)
+    {
+        $file = request()->file('upfile');
+        if($file=="" || $file==NULL)
+        {
+            exit("error");
+        }
+        else
+        {
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            $ruth="public/uploads/";
+            if($info)
+            {
+                $value=$info->getSaveName();// 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
+                $length=strlen($value);
+                $head=substr($value, 0, 8);
+                $ImgName=substr($value, 9, $length-9);
+                $TmpImg=$head."/".$ImgName;
+                $smalImg=$head."/S".$ImgName;
+            }
+            $imageFile=$ruth.$TmpImg;
+            $img = getimagesize($imageFile);
+            $width=$img["0"];
+            $height=$img["1"];
+            $array=array(intval(($width*$caiWidth)-2),intval($height*$CaiHeight),intval($width*$CaiLeft),intval($height*$CaiTop));
+            $image = \think\Image::open($imageFile);
+            $value=$image->crop(intval(($width*$caiWidth)-2), intval($height*$CaiHeight),intval($width*$CaiLeft),intval($height*$CaiTop))->save($ruth.$smalImg);
+            if($value)
+            {
+                $imgRuth=json_encode(array("bigImg"=>$TmpImg,"head"=>$smalImg),true);
+                exit($imgRuth);
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+    }
+    public function save()
+    {
+        $people=Session::get("UserInformation");
+        $file=input();
+        unlink("public/uploads/".$file["bigImg"]);
+        $oldHead=User::where("")->field("UserImg")->find()->UserImg;
+        if($oldHead=="" || $oldHead==NULL)
+        {
+            $value=User::where("id",$people["id"])->update([
+                "UserImg"=>$file["head"]
+            ]);
+            if($value)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            if(strlen($oldHead)>55)
+            {
+                $value=User::where("id",$people["id"])->update([
+                    "UserImg"=>$file["head"]
+                ]);
+                if($value)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+            else
+            {
+                unlink("public/uploads/".$oldHead);
+                $value=User::where("id",$people["id"])->update([
+                    "UserImg"=>$file["head"]
+                ]);
+                if($value)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+        }
+    }
+    public function cancalImg()
+    {
+        $file=input();
+        unlink("public/uploads/".$file["bigImg"]);
+        unlink("public/uploads/".$file["head"]);
+        exit("success");
     }
 }

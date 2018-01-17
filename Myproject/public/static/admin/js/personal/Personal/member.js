@@ -72,8 +72,6 @@ function touchMoveFunc(evt) {
                 a.y=y;
                 a.x=x;
             }
-            console.log(left+"/"+right+"/"+top+"/"+bottom);
-            $(".test").html("第一个点："+x+"+"+y);
         } catch (e) {
             // alert('touchMoveFunc：' + e.message);
         }
@@ -155,7 +153,6 @@ function touchMoveFunc(evt) {
             a.x=x2;
             a.y=y2;
             ju=juli;
-            $(".test").html("第一个点："+x1+"+"+y1+";第二个点："+x2+"+"+y2);
         } catch (e) {
 
         }
@@ -170,7 +167,7 @@ $(document).ready(function(){
     var inputHeight  = o.offsetHeight; //高度
     $("#img-Box").css({
         "height":winWidth+"px",
-        "margin-top":(((winHeight-inputHeight)-winWidth)/2)+"px"
+        "margin-top":50+"px"
     });
     $("#CaiJianBox").fadeOut();
 });
@@ -181,7 +178,7 @@ function fuwei() {
     var inputHeight  = o.offsetHeight; //高度
     $("#img-Box").css({
         "height":winWidth+"px",
-        "margin-top":(((winHeight-inputHeight)-winWidth)/2)+"px"
+        "margin-top":50+"px"
     });
     $("#CaiJianBox").css({"top":0,"left":0}).fadeOut();
 }
@@ -263,6 +260,95 @@ function previewF () {
             }
         };
     };
+}
 
 
+function caiHead() {
+    var parent=document.getElementById("imgBox");
+    var PWidth=parent.offsetWidth;
+    var PHeight=parent.offsetHeight;
+    var position=document.getElementById("CaiJianBox");
+    var width=position.offsetWidth;
+    var height=position.offsetHeight;
+    var left=position.offsetLeft;
+    var top=position.offsetTop;
+    var CaiLeft=left/PWidth;
+    var CaiTop=top/PHeight;
+    var caiWidth=width/PWidth;
+    var CaiHeight=height/PHeight;
+    var fd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#abc").get(0).files[0]);
+    $.ajax({
+        url: 'saveHeade/CaiLeft/'+CaiLeft+'/CaiTop/'+CaiTop+'/caiWidth/'+caiWidth+'/CaiHeight/'+CaiHeight,
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data:fd,
+        success: function(msg) {
+            if(msg=="error")
+            {
+                $.showBox("裁剪失败");
+            }
+            else
+            {
+                var obj = JSON.parse(msg);
+                $("#imgBox").css({
+                    "width":"auto",
+                    "height":"auto"
+                });
+                $("#CaiJianBox").fadeOut();
+                $('#asdfg').attr('src',"/public/uploads/"+obj.head);
+                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
+                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")")
+            }
+        },
+        error:function()
+        {
+            $.showBox("照片上传失败！");
+        }
+    });
+}
+
+function saveimg(bigImg,head) {
+    $.ajax({
+        url:"save",
+        type:"post",
+        data:({
+            bigImg:bigImg,
+            head:head
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                alert("保存成功！");
+                window.location.reload();
+            }
+            else
+            {
+                alert("保存失败！");
+                window.location.reload();
+            }
+        },
+        error:function (msg) {
+           alert("保存失败！");
+            window.location.reload();
+        }
+    });
+}
+function cancalImg(bigImg,head) {
+    $.ajax({
+        url:"cancalImg",
+        type:"post",
+        data:({
+            bigImg:bigImg,
+            head:head
+        }),
+        success:function (msg) {
+            window.location.reload();
+        },
+        error:function (msg) {
+            window.location.reload();
+        }
+    });
 }
