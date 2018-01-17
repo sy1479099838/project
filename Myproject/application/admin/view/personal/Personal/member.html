@@ -41,11 +41,16 @@
 	<div class="bottom">退出登录</div>
 
 	<!---------------------图片裁剪弹窗----------------------------->
-	<div class="img_caijian" onclick="closeCaijian()" id="test">
+	<div class="img_caijian" id="test">
 		<input type="file"  onchange="previewF('')"  class="Mo_file"  id="abc">
 		<span class="test"></span>
 		<div style="text-align: center;" id="img-Box" >
-			<img src="" alt="请上传商品照片" id="asdfg"/>
+			<span id="imgBox">
+				<img src="" alt="请上传照片" id="asdfg"/>
+				<span id="CaiJianBox">
+
+				</span>
+			</span>
 		</div>
 	</div>
 </div>
