@@ -1,5 +1,71 @@
 .content_dao{width:100%;height:40px;background:#BEBEBE;color:white;}
-.content_dao p{display:block;width:20%;float:right;margin-right:40%;text-align:center;line-height:40px;font-size:.8em}
+.content_dao p{display:block;width:30%;float:right;margin-right:35%;text-align:center;line-height:40px;font-size:.8em}
 .icon-angle-left{font-size:1.5em;}
 .tuan_list{width:100%;}
 .tuan_list img{width:100%;}
+.Tuanl_content{width:96%;position:relative;margin-left:2%;}
+.Tuanl_content span{width:20%;height:20px;position:absolute;top:0;left:4%;background:orangered;color:white;border-radius:3px;font-size:.8em;text-align:center;line-height:20px;}
+.Tuanl_content p{text-indent:26%;font-size:.8em;margin-top:3px;line-height:20px;width:92%;margin-left:4%;}
+.Tuanl_shuxing{width:100%;}
+.Tuanl_shuxing b{display:block;width:25%;font-size:1em;color:red;text-align:right;float:left;}
+.Tuanl_shuxing i{display:block;width:20%;font-size:.6em;color:#BEBEBE;float:left;text-decoration:line-through; }
+.Tuanl_shuxing span{width:40%;float:right;font-size:.8em;color:#7B7B7B;}
+.tiao{width:90%;margin-left:5%;clear:both;border:1px solid #e0e0e0;}
+.Tuanl_tuijian{width:90%;margin-left:5%;}
+.Tuanl_tuijian span{font-size:.8em;color:red;}
+.Tuanl_tuijian p{font-size:.8em;line-height:1.3em;}
+.middle_quan{width:100%;height:30px;background:#e0e0e0;}
+.Tuan1_middle{width:100%;height:30px;}
+.icon-ok-circle{font-size:.6em;color:red;float:left;margin-left:3%;}
+.Tuan1_jiange{width:90%;margin-left:5%;height:30px;}
+.Tuan1_jiange div{width:27%;border:0.5px solid #adadad;float:left;margin-top:14px;}
+.Tuan1_jiange span{width:43%;font-size:.5em;float:left;height:30px;line-height:30px;}
+.tuan_Add{width:100%;height:60px;border-bottom:1px solid #e0e0e0;}
+.tuan_Add_2{width:90px;height:60px;float:left;}
+.tuan_Add_2 img{width:40px;height:40px;border-radius:20px;margin-left:25px;}
+.tuan_Add_2 span{display:block;width:100%;font-size:.3em;height:20px;line-height:20px;text-align:center;}
+.tuan_Add_1{width:40%;height:50px;float:left;margin-left:2%;}
+.tuan_Add button{width:15%;height:20px;float:right;margin-right:3%;margin-top:15px;background:orangered;color:white;border:none;border-radius:4px;}
+.tuan_Add_1 b{display:block;width:100%;height:20px;font-size:.5em;color:red;text-align:right;line-height:20px;margin-top:8px;}
+.tuan_Add_1 p{display:block;width:100%;height:20px;font-size:.4em;color:red;text-align:right;line-height:20px;}
+.Tuan_jieshao{width:100%;height:30px;border-top:1px solid #e0e0e0;}
+.Tuan_jieshao span{width:30%;height:30px;float:left;margin-left:5%;font-size:.8em;line-height:30px;}
+.Tuan_jieshao button{width:20%;height:20px;background:#adadad;color:white;border:none;border-radius:4px;float:right;margin-right:5%;margin-top:5px;}
+.Tuan_chuang{display:none;position:fixed;bottom:0;z-index:999;background:rgba(0,0,0,0.3);width:100%;height:100%;}
+.Tuan_buttom{width:100%;height:50px;position:fixed;background:rgba(255,255,255,1);bottom:0;}
+.Tbutton1{width:40%;height:50px;border:none;background:orange;color:white;text-align:center;line-height:50px;float:right;}
+.Tbutton2{width:40%;height:50px;border:none;background:orangered;color:white;line-height:50px;float:right;}
+.Tuan_buttom_1{width:20%;height:50px;float:left;}
+.Tuan_buttom_1 span{display:block;width:100%;text-align:center;font-size:.6em;}
+.icon-home{font-size:1.6em;color:#7B7B7B;}
+
+/*弹窗*/
+.Tao_can_list{width:100%;height:280px;position:fixed;bottom:0;right:0;background:rgba(255,255,255,1);z-index:999900;border-top:2px solid #7B7B7B;display:none;overflow:auto;}
+::-webkit-scrollbar{width:0px;}
+.Tao_can_first{width:90%;height:115px;margin-left:5%;border-bottom:1px solid #7B7B7B;}
+.Tao_can_first img{width:100px;height:100px;float:left;margin-top:6px;margin-left:3%;border-radius:3px;}
+.Tao_can_first_1{width:30%;height:100px;float:left;margin-top:6px;}
+.Tao_can_first_1 span{display:block;width:100%;height:40px;margin-top:10px;text-indent:20%;}
+.icon-remove-circle{float:right;margin-top:6px;margin-right:3%;}
+.Tao_second{width:90%;margin-left:5%;}
+.Tao_second p{display:block;width:100%;height:20px;line-height:20px;font-size:.8em;color:#7B7B7B;text-align:left;text-indent:3%;}
+.Tao_second ul,li{list-style:none;}
+.Tao_second ul li{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:#00F7DE;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
+.active{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:#00F7DE;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
+.l_change{width:40%;height:15px;float:left;margin-left:6.6%;margin-top:10px;background:orange;color:white;font-size:.8em;text-align:center;line-height:15px;border-radius:3px;}
+.third{width:90%;height:30px;margin-left:5%;border-top:1px solid #7B7B7B;border-bottom:1px solid #7B7B7B;margin-top:8px;}
+#third_2{width:30%;float:right;}
+#third_2 span{font-size:.8em;color:#7B7B7B;}
+#third_2 button{width:20px;height:20px;margin-top:5px;margin-left:3%;border-radius:3px;background:orange;color:white;border:none;}
+#third_2 input{width:20%;margin-left:3%;text-align:center;}
+.Tao_bottom{width:100%;height:30px;font-size:.8em;text-align:center;line-height:30px;background:orangered;color:white;position:fixed;bottom:0;z-index:999999;}
+.Tao_queren{width:100%;height:280px;position:fixed;bottom:0;right:0;background:rgba(255,255,255,1);z-index:999901;border-top:2px solid #7B7B7B;display:none;overflow:auto;}
+.Tao_queren_first img{width:100px;height:100px;float:left;margin-top:6px;margin-left:3%;border-radius:3px;}
+.Tao_queren_first_1{width:30%;height:100px;float:left;margin-top:6px;}
+.Tao_queren_first_1 span{display:block;width:100%;height:40px;margin-top:10px;text-indent:20%;}
+.Tao_queren_second{width:90%;margin-left:5%;}
+.Tao_queren_second p{display:block;width:100%;height:20px;line-height:20px;font-size:.8em;color:#7B7B7B;text-align:left;text-indent:3%;}
+.Tao_queren_third span{display:block;width:30%;height:20px;line-height:20px;font-size:.8em;color:#7B7B7B;text-align:left;text-indent:7%;float:left;}
+#queren_third_2{width:30%;float:right;margin-right:10%;}
+#queren_third_2 button{width:20px;height:20px;background:orangered;color:white;border:none;}
+#queren_third_2 input{width:20%;text-align:center;}

@@ -2,10 +2,157 @@
 {block name="main"}
         <div class="content_dao">
             <a href="{:url('/admin/groups/Allgroups/index')}" class="icon-angle-left" style="float:left;margin-top:7.5px;margin-left:3%;color:white;"></a>
-            <p class="cont_zhan">我的拼团</p>
+            <p class="cont_zhan">拼拼拼</p>
         </div>
 
         <div class="tuan_list">
             <img src="/public/static/manage/images/1506842609781.jpg">
         </div>
+
+        <div class="Tuanl_content">
+            <span>限时秒杀</span>
+            <p>这里是描述，这里是描述，这里是描述这里是描述，这里是描述，这里是描述这里是描述，这里是描述，这里是描述这里是描述，这里是描述，这里是描述</p>
+        </div>
+        <div class="Tuanl_shuxing">
+            <b>￥：400</b>
+            <i>￥：800</i>
+            <span>已经有300人参团</span>
+        </div>
+
+        <div class="tiao"></div>
+        <div class="Tuanl_tuijian">
+            <span>推荐理由</span>
+            <p>推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由推荐理由</p>
+        </div>
+        <div class="middle_quan">
+            <div class="Tuan1_middle">
+                <span class="icon-ok-circle" style="width:30%;margin-top:7px;">这里是个属性</span>
+                <span class="icon-ok-circle" style="width:30%;margin-top:7px;">这里是个属性</span>
+                <span class="icon-ok-circle" style="width:30%;margin-top:7px;">这里是个属性</span>
+            </div>
+        </div>
+
+        <div class="Tuan1_jiange">
+            <div></div>
+            <span>不想开团,参加以下团购</span>
+            <div></div>
+        </div>
+
+        <div class="tuan_Add" onload="leftTimer()">
+            <div class="tuan_Add_2">
+                <img src="/public/static/manage/images/1506842609781.jpg "><br>
+                <span>明明明明自</span>
+            </div>
+
+            <div class="tuan_Add_1">
+                <b>还差2人成团</b>
+                <p class="timer"></p>
+            </div>
+            <button>去参团</button>
+        </div>
+        <div class="tuan_Add" onload="leftTimer()">
+            <div class="tuan_Add_2">
+                <img src="/public/static/manage/images/1506842609781.jpg "><br>
+                <span>明明明明自</span>
+            </div>
+
+            <div class="tuan_Add_1">
+                <b>还差2人成团</b>
+                <p class="timer"></p>
+            </div>
+            <button>去参团</button>
+        </div>
+
+        <div style="width:100%;height:10px;"></div>
+
+        <div class="Tuan_jieshao">
+            <span>拼团介绍</span>
+            <button onclick="checkTuan()">查看介绍</button>
+        </div>
+        <div style="width:100%;height:50px;"></div>
+
+
+        <div class="Tuan_buttom">
+            <div class="Tuan_buttom_1" onclick="Tuan_tiao()">
+                <i class="icon-home" style="margin-left:30%;"></i><br>
+                <span>首页</span>
+            </div>
+            <button class="Tbutton2" onclick="Tuan_kai()">一键开团</button>
+            <button class="Tbutton1" onclick="Tuan_buy()">单独购买</button>
+        </div>
+
+        <div class="Tuan_chuang">
+            <div>
+            </div>
+        </div>
+
+        <!-----------------------下面是弹窗----------------------------->
+        <div class="Tao_can_list">
+            <div class="Tao_can_first">
+                <img src="__PUBLIC__/admin/images/sc.jpg"/>
+                <div class="Tao_can_first_1">
+                    <span id="GoodPrice1">¥50</span>
+                    <span>库存30</span>
+                </div>
+                <input type="hidden" name="pacageId1">
+                <i class="icon-remove-circle" onclick="Tuan_buyclose()"></i>
+            </div>
+            <div style="clear:both;"></div>
+
+            <div class="Tao_second">
+                <p>请选择套餐</p>
+                <div id="Tao_second_2">
+                    <div class="active" onclick="Change_price('')">
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div class="third">
+                <span>购买数量</span>
+                <div id="third_2">
+                    <button>-</button>
+                    <input type="text" name="taocan" value="1" id="ccid" style="text-align: center;"/>
+                    <button>+</button>
+                </div>
+            </div>
+            <div style="width:100%;height:90px;"></div>
+            <div class="Tao_bottom" onclick="Add_gouwu()">确定</div>
+        </div>
+
+        <!----------------一键---------------->
+        <div class="Tao_queren">
+            <div class="Tao_queren_first">
+                <img src="__PUBLIC__/admin/images/sc.jpg"/>
+                <div class="Tao_queren_first_1">
+                    <span id="GoodPrice">¥50</span>
+                    <span>库存30</span>
+                </div>
+                <input type="hidden" name="pacageId">
+                <i class="icon-remove-circle" onclick="Tuan_kaiclose()"></i>
+            </div>
+            <div style="clear:both;"></div>
+
+            <div class="Tao_queren_second">
+                <p>请选择套餐</p>
+                <div id="Tao_queren_3">
+                    <div class="active" onclick="Change_price('')">
+
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div class="Tao_queren_third">
+                <span>购买数量</span>
+                <div id="queren_third_2">
+                    <button>-</button>
+                    <input type="text" name="taocan" value="1" id="queren1" style="text-align: center;"/>
+                    <button>+</button>
+                </div>
+            </div>
+            <div style="width:100%;height:90px;"></div>
+            <div class="Tao_bottom" onclick="Tao_Qu()">确定</div>
+        </div>
+
 {/block}
