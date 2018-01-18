@@ -1,4 +1,52 @@
 {extend name="Public:groups"/}
 {block name="main"}
-951552545
+<div class="content_dao">
+    <a href="{:url('/admin/groups/Allgroups/index')}" class="icon-angle-left" style="float:left;margin-top:7.5px;margin-left:3%;color:white;"></a>
+    <p class="cont_zhan">我的拼团</p>
+</div>
+
+
+<div id="Tao_second_2">
+    <div class="l_change" onclick="clc(0,1)">全部</div>
+    <div class="active" onclick="clc(1,0)">拼团中</div>
+    <div class="active" onclick="clc(2,0)">已拼团</div>
+    <div class="active" onclick="clc(3,0)">拼团失败</div>
+</div>
+<div style="clear:both;"></div>
+<div id="Ding0">
+    <div class="hezi_1">
+        <img src="/public/static/manage/images/1506842609781.jpg">
+        <p>这里是描述这里是描述这里是描述这里是描述</p>
+        <b>￥：500</b>
+        <span>已经团20人</span>
+    </div>
+</div>
+<div id="Ding1" style="display:none;">
+    <div class="hezi_1">
+        <img src="/public/static/manage/images/1506842609781.jpg">
+        <p>这里是描述这里是描述这里是描述这里是描述</p>
+        <b>￥：500</b>
+        <span>已经团20人</span>
+        <button>去支付</button>
+        <button>退出此团</button>
+    </div>
+</div>
+<div id="Ding2" style="display:none;">
+    <div class="hezi_1">
+        <img src="/public/static/manage/images/1506842609781.jpg">
+        <p>这里是描述这里是描述这里是描述这里是描述</p>
+        <b>￥：500</b>
+        <span>已经团20人</span>
+        <button>去支付</button>
+    </div>
+</div>
+<div id="Ding3" style="display:none;">
+    <div class="hezi_1">
+        <img src="/public/static/manage/images/1506842609781.jpg">
+        <p>这里是描述这里是描述这里是描述这里是描述</p>
+        <b>￥：500</b>
+        <span></span>
+        <button>删除</button>
+    </div>
+</div>
 {/block}

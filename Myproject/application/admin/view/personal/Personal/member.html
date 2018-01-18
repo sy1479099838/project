@@ -42,14 +42,20 @@
 
 	<!---------------------图片裁剪弹窗----------------------------->
 	<div class="img_caijian" id="test">
-		<input type="file"  onchange="previewF('')"  class="Mo_file"  id="abc">
-		<button onclick="caiHead()">裁剪</button><button id="saveHead">保存</button><button id="cancalImg">取消</button>
+		<a href="javascript:;" class="file">点击上传图片
+			<input type="file"  onchange="previewF('')"  class="Mo_file"  id="abc">
+		</a>
+		<br>
+
 		<div style="text-align: center;" id="img-Box" >
 			<span id="imgBox">
 				<img src="" alt="请上传照片" id="asdfg"/>
 				<span id="CaiJianBox"></span>
 			</span>
 		</div>
+		<button onclick="caiHead()" id="caijiana">裁剪</button>
+		<button id="saveHead">保存</button>
+		<button id="cancalImg">取消</button>
 	</div>
 </div>
 {/block}

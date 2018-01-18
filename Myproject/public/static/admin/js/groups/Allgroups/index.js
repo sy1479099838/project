@@ -12,3 +12,6 @@ window.onload=function(){
     demoLeft2Right.onmouseover=function() {clearInterval(demoLeft2RightMyMar)};
     demoLeft2Right.onmouseout=function() {demoLeft2RightMyMar=setInterval(demoLeft2RightMarquee,demoLeft2RightSpeed)}
 };
+function Tuanlist(){
+    self.location='/admin/groups/Tuanlist/index';
+}

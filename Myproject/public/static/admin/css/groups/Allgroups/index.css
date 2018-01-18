@@ -6,6 +6,7 @@
 #demo{width:100%;height:160px;border-bottom:8px solid #e0e0e0;overflow:hidden;}
 #demoin{width:94%;height:140px;margin-top:10px;margin-left:3%;overflow:hidden; white-space:nowrap;}
 #demo #demo1, #demo #demo2{display:inline}
+.list{width:100%;height:100%;overflow-x:hidden;}
 .hezi{width:100px;height:140px;margin-left:5%;}
 .hezi_1{width:100px;height:140px;float:left;}
 .hezi_1 img{width:90px;height:90px;}
