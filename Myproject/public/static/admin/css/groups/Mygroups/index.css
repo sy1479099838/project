@@ -1,0 +1,11 @@
+.content_dao{width:100%;height:40px;background:#BEBEBE;color:white;}
+.content_dao p{display:block;width:20%;float:right;margin-right:40%;text-align:center;line-height:40px;font-size:.8em}
+.icon-angle-left{font-size:1.5em;}
+.active{width:25%;height:40px;float:left;font-size:.8em;text-align:center;line-height:40px;}
+.l_change{width:25%;height:40px;float:left;font-size:.8em;text-align:center;line-height:40px;border-bottom:5px solid red;color:red;}
+.hezi_1{width:100%;height:180px;}
+.hezi_1 img{width:100%;height:120px;}
+.hezi_1 p{display:block;width:100%;height:20px;line-height:20px;font-size:.6px;}
+.hezi_1 b{display:block;width:20%;height:40px;line-height:40px;font-size:.8px;float:left;color:red;margin-left:3%;}
+.hezi_1 span{display:block;width:20%;height:40px;line-height:40px;font-size:.5px;color:#BEBEBE;float:left;margin-left:3%;}
+.hezi_1 button{width:18%;height:20px;margin-top:10px;float:right;margin-right:3%;color:white;font-size:.7em;background:orangered;border:none;border-radius:3px;}

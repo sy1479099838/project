@@ -299,8 +299,9 @@ function caiHead() {
                 });
                 $("#CaiJianBox").fadeOut();
                 $('#asdfg').attr('src',"/public/uploads/"+obj.head);
-                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
-                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")")
+                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
+                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
+                $("#caijiana").fadeOut();
             }
         },
         error:function()
@@ -311,6 +312,8 @@ function caiHead() {
 }
 
 function saveimg(bigImg,head) {
+    //console.log(bigImg);
+    //console.log(head);
     $.ajax({
         url:"save",
         type:"post",
@@ -327,12 +330,10 @@ function saveimg(bigImg,head) {
             else
             {
                 alert("保存失败！");
-                window.location.reload();
             }
         },
         error:function (msg) {
-           alert("保存失败！");
-            window.location.reload();
+           alert("保存失败11111！");
         }
     });
 }
