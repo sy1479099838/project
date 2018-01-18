@@ -1,0 +1,40 @@
+.Carousel{width: 100%;height: 100%;overflow: auto;}
+.Carousel h1{width: 96%;margin-left: 2%;text-align: center;font-size: 22px;}
+.Carousel>.CarouselList-Content-Box p{width: 96%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 2%;}
+.Carousel>.CarouselList-Content-Box p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 25px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.Carousel>.CarouselList-Content-Box p button img{display: inline-block;height: 100%;float: left;}
+
+.Carousel>.CarouselList-Content-Box>.CarouselList-table{width: 96%;height: auto;border: 1px solid #bfbfbf;margin: 5px 0;border-collapse:collapse;margin-left: 2%;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody{width: 100%;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr th{border: 1px solid #bfbfbf;height: 30px;line-height: 30px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td{border: 1px solid #bfbfbf;padding-left: 3px;height: 30px;line-height: 30px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(1){width: 5%;text-align: center;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(2){width:8%;text-align: center;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(3){width: 15%;padding-left: 5px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(3) img{display: inline-block;width: 98%;height: auto;padding:2px 4px 2px 0;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(4){width: auto;text-align: center;padding:3px 3px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(5){width: 10%;text-align: center;padding:3px 3px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(6){width: 15%;text-align: center;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(7){width: 8%;text-align: center;}
+.CarouselOrder{display: inline-block;width: 60%;height:30px;border: 1px solid green;border-radius: 5px;text-align: center;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(8){width: 12%;text-align: center;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td button{display:inline-block;padding-right: 2px;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td button img{display: inline-block;height: 95%;float: left;margin: 0 3px;}
+/*添加轮播图*/
+.addCarousel{width: 100%;height: 100%;position: relative;display: none;}
+.addCarousel>.addCarousel-Box{position: absolute;top:25%;left:25%;border:1px solid green;border-radius: 5px;width: 50%;height:auto;padding-bottom: 5px;text-align: center;}
+.addCarousel>.addCarousel-Box>.addCarousel-form>.addCarousel-line{font-size: 18px;width: 90%;border-bottom: 1px solid #9D9D9D;margin-left: 5%;text-align: left;height: 40px;line-height: 40px;margin-bottom: 10px;}
+.addCarousel>.addCarousel-Box>.addCarousel-form>{width: 100%;height: 100%;}
+.addCarousel>.addCarousel-Box>.addCarousel-form>.addCarousel-line>.addCarousel-span{width: 20%;display:inline-block;text-align: right;font-size: 18px;}
+.addCarousel>.addCarousel-Box>.addCarousel-form>.addCarousel-line>.addCarousel-input{display: inline-block;width: 60%;border: none;font-size: 18px;}
+.addCarousel>.addCarousel-Box>.addCarousel-form>.addCarousel-line>.addCarousel-label{font-size: 16px;display: inline-block;width:15%; }
+.addCarousel>.addCarousel-Box>.addCarousel-form>.addCarousel-line>.addCarousel-radio{display: inline-block;width: 8%; }
+.submit-button button{display: inline-block;border: 1px solid green;height: 30px;width: 100px;margin: 0 10px;border-radius: 5px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(5)>.Carousel-Enable>.Carousel-open{display: none;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(5)>.Carousel-Enable>.Carousel-off{display: none;}
+/*{text-align: justify;text-justify:distribute-all-lines;width: 600px;}*/
+
+/*li{width:100px;    height:100px;background-color: #0086b3;    display: inline-block; list-style:none;}*/
+
+
+
