@@ -8,6 +8,7 @@ function AddCarousel() {
 
 function sureOrder(data) {
     var value=parseInt($("#order"+data).val());
+    var oldNum=$("#order"+data).attr("name");
     if(value<=0)
     {
         $.showBox("排序不能为负数哦！");
@@ -16,14 +17,13 @@ function sureOrder(data) {
     {
         var string="确认修改排序？";
         var hashu="saveOrder("+value+","+data+")";
-        var oldNum=$("#order"+data).attr("name");
         affirm(string,hashu);
-        $("#closeSure").attr("onclick","closeOrder(\""+oldNum+"\")");
+        $("#closeSure").attr("onclick","closeOrder(\""+data+"\",\""+oldNum+"\")");
     }
 }
 
-function closeOrder(data) {
-    $("#order"+data).val(data);
+function closeOrder(data,oldNum) {
+    $("#order"+data).val(oldNum);
     $(".Sure-Box").fadeOut(100);
     $(".Sure-Box>.sure-button").html("");
 }
@@ -95,6 +95,37 @@ function chosefile() {
     }
 }
 
+function EditOpen_dialog()
+{
+    document.getElementById("Editbtn_file").click();
+
+}
+
+function Editchosefile() {
+    var imgfile = document.getElementById("Editbtn_file").files[0];
+    var prew=document.getElementById("EditCarouselImg");
+    var reader = new FileReader();
+    reader.readAsDataURL(imgfile);
+    reader.onload= function (theFile) {
+        var image = new Image();
+        image.src = theFile.target.result;
+        image.onload = function() {
+            var width=this.width;
+            var height=this.height;
+            if(width==640 && height==320)
+            {
+                prew.src=image.src;
+            }
+            else
+            {
+                $.showBox("请上传640*320照片！");
+            }
+
+        }
+    }
+}
+
+
 
 function saveFrom() {
 
@@ -122,7 +153,8 @@ function saveFrom() {
                     success:function(msg){
                         if(msg=="success")
                         {
-                            alert("成功!");
+                            $.showBox("成功!");
+                            window.location.reload();
                         }
                         else if(msg=="orderNULL")
                         {
@@ -151,11 +183,66 @@ function saveFrom() {
 }
 
 function EditCarousel(data) {
-    alert(data);
+    $.ajax({
+        url:"EditCarousel",
+        type:"post",
+        data:({
+            id:data
+        }),
+        success:function (msg) {
+            if(msg!="error")
+            {
+                $(".EditCarousel").html(msg);
+                $(".Carousel").fadeOut();
+                $(".EditCarousel").fadeIn(500);
+            }
+
+        },
+        error:function (msg) {
+            $.showBox("请重试");
+        }
+    });
+
+}
+
+function closeEditCarousel() {
+    $(".EditCarousel").fadeOut();
+    $(".Carousel").fadeIn(500);
+}
+
+function sureDel(data)
+{
+    var string="确认删除该数据？";
+    var hashu="DelCarousel("+data+")";
+    affirm(string,hashu);
 }
 
 function DelCarousel(data) {
-    alert(data);
+
+    $.ajax({
+        url:"delImg",
+        type:"post",
+        data:({
+            id:data
+        }),
+        success:function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("删除成功！");
+                window.location.reload();
+            }
+            else
+            {
+                $.showBox("删除失败！");
+                window.location.reload();
+            }
+        },
+        error:function () {
+            $.showBox("删除失败！");
+            window.location.reload();
+        }
+        
+    });
 }
 
 
@@ -207,3 +294,99 @@ function OpenCarousel(id,zhuangtai) {
         }
     });
 }
+
+
+function saveEditFrom(data) {
+    var imgfile = document.getElementById("Editbtn_file").files[0];
+    if(typeof(imgfile) == "undefined")
+    {
+        var image="none";
+        var form = new FormData(document.getElementById("EditCarousel"));
+        $.ajax({
+            url:"EditFromSave/img/"+image+"/id/"+data,
+            type:"post",
+            data:form,
+            processData:false,
+            contentType:false,
+            async:false,
+            success:function(msg){
+                if(msg=="success")
+                {
+                    $.showBox("成功!");
+                    window.location.reload();
+                }
+                else if(msg=="orderNULL")
+                {
+                    alert("排序不能为空");
+                }
+                else if(msg=="hrefNULL")
+                {
+                    alert("请填写正确的连接！");
+                }
+                else if(msg=="NameNULL")
+                {
+                    alert("名称不能为空！");
+                }
+            },
+            error:function(e){
+                alert("错误！！");
+            }
+        });
+    }
+    else
+    {
+        var fd = new FormData();
+        fd.append("upload", 1);
+        fd.append("upfile", $("#Editbtn_file").get(0).files[0]);
+        $.ajax({
+            url:"saveImg",
+            type:"post",
+            data:fd,
+            processData:false,
+            contentType:false,
+            async:false,
+            success:function(msg){
+                if(msg!="error")
+                {
+                    var form = new FormData(document.getElementById("EditCarousel"));
+                    $.ajax({
+                        url:"EditFromSave/img/"+msg+"/id/"+data,
+                        type:"post",
+                        data:form,
+                        processData:false,
+                        contentType:false,
+                        async:false,
+                        success:function(msg){
+                            if(msg=="success")
+                            {
+                                $.showBox("成功!");
+                                window.location.reload();
+                            }
+                            else if(msg=="orderNULL")
+                            {
+                                alert("排序不能为空");
+                            }
+                            else if(msg=="hrefNULL")
+                            {
+                                alert("请填写正确的连接！");
+                            }
+                            else if(msg=="NameNULL")
+                            {
+                                alert("名称不能为空！");
+                            }
+                        },
+                        error:function(e){
+                            alert("错误！！");
+                        }
+                    });
+                }
+            },
+            error:function(e){
+                alert("错误！！");
+            }
+        });
+    }
+
+}
+
+

@@ -26,7 +26,8 @@
                     <img src="__ROTH__/uploads/{$vo.img}" alt="轮播照片">
                 </td>
                 <td>
-                    {$vo.href}
+                    {$vo.href}<br>
+                    打开方式：{$vo['method']==1?"在新页面打开":"在本页面打开"}
                 </td>
                 <td>
                     <span class="Carousel-Enable">
@@ -47,7 +48,7 @@
                     <button onclick="EditCarousel('{$vo.id}')">
                         <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
                     </button>
-                    <button onclick="DelCarousel('{$vo.id}')">
+                    <button onclick="sureDel('{$vo.id}')">
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
                     </button>
                 </td>
@@ -57,10 +58,9 @@
         </table>
     </div>
 </div>
-<div class="addCarousel">
-    
-    <div class="addCarousel-Box">
 
+<div class="addCarousel">
+    <div class="addCarousel-Box">
         <span class="fr icon-remove-circle" style="font-size: 20px;color:#5e5e5e;padding:5px;cursor: pointer;" onclick="closeAddCarousel()"></span>
         <h1 style="font-size: 25px;text-align: center;margin: 15px;font-weight: 600;">添加轮播图照片</h1>
         <div class="cb"></div>
@@ -89,14 +89,15 @@
                 <span class="addCarousel-span">照&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
                 <input type="file" name="CarouselFile" id="btn_file" style="display:none" onchange="chosefile()">
                 <img id="CarouselImg" alt="123" src="/public/static/manage/images/head.png" onclick="F_Open_dialog()" style="display: inline-block;width: 160px;height: 80px;">
-                <label class="addCarousel-label">提醒</label>
+                <label class="addCarousel-label" style="text-align: center;color: red;font-size: 16px;width: auto;display: inline-block;">*点击选择照片，大小：640*320</label>
             </div>
         </form>
         <div class="submit-button">
-            <button onclick="saveFrom()">保存</button><button>取消</button>
+            <button onclick="saveFrom()">保存</button><button onclick="closeAddCarousel()">取消</button>
         </div>
     </div>
 </div>
+<div class="EditCarousel"></div>
 {/block}
 
 

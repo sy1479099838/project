@@ -104,4 +104,98 @@ class Carousel extends Common
             exit("error");
         }
     }
+
+    public function delImg()
+    {
+        $value=input();
+        $result=Phoneimg::where("id",$value["id"])->delete();
+        if($result==1)
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
+
+    public function EditCarousel()
+    {
+        $id=input("id");
+        $Img=Phoneimg::where("id",$id)->find();
+        return $this->fetch("EditCarousel",["Img"=>$Img]);
+    }
+
+    public function EditFromSave()
+    {
+        $value=input();
+        if($value["img"]=="none")
+        {
+            if($value["EditOrder"]=="" || $value["EditOrder"]==NULL)
+            {
+                exit("orderNULL");
+            }
+            if($value["EditCarouselHref"]=="" || $value["EditCarouselHref"]==NULL || !preg_match("/^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/",$value["EditCarouselHref"]))
+            {
+                exit("hrefNULL");
+            }
+            if($value["EditCarouselName"]=="" || $value["EditCarouselName"]==NULL)
+            {
+                exit("NameNULL");
+            }
+            $result=Phoneimg::where("id",$value["id"])->update([
+                "name"=>$value["EditCarouselName"],
+                "href"=>$value["EditCarouselHref"],
+                "order"=>$value["EditOrder"],
+                "method"=>$value["Editmethod"][0]
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            $img=json_decode($value["img"],true);
+            $OldImg=Phoneimg::where("id",$value["id"])->field("img")->find()->img;
+            if($value["EditOrder"]=="" || $value["EditOrder"]==NULL)
+            {
+                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                exit("orderNULL");
+            }
+            if($value["EditCarouselHref"]=="" || $value["EditCarouselHref"]==NULL || !preg_match("/^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/",$value["EditCarouselHref"]))
+            {
+                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                exit("hrefNULL");
+            }
+            if($value["EditCarouselName"]=="" || $value["EditCarouselName"]==NULL)
+            {
+                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                exit("NameNULL");
+            }
+            $result=Phoneimg::where("id",$value["id"])->update([
+                "name"=>$value["EditCarouselName"],
+                "href"=>$value["EditCarouselHref"],
+                "order"=>$value["EditOrder"],
+                "img"=>$img["0"]."/".$img["1"],
+                "method"=>$value["Editmethod"][0]
+            ]);
+            if($result==1)
+            {
+                unlink("public/uploads/".$OldImg);
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+
+
+    }
+
 }
