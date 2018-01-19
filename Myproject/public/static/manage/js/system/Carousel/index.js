@@ -327,6 +327,10 @@ function saveEditFrom(data) {
                 {
                     alert("名称不能为空！");
                 }
+                else
+                {
+                    $.showBox("至少要修改一项哦！");
+                }
             },
             error:function(e){
                 alert("错误！！");
@@ -373,6 +377,10 @@ function saveEditFrom(data) {
                             else if(msg=="NameNULL")
                             {
                                 alert("名称不能为空！");
+                            }
+                            else
+                            {
+                                $.showBox("至少要修改一项哦！");
                             }
                         },
                         error:function(e){

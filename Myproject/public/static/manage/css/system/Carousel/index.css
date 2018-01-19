@@ -12,7 +12,7 @@
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(2){width:8%;text-align: center;}
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(3){width: 15%;padding-left: 5px;}
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(3) img{display: inline-block;width: 98%;height: auto;padding:2px 4px 2px 0;}
-.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(4){width: auto;text-align: center;padding:3px 3px;}
+.Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(4){width: auto;text-align: center;padding:3px 3px;word-break: break-all;}
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(5){width: 10%;text-align: center;padding:3px 3px;}
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(6){width: 15%;text-align: center;}
 .Carousel>.CarouselList-Content-Box>.CarouselList-table tbody tr td:nth-child(7){width: 8%;text-align: center;}
@@ -44,4 +44,6 @@
 .EditCarousel>.EditCarousel-Box>.EditCarousel-form>.EditCarousel-line>.EditCarousel-label{font-size: 16px;width:15%;display: none}
 .EditCarousel>.EditCarousel-Box>.EditCarousel-form>.EditCarousel-line>.EditCarousel-radio{display: inline-block;width: 8%; }
 .Editsubmit-button button{display: inline-block;border: 1px solid green;height: 30px;width: 100px;margin: 0 10px;border-radius: 5px;}
+
+
 

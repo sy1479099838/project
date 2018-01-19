@@ -129,6 +129,7 @@ class Carousel extends Common
     public function EditFromSave()
     {
         $value=input();
+//        dump($value);
         if($value["img"]=="none")
         {
             if($value["EditOrder"]=="" || $value["EditOrder"]==NULL)
@@ -164,17 +165,17 @@ class Carousel extends Common
             $OldImg=Phoneimg::where("id",$value["id"])->field("img")->find()->img;
             if($value["EditOrder"]=="" || $value["EditOrder"]==NULL)
             {
-                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                @unlink("public/uploads/".$img["0"]."/".$img["1"]);
                 exit("orderNULL");
             }
             if($value["EditCarouselHref"]=="" || $value["EditCarouselHref"]==NULL || !preg_match("/^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/",$value["EditCarouselHref"]))
             {
-                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                @unlink("public/uploads/".$img["0"]."/".$img["1"]);
                 exit("hrefNULL");
             }
             if($value["EditCarouselName"]=="" || $value["EditCarouselName"]==NULL)
             {
-                unlink("public/uploads/".$img["0"]."/".$img["1"]);
+                @unlink("public/uploads/".$img["0"]."/".$img["1"]);
                 exit("NameNULL");
             }
             $result=Phoneimg::where("id",$value["id"])->update([
@@ -186,7 +187,7 @@ class Carousel extends Common
             ]);
             if($result==1)
             {
-                unlink("public/uploads/".$OldImg);
+                @unlink("public/uploads/".$OldImg);
                 exit("success");
             }
             else

@@ -4,6 +4,7 @@ use think\Session;
 use app\admin\controller\common\Common;
 use app\manage\model\Goods;
 use app\manage\model\Hotclass;
+use app\admin\model\Phoneimg;
 use think\Db;
 class Home extends Common
 {
@@ -36,6 +37,9 @@ class Home extends Common
 //            ->order($qwe,"DESC")
 //            ->select();
 //        dump(json_decode(json_encode($juli,true),true));exit;
+
+        $LunBo=json_decode(json_encode(Phoneimg::where("zhuangtai","1")->order('order', 'asc')->field("href,img,method")->select(),true),true);
+        $this->assign("LunBo",$LunBo);
         $GoodsList=json_decode(json_encode(Hotclass::where("enable","1")->order(['order','id'=>'desc'])->select(),true),true);
         foreach ($GoodsList as $key=>$val)
         {
