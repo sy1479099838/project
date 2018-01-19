@@ -1,0 +1,103 @@
+{extend name="Public:index"/}
+{block name="main"}
+<div class="Carousel">
+    <h1>手机端首页轮播图</h1>
+    <div class="CarouselList-Content-Box">
+        <p>
+            <button class="" onclick="AddCarousel()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加照片</button>
+        </p>
+        <table class="CarouselList-table">
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>名称 </th>
+                <th>照片</th>
+                <th>链接</th>
+                <th>是否启用</th>
+                <th>添加时间</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+            {volist name="list" id="vo"}
+            <tr>
+                <td>{$key+1}</td>
+                <td>{$vo.name}</td>
+                <td>
+                    <img src="__ROTH__/uploads/{$vo.img}" alt="轮播照片">
+                </td>
+                <td>
+                    {$vo.href}<br>
+                    打开方式：{$vo['method']==1?"在新页面打开":"在本页面打开"}
+                </td>
+                <td>
+                    <span class="Carousel-Enable">
+                        <input type="hidden" value="{$vo.zhuangtai}" class="status">
+                        <button class="Carousel-open" onclick="OpenCarousel('{$vo.id}',0)" id="CarouselSwitch_off{$vo.id}">
+                            <img src="__PUBLIC__/manage/images/inco-open.png" alt="">&nbsp;点击关闭
+                        </button>
+                        <button class="Carousel-off" onclick="OpenCarousel('{$vo.id}',1)" id="CarouselSwitch_open{$vo.id}">
+                            <img src="__PUBLIC__/manage/images/inco-close.png" alt="">点击开启&nbsp;
+                        </button>
+                    </span>
+                </td>
+                <td>{$vo['creatTime']|date="Y.m.d H:i:s",###}</td>
+                <td>
+                    <input type="number" value="{$vo.order}" name="{$vo.order}" onchange="sureOrder('{$vo.id}')" id="order{$vo.id}" placeholder="" class="CarouselOrder" />
+                </td>
+                <td>
+                    <button onclick="EditCarousel('{$vo.id}')">
+                        <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">编辑
+                    </button>
+                    <button onclick="sureDel('{$vo.id}')">
+                        <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">删除
+                    </button>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="addCarousel">
+    <div class="addCarousel-Box">
+        <span class="fr icon-remove-circle" style="font-size: 20px;color:#5e5e5e;padding:5px;cursor: pointer;" onclick="closeAddCarousel()"></span>
+        <h1 style="font-size: 25px;text-align: center;margin: 15px;font-weight: 600;">添加轮播图照片</h1>
+        <div class="cb"></div>
+        <form method="post" id="addCarousel" class="addCarousel-form">
+            <div class="addCarousel-line">
+                <span class="addCarousel-span">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+                <input type="text" value="" name="CarouselName" placeholder="取一个别名" class="addCarousel-input">
+                <label class="addCarousel-label">提醒</label>
+            </div>
+            <div class="addCarousel-line">
+                <span class="addCarousel-span">链&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+                <input type="text" value="http://" name="CarouselHref" placeholder='以"http://"或者"https://"开头' class="addCarousel-input">
+                <label class="addCarousel-label">提醒</label>
+            </div>
+            <div class="addCarousel-line">
+                <span class="addCarousel-span">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+                <input type="number" value="" name="Order" placeholder="只能为数字，不能小于等于0" class="addCarousel-input">
+                <label class="addCarousel-label">提醒</label>
+            </div>
+            <div class="addCarousel-line">
+                <span class="addCarousel-span">方&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+                新页面打开：<input type="radio" value="1" name="method[]" class="addCarousel-radio" placeholder="" checked>
+                本页面打开：<input type="radio" value="0" name="method[]" class="addCarousel-radio" placeholder="">
+            </div>
+            <div class="addCarousel-line" style="height: auto;">
+                <span class="addCarousel-span">照&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+                <input type="file" name="CarouselFile" id="btn_file" style="display:none" onchange="chosefile()">
+                <img id="CarouselImg" alt="123" src="/public/static/manage/images/head.png" onclick="F_Open_dialog()" style="display: inline-block;width: 160px;height: 80px;">
+                <label class="addCarousel-label" style="text-align: center;color: red;font-size: 16px;width: auto;display: inline-block;">*点击选择照片，大小：640*320</label>
+            </div>
+        </form>
+        <div class="submit-button">
+            <button onclick="saveFrom()">保存</button><button onclick="closeAddCarousel()">取消</button>
+        </div>
+    </div>
+</div>
+<div class="EditCarousel"></div>
+{/block}
+
+

@@ -1,0 +1,36 @@
+<div class="EditCarousel-Box">
+    <span class="fr icon-remove-circle" style="font-size: 20px;color:#5e5e5e;padding:5px;cursor: pointer;" onclick="closeEditCarousel()"></span>
+    <h1 style="font-size: 25px;text-align: center;margin: 15px;font-weight: 600;">编辑轮播图照片</h1>
+    <div class="cb"></div>
+    <form method="post" id="EditCarousel" class="EditCarousel-form">
+        <div class="EditCarousel-line">
+            <span class="EditCarousel-span">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+            <input type="text" value="{$Img.name}" name="EditCarouselName" placeholder="取一个别名" class="EditCarousel-input">
+            <label class="EditCarousel-label">提醒</label>
+        </div>
+        <div class="EditCarousel-line">
+            <span class="EditCarousel-span">链&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+            <input type="text" value="{$Img.href}" name="EditCarouselHref" placeholder='以"http://"或者"https://"开头' class="EditCarousel-input">
+            <label class="EditCarousel-label">提醒</label>
+        </div>
+        <div class="EditCarousel-line">
+            <span class="EditCarousel-span">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+            <input type="number" value="{$Img.order}" name="EditOrder" placeholder="只能为数字，不能小于等于0" class="EditCarousel-input">
+            <label class="EditCarousel-label">提醒</label>
+        </div>
+        <div class="EditCarousel-line">
+            <span class="EditCarousel-span">方&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+            新页面打开：<input type="radio" value="1" name="Editmethod[]" class="EditCarousel-radio" placeholder="" {$Img['method']==1?'checked':''} >
+            本页面打开：<input type="radio" value="0" name="Editmethod[]" class="EditCarousel-radio" placeholder="" {$Img['method']==1?'':'checked'}>
+        </div>
+        <div class="EditCarousel-line" style="height: auto;">
+            <span class="EditCarousel-span">照&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片&nbsp;&nbsp;&nbsp;：&nbsp;&nbsp;</span>
+            <input type="file" name="EditCarouselFile" id="Editbtn_file" style="display:none" onchange="Editchosefile()">
+            <img id="EditCarouselImg" alt="123" src="__ROTH__/uploads/{$Img.img}" onclick="EditOpen_dialog()" style="display: inline-block;width: 160px;height: 80px;">
+            <label class="EditCarousel-label" style="text-align: center;color: red;font-size: 16px;width: auto;display: inline-block;">*点击选择照片，大小：640*320</label>
+        </div>
+    </form>
+    <div class="Editsubmit-button">
+        <button onclick="saveEditFrom('{$Img.id}')">保存</button><button onclick="closeEditCarousel()">取消</button>
+    </div>
+</div>
