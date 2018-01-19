@@ -12,11 +12,9 @@
     <div class="Index_MenuBigBox">
         <div class="MAXwidth swiper-container">
             <div class="swiper-wrapper">
-                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban1.png" class="Location_img"></a>
-                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban2.jpg" class="Location_img"></a>
-                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban3.jpg" class="Location_img"></a>
-                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban_4.jpg" class="Location_img"></a>
-                <a href="" class="swiper-slide blue-slide fl"><img src="__PUBLIC__/admin/images/ban_5.png" class="Location_img"></a>
+                {volist name="LunBo" id="Lun"}
+                <a href="{$Lun.href}" class="swiper-slide blue-slide fl" target="{$Lun.method=='1'?'_blank':'_self'}" ><img src="__ROTH__/uploads/{$Lun.img}"  class="Location_img"></a>
+                {/volist}
             </div>
             <div class="cb"></div>
             <a href="javascript:;" class="chevron_button_left fl"><span class="icon-chevron-left"></span></a>
