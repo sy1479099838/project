@@ -353,3 +353,6 @@ function cancalImg(bigImg,head) {
         }
     });
 }
+function edit_ni(){
+
+}

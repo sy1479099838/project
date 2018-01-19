@@ -40,6 +40,12 @@ class Personal extends Common
         $this->assign("JsName","personal/Personal/address");
         return $this->fetch();
     }
+    public function nicheng()
+    {
+        $this->assign("Title","昵称修改");
+        $this->assign("JsName","personal/Personal/nicheng");
+        return $this->fetch();
+    }
     public function orderform()
     {
         $people=Session::get("UserInformation");
@@ -247,5 +253,12 @@ class Personal extends Common
         unlink("public/uploads/".$file["bigImg"]);
         unlink("public/uploads/".$file["head"]);
         exit("success");
+    }
+    public function nichengedit()
+    {
+        $nicheng=input();
+        //dump($nicheng);
+        exit("success");
+
     }
 }

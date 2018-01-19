@@ -6,16 +6,17 @@
 	<button onclick="guan_li()" class="Add_button">管理</button>
 	<button onclick="guan_li_close()" class="Add_button2">完成</button>
 </div>
-<div class="address_list">
-	<input type="checkbox" value="" >
-	<div class="address_list_1">
-		<span>XXX省XXx市XXX县XXX区XXXX栋XXX号</span>
-		<p>名字名字名字</p>
-	</div>
-	<div class="address_list_2">18794586325</div>
-	<i class="icon-edit" style="display:none;"></i>
-	<em class="icon-trash" style="display:none;"></em>
-</div>
+<!--<div class="address_list" id="address_list">-->
+	<!--<input type="radio" value="" name="address">-->
+	<!--<div class="address_list_1">-->
+		<!--<span>XXX省XXx市XXX县XXX区XXXX栋XXX号</span>-->
+		<!--<p>名字名字名字</p>-->
+	<!--</div>-->
+	<!--<div class="address_list_2">18794586325</div>-->
+	<!--<i class="icon-edit" style="display:none;"></i>-->
+	<!--<em class="icon-trash" style="display:none;"></em>-->
+<!--</div>-->
+<div class="jiange"></div>
 <div class="address_bottom" onclick="Add_ress()">
 	<span class="icon-plus-sign">新增收货地址</span>
 </div>
@@ -24,9 +25,64 @@
 <!---------------------添加地址弹窗------------------------->
 <div class="Address_hidden">
 	<i class="icon-remove-circle" onclick="Add_ress_close()"></i>
+	<div style="height:80px;width:100%;"></div>
 	<div class="address_name">
 		<span>姓名</span>
-		<input type="text" name="mename" value="请填写收货人姓名">
+		<input type="text" name="mename" value="" placeholder="请填写收货人姓名">
+	</div>
+	<div class="tiao"></div>
+	<div class="address_name1">
+		<span>性别</span>
+		<p>男士：</p><input type="radio" name="sex" value="1">
+		<p>女士：</p><input type="radio" name="sex" value="1">
+	</div>
+	<div class="tiao"></div>
+	<div class="address_name">
+		<span>手机</span>
+		<input type="text" name="phnumber" value="" placeholder="请填写收货人手机号码">
+	</div>
+
+	<div class="tiao"></div>
+	<div class="address_name">
+		<span>地址</span>
+		<input type="text" name="addressname" value="" placeholder="请填写收货人收货地址">
+	</div>
+
+	<div class="tiao"></div>
+	<div class="address_name"  onclick="address_qu()">
+		<b>确定</b>
+	</div>
+</div>
+
+<!---------------------编辑地址弹窗------------------------->
+<div class="Address_hidden_1">
+	<i class="icon-remove-circle" onclick="close_edit_address()"></i>
+	<div style="height:80px;width:100%;"></div>
+	<div class="address_name">
+		<span>姓名</span>
+		<input type="text" name="mename" value="" placeholder="请填写收货人姓名">
+	</div>
+	<div class="tiao"></div>
+	<div class="address_name1">
+		<span>性别</span>
+		<p>男士：</p><input type="radio" name="sex" value="1">
+		<p>女士：</p><input type="radio" name="sex" value="1">
+	</div>
+	<div class="tiao"></div>
+	<div class="address_name">
+		<span>手机</span>
+		<input type="text" name="phnumber" value="" placeholder="请填写收货人手机号码">
+	</div>
+
+	<div class="tiao"></div>
+	<div class="address_name">
+		<span>地址</span>
+		<input type="text" name="addressname" value="" placeholder="请填写收货人收货地址">
+	</div>
+
+	<div class="tiao"></div>
+	<div class="address_name"  onclick="address_qu()">
+		<b>确定</b>
 	</div>
 </div>
 {/block}

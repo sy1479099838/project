@@ -1,0 +1,15 @@
+{extend name="Public:public_2"/}
+{block name="main"}
+<div class="content_dao">
+	<a href="{:url('/admin/personal/Personal/index')}" class="con_s1 icon-angle-left"></a>
+	<p class="cont_zhan">昵称修改</p>
+</div>
+<div class="nicheng_list">
+<form method="post" id="necheng">
+<input type="text" name="nicheng" value="">
+</form>
+</div>
+<div class="kuang"></div>
+<p>请输入合法的昵称，限制4-16字符，一个汉字为2个字符</p>
+<button onclick="nichengedit()">确定</button>
+{/block}
