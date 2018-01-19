@@ -34,6 +34,12 @@ class Personal extends Common
         $this->assign("JsName","personal/Personal/level");
         return $this->fetch();
     }
+    public function address()
+    {
+        $this->assign("Title","收货地址");
+        $this->assign("JsName","personal/Personal/address");
+        return $this->fetch();
+    }
     public function orderform()
     {
         $people=Session::get("UserInformation");

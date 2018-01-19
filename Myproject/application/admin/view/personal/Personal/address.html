@@ -1,0 +1,32 @@
+{extend name="Public:public_2"/}
+{block name="main"}
+<div class="content_dao">
+	<a href="{:url('/admin/personal/Personal/index')}" class="con_s1 icon-angle-left"></a>
+	<p class="cont_zhan">我的收货地址</p>
+	<button onclick="guan_li()" class="Add_button">管理</button>
+	<button onclick="guan_li_close()" class="Add_button2">完成</button>
+</div>
+<div class="address_list">
+	<input type="checkbox" value="" >
+	<div class="address_list_1">
+		<span>XXX省XXx市XXX县XXX区XXXX栋XXX号</span>
+		<p>名字名字名字</p>
+	</div>
+	<div class="address_list_2">18794586325</div>
+	<i class="icon-edit" style="display:none;"></i>
+	<em class="icon-trash" style="display:none;"></em>
+</div>
+<div class="address_bottom" onclick="Add_ress()">
+	<span class="icon-plus-sign">新增收货地址</span>
+</div>
+
+
+<!---------------------添加地址弹窗------------------------->
+<div class="Address_hidden">
+	<i class="icon-remove-circle" onclick="Add_ress_close()"></i>
+	<div class="address_name">
+		<span>姓名</span>
+		<input type="text" name="mename" value="请填写收货人姓名">
+	</div>
+</div>
+{/block}

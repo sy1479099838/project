@@ -1,0 +1,21 @@
+.cont_zhan{display:block;margin-left:30%;float:left;width:25%;height:2.1em;text-align:center;font-size:.8em;line-height:2.1em;color:white;}
+.content_dao{width:100%;height:1.8em;background:#e0e0e0;}
+.con_s1{display:block;float:left;margin-left:6%;font-size:1.6em;color:white;}
+.Add_button{display:block;width:10%;height:2.1em;float:right;margin-right:3%;border:none;background:#e0e0e0;color:white;line-height:2.1em;}
+.Add_button2{display:none;width:10%;height:2.1em;float:right;margin-right:3%;border:none;background:#e0e0e0;color:white;line-height:2.1em;}
+.address_bottom{width:100%;height:40px;position:fixed;bottom:0;background:orangered;color:white;}
+.address_bottom span{display:block;width:40%;margin:0 auto;height:40px;text-align:center;line-height:40px;border:none;background:orangered;font-size:.8em;}
+.icon-plus-sign{color:white;}
+.address_list{width:100%;height:60px;margin-top:8px;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;position:relative;}
+.address_list input{float:left;margin-left:5%;display:block;width:15px;height:15px;margin-top:22.5px;}
+.address_list_1{width:40%;height:60px;float:left;}
+.address_list_1 span{display:block;width:95%;margin-left:5%;height:36px;text-indent:3%;font-size:.7em;margin-top:4px;}
+.address_list_1 p{display:block;width:95%;margin-left:5%;font-size:.7em;color:#7B7B7B;}
+.address_list_2{width:30%;font-size:.8em;float:left;top:20px;margin-top:40px;color:#7B7B7B;}
+.icon-edit{font-size:1.5em;right:20%;position:absolute;top:17.5px;}
+.icon-trash{font-size:1.5em;right:10%;position:absolute;top:17.5px;}
+.Address_hidden{display:none;width:100%;height:100%;position:fixed;bottom:0;background:rgba(0,0,0,0.5);z-index:99;}
+.icon-remove-circle{color:white;font-size:1.5em;position:absolute;right:5%;top:10px;}
+.address_name{width:100%;height:40px;background:white;margin-top:80px;}
+.address_name span{display:block;width:30%;height:40px;float:left;font-size:.8em;text-align:center;line-height:40px;border:none;}
+.address_name input{display:block;width:70%;height:40px;border:none;font-size:.8em;line-height:40px;float:left;}
