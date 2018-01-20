@@ -1,0 +1,20 @@
+.order_index p{width:100%;height:60px;font-size:20px;text-align:center;line-height:60px;}
+.order_check{width:100%;height:30px;}
+.order_check p{width:8%;display:block;height:30px;font-size:16px;line-height:30px;float:left;margin-left:3%;}
+.order_check span{display:block;width:30%;height:30px;float:left;border:2px solid green;border-radius:3px;}
+.order_check span input{width:90%;height:30px;border:none;line-height:30px;}
+.wei_fa{width:93%;height:auto;border:1px solid #adadad;margin-left:3%;margin-top:20px;}
+.wei_fa tbody tr th{border:1px solid #adadad;}
+.wei_fa tbody tr td{border:1px solid #adadad;text-align:center;}
+.wei_fa tbody tr td:nth-child(1){width:5%;}
+.wei_fa tbody tr td:nth-child(2){width:14%;}
+.wei_fa tbody tr td:nth-child(3){width:8%;}
+.wei_fa tbody tr td:nth-child(4){width:8%;}
+.wei_fa tbody tr td:nth-child(5){width:7%;}
+.wei_fa tbody tr td:nth-child(6){width:auto;}
+.wei_fa tbody tr td:nth-child(7){width:8%;}
+.wei_fa tbody tr td:nth-child(8){width:19%;vertical-align:middle;}
+.wei_fa tbody tr td:nth-child(8) span{width:30%;height:100%;border:1px solid green;border-radius:4px;}
+.wei_fa tbody tr td:nth-child(8) button{width:30%;height:20px;border:1px solid green;border-radius:4px;margin-left:5%;background:none;background:green;color:white;}
+.wei_list_fenye{width:15%;height:30px;float:right;margin-right:4%;margin-top:10px;}
+.wei_list_fenye a{display:block;width:15px;height:15px;border:1px solid black;float:left;text-align:center;line-height:15px;margin-left:8px;}

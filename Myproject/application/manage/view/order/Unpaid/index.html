@@ -1,0 +1,48 @@
+{extend name="Public:index"/}
+{block name="main"}
+<div class="order_index">
+    <p>未支付订单查询</p>
+</div>
+<div class="order_check">
+    <p>快速查询：</p>
+    <span><input type="text" value="" name="BusinessKeywordSearch" placeholder="&nbsp;订单号、姓名、账号"><i class="icon-search" onclick="BusinessKeywordSearch('')"></i></span>
+</div>
+<table class="wei_list">
+    <tbody>
+        <tr>
+            <th>编号</th>
+            <th>订单号</th>
+            <th>客户名称</th>
+            <th>联系方式</th>
+            <th>创建时间</th>
+            <th>所买商品</th>
+            <th>订单金额</th>
+            <th>收货地址</th>
+        </tr>
+        <tr>
+            <td>0001</td>
+            <td>201820125645887455</td>
+            <td>某某某某</td>
+            <td>18765412578</td>
+            <td>2018-15-20 08:00:00</td>
+            <td>
+                商品一：XXXX;
+                数量：XXX;
+                商品二：XXX；
+                数量：XXX;
+            </td>
+            <td>￥：20000</td>
+            <td>XXX省XX市XX县XX区XXX号</td>
+        </tr>
+    </tbody>
+</table>
+<div class="wei_list_fenye">
+    <a class="icon-double-angle-left" href="javascript:void(0)"></a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">2</a>
+    <a href="javascript:void(0);">3</a>
+    <a href="javascript:void(0);">4</a>
+    <a class=" icon-double-angle-right" href="javascript:void(0)"></a>
+</div>
+<div style="clear:both;"></div>
+{/block}

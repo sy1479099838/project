@@ -16,6 +16,14 @@
 .icon-trash{font-size:1.5em;right:10%;position:absolute;top:17.5px;}
 .Address_hidden{display:none;width:100%;height:100%;position:fixed;bottom:0;background:rgba(0,0,0,0.5);z-index:99;}
 .icon-remove-circle{color:white;font-size:1.5em;position:absolute;right:5%;top:10px;}
-.address_name{width:100%;height:40px;background:white;margin-top:80px;}
+.address_name{width:100%;height:40px;background:white;}
 .address_name span{display:block;width:30%;height:40px;float:left;font-size:.8em;text-align:center;line-height:40px;border:none;}
 .address_name input{display:block;width:70%;height:40px;border:none;font-size:.8em;line-height:40px;float:left;}
+.tiao{width:100%;height:5px;clear:both;}
+.address_name1{width:100%;height:40px;background:white;}
+.address_name1 span{display:block;width:30%;height:40px;float:left;font-size:.8em;text-align:center;line-height:40px;border:none;}
+.address_name1 input{width:18px;height:18px;margin-top:11px;float:left;}
+.address_name1 p{display:block;width:15%;height:40px;margin-left:3%;float:left;line-height:40px;font-size:.8em;}
+.address_name b{width:100%;height:40px;display:block;font-size:.8em;letter-spacing:20px;text-align:center;line-height:40px;}
+.jiange{width:100%;height:8px;clear:both;}
+.Address_hidden_1{display:none;width:100%;height:100%;position:fixed;bottom:0;background:rgba(0,0,0,0.5);z-index:999;}
