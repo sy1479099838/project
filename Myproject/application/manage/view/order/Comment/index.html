@@ -1,0 +1,85 @@
+{extend name="Public:index"/}
+{block name="main"}
+<div class="order_index">
+    <p>查看评论</p>
+</div>
+<div class="order_check">
+    <p>快速查询：</p>
+    <span><input type="text" value="" name="BusinessKeywordSearch" placeholder="&nbsp;商品、姓名、账号"><i class="icon-search" onclick="BusinessKeywordSearch('')"></i></span>
+</div>
+<table class="yifahuo_list">
+    <tbody>
+    <tr>
+        <th>编号</th>
+        <th>订单号</th>
+        <th>客户名称</th>
+        <th>联系方式</th>
+        <th>状态</th>
+        <th>订单金额</th>
+        <th>评论</th>
+        <th>回复</th>
+    </tr>
+    <tr>
+        <td>0001</td>
+        <td>21515315355515515551</td>
+        <td>XXXXXXXXXX</td>
+        <td>14875263254</td>
+        <td>已完结</td>
+        <td>
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+        </td>
+        <td>
+            <button onclick="check_pinlun(1)">查看评论</button>
+            <div class="pinlun" id="Pin1">
+                <i class="icon-remove-circle" onclick="close_check_pinlun(1)">关闭</i>
+                <p>这里是评论，这里是评论这里是评论这是里评论</p>
+            </div>
+        </td>
+        <td>
+            <button onclick="huifu(1)">回复</button><br>
+            <div class="huifu" id="Huifu1">
+                    <i class="icon-remove-circle" onclick="close_huifu(1)">关闭</i>
+                    <textarea  maxlength="200" id="wenben1">
+                    </textarea>
+                    <button onclick="tijiao(1)">提交</button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>0001</td>
+        <td>21515315355515515551</td>
+        <td>XXXXXXXXXX</td>
+        <td>14875263254</td>
+        <td>已完结</td>
+        <td>
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+            商品一：XXXXXX;数量：XXXXXXX;
+        </td>
+        <td>
+            <button onclick="check_pinlun(2)">查看评论</button>
+            <div class="pinlun" id="Pin2">
+                <i class="icon-remove-circle" onclick="close_check_pinlun(2)">关闭</i><br>
+                <p>这里是评论，这里是评论这里是评论这是里评论</p>
+            </div>
+        </td>
+        <td>
+            <button onclick="huifu(2)">回复</button>
+            <div class="huifu" id="Huifu2">
+                <i class="icon-remove-circle" onclick="close_huifu(2)">关闭</i>
+                <textarea  maxlength="200" id="wenben2">
+                </textarea>
+                <button onclick="tijiao(2)">提交</button>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+{/block}

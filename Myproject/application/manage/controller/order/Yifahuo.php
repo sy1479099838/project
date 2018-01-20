@@ -1,12 +1,12 @@
 <?php
 namespace app\manage\controller\order;
 use app\manage\controller\Common;
-class Unpaid extends Common
+class Yifahuo extends Common
 {
     public function index()
     {
-        $this->assign("Title","未支付订单");
-        $this->assign("JsName","order/Unpaid/index");
+        $this->assign("Title","已发货");
+        $this->assign("JsName","order/Yifahuo/index");
         return $this->fetch();
     }
 }
