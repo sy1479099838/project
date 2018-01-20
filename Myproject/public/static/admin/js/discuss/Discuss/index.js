@@ -163,3 +163,51 @@ function DiscussSeeImg(data) {
         }
     });
 }
+
+function comment(id,userId) {
+    $("#Comment-Submit").attr("onclick","SaveComment("+id+","+userId+")");
+    $(".Comment-sendBox").fadeIn(200);
+    $("#Comment-Content").focus();
+}
+
+$(function () {
+    $('.Comment_Box').on('touchstart',function(){
+        var o =$(".Comment-sendBox").css('display');
+        if(o!="none")
+        {
+            $(".Comment-sendBox").fadeOut(200);
+            $("#Comment-Content").val("");
+        }
+    })
+});
+
+
+function SaveComment(data,UserId) {
+    var text=$("#Comment-Content").val();
+   $.ajax({
+       url:"SaveComment",
+       type:"post",
+       data:({
+           text:text,
+           TalkId:data,
+           UserId:UserId
+       }),
+       success:function (msg) {
+            if(msg=="notNULL")
+            {
+                $.showBox("输入内容不能为空！");
+            }
+            else if(msg=="success")
+            {
+                $.showBox("发表成功！");
+                window.location.reload();
+            }
+            else
+            {
+                $.showBox("发表失败！");
+            }
+       },error:function () {
+           
+       }
+   });
+}

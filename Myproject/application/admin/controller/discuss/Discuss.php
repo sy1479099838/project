@@ -3,18 +3,28 @@ namespace app\admin\controller\discuss;
 use app\admin\model\Friendtalk;
 use app\admin\controller\common\Common;
 use think\Session;
+use app\admin\model\FriendTalkComment;
+use think\Db;
+use app\admin\model\User;
 class Discuss extends Common
 {
     public function index()
     {
-        $value=Friendtalk::with("profile")->order('CreateTime ASC')->select();
+        $value=json_decode(json_encode(Friendtalk::with("profile")->order('CreateTime ASC')->select(),true),true);
         foreach ($value as $key=>$val)
         {
-            $photo=json_decode($val->photo);
-            $val->photo=$photo;
+            $result=json_decode(json_encode(FriendTalkComment::where("talkId",$val["id"])->order("CommentTime ASC")->select(),true),true);
+            $count=FriendTalkComment::where("talkId",$val["id"])->count();
+            foreach ($result as $k=>$v)
+            {
+                $result[$k]["user"]=json_decode(json_encode(User::where("id",$v["user"])->field("id,UserName")->find(),true),true);
+                $result[$k]["Touser"]=json_decode(json_encode(User::where("id",$v["Touser"])->field("id,UserName")->find(),true),true);
+            }
+            $value[$key]["comment"]=$result;
+            $value[$key]["commentCount"]=$count;
+            $photo=json_decode($val["photo"]);
+            $value[$key]["photo"]=$photo;
         }
-
-        $value=json_decode(json_encode($value,true),true);
 //        dump($value);
         $this->assign("Title","驴友说");
         $this->assign("JsName","discuss/Discuss/index");
@@ -131,5 +141,35 @@ class Discuss extends Common
         $value=Friendtalk::where("id",$num)->field("photo")->find();
         $value=json_decode($value["photo"],true);
         return $this->fetch("ImgCarousel",["img"=>$value]);
+    }
+
+    public function SaveComment()
+    {
+        $text=input();
+        $people=Session::get("UserInformation");
+        if($text["text"]=="" || $text["text"]==NULL)
+        {
+            exit("notNULL");
+        }
+        else
+        {
+            $value=FriendTalkComment::create([
+                "user"=>$people["id"],
+                "talkId"=>$text["TalkId"],
+                "Touser"=>$text["UserId"],
+                "text"=>$text["text"],
+                "CommentTime"=>time(),
+                "type"=>1
+
+            ]);
+            if($value)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
     }
 }

@@ -40,10 +40,13 @@
 #IMGUpload>.parentFileBox{display: inline-block;width: 100%;}
 #IMGUpload{ min-height:400px; background:#ffffff;display: inline-block;}
 #allmap {display: none;}
-
-
-
-#SeeImg{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: black;line-height: 100%;z-index: 999999;display: none;
-}
+/*点击查看详情*/
+#SeeImg{position: fixed;top:0;left: 0;right: 0;bottom: 0;background: rgba(0,0,0,0.6);line-height: 100%;z-index: 999999;display: none;  }
 .swiper-container {display: inline-block;height:auto;width: 100%;}
 .swiper-slide img{display: inline-block;width: 100%;}
+
+/*评论和回复*/
+.Comment-sendBox{width: 100%;height:50px;position:fixed;bottom: 0;z-index: 999999;background: rgba(242,242,242,1);border-top: 2px solid #c8c8c8;display: none;}
+
+
+.Comment-text-box{width: 95%;margin-left: 2.5%;font-size: 14px;}

@@ -18,7 +18,7 @@
     </div>
     <br>
     <div class="Discuss_publish_Scenic ">
-        <div><span><i class="icon-ok-circle">&nbsp;</i>请选择你去过的地方<label>&nbsp;&nbsp;&nbsp;*请选择*</label><i class="icon-chevron-down fr"></i></span>
+        <div><span><i class="icon-ok-circle">&nbsp;</i>请选择你购买的商品<label>&nbsp;&nbsp;&nbsp;*请选择*</label><i class="icon-chevron-down fr"></i></span>
             <ul>
                 <li>&nbsp;&nbsp;<input type="radio" value="1" name="DiscussScenic">千佛山</li>
                 <li>&nbsp;&nbsp;<input type="radio" value="2" name="DiscussScenic">九皇山</li>
@@ -67,19 +67,26 @@
         <span class="Comment_Box_button_span">{$vo.CreateTime|date="Y/m/d H:i:s",###}</span>
         <span class="Comment_Box_button_span"><i class="icon-eye-open">&nbsp;</i>123</span>
         <button class="Comment_Box_button_span" onclick="ThumbsUp()"><i class="icon-thumbs-up"></i>123</button>
-        <button class="Comment_Box_button_span" onclick="ThumbsUp()"><i class="icon-comment-alt"></i>123</button>
+        <button class="Comment_Box_button_span" onclick="comment('{$vo.id}','{$vo.profile.0.id}')"><i class="icon-comment-alt"></i>{$vo.commentCount}</button>
     </div>
     <div class="cb"></div>
+    <div class="Comment-text-box">
+        {volist name="vo.comment" id="vo_2"}
+        <span onclick="huifu('vo_2.user.id')">{$vo_2.user.UserName}</span>：{$vo_2.text}<br>
+        {/volist}
+    </div>
 </div>
 {/volist}
-
-
-
-
 <div id="SeeImg">
-
 </div>
 
 
+<div class="Comment-sendBox">
+    <div style="height: 25px;width: 96%;margin-left: 3%;margin-top: 15px;">
+        <textarea name="" class="fl" id="Comment-Content" style="display: inline-block;width: 85%;height: 100%;border: 1px solid #c0c0c0"></textarea>
+        <button id="Comment-Submit" class="fr" style="width:14%;border:1px solid #da8aae;border-radius: 3px;background: #da8aae;height: 110%;display: inline-block;margin-left: 1px;">发送</button>
+        <div class="cb"></div>
+    </div>
+</div>
 {/block}
 
