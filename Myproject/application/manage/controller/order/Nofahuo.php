@@ -1,12 +1,22 @@
 <?php
 namespace app\manage\controller\order;
 use app\manage\controller\Common;
+use think\Db;
 class Nofahuo extends Common
 {
     public function index()
     {
-        $this->assign("Title","未发货");
-        $this->assign("JsName","order/Nofahuo/index");
+        $order=Db::name('goods_order')->where('state',2)
+            ->alias('a')
+            ->join('goods b','a.GoodsId = b.id')
+            ->join('goods_package c','a.PackageId = c.PackageId')
+            ->join("user d","a.User = d.id")
+            ->field("
+                a.GoodsOrderID,a.num,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceivePeople,a.ReceivePhoneNum,
+                b.GoodsName,c.PackageName,d.UserName
+            ")
+            ->select();
+        $this->assign("order",$order);
         return $this->fetch();
     }
 }

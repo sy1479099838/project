@@ -1,7 +1,6 @@
 <?php
 namespace app\manage\controller\order;
 use app\manage\controller\Common;
-use app\admin\model\GoodsOrder;
 use think\Db;
 class Unpaid extends Common
 {

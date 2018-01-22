@@ -13,49 +13,36 @@
         <tr>
             <th>编号</th>
             <th>订单号</th>
-            <th>客户名称</th>
-            <th>联系方式</th>
-            <th>是否支付</th>
+            <th>用户信息</th>
+            <th>创建时间</th>
             <th>所买商品</th>
             <th>订单金额</th>
-            <th>状态</th>
+            <th>收货信息</th>
+            <th>操作</th>
         </tr>
+        {volist name="order" id="vo"}
         <tr>
-            <td>0001</td>
-            <td>21515315355515515551</td>
-            <td>XXXXXXXXXX</td>
-            <td>14875263254</td>
-            <td>未支付</td>
-            <td>商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-            </td>
-            <td>￥：500</td>
+            <td>{$key+1}</td>
+            <td>{$vo.GoodsOrderID}</td>
             <td>
-                <span>未发货</span>
-                <button onclick="fahuo()">点击发货</button>
+                {$vo.UserName} <br>
+            </td>
+            <td>{$vo['lastUpdateTime']|date="Y.m.d H:i:s",###}</td>
+            <td>
+                商品名：{$vo.GoodsName};<br>
+                套餐名：{$vo.PackageName};<br>
+                数量：{$vo.num};
+            </td>
+            <td>￥：{$vo['price']}</td>
+            <td>
+                收货人：{$vo.ReceivePeople};&nbsp;&nbsp;&nbsp;联系电话：{$vo.ReceivePhoneNum}<br>
+                地址：{$vo.ReceiveAddress}
+            </td>
+            <td>
+                <button onclick="fahuo()">发货</button>
             </td>
         </tr>
-        <tr>
-            <td>0001</td>
-            <td>21515315355515515551</td>
-            <td>XXXXXXXXXX</td>
-            <td>14875263254</td>
-            <td>已支付</td>
-            <td>商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-                商品一：XXXXXX;数量：XXXXXXX;
-            </td>
-            <td>￥：500</td>
-            <td>
-                <span>未发货</span>
-                <button onclick="fahuo()">点击发货</button>
-            </td>
-        </tr>
+        {/volist}
     </tbody>
 </table>
 {/block}
