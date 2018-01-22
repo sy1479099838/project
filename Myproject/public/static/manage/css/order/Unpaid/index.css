@@ -6,13 +6,12 @@
 .wei_list{width:93%;height:auto;border:1px solid #adadad;margin-left:3%;margin-top:20px;}
 .wei_list tbody tr th{border:1px solid #adadad;}
 .wei_list tbody tr td{border:1px solid #adadad;text-align:center;}
-.wei_list tbody tr td:nth-child(1){width:5%;}
-.wei_list tbody tr td:nth-child(2){width:15%;}
-.wei_list tbody tr td:nth-child(3){width:8%;}
-.wei_list tbody tr td:nth-child(4){width:10%;}
-.wei_list tbody tr td:nth-child(5){width:10%;}
-.wei_list tbody tr td:nth-child(6){width:13%;}
-.wei_list tbody tr td:nth-child(7){width:8%;}
-.wei_list tbody tr td:nth-child(8){width:auto;}
+.wei_list tbody tr td:nth-child(1){width:3%;}
+.wei_list tbody tr td:nth-child(2){width:19%;}
+.wei_list tbody tr td:nth-child(3){width:8%;text-align: center;}
+.wei_list tbody tr td:nth-child(4){width:15%;}
+.wei_list tbody tr td:nth-child(5){width:14%;text-align: left;}
+.wei_list tbody tr td:nth-child(6){width:7%;}
+.wei_list tbody tr td:nth-child(7){width:auto;text-align: left;}
 .wei_list_fenye{width:15%;height:30px;float:right;margin-right:4%;margin-top:10px;}
 .wei_list_fenye a{display:block;width:15px;height:15px;border:1px solid black;float:left;text-align:center;line-height:15px;margin-left:8px;}

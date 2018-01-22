@@ -6,14 +6,14 @@
 .yifahuo_list{width:93%;height:auto;border:1px solid #adadad;margin-left:3%;margin-top:20px;}
 .yifahuo_list tbody tr th{border:1px solid #adadad;}
 .yifahuo_list tbody tr td{border:1px solid #adadad;text-align:center;}
-.yifahuo_list tbody tr td:nth-child(1){width:5%;}
-.yifahuo_list tbody tr td:nth-child(2){width:14%;}
+.yifahuo_list tbody tr td:nth-child(1){width:4%;}
+.yifahuo_list tbody tr td:nth-child(2){width:19%;}
 .yifahuo_list tbody tr td:nth-child(3){width:8%;}
-.yifahuo_list tbody tr td:nth-child(4){width:8%;}
-.yifahuo_list tbody tr td:nth-child(5){width:7%;}
-.yifahuo_list tbody tr td:nth-child(6){width:auto;}
-.yifahuo_list tbody tr td:nth-child(7){width:15%;}
+.yifahuo_list tbody tr td:nth-child(4){width:13%;}
+.yifahuo_list tbody tr td:nth-child(5){width:15%;text-align: left;padding:2px;}
+.yifahuo_list tbody tr td:nth-child(6){width:6%;}
+.yifahuo_list tbody tr td:nth-child(7){width:auto;text-align: left;}
 .yifahuo_list tbody tr td:nth-child(7) button{width:30%;height:20px;border-radius:4px;background:green;color:white;}
-.yifahuo_list tbody tr td:nth-child(8){width:10%;vertical-align:middle;}
-.yifahuo_list tbody tr td:nth-child(8) span{width:30%;height:100%;border:1px solid green;border-radius:4px;}
+.yifahuo_list tbody tr td:nth-child(8){width:6%;vertical-align:middle;}
+.yifahuo_list tbody tr td:nth-child(8) span{width:90%;height:100%;border:1px solid green;border-radius:4px;}
 .yifahuo_list tbody tr td:nth-child(8) button{width:30%;height:20px;border:1px solid green;border-radius:4px;margin-left:5%;background:none;background:green;color:white;}
