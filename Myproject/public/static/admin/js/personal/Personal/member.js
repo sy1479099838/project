@@ -185,6 +185,7 @@ function fuwei() {
 
 
 function previewF () {
+    $("#caijiana").fadeIn();
     var imgfile = document.getElementById("abc").files[0];
     var prew=document.getElementById("asdfg");
     var reader = new FileReader();
@@ -259,6 +260,8 @@ function previewF () {
                 prew.src=image.src;
             }
         };
+        $("#saveHead").fadeOut();
+        $("#cancalImg").fadeOut();
     };
 }
 
@@ -299,9 +302,9 @@ function caiHead() {
                 });
                 $("#CaiJianBox").fadeOut();
                 $('#asdfg').attr('src',"/public/uploads/"+obj.head);
-                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
-                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
-                //$("#caijiana").fadeOut();
+                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
+                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
+                $("#caijiana").fadeOut();
             }
         },
         error:function()
