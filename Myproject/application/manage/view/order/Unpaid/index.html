@@ -12,28 +12,32 @@
         <tr>
             <th>编号</th>
             <th>订单号</th>
-            <th>客户名称</th>
-            <th>联系方式</th>
+            <th>用户信息</th>
             <th>创建时间</th>
             <th>所买商品</th>
             <th>订单金额</th>
-            <th>收货地址</th>
+            <th>收货信息</th>
         </tr>
+        {volist name="order" id="vo"}
         <tr>
-            <td>0001</td>
-            <td>201820125645887455</td>
-            <td>某某某某</td>
-            <td>18765412578</td>
-            <td>2018-15-20 08:00:00</td>
+            <td>{$key+1}</td>
+            <td>{$vo.GoodsOrderID}</td>
             <td>
-                商品一：XXXX;
-                数量：XXX;
-                商品二：XXX；
-                数量：XXX;
+                客户名：{$vo.UserName} <br>
             </td>
-            <td>￥：20000</td>
-            <td>XXX省XX市XX县XX区XXX号</td>
+            <td>{$vo['lastUpdateTime']|date="Y.m.d H:i:s",###}</td>
+            <td>
+                商品名：{$vo.GoodsName};<br>
+                套餐名：{$vo.PackageName};<br>
+                数量：{$vo.num};
+            </td>
+            <td>￥：{$vo['price']}</td>
+            <td>
+                收货人：{$vo.ReceivePeople};&nbsp;&nbsp;&nbsp;联系电话：{$vo.ReceivePhoneNum}<br>
+                地址：{$vo.ReceiveAddress}
+            </td>
         </tr>
+        {/volist}
     </tbody>
 </table>
 <div class="wei_list_fenye">
