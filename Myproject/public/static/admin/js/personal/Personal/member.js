@@ -185,6 +185,7 @@ function fuwei() {
 
 
 function previewF () {
+    $("#caijiana").fadeIn();
     var imgfile = document.getElementById("abc").files[0];
     var prew=document.getElementById("asdfg");
     var reader = new FileReader();
@@ -259,6 +260,8 @@ function previewF () {
                 prew.src=image.src;
             }
         };
+        $("#saveHead").fadeOut();
+        $("#cancalImg").fadeOut();
     };
 }
 
