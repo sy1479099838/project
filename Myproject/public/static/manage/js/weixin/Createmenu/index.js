@@ -2,6 +2,25 @@ function addbutton(data) {
     alert(data);
 }
 
+function Kbianji(){
+        //alert(1111111111111111111);
+        $(".menulist_bianji").hide();
+        //console.log($(".menulist_bianji"));
+        $(".menulist_baocun").show();
+        var list=document.getElementById("list");
+        var Oinp=list.getElementsByTagName("input");
+        Oinp.disabled=false;
+}
+function Baocun(){
+    $(".menulist_baocun").hide();
+    //console.log($(".menulist_bianji"));
+    $(".menulist_bianji").show();
+    var list=document.getElementById("list");
+    var Oinp=list.getElementsByTagName("input");
+    Oinp.disabled=true;
+}
+
+
 function Add_menu(){
     //alert(111111);
     $(".GZ_menu").fadeIn();

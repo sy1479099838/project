@@ -299,9 +299,9 @@ function caiHead() {
                 });
                 $("#CaiJianBox").fadeOut();
                 $('#asdfg').attr('src',"/public/uploads/"+obj.head);
-                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
-                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")").fadeIn();
-                $("#caijiana").fadeOut();
+                $("#saveHead").attr("onclick","saveimg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
+                $("#cancalImg").attr("onclick","cancalImg("+"\""+obj.bigImg+"\""+",\""+obj.head+"\")");
+                //$("#caijiana").fadeOut();
             }
         },
         error:function()
