@@ -3,8 +3,10 @@
 <div class="Reply-BigBox">
     <h1 class="top-head">微信消息回复管理</h1>
     <p>
-        <button class="" onclick="AddReply()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加回复消息</button>
+        <button class="button1" onclick="AddReply()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加回复消息</button>
+        <button class="button2" onclick="AddguanReply()"><img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加关键字回复</button>
         <span><input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;姓名/电话"><i class="icon-search" onclick="KeywordSearch('')"></i></span>
+
     </p>
     <table class="Reply-table">
     <tbody>
@@ -130,5 +132,30 @@
 
         </div>
     </div>
+</div>
+
+
+<!----------------------添加关键字回复--------------------------->
+<div class="Gujian_h">
+    <div class="Guanjian_list">
+        <i class="icon-remove-circle" style="font-size:1.5em;position:absolute;top:20px;right:3%;cursor:pointer;" onclick="Gujian_h_close()">关闭</i>
+        <h1>添加关键字回复</h1>
+
+            <div class="tian_content">
+                <form method="post"  id="huifu">
+                <li>
+                    <span>标题</span><input type="text" name="guanjian_title">
+                </li>
+
+                    <li>
+                        <span>内容</span><textarea  name="guanjian_content"></textarea>
+                    </li>
+                </form>
+                <li><button class="Obut" onclick="guanjiansub()">提交数据</button></li>
+            </div>
+
+
+    </div>
+
 </div>
 {/block}

@@ -1,8 +1,10 @@
 .Reply-BigBox{width: 100%;height: auto;}
 .Reply-BigBox>.top-head{text-align: center;font-size: 22px;font-weight: 600;margin-top: 2%;}
 .Reply-BigBox p{width: 100%;padding:10px 0;text-align: left;height: 30px;line-height: 30px;margin-left: 3%;}
-.Reply-BigBox p button{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
-.Reply-BigBox p button img{display: inline-block;height: 100%;float: left;}
+.button1{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;}
+.button1 img{display: inline-block;height: 100%;float: left;}
+.button2{float:left;background:none;display: inline-block;height: 100%;margin:3px 0;line-height: 30px;border: 2px solid green;border-radius: 5px;padding-left: 3px;margin-left:3%;}
+.button2 img{display: inline-block;height: 100%;float: left;}
 .Reply-BigBox p span{display: inline-block;height: 90%;line-height: 30px;border:2px solid green; border-radius: 5px;float: left;margin-left: 20px;margin-top: 2px;}
 .Reply-BigBox p span input{display: inline-block;height: 95%;background: none;border: none;}
 .Reply-BigBox p span i{display: inline-block;width: 20px;height: 95%;font-size: 18px;color: #959595;}
@@ -18,7 +20,7 @@
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(5){width: 25%;text-align: center;}
 .Reply-BigBox>.Reply-table tbody tr td:nth-child(6){width: 15%;text-align: center;}
 
-.Appaly_box{width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(255,255,255,1);z-index:999;}
+.Appaly_box{display:none;width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(255,255,255,1);z-index:999;}
 .Appaly_first{width:100%;height:100px;position:relative;}
 .Appaly_first p{width:60%;height:80px;margin:0 auto;text-align:center;line-height:80px;font-size:20px;}
 .Appaly_first i{font-size:1.5em;display:block;width:10%;}
@@ -53,5 +55,15 @@
 #wenzi td:nth-child(2) span{width:100%;display:block;}
 #wenzi td:nth-child(3){width:20%;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
 #wenzi td:nth-child(4){width:auto;text-align:center;border-right:1px solid #00CC99;border-bottom:1px solid #00F7DE;}
+.Gujian_h{width:100%;height:100%;position:absolute;top:0;right:0;z-index:999999;background:white;display:none;}
+.Guanjian_list{width:100%;border-radius:3px;height:auto;position:relative;}
+.Guanjian_list h1{width:100%;height:60px;font-size:20px;text-align:center;line-height:60px;}
+.tian_content{width:100%;height:auto;}
+.tian_content li{display:block;width:100%;height:40px;}
+.tian_content li span{display:block;width:10%;text-align:center;line-height:20px;margin-left:20%;height:20px;margin-top:10px;background:#7B7B7B;color:white;float:left;border:1px solid #7B7B7B;}
+.tian_content li input{display:block;width:40%;height:20px;margin-top:10px;float:left;}
+.tian_content li textarea{display:block;width:40%;height:20px;margin-top:10px;float:left;}
+.Obut{width:50%;margin-left:20%;height:20px;text-align:center;line-height:20px;background:#7B7B7B;color:white;border:none;}
+.list textarea{width:100%;}
 
 
