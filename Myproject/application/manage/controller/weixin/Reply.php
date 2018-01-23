@@ -14,4 +14,12 @@ class Reply extends Common
                 return $this->fetch();
     }
 
+    public function guanjianzi()
+    {
+        $guanjianzi=input();
+        //dump($nicheng);
+        exit("success");
+
+    }
+
 }
