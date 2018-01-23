@@ -8,24 +8,35 @@
 
 .menulist_bianji{width:8%;height:20px;background:#00F7DE;color:white;margin-left:10%;border:none;margin-top:20px;}
 .menulist_baocun{display:none;width:8%;height:20px;background:#00F7DE;color:white;margin-left:10%;border:none;margin-top:20px;}
-.Menu_list1{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;}
+.Menu_list1{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;border-top:1px dashed #7B7B7B;}
 .Menu_list_1{width:30%;height:25px;float:left;text-indent:10%;}
 .Mo_radio{width:30%;height:25px;float:left;}
 .Mo_radio input{width:15px;margin-top:2px;}
 .candan_list1{width:60%;height:25px;margin-left:10%;margin-top:20px;}
+.ziMenu_list_1{width:30%;height:25px;float:left;text-indent:10%;}
+.ziMo_radio1{width:70%;height:25px;float:left;}
 
-.Menu_list2{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;}
+
+.Menu_list2{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;border-top:1px dashed #7B7B7B;}
 .Menu_list_2{width:30%;height:25px;float:left;text-indent:10%;}
 .Mo_radio2{width:30%;height:25px;float:left;}
 .Mo_radio2 input{width:15px;margin-top:2px;}
 .candan_list2{width:60%;height:25px;margin-left:10%;margin-top:20px;}
+.ziMenu_list_2{width:30%;height:25px;float:left;text-indent:10%;}
+.ziMo_radio2{width:70%;height:25px;float:left;}
 
-.Menu_list3{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;}
+
+
+.Menu_list3{width:100%;height:auto;margin-top:20px;border-bottom:1px dashed #7B7B7B;border-top:1px dashed #7B7B7B;}
 .Menu_list_3{width:30%;height:25px;float:left;text-indent:10%;}
 .Mo_radio3{width:30%;height:25px;float:left;}
 .Mo_radio3 input{width:15px;margin-top:2px;}
 .candan_list3{width:60%;height:25px;margin-left:10%;margin-top:20px;}
+.ziMenu_list_3{width:30%;height:25px;float:left;text-indent:10%;}
+.ziMo_radio3{width:70%;height:25px;float:left;}
+
 
 .lianjie{width:100%;height:100%;font-size:18px;text-indent:10%;border:1px solid #00F7DE;border-radius:4px;}
+.zilianjie{width:500px;height:20px;font-size:15px;border:1px solid #00F7DE;border-radius:4px;}
 .Obn{width:105px;height:25px;text-align:center;line-height:25px;background:#00F7DE;color:white;border:none;margin-left:30px;}
 

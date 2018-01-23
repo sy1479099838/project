@@ -36,29 +36,36 @@ function dianji(menu,num){
     $(".candan_list"+menu).fadeOut();
     if(num==0){
         //alert("这是0");
+        $(".ziMo_radio"+menu).remove();
+        $(".ziMenu_list_"+menu).remove();
         var text='<div class="candan_list'+menu+'">' +
             '<input type="text" name="lianjie'+menu+'" value="" class="lianjie" placeholder="请输入跳转链接：http://">' +
-            '</div><br>';
+            '</div>';
         console.log(text);
         $(".Menu_list"+menu).append(text);
+    }else{
+
     }
     if(num==1){
         var Obn='<button class="Obn" id="Obn'+menu+'" onclick="Addzi('+menu+')">点击添加子菜单</button>';
         $(".Mo_radio"+menu).append(Obn);
+    }else{
+        $("#Obn"+menu).remove();
     }
 }
 
 function Addzi(menu){
-    var num=document.getElementsByClassName("Menu_list_"+menu).length;
-    var Addzi='<div class="Menu_list_'+menu+'">子餐单名称：<input type="text" value="餐单名称"  name="candan'+menu+num+'" style="width:20%;text-align:center;" class="min_list">' +
+    var num=document.getElementsByClassName("ziMenu_list_"+menu).length;
+    var Addzi='<div class="ziMenu_list_'+menu+'">子餐单名称：<input type="text" value="餐单名称"  name="candan'+menu+num+'" style="width:20%;text-align:center;" class="min_list">' +
         '</div>' +
-        '<div class="Mo_radio1">' +
+        '<div class="ziMo_radio'+menu+'">' +
         '<span>跳转链接<input type="radio" name="ziradio'+menu+num+'" value="0" onchange="zidianji('+menu+num+',0)">' +
         '</span>' +
-        '<span>点击事件<input type="radio" name="ziradio'+menu+num+'" value="1" onchange="zidianji('+menu+num+',1)" class="zi_list'+menu+num+'">' +
+        '<span class="zi_list'+menu+num+'">点击事件<input type="radio" name="ziradio'+menu+num+'" value="1" onchange="zidianji('+menu+num+',1)">' +
         '</span>' +
-        '</div><br>';
-    if(num<6){
+        '</div>';
+    if(num<5){
+        $(".candan_list"+menu).fadeOut();
         $(".Menu_list"+menu).append(Addzi);
     }else{
         alert("子菜单不能超过5")
@@ -68,15 +75,24 @@ function Addzi(menu){
 
 function zidianji(menu,num){
     //alert(1111111111111);
-    $(".candan_list"+menu).fadeOut();
+    //$(".candan_list"+menu).fadeOut();
+    $("#zilianjie"+menu).fadeOut();
     if(num==0){
         //alert("这是0");
-        var text='<input type="text" name="zilianjie'+menu+'" value="" class="lianjie" placeholder="请输入跳转链接：http://"><br>';
-        console.log(text);
-        $(".zi_list"+menu+num).append(text);
+
+        var zilianjie='<span><input type="text" name="zilianjie'+menu+num+'" value="" class="zilianjie"  id="zilianjie'+menu+'" placeholder="请输入跳转链接：http://"></span>';
+        console.log(".zi_list"+menu);
+
+        $(".zi_list"+menu).append(zilianjie);
+        console.log("#zilianjie"+menu);
+    }else{
+        $("#zilianjie"+menu).remove();
     }
     if(num==1){
-        alert(11111111111);
+        //$("#zilianjie"+menu).fadeOut();
+        console.log("#zilianjie"+menu);
+
+        //alert(num);
     }
 }
 
