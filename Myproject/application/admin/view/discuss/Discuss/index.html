@@ -66,7 +66,7 @@
         <br>
         <span class="Comment_Box_button_span">{$vo.CreateTime|date="Y/m/d H:i:s",###}</span>
         <span class="Comment_Box_button_span"><i class="icon-eye-open">&nbsp;</i>{$vo.pageView}</span>
-        <button class="Comment_Box_button_span" onclick="ThumbsUp('{$vo.id}','{$vo.Fabulous}','{$vo.FabulousCount}')"><i class="icon-thumbs-up {$vo.Fabulous==1?'dianzan':''}"></i>{$vo.FabulousCount}</button>
+        <button class="Comment_Box_button_span" id="dianzan{$vo.id}" onclick="ThumbsUp('{$vo.id}','{$vo.Fabulous}','{$vo.FabulousCount}')"><i class="icon-thumbs-up {$vo.Fabulous==1?'dianzan':''}">{$vo.FabulousCount}</i></button>
         <button class="Comment_Box_button_span" onclick="comment('{$vo.id}','{$vo.profile.0.id}')"><i class="icon-comment-alt"></i>{$vo.commentCount}</button>
     </div>
     <div class="cb"></div>

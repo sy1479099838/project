@@ -79,7 +79,21 @@ function ThumbsUp(id,data,dianzanNum) {
             dianzanNum:dianzanNum
         }),
         success:function (msg) {
-            $.showBox("成功");
+            if(msg=="success")
+            {
+                if(data==1)
+                {
+                    $("#dianzan"+id).attr("onclick","ThumbsUp('"+id+"','"+0+"','"+(parseInt(dianzanNum)-1)+"')");
+                    $("#dianzan"+id).find("i").removeClass("dianzan").text((parseInt(dianzanNum)-1));
+                    $.showBox("成功");
+                }
+            }
+            else
+            {
+                $("#dianzan"+id).attr("onclick","ThumbsUp('"+id+"','"+1+"','"+((parseInt(dianzanNum)+1))+"')");
+                $("#dianzan"+id).find("i").addClass("dianzan").text((parseInt(dianzanNum)+1));
+                $.showBox("成功");
+            }
         },error:function (msg) {
             $.showBox("失败");
         }

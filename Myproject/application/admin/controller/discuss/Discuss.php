@@ -201,6 +201,23 @@ class Discuss extends Common
         if($type["num"]==1)
         {
             $string=explode(",",Friendtalk::where("id",$type["id"])->field("Fabulous")->find()->Fabulous);
+//            dump($string);
+            if(in_array($people["id"],$string))
+            {
+                unset($string[array_search($people["id"],$string)]);
+                $string=implode(",",$string);
+                $value=Friendtalk::where("id",$type["id"])->update([
+                    "Fabulous"=>$string
+                ]);
+                if($value==1)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
         }
         else
         {
