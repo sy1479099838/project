@@ -5,19 +5,20 @@ function addbutton(data) {
 function Kbianji(){
         //alert(1111111111111111111);
         $(".menulist_bianji").hide();
-        //console.log($(".menulist_bianji"));
         $(".menulist_baocun").show();
-        var list=document.getElementById("list");
-        var Oinp=list.getElementsByTagName("input");
-        Oinp.disabled=false;
+        var minlist=document.getElementsByClassName("min_list");
+        for(i=0;i<minlist.length;i++){
+            minlist[i].disabled="";
+        }
 }
 function Baocun(){
+    //alert(222222222222);
     $(".menulist_baocun").hide();
-    //console.log($(".menulist_bianji"));
     $(".menulist_bianji").show();
-    var list=document.getElementById("list");
-    var Oinp=list.getElementsByTagName("input");
-    Oinp.disabled=true;
+    var minlist=document.getElementsByClassName("min_list");
+    for(i=0;i<minlist.length;i++){
+        minlist[i].disabled="disabled";
+    }
 }
 
 
@@ -30,119 +31,68 @@ function closeGZ_menu(){
     $(".GZ_menu").fadeOut();
 }
 
-/*以下A、B、C、D为餐单下传值参数*/
-function Add_menu_list(){
-
-    var num=document.getElementsByClassName('Add_menu_list_1').length;
-    //alert(num);
-    if(num<5)
-        {
-            var menu='<div class="Add_menu_list_1" id="A'+num+'">餐单名称：<input type="text" name="WX_name" value="" onchange="check_name()">' +
-            '&nbsp;&nbsp;&nbsp;启用：<input type="radio" name="qiyong" value="1" style="width:5%;" onchange="qi_yong('+num+')">' +
-            '关闭：<input type="radio" name="qiyong" value="0" checked style="width:5%;" onchange="guan_bi('+num+')"></div>';
-            $('#jiange').after(menu);
-        }else{
-        $.showBox('最多只能有5个二级餐单');
-    }
-
-}
-function Add_menu_list2(){
-
-    var num=document.getElementsByClassName('Add_menu_list_2').length;
-    //alert(num);
-    if(num<5)
-    {
-        var menu='<div class="Add_menu_list_2" id="A1'+num+'">餐单名称：<input type="text" name="WX_name" value="" onchange="check_name()">' +
-            '&nbsp;&nbsp;&nbsp;启用：<input type="radio" name="qiyong" value="1" style="width:5%;" onchange="qi_yong2('+num+')">' +
-            '关闭：<input type="radio" name="qiyong" value="0" checked style="width:5%;" onchange="guan_bi2('+num+')"></div>';
-        $('#jiange2').after(menu);
+function dianji(menu,num){
+    //alert(1111111111111);
+    $(".candan_list"+menu).fadeOut();
+    if(num==0){
+        //alert("这是0");
+        $(".ziMo_radio"+menu).remove();
+        $(".ziMenu_list_"+menu).remove();
+        var text='<div class="candan_list'+menu+'">' +
+            '<input type="text" name="lianjie'+menu+'" value="" class="lianjie" placeholder="请输入跳转链接：http://">' +
+            '</div>';
+        console.log(text);
+        $(".Menu_list"+menu).append(text);
     }else{
-        $.showBox('最多只能有5个二级餐单');
+
     }
-
-}
-function Add_menu_list3(){
-
-    var num=document.getElementsByClassName('Add_menu_list_3').length;
-    //alert(num);
-    if(num<5)
-    {
-        var menu='<div class="Add_menu_list_3" id="A2'+num+'">餐单名称：<input type="text" name="WX_name" value="" onchange="check_name()">' +
-            '&nbsp;&nbsp;&nbsp;启用：<input type="radio" name="qiyong" value="1" style="width:5%;" onchange="qi_yong3('+num+')">' +
-            '关闭：<input type="radio" name="qiyong" value="0" checked style="width:5%;" onchange="guan_bi3('+num+')"></div>';
-        $('#jiange3').after(menu);
+    if(num==1){
+        var Obn='<button class="Obn" id="Obn'+menu+'" onclick="Addzi('+menu+')">点击添加子菜单</button>';
+        $(".Mo_radio"+menu).append(Obn);
     }else{
-        $.showBox('最多只能有5个二级餐单');
-    }
-
-}
-function check_name(){
-    //alert(111);
-    var _reg = /^\S{1,8}$/;
-    var WX_name=$("input[name='WX_name']").val();
-    if(WX_name==''){
-        $.showBox('请输入正确餐单名称');
-    }else if(!_reg.test(WX_name)){
-        $.showBox('请输入正确餐单名称');
+        $("#Obn"+menu).remove();
     }
 }
 
-function qi_yong(num){
-    //alert(111111111);
-        var ermenu='<div class="er_Menu" id="B'+num+'">跳转链接：<input type="radio" name="tiaozhan" value="0" style="width:2%;" onchange="Add_lianjie('+num+')" class="lianjie">'+
-            '点击事件:<input type="radio" name="tiaozhan" value="1" style="width:2%;" onclick="Add_sj('+num+')" class="tianjie_e"></div>'
-        ;
-        $('#A'+num).append(ermenu);
-
-
-}
-function qi_yong2(num){
-    //alert(111111111);
-    var ermenu='<div class="er_Menu" id="B2'+num+'">跳转链接：<input type="radio" name="tiaozhan" value="0" style="width:2%;" onchange="Add_lianjie2('+num+')" class="lianjie">'+
-        '点击事件:<input type="radio" name="tiaozhan" value="1" style="width:2%;" onclick="Add_sj('+num+')" class="tianjie_e"></div>'
-    ;
-    $('#A1'+num).append(ermenu);
-
-
-}
-function qi_yong3(num){
-    //alert(111111111);
-    var ermenu='<div class="er_Menu" id="B3'+num+'">跳转链接：<input type="radio" name="tiaozhan" value="0" style="width:2%;" onchange="Add_lianjie3('+num+')" class="lianjie">'+
-        '点击事件:<input type="radio" name="tiaozhan" value="1" style="width:2%;" onclick="Add_sj('+num+')" class="tianjie_e"></div>'
-    ;
-    $('#A2'+num).append(ermenu);
-
+function Addzi(menu){
+    var num=document.getElementsByClassName("ziMenu_list_"+menu).length;
+    var Addzi='<div class="ziMenu_list_'+menu+'">子餐单名称：<input type="text" value="餐单名称"  name="candan'+menu+num+'" style="width:20%;text-align:center;" class="min_list">' +
+        '</div>' +
+        '<div class="ziMo_radio'+menu+'">' +
+        '<span>跳转链接<input type="radio" name="ziradio'+menu+num+'" value="0" onchange="zidianji('+menu+num+',0)">' +
+        '</span>' +
+        '<span class="zi_list'+menu+num+'">点击事件<input type="radio" name="ziradio'+menu+num+'" value="1" onchange="zidianji('+menu+num+',1)">' +
+        '</span>' +
+        '</div>';
+    if(num<5){
+        $(".candan_list"+menu).fadeOut();
+        $(".Menu_list"+menu).append(Addzi);
+    }else{
+        alert("子菜单不能超过5")
+    }
 
 }
-function guan_bi(num){
-    $('#A'+num).remove();
-}
-function guan_bi2(num){
-    $('#A1'+num).remove();
-}
-function guan_bi3(num){
-    $('#A2'+num).remove();
-}
-function Add_lianjie(num ){
-    //alert(11111111);
-    var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;border:1px solid black;" id="C'+num+'">';
-    $('#B'+num).append(lianjie_1);
-    $('#D'+num).remove();
-}
-function Add_lianjie2(num ){
-    //alert(11111111);
-    var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;border:1px solid black;" id="C'+num+'">';
-    $('#B2'+num).append(lianjie_1);
-    $('#D2'+num).remove();
-}
-function Add_lianjie3(num ){
-    //alert(11111111);
-    var lianjie_1='<input type="text" name="lianjie" value="" class="lianjie_1" style="width:30%;border:1px solid black;" id="C'+num+'">';
-    $('#B3'+num).append(lianjie_1);
-    $('#D3'+num).remove();
-}
-function Add_sj(num){
-    $('#C'+num).remove();
-}
 
+function zidianji(menu,num){
+    //alert(1111111111111);
+    //$(".candan_list"+menu).fadeOut();
+    $("#zilianjie"+menu).fadeOut();
+    if(num==0){
+        //alert("这是0");
+
+        var zilianjie='<span><input type="text" name="zilianjie'+menu+num+'" value="" class="zilianjie"  id="zilianjie'+menu+'" placeholder="请输入跳转链接：http://"></span>';
+        console.log(".zi_list"+menu);
+
+        $(".zi_list"+menu).append(zilianjie);
+        console.log("#zilianjie"+menu);
+    }else{
+        $("#zilianjie"+menu).remove();
+    }
+    if(num==1){
+        //$("#zilianjie"+menu).fadeOut();
+        console.log("#zilianjie"+menu);
+
+        //alert(num);
+    }
+}
 
