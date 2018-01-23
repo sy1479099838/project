@@ -69,8 +69,21 @@ $(function () {
 });
 
 
-function ThumbsUp() {
-    $.showBox("点赞！");
+function ThumbsUp(id,data,dianzanNum) {
+    $.ajax({
+        url:"dianzan",
+        type:"post",
+        data:({
+            num:data,
+            id:id,
+            dianzanNum:dianzanNum
+        }),
+        success:function (msg) {
+            $.showBox("成功");
+        },error:function (msg) {
+            $.showBox("失败");
+        }
+    });
 }
 
 function UserInformation(msg) {

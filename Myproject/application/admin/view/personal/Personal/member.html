@@ -7,9 +7,18 @@
 		<p class="cont_zhan">会员资料</p>
 	</div>
 	<div class="Me_head">
-			<img src="__PUBLIC__/admin/images/sc.jpg" onclick="xiugai_img()">
+		{empty name="user.UserImg"}
+			<img class="fl" src="__PUBLIC__/admin/images/default.png" onclick="xiugai_img()"/>
+			{else /}
+			{eq name="user.count" value="1"}
+			<img class="fl" src="{$user.UserImg}" onclick="xiugai_img()"/>
+			{else/}
+			<img class="fl" src="__ROTH__/uploads/{$user.UserImg}" onclick="xiugai_img()"/>
+			{/eq}
+		{/empty}
+			<!--<img src="__PUBLIC__/admin/images/sc.jpg" >-->
 			<div class="Me_head_1">
-				<span>huiyuan1213312312431</span>
+				<span>{$user.UserName}</span>
 			</div>
 	</div>
 
