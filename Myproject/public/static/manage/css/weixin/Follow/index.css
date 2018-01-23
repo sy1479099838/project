@@ -1,0 +1,14 @@
+.h1_1{display:block;width:20%;height:50px;text-align:center;line-height:50px;font-size:20px;font-family:"微软雅黑";margin:0 auto;}
+.phone_head{width:100%;height:50px;}
+.phone_head_l1{width:20%;height:32px;float:left;border:2px solid green;border-radius:4px;margin-left:3%;}
+.phone_head_l1 input{width:70%;height:32px;border:none;margin-left:2%;}
+.phone_head>.phone_head_l1>.icon-search{width:20px;height:20px;font-size:20px;float:right;margin-right:2%;margin-top:6px;}
+.guan_list{width:94%;height:auto;border:1px solid #adadad;margin-left:3%;}
+.guan_list tbody tr th{border:1px solid #adadad;text-align:center;}
+.guan_list tbody tr td{border:1px solid #adadad;text-align:center;}
+.guan_list tbody  tr td:nth-child(1){width:5%;}
+.guan_list tbody  tr td:nth-child(2){width:13%;}
+.guan_list tbody  tr td:nth-child(3){width:13%;}
+.guan_list tbody  tr td:nth-child(3) img{width:100px;height:100px;margin-left:1%;margin-top:3px;margin-bottom:3px;}
+.guan_list tbody  tr td:nth-child(4){width:15%;}
+.guan_list tbody  tr td:nth-child(5){width:auto;}
