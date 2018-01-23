@@ -197,11 +197,9 @@ class Discuss extends Common
     {
         $type=input();
         $people=Session::get("UserInformation");
-
         if($type["num"]==1)
         {
             $string=explode(",",Friendtalk::where("id",$type["id"])->field("Fabulous")->find()->Fabulous);
-//            dump($string);
             if(in_array($people["id"],$string))
             {
                 unset($string[array_search($people["id"],$string)]);
@@ -221,29 +219,16 @@ class Discuss extends Common
         }
         else
         {
+
             if($type["dianzanNum"]==0)
             {
-                $value=Db::query("UPDATE `t_friendtalk` SET `Fabulous`=CONCAT(`Fabulous`,".$people["id"].") WHERE id=".$type["id"]);
-                if($value)
-                {
-                    exit("success");
-                }
-                else
-                {
-                    exit("error");
-                }
+                $value=Db::query("UPDATE `t_friendtalk` SET `Fabulous`=".$people["id"]." WHERE id=".$type["id"]);
+                exit("success");
             }
             else
             {
                 $value=Db::query("UPDATE `t_friendtalk` SET `Fabulous`=CONCAT(`Fabulous`,',',".$people["id"].") WHERE id=".$type["id"]);
-                if($value)
-                {
-                    exit("success");
-                }
-                else
-                {
-                    exit("error");
-                }
+                exit("success");
             }
         }
     }

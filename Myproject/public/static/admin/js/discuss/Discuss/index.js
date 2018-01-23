@@ -87,12 +87,16 @@ function ThumbsUp(id,data,dianzanNum) {
                     $("#dianzan"+id).find("i").removeClass("dianzan").text((parseInt(dianzanNum)-1));
                     $.showBox("成功");
                 }
+                else
+                {
+                    $("#dianzan"+id).attr("onclick","ThumbsUp('"+id+"','"+1+"','"+((parseInt(dianzanNum)+1))+"')");
+                    $("#dianzan"+id).find("i").addClass("dianzan").text((parseInt(dianzanNum)+1));
+                    $.showBox("成功");
+                }
             }
             else
             {
-                $("#dianzan"+id).attr("onclick","ThumbsUp('"+id+"','"+1+"','"+((parseInt(dianzanNum)+1))+"')");
-                $("#dianzan"+id).find("i").addClass("dianzan").text((parseInt(dianzanNum)+1));
-                $.showBox("成功");
+                $.showBox("对不起，失败！");
             }
         },error:function (msg) {
             $.showBox("失败");
