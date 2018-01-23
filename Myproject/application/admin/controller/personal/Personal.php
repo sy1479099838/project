@@ -26,6 +26,16 @@ class Personal extends Common
     {
         $this->assign("Title","个人中心");
         $this->assign("JsName","personal/Personal/member");
+        $user=json_decode(json_encode(Session::get("UserInformation"),true),true);
+        if(strlen($user["UserImg"])>60)
+        {
+            $user["count"]=1;
+        }
+        else
+        {
+            $user["count"]=0;
+        }
+        $this->assign("user",$user);
         return $this->fetch();
     }
     public function level()

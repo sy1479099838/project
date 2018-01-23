@@ -10,6 +10,8 @@ class Discuss extends Common
 {
     public function index()
     {
+        $liulan=Db::query("UPDATE t_friendtalk SET pageView=pageView+1");
+        $people=Session::get("UserInformation");
         $value=json_decode(json_encode(Friendtalk::with("profile")->order('CreateTime ASC')->select(),true),true);
         foreach ($value as $key=>$val)
         {
@@ -19,6 +21,24 @@ class Discuss extends Common
             {
                 $result[$k]["user"]=json_decode(json_encode(User::where("id",$v["user"])->field("id,UserName")->find(),true),true);
                 $result[$k]["Touser"]=json_decode(json_encode(User::where("id",$v["Touser"])->field("id,UserName")->find(),true),true);
+            }
+            $array=explode(",",$val["Fabulous"]);
+            if($array["0"]=="")
+            {
+                $value[$key]["FabulousCount"]="0";
+            }
+            else
+            {
+                $value[$key]["FabulousCount"]=count($array);
+            }
+
+            if(in_array($people["id"],$array))
+            {
+                $value[$key]["Fabulous"]="1";
+            }
+            else
+            {
+                $value[$key]["Fabulous"]="0";
             }
             $value[$key]["comment"]=$result;
             $value[$key]["commentCount"]=$count;
@@ -172,4 +192,60 @@ class Discuss extends Common
             }
         }
     }
+
+    public function dianzan()
+    {
+        $type=input();
+        $people=Session::get("UserInformation");
+
+        if($type["num"]==1)
+        {
+            $string=explode(",",Friendtalk::where("id",$type["id"])->field("Fabulous")->find()->Fabulous);
+//            dump($string);
+            if(in_array($people["id"],$string))
+            {
+                unset($string[array_search($people["id"],$string)]);
+                $string=implode(",",$string);
+                $value=Friendtalk::where("id",$type["id"])->update([
+                    "Fabulous"=>$string
+                ]);
+                if($value==1)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+        }
+        else
+        {
+            if($type["dianzanNum"]==0)
+            {
+                $value=Db::query("UPDATE `t_friendtalk` SET `Fabulous`=CONCAT(`Fabulous`,".$people["id"].") WHERE id=".$type["id"]);
+                if($value)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+            else
+            {
+                $value=Db::query("UPDATE `t_friendtalk` SET `Fabulous`=CONCAT(`Fabulous`,',',".$people["id"].") WHERE id=".$type["id"]);
+                if($value)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+        }
+    }
 }
+
