@@ -1,51 +1,77 @@
 // 打开修改按钮
 function Editicon(data) {
-    // alert(data);
+    $("#subImg").attr("onclick","ImgButton("+data+")");
     $(".Modify-Box").fadeIn(700);
 }
 // 关闭修改按钮
 function closeEdition() {
-    $(".Modify-Box").fadeOut(1000);
+    $(".Modify-Box").fadeOut(200);
+    $("#img2").val("");
+    $("#icon-Img").attr("src","/public/static/admin/images/sina.png");
 }
 // 图片修改事件提交
 function ImgButton(data) {
+    var fd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#img2").get(0).files[0]);
     $.ajax({
-        url:"/manage/view/system/Mobmenu",
-        type:"post",
-        data:({data:data}),
-        success:function (data) {
-            if(data=="success"){
-                $.showBox("图标修改成功！");
+        url: 'subIcon/id/'+data,
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: fd,
+        success: function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("图标上传成功！");
                 window.location.reload();
-                $(".Modify-Box").fadeOut(1000);
             }
-            else if(data=="error"){
-                $.showBox("图标修改失败！");
-                window.location.reload();
-                $(".Modify-Box").fadeOut(1000);
+            else
+            {
+                $.showBox("上传失败，请重试！");
             }
-            else {
-                $.showBox(data);
-            }
+        },
+        error:function (msg) {
+            $.showBox("失败！");
+            window.location.reload();
         }
-    })
+    });
 
 }
-// 图片修改预览功能
-function PreviewFile () {
-    var preview = document.getElementById('img1');
-    var imgfile=preview.getElementsByTagName('img')[0];
-    var file  = document.querySelector('input[type=file]').files[0];
+
+function OpenFile()
+{
+    document.getElementById("img2").click();
+
+}
+function choseimg() {
+    var imgfile = document.getElementById("img2").files[0];
+    var prew = document.getElementById("icon-Img");
     var reader = new FileReader();
-    reader.onloadend = function () {
-        imgfile.src = reader.result;
-    };
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        imgfile.src = "";
+    reader.readAsDataURL(imgfile);
+    // console.log(imgfile);
+    reader.onload = function (theFile) {
+        var image = new Image();
+        image.src = theFile.target.result;
+        // console.log(image);
+        image.onload = function () {
+
+            var width = this.width;
+            var height = this.height;
+            if(width==200 && height==200)
+            {
+                prew.src=image.src;
+            }
+            else
+            {
+                $.showBox("请上传200*200照片！");
+            }
+
+        }
     }
 }
+
+
 $(document).ready(function(){
 
     $(".Mobmenu-Enable").each(function(){
@@ -82,9 +108,36 @@ $(function () {
             $(".mubanChoice").fadeOut(0);
         }
         $("#ClassSelect"+num).fadeIn(700);
-        $("#Edit                    ClassSelect"+num).fadeIn(700);
+        $("#EditClassSelect"+num).fadeIn(700);
     });
 });
+
+
+function EditClassSubmit (id) {
+    var form = new FormData(document.getElementById("EditForm"));
+    $.ajax({
+        url:"saveFrom/id/"+id,
+        type:"post",
+        data:form,
+        processData:false,
+        contentType:false,
+        async:false,
+        success:function(msg) {
+            if(msg=="success")
+            {
+                $.showBox("修改成功！");
+                window.location.reload();
+            }
+            else
+            {
+                $.showBox("修改失败！");
+            }
+        },
+        error:function () {
+            $.showBox("修改失败，请重试！");
+        }
+    });
+}
 
 function AddClassSubmit() {
     var Name=$('input:text[name="ClassName"]').val();
@@ -153,8 +206,22 @@ function AddClassSubmit() {
     }
 }
 //编辑按钮 打开
-function EditClass() {
-    $(".EditClass-Box").fadeIn(700);
+function EditClass(id) {
+    $.ajax({
+        url:"Edit",
+        type:"post",
+        data:({
+            id:id
+        }),
+        success:function (msg) {
+            $(".EditClass-Box").html(msg);
+            $(".EditClass-Box").fadeIn(700);
+        },
+        error:function () {
+            $.showBox("失败，请重试！");
+        }
+    });
+
 }
 // 编辑页面关闭
 function closeEditClass() {

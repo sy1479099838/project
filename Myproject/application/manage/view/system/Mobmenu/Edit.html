@@ -1,0 +1,74 @@
+<div class="EditClass-head">
+    <p>
+        <button onclick="closeEditClass()"><i class="icon-remove-circle">关闭</i></button>
+    </p>
+    <h1>编辑分类</h1><br>
+    <div class="cb"></div>
+
+    <div class="AddClass-content">
+        <form method="post" id="EditForm" class="EditForm">
+            <div>
+                <span>分&nbsp;&nbsp;类&nbsp;&nbsp;名&nbsp;&nbsp;称：</span><input type="text" name="ClassName" value="{$information.ClassName}" placeholder=""><label>&nbsp;</label>
+            </div>
+            <div class="AddClass-enable">
+                <span>是&nbsp;&nbsp;否&nbsp;&nbsp;启&nbsp;&nbsp;用：</span>
+                启用：<input type="radio" name="EditClassEnable" value="1" placeholder="" {$information.Enable=="1"?"checked":""}>
+                不启用：<input type="radio" name="EditClassEnable" value="0" placeholder="" {$information.Enable=="1"?"":"checked"}>
+            </div>
+            <div>
+                <span>选择父级分类：</span>
+
+                <select class="EditClassSelect_1" name="fenlei">
+                    <option value="0" {$information.cid.0=="0"?"selected":""} >----一级分类----</option>
+                    {present name="ClassList.0"}
+                    {volist name="ClassList" id="value"}
+                    <option value="{$value.id}" {$information.cid.0==$value.id?"selected":""}>----{$value.ClassName}----</option>
+                    {/volist}
+                    {/present}
+                </select>
+
+                {present name="ClassList.0"}
+                {volist name="ClassList" id="va"}
+                {present name="va.children.0"}
+                {notin name="va.level" value="2"}
+                <select id="EditClassSelect{$va.id}" class="EditClassSelect_2" name="fenlei{$va.id}">
+                    <option value="0">---请选择----</option>
+                    {volist name="va.children" id="va_1"}
+                    <option value="{$va_1.id}" {present name="$information.cid.1"}{$information.cid.1==$va_1.id?"selected":""} {/present} >----{$va_1.ClassName}----</option>
+                    {/volist}
+                </select>
+                {/notin}
+                {/present}
+                {/volist}
+                {/present}
+            </div>
+
+            <div class="mubanChoice" {$information.IdName}>
+                <span>模&nbsp;&nbsp;板&nbsp;&nbsp;选&nbsp;&nbsp;择：</span><br>
+                <span class="muban-box fl">
+                    <input type="radio" value="1" name="EditMuban" placeholder="" {$information.PageDisplays_frame=="1"?"checked":""} >&nbsp;模板1
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                </span>
+                <span class="muban-box fl">
+                    <input type="radio" value="2" name="EditMuban" placeholder="" {$information.PageDisplays_frame=="2"?"checked":""} >&nbsp;模板2
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                </span>
+                <span class="muban-box fl">
+                    <input type="radio" value="3" name="EditMuban" placeholder="" {$information.PageDisplays_frame=="3"?"checked":""} >&nbsp;模板3
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img">
+                </span>
+                <span class="muban-box fl">
+                    <input type="radio" value="4" name="EditMuban" placeholder="" {$information.PageDisplays_frame=="4"?"checked":""} >&nbsp;模板4
+                    <img src="__PUBLIC__/admin/images/sina.png" alt="" class="muban-img" >
+                </span>
+            </div>
+        </form>
+        <div class="cb"></div>
+        <br>
+        <div class="submit">
+            <button onclick="EditClassSubmit('{$information.id}')">提&nbsp;&nbsp;&nbsp;交</button>
+        </div>
+        <div class="clear-Float"></div>
+    </div>
+</div>
+<script language="JavaScript" src="/public/static/manage/js/system/Mobmenu/Edit.js"></script>
