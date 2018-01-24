@@ -6,6 +6,7 @@ use think\Session;
 use app\admin\model\FriendTalkComment;
 use think\Db;
 use app\admin\model\User;
+use app\manage\controller\Common as Common2;
 class Discuss extends Common
 {
     public function index()
@@ -22,6 +23,7 @@ class Discuss extends Common
                 $result[$k]["user"]=json_decode(json_encode(User::where("id",$v["user"])->field("id,UserName")->find(),true),true);
                 $result[$k]["Touser"]=json_decode(json_encode(User::where("id",$v["Touser"])->field("id,UserName")->find(),true),true);
             }
+            $result=Common2::treeData($result);
             $array=explode(",",$val["Fabulous"]);
             if($array["0"]=="")
             {

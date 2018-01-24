@@ -108,6 +108,10 @@ function UserInformation(msg) {
     $.showBox(msg);
 }
 
+function huifuComment(data) {
+    alert(data);
+}
+
 
 function hidePublish() {
     $(".Discuss_publish_box").hide(1000);

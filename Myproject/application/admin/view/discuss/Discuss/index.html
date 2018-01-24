@@ -72,15 +72,18 @@
     <div class="cb"></div>
     <div class="Comment-text-box">
         {volist name="vo.comment" id="vo_2"}
-        <span onclick="huifu('vo_2.user.id')">{$vo_2.user.UserName}</span>：{$vo_2.text}<br>
+        <span onclick="huifuComment('{$vo_2.user.id}')">{$vo_2.user.UserName}</span>：{$vo_2.text}<br>
+        {present name="vo_2.children.0"}
+            {volist name="vo_2.children" id="vo_3"}
+                <span onclick="huifuComment('{$vo_3.user.id}')">{$vo_3.user.UserName}&nbsp;&nbsp;回复&nbsp;&nbsp;{$vo_3.Touser.UserName}</span>：{$vo_3.text}<br>
+            {/volist}
+        {/present}
         {/volist}
     </div>
 </div>
 {/volist}
 <div id="SeeImg">
 </div>
-
-
 <div class="Comment-sendBox">
     <div style="height: 25px;width: 96%;margin-left: 3%;margin-top: 15px;">
         <textarea name="" class="fl" id="Comment-Content" style="display: inline-block;width: 85%;height: 100%;border: 1px solid #c0c0c0"></textarea>
