@@ -174,7 +174,7 @@ function addzi(menu,num){
     if(shuzi<5){
         $("#ziweixinmenu_"+menu).after(list);
     }else{
-        alert('只能添加5个自惨淡');
+        alert('只能添加5个子菜单');
     }
 
 }

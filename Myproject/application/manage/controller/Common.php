@@ -180,7 +180,7 @@ class Common extends Controller
                 $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxdfb8f36560c95e58&secret=4066c3ac32329cabcea685e03abbbe39";
                 $method="get";
                 $accessToken=$this->http_request($url,$method);
-           //  dump($accessToken);exit;
+            //dump($accessToken);exit;
                 $res=json_decode($accessToken,true);
                 $access_token=$res["access_token"];
                 $user = Accesstoken::create([
