@@ -38,42 +38,43 @@
 
 <!---------------------添加公众号菜单---------------------->
     <div class="bianji_menulist" id="list">
+        <div class="first">
         <button class="menulist_bianji" onclick="Kbianji()">编辑</button>
         <button class="menulist_baocun" onclick="Baocun()">保存</button>
-        <br>
-        <form method="post" id="menuSubmit">
-            <div class="Menu_list1">
-                <div class="Menu_list_1">
-                    餐单名称：<input type="text" value="" disabled="disabled" name="candan_1" style="width:20%;text-align:center;" class="min_list" placeholder="餐单名称">
-                </div>
-                <div class="Mo_radio1">
-                    <span>跳转链接<input type="radio" name="radio1[]" value="0" onchange="dianji(1,0)"></span>
-                    <span>添加子菜单<input type="radio" name="radio1[]" value="1" onchange="dianji(1,1)"></span>
-                </div>
-                <div style="clear:both;"></div>
-            </div>
-            <div class="Menu_list2">
-                <div class="Menu_list_2">
-                    餐单名称：<input type="text" value="餐单名称" disabled="disabled" name="candan_2" style="width:20%;text-align:center;" class="min_list" placeholder="餐单名称">
-                </div>
-                <div class="Mo_radio2">
-                    <span>跳转链接<input type="radio" name="radio2[]" value="0" onchange="dianji(2,0)"></span>
-                    <span>添加子菜单<input type="radio" name="radio2[]" value="1" onchange="dianji(2,1)"></span>
-                </div>
-                <div style="clear:both;"></div>
-            </div>
-            <div class="Menu_list3">
-                <div class="Menu_list_3">
-                    餐单名称：<input type="text" value="餐单名称" disabled="disabled" name="candan_3" style="width:20%;text-align:center;" class="min_list" placeholder="餐单名称">
-                </div>
-                <div class="Mo_radio3">
-                    <span>跳转链接<input type="radio" name="radio3[]" value="0" onchange="dianji(3,0)"></span>
-                    <span>添加子菜单<input type="radio" name="radio3[]" value="1" onchange="dianji(3,1)"></span>
-                </div>
-                <div style="clear:both;"></div>
-            </div>
-        </form>
+        </div>
         <div style="clear:both;"></div>
+        <form  id="tijiao" method="post">
+            <div class="wei_menu" id="weixinmenu_1">
+                <span class="ziwei_menu1">
+                    主菜单一
+                </span>
+                <div class="ziwei_menu2">
+                    <span>启用<input type="radio" name="qiyong1" value="0" onchange="qiyong(1,0)"></span>
+                    <span>不启用<input type="radio" name="qiyong1" value="1" onchange="qiyong(1,1)"></span>
+                </div>
+            </div>
+
+            <div class="wei_menu" id="weixinmenu_2">
+                <span class="ziwei_menu1">
+                    主菜单二
+                </span>
+                <div class="ziwei_menu2">
+                    <span>启用<input type="radio" name="qiyong2" value="0" onchange="qiyong(2,0)"></span>
+                    <span>不启用<input type="radio" name="qiyong2" value="1" onchange="qiyong(2,1)"></span>
+                </div>
+            </div>
+            <div class="wei_menu" id="weixinmenu_3">
+                <span class="ziwei_menu1">
+                    主菜单三
+                </span>
+                <div class="ziwei_menu2">
+                    <span>启用<input type="radio" name="qiyong3" value="0" onchange="qiyong(3,0)"></span>
+                    <span>不启用<input type="radio" name="qiyong3" value="1" onchange="qiyong(3,1)"></span>
+                </div>
+            </div>
+
+        <div style="clear:both;"></div>
+        </form>
     </div>
 
 {/block}

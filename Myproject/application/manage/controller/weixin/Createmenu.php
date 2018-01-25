@@ -52,4 +52,9 @@ class Createmenu extends Common
         $this->assign("menuList",$menuList["menu"]["button"]);
         return $this->fetch();
     }
+    public function caidantijiao(){
+        $tijiao=input();
+        dump($tijiao);
+        exit("success");
+    }
 }

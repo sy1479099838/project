@@ -44,4 +44,13 @@ class Material extends Common
             exit("error");
         }
     }
+    public function images(){
+        return $this->fetch();
+
+    }
+    public function tutijiao(){
+        $tijiao=input();
+        dump($tijiao);
+        exit("success");
+    }
 }
