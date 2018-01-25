@@ -753,4 +753,18 @@ class Goodslist extends Common
             exit("error");
         }
     }
+
+    /*
+     * 测试上传
+     * */
+
+    public function testUploadsImg()
+    {
+        $files= request()->file("Image");
+        dump($files);
+        foreach($files as $file){
+            echo("testExit");
+        }
+        exit("endExit");
+    }
 }

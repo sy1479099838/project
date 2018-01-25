@@ -22,14 +22,14 @@ function GoodsClassChoice(data) {
 }
 // 商品添加的提交按钮
 function AddGoodsSubmit(){
-                var GoodsName=$('input:text[name="goodsName"]').val();
+    var GoodsName=$('input:text[name="goodsName"]').val();
     var ISBusiness=$("#BusinessChoice").length;
     var SjName="";
     if(ISBusiness=="1"){
         SjName=$('#BusinessChoice').val();
     }else{
         SjName="Business";
-                    }
+    }
     var Cid="";
     var pid="";
     var num_1=$(".AddLiabilityGoods-Choice_one").val();//获取第一个下拉框的值
@@ -55,81 +55,82 @@ function AddGoodsSubmit(){
         }else{
             Cid=num_1+","+num_2;
             pid=num_2;
-                        }
-                    }
-                if(GoodsName==""){
-                    $.showBox('请输入商品名');
-                }else if(SjName=="")
-                {
-                    $.showBox('请输商家名称');
+        }
+    }
+    if(GoodsName==""){
+        $.showBox('请输入商品名');
+    }else if(SjName=="")
+    {
+        $.showBox('请输商家名称');
     }else if (Price=="0")
-                {
-                    $.showBox("请输入商品原价")
-                }
-                else if (ActivePrice==""){
-                    $.showBox("请输入商品活动价")
-                }
-                else if (Number=="")
-                {
-                    $.showBox("请输商品数量")
-                }
-                else if(StartDate=="")
-                {
-                    $.showBox ("填写活动开始日期");
-                }
-                else if(EndDate=="")
-                {
-                    $.showBox ("填写活动结束日期");
-                }
+    {
+        $.showBox("请输入商品原价")
+    }
+    else if (ActivePrice==""){
+        $.showBox("请输入商品活动价")
+    }
+    else if (Number=="")
+    {
+        $.showBox("请输商品数量")
+    }
+    else if(StartDate=="")
+    {
+        $.showBox ("填写活动开始日期");
+    }
+    else if(EndDate=="")
+    {
+        $.showBox ("填写活动结束日期");
+    }
     else if(positionName=="" || X=="" || Y=="")
     {
         $.showBox ("请选择商品位置！");
     }
-                else{
+    else
+    {
          var result=uplode("doc","UploadImg");
          if(result=="success")
          {
-                    $.ajax({
-                        type:'post',
-                        url:'AddGoods',
-                        data:({
-                            GoodsName:GoodsName,
-                            SjName:SjName,
-                            Price:Price,
-                     Cid:Cid,
-                            ActivePrice:ActivePrice,
-                            Number:Number,
-                            StartDate:StartDate,
-                            EndDate:EndDate,
+            $.ajax({
+                type:'post',
+                url:'AddGoods',
+                data:({
+                    GoodsName:GoodsName,
+                    SjName:SjName,
+                    Price:Price,
+                    Cid:Cid,
+                    ActivePrice:ActivePrice,
+                    Number:Number,
+                    StartDate:StartDate,
+                    EndDate:EndDate,
                      positionName:positionName,
                      X:X,
                      Y:Y,
                      HotClass:HotClass,
                      pid:pid
-                        }),
-                        success:function(data){
-                            if(data=="success")
-                            {
-                         $.showBox("商品添加成功！");
-                                window.location.reload();
-                            }
-                            else if(data=="error")
-                            {
-                         $.showBox("商品添加失败！");
-                                window.location.reload();
-                            }
-                            else
-                            {
-                                $.showBox(data);
-                            }
-                        }
-                        });
+                }),
+                success:function(data){
+                    if(data=="success")
+                    {
+                        $.showBox("商品添加成功！");
+                        window.location.reload();
+                    }
+                    else if(data=="error")
+                    {
+                        $.showBox("商品添加失败！");
+                        window.location.reload();
+                    }
+                    else
+                    {
+                        $.showBox(data);
+                    }
                 }
+            });
+         }
          else
          {
              $.showBox("请选择照片！");
-            }
-        }
+         }
+    }
 }
 
 function EditGoods() {
@@ -163,15 +164,15 @@ function KeywordSearch() {
 $(document).ready(function(){
 
     $(".GoodsChoice").each(function(){
-        if($(this).children(".status").val()==="open")
+        if($(this).children(".status").val()=="1")
         {
-            $(this).children(".GoodsChoiceMenu-open").fadeIn();
-            $(this).children(".GoodsChoiceMenu-off").fadeOut();
+            $(this).find(".GoodsChoiceMenu-open").fadeIn();
+            $(this).find(".GoodsChoiceMenu-off").fadeOut();
         }
-        else if($(this).children(".status").val()==="off")
+        else if($(this).children(".status").val()=="0")
         {
-            $(this).children(".GoodsChoiceMenu-off").fadeIn();
-            $(this).children(".GoodsChoiceMenu-open").fadeOut();
+            $(this).find(".GoodsChoiceMenu-off").fadeIn();
+            $(this).find(".GoodsChoiceMenu-open").fadeOut();
         }
     })
 
@@ -222,57 +223,25 @@ $(function () {
 });
 
 
-function UpMenu(id) {
+function goodsUp(id,state) {
     $.ajax({
-        url:"UpMenu",
+        url:"goodsUp",
         type:"post",
-        data:({id:id}),
+        data:({
+            id:id,
+            state:state
+        }),
         success:function (msg) {
             if (msg==suceess){
                 $.showBox("操作成功！");
-                $(".GoodsState"+id).val("open");
-                $(".GoodsState"+id).next(".GoodsChoiceMenu-open").next(".GoodsChoiceMenu-off").fadeOut(0);
-                $(".GoodsState"+id).next(".GoodsChoiceMenu-open").fadeIn(1000);
             }
         },error:function (err) {
             $.showBox("上架失败！请重试！！")
         }
     })
 }
-function EndMenu(id) {
-    if (id=="1"||id=="2"){
-      $.showBox("对不起！你暂时无权限进行上下架操作！")
-    }else {
-        $.ajax({
-            url:"/manage/goods/Goodslist/EndMenu",
-            type:"post",
-            data:({id:id}),
-            success:function (msg) {
-                if (msg==success){
-                    $.showBox("操作成功！");
-                    $(".GoodsState"+id).val(off);
-                    $(".GoodsState"+id).next(".GoodsChoiceMenu-open").fadeOut(0);
-                    $(".GoodsState"+id).next(".GoodsChoiceMenu-open").next(".GoodsChoiceMenu-off").fadeIn(1000);
-                }
-            },error:function (err) {
-                $.showBox("下架失败！请重试！！")
-            }
-        })
-    }
-}
 // 点击套餐事件
 function PackageBox() {
-    // $.ajax({
-    //     url:"/manage/view/goods/Goodslist/",
-    //     type:"post",
-    //     data:({data:data}),
-    //     success:function (msg) {
-    //         $(".Package-Menu-Box").html(msg);
-    //         $(".Package-Menu-Box").fadeIn(700);
-    //     },error:function (meg) {
-    //
-    //     }
-    // })
     $(".Package-Menu-Box").fadeIn(700);
 }
 function closeShow() {
@@ -353,23 +322,6 @@ $(document).ready(function(){
     })
 
 });
-// function Up_Menu(id) {
-//     $.ajax({
-//         url:"/manage/goods/Goodslist/Up_Menu",
-//         type:"post",
-//         data:({id:id}),
-//         success:function (msg) {
-//             if (msg==suceess){
-//                 $.showBox("操作成功！");
-//                 $(".GoodsState"+id).val("open");
-//                 $(".GoodsState"+id).next(".GoodsMenu-open").next(".GoodsMenu-off").fadeOut(0);
-//                 $(".GoodsState"+id).next(".GoodsMenu-open").fadeIn(1000);
-//             }
-//         },error:function (err) {
-//             $.showBox("启用失败！请重试！！")
-//         }
-//     })
-// }
 function End_Menu(id) {
     if (id=="1"||id=="2"){
         $.showBox("对不起！你暂时无权限进行启动操作！")
@@ -416,13 +368,107 @@ function closeGoodsComment() {
 }
 
 
+
+
+/*\
+* 图片预览
+*
+* */
+
+function OpenMoreFile()
+{
+    document.getElementById("doc").click();
+}
+
+var imgfile=new Object();
+function choseMoreImg() {
+    $("#dd").html("");
+    imgfile[0]="";
+    var file = document.getElementById('doc').files;
+    var fileNum=file.length;
+    if(fileNum!=0)
+    {
+        var arr = Object.keys(imgfile);
+        var oldNum = arr.length;
+        for(j=oldNum;j<(fileNum+oldNum);j++)
+        {
+            imgfile[j]=file[j-oldNum];
+        }
+    }
+    var arr2 = Object.keys(imgfile);
+    var oldNum2 = arr2.length;
+    for(i=1;i<oldNum2;i++)
+    {
+        var imgfiles = imgfile[i];
+        var reader = new FileReader();
+        reader.readAsDataURL(imgfiles);
+        reader.onload = function (theFile) {
+            var image = new Image();
+            image.src = theFile.target.result;
+            image.onload = function () {
+                var width = this.width;
+                var height = this.height;
+                if(width==640 && height==320)
+                {
+                    var text='<div class="ImgShow fl">' +
+                        '<img src="'+image.src+'" id="ImgShow'+i+'">'+
+                        '</div>';
+                    var result=$("#dd").append(text);
+                }
+                else
+                {
+                    delete imgfile[i];
+                    $.showBox("请上传640*320照片！");
+                }
+            }
+        }
+    }
+}
+
+/*
+ * 多图上传测试
+ * */
+function testUploadsImg() {
+    var file = document.getElementById('doc').files;
+    if(file.length<1)
+    {
+        return "error";
+    }
+    else
+    {
+        var formData = new FormData();
+        var arr = Object.keys(imgfile);
+        var oldNum = arr.length;
+        for(i=1;i<=(oldNum+1);i++){
+            formData.append("Image["+(i-1)+"]", imgfile[i]);
+        }
+        imgfile={0:""};
+        console.log(imgfile);
+        $.ajax({
+            url: 'testUploadsImg',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (msg) {
+                console.log(msg);
+            },
+            error:function (msg) {
+                $.showBox("失败！");
+            }
+        });
+        console.log("success");
+    }
+}
+
+
 /*商品照片批量添加*/
 function uplode(idName,url){
     var fileCount = document.getElementById("dd").getElementsByTagName("img");
     if(fileCount.length<1)
     {
         return "error";
-            }
+    }
     else
     {
         for(i=0;i<fileCount.length;i++)
@@ -442,18 +488,18 @@ function uplode(idName,url){
                 error:function()
                 {
                     $.showBox("第"+i+"张照片上传失败！");
-            }
+                }
             });
             if(i==fileCount.length-1)
             {
                 return "success";
             }
-            }
+        }
 
     }
 
 
-                }
+}
 
 
 //下面用于多图片上传预览功能

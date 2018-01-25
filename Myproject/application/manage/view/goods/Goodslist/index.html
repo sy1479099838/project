@@ -86,6 +86,7 @@
             <tr>
                 <th>编号</th>
                 <th>商品</th>
+                <th>封面图</th>
                 <th>商家</th>
                 <th>热门分类模板</th>
                 <th>套餐</th>
@@ -102,6 +103,9 @@
                     名称：{$value.GoodsName}<br>
                     分类：{$value.ClassName}<br>
                     价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
+                </td>
+                <td>
+                    <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
                 </td>
                 <td>
                     商家：{$value.CompanyName}<br>
@@ -167,14 +171,14 @@
                     </button><br>
                     <button onclick="DelGoods()" >删除
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
-                    </button><br>
-                    <span class="GoodsChoice">
-                        <input type="hidden" value="" class="status GoodsState">
-                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                    </button>
+                    <span class="GoodsChoice" id="GoodsChoice{$value.id}">
+                        <input type="hidden" value="{$value.enable}" class="status GoodsState">
+                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
                             上架
                         </button><br>
-                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
                             下架
                         </button>
@@ -267,13 +271,13 @@
             </span><br>
             <span>
                 <a href="javascript:;" class="a-upload">
-                    <input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />
+                    <input type="file" style="display: none;"  name="file[]" id="doc" multiple="multiple" onchange="choseMoreImg();" accept="image/*" />
+                    <button onclick="OpenMoreFile()">点击选择照片</button>
                 </a>
-                <button onclick="uplode()" style="width:15%;height:25px;">上传</button>
+                <button onclick="testUploadsImg()" style="width:15%;height:25px;">上传</button>
             </span>
-            <span style="height:150px;">
-                <div id="dd" style=" width:990px;float: left;"></div>
-            </span>
+            <div id="dd" style="width:100%;float: left;"></div>
+
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
@@ -289,6 +293,17 @@
 
             <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
             <!--<div id="r-result"></div>-->
+            <!--<span>-->
+                <!--<a href="javascript:;" class="a-upload">-->
+                    <!--<input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />-->
+
+                <!--</a>-->
+                <!--<button onclick="testUploadsImg()" style="width:15%;height:25px;">上传</button>-->
+            <!--</span>-->
+            <!--<span style="height:150px;">-->
+                <!--<div id="dd" style=" width:990px;float: left;">12345</div>-->
+            <!--</span>-->
+
 
 
             <div class="AddMenu-Submit">

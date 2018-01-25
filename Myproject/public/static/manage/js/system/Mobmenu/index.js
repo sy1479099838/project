@@ -49,11 +49,9 @@ function choseimg() {
     var prew = document.getElementById("icon-Img");
     var reader = new FileReader();
     reader.readAsDataURL(imgfile);
-    // console.log(imgfile);
     reader.onload = function (theFile) {
         var image = new Image();
         image.src = theFile.target.result;
-        // console.log(image);
         image.onload = function () {
 
             var width = this.width;
