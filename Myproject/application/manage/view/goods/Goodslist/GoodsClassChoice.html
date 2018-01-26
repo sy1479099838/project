@@ -100,21 +100,21 @@
                     </span>
             </td>
             <td>
-                <button onclick="EditGoods()" >编辑
+                <button onclick="EditGoods()" >编&nbsp;&nbsp;&nbsp;&nbsp;辑
                     <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
                 </button><br>
-                <button onclick="DelGoods()" >删除
+                <button onclick="DelGoods()" >删&nbsp;&nbsp;&nbsp;&nbsp;除
                     <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
                 </button>
                 <span class="GoodsChoice" id="GoodsChoice{$value.id}">
                         <input type="hidden" value="{$value.enable}" class="status GoodsState">
-                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)">
+                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)" id="shangjia{$value.id}">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
-                            上架
+                            已上架
                         </button><br>
-                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)">
+                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)" id="xiajia{$value.id}">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
-                            下架
+                            已下架
                         </button>
                     </span>
             </td>
@@ -137,3 +137,22 @@
 <div class="SeeBigImages" onclick="closeImage()">
     <img src="" alt="">
 </div>
+
+<script>
+    $(document).ready(function(){
+
+        $(".GoodsChoice").each(function(){
+            if($(this).children(".status").val()=="1")
+            {
+                $(this).find(".GoodsChoiceMenu-open").fadeIn();
+                $(this).find(".GoodsChoiceMenu-off").fadeOut();
+            }
+            else if($(this).children(".status").val()=="0")
+            {
+                $(this).find(".GoodsChoiceMenu-off").fadeIn();
+                $(this).find(".GoodsChoiceMenu-open").fadeOut();
+            }
+        })
+
+    });
+</script>

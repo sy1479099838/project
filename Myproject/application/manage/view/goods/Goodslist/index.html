@@ -21,8 +21,6 @@
                 <a href="javascript:GoodsClassChoice('{$list.id}')">{$list.ClassName}</a>
             </p>
             {present name="list.children.0"}
-
-
             <dl class="treeMenu-one" id="treeOpen_1">
             {volist name="list.children" id="list_2"}
                 {present name="list_2.children.0"}
@@ -104,7 +102,7 @@
                     价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
                 </td>
                 <td>
-                    <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
+                    <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="" onclick="upCover('{$value.id}')">
                 </td>
                 <td>
                     商家：{$value.CompanyName}<br>
@@ -165,21 +163,21 @@
                     </span>
                 </td>
                 <td>
-                    <button onclick="EditGoods()" >编辑
+                    <button onclick="EditGoods()" >编&nbsp;&nbsp;&nbsp;&nbsp;辑
                     <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
                     </button><br>
-                    <button onclick="DelGoods()" >删除
+                    <button onclick="DelGoods()" >删&nbsp;&nbsp;&nbsp;&nbsp;除
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
                     </button>
                     <span class="GoodsChoice" id="GoodsChoice{$value.id}">
                         <input type="hidden" value="{$value.enable}" class="status GoodsState">
-                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)">
+                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)" id="shangjia{$value.id}">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
-                            上架
+                            已上架
                         </button><br>
-                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)">
+                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)" id="xiajia{$value.id}">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
-                            下架
+                            已下架
                         </button>
                     </span>
                 </td>
@@ -504,6 +502,24 @@
 
 <!-------------------------套餐--------------------------->
 <div class="taocan_1" >
+
+</div>
+
+<!---------------------上传封面图--------------------->
+<div class="upCover-Box">
+    <div class="Cover-content">
+        <p style="background: green;height: 30px;text-align: center;color: #ffffff;line-height: 30px;font-size: 20px;">
+            <span style="display: inline-block;width:50px; ">&nbsp;</span>
+           商品封面图
+            <button class="icon-remove-circle fr" style="color: #ffffff;display: inline-block;width: 50px;text-align: center;height: 30px;line-height: 30px;font-size: 20px;background: none;border: none;"></button>
+        </p>
+        <p style="margin: 10px 2%;">
+            商品名称:九皇山
+            <input type="file" name="CoverImg" style="display: none;" id="CoverImg" onchange="yulanHead();" >
+            <button onclick="choceHead()">点击选择照片</button>
+        </p>
+        <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
+    </div>
 
 </div>
 {/block}

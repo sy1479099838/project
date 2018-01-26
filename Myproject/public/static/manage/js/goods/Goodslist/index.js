@@ -116,11 +116,28 @@ function goodsUp(id,state) {
             state:state
         }),
         success:function (msg) {
-            if (msg==suceess){
-                $.showBox("操作成功！");
+            if (msg=="success"){
+                if(state=="1")
+                {
+                    $("#xiajia"+id).fadeOut(0);
+                    $("#shangjia"+id).fadeIn(200);
+                }
+                else
+                {
+                    $("#shangjia"+id).fadeOut(0);
+                    $("#xiajia"+id).fadeIn(200);
+                }
+            }
+            else if(msg=="error")
+            {
+                $.showBox("操作失败，请重试！");
+            }
+            else
+            {
+                $.showBox(msg);
             }
         },error:function (err) {
-            $.showBox("上架失败！请重试！！")
+            $.showBox("失败！请重试！！")
         }
     })
 }
@@ -715,4 +732,19 @@ function savePackage(goodsId) {
             $(this).append(text);
         }
     });
+}
+
+/*
+* 点击显示封面上传框
+* */
+function upCover(id) {
+    // alert(id);
+    $(".upCover-Box").fadeIn();
+}
+
+/*
+* 选择照片
+* */
+function choceHead() {
+    document.getElementById("CoverImg").click();
 }

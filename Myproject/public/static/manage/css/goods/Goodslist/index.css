@@ -25,7 +25,7 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(8){width:10.5% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(9){width:13% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(10){width:6% ;text-align: center}
-.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(11){width:6% ;text-align: center}
+.Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(11){width:8% ;text-align: center}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(11)>.GoodsChoice>.GoodsChoiceMenu-open{display: none;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td:nth-child(11)>.GoodsChoice>.GoodsChoiceMenu-off{display: none;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td>.GoodsImg{display: inline-block;width: 100%;}
@@ -171,3 +171,12 @@
 /*分页*/
 .fenye>a{display:block;width:30px;height:20px;font-size:15px;float:left;line-height:20px;margin:20px 1px 0 0;border:1px solid #7B7B7B;text-align:center;color: blue;}
 .fenye>#NowPage{color:black;}
+
+/*上传商品封面*/
+.upCover-Box{display: none;width: 100%;height: 100%;position: fixed;z-index: 999999;top:0;left:0;background: rgba(255,255,255,0.7);}
+.upCover-Box>.Cover-content{margin-left: 30%;margin-top: 20%;width: 40%;height: auto;border:1px solid green;background: #ffffff;}
+
+
+
+
+

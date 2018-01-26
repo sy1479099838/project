@@ -107,55 +107,6 @@ class Goodslist extends Common
 
 
     /*
-     * 照片批量上传
-     * */
-    public function UploadImg()
-    {
-        $file = request()->file("upfile");
-        if($file=="" || $file==NULL)
-        {
-            exit("error");
-        }
-        else
-        {
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            $ruth="public/uploads/";
-            if($info)
-            {
-                $value=$info->getSaveName();// 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
-                $length=strlen($value);
-                $head=substr($value, 0, 8);
-                $ImgName=substr($value, 9, $length-9);
-            }
-        }
-        if($value)
-        {
-            if(Session::has('GoodsImgUpload'))
-            {
-                $Img=Session::get("GoodsImgUpload");
-                $Img[]=array($head,$ImgName);
-//                dump($Img);
-                Session::set('GoodsImgUpload',$Img);
-                exit("success");
-            }
-            else
-            {
-                $Img=array(
-                    0=>array($head,$ImgName)
-                );
-                Session::set('GoodsImgUpload',$Img);
-//                dump($Img);
-                exit("success");
-            }
-        }
-        else
-        {
-            exit("error");
-        }
-
-    }
-
-    /*
      * 接收商品信息,添加到数据库
      * */
     public function AddGoods()
@@ -226,7 +177,10 @@ class Goodslist extends Common
                 $length=strlen($value);
                 $head=substr($value, 0, 8);
                 $ImgName=substr($value, 9, $length-9);
-                $ImgPhoto[]=$head."/".$ImgName;
+                $ImgPhoto[]=array(
+                    $head,
+                    $ImgName
+                );
             }
         }
         $ImgPhoto=json_encode($ImgPhoto);
@@ -819,25 +773,52 @@ class Goodslist extends Common
     }
 
     /*
-     * 测试上传
+     * 商品上下架
      * */
-
-    public function testUploadsImg()
+    public function goodsUp()
     {
-        $information=input();
-        $formData=json_decode($information["FormData"],true);
-        $array=array();
-        foreach ($formData as $val)
+        $state=input();
+        if($state["state"]!="0" && $state["state"]!="1")
         {
-            $array[$val["name"]]=$val["value"];
+            exit("对不起，请勿随意修改程序！");
         }
-        dump($array);
-        $files= request()->file("Image");
-        dump($files);
-        foreach($files as $file){
-            echo("testExit");
+        $people=Session::get('admin');
+        if($people["type"]=="admin")
+        {
+            $result=Goods::where("id",$state["id"])->update([
+                "enable"=>$state["state"]
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
         }
-        exit("endExit");
+        else
+        {
+            $BusinessId=Goods::where("id",$state["id"])->field("BusinessId")->find()->BusinessId;
+            if($BusinessId==$people["id"])
+            {
+                $result=Goods::where("id",$state["id"])->update([
+                    "enable"=>$state["state"]
+                ]);
+                if($result==1)
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+            else
+            {
+                exit("对不起，您没有权限!");
+            }
+        }
     }
 
 }
