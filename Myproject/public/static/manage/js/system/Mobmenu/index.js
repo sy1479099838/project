@@ -36,7 +36,6 @@ function ImgButton(data) {
             window.location.reload();
         }
     });
-
 }
 
 function OpenFile()

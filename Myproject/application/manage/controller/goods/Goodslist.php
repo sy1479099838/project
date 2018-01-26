@@ -160,30 +160,94 @@ class Goodslist extends Common
      * */
     public function AddGoods()
     {
-        $LoginPeople=Session::get("admin");
         $information=input();
-        $Img=Session::get("GoodsImgUpload");
-        $Img=json_encode($Img);
-//        dump($Img);
+        $formData=json_decode($information["FormData"],true);
+        $array=array();
+        foreach ($formData as $val)
+        {
+            $array[$val["name"]]=$val["value"];
+        }
+
+        $LoginPeople=Session::get("admin");
+        if($LoginPeople["type"]!="admin")
+        {
+            $array["sjName"]=$LoginPeople["id"];
+        }
+        $rule = [
+            ['goodsName','require|length:1,40','名称必须|名称长度需要在1-40之间'],
+            ['sjName','number|gt:0','商家名称必须|请选择商家'],
+            ['AddLiabilityGoods','number|gt:0','分类必须|请选择正确的分类'],
+            ['price',['regex'=>'/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/i'],'请输入正确的价格'],
+            ['activeprice',['regex'=>'/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/i'],'请输入正确的活动价格'],
+            ['number','number|gt:0','商品数量必须|请输入商品数量'],
+            ['start_time','require','请选择开始时间'],
+            ['end_time','require','请选择结束时间'],
+            ['position-name','require|length:1,100','请输入或者选择商品位置|名字过长'],
+            ['position-X','float|gt:0','请点击地图|请点击地图'],
+            ['position-Y','float|gt:0','请点击地图|请点击地图']
+        ];
+        $data = [
+            'goodsName'  => $array["goodsName"],
+            'sjName'   => $array["sjName"],
+            'AddLiabilityGoods' =>$array["AddLiabilityGoods"],
+            'price'   => $array["price"],
+            'activeprice'   => $array["activeprice"],
+            'number'   => $array["number"],
+            'start_time'   => $array["start_time"],
+            'end_time'   => $array["end_time"],
+            'position-name'   => $array["position-name"],
+            'position-X'   => $array["position-X"],
+            'position-Y'   => $array["position-Y"]
+        ];
+        $validate = new \think\Validate($rule);
+        $result   = $validate->check($data);
+        if(!$result){
+            exit($validate->getError()) ;
+        }
+
+        if($array["AddLiabilityGoods".$array["AddLiabilityGoods"]]=="0")
+        {
+            $pid=$array["AddLiabilityGoods"];
+            $cid=$array["AddLiabilityGoods"];
+        }
+        else
+        {
+            $pid=$array["AddLiabilityGoods".$array["AddLiabilityGoods"]];
+            $cid=$array["AddLiabilityGoods"].",".$array["AddLiabilityGoods".$array["AddLiabilityGoods"]];
+        }
+        $files= request()->file("Image");
+        $ImgPhoto=array();
+        foreach($files as $file){
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            $ruth="public/uploads/";
+            if($info)
+            {
+                $value=$info->getSaveName();
+                $length=strlen($value);
+                $head=substr($value, 0, 8);
+                $ImgName=substr($value, 9, $length-9);
+                $ImgPhoto[]=$head."/".$ImgName;
+            }
+        }
+        $ImgPhoto=json_encode($ImgPhoto);
         $value=Goods::create([
-            'GoodsName'  =>  $information["GoodsName"],
-            'cid' =>  $information["Cid"],
-            'PositionName' =>  $information["positionName"],
-            'X_LONG' =>  $information["X"],
-            'Y_LONG' =>  $information["Y"],
+            'GoodsName'  =>  $array["goodsName"],
+            'cid' =>  $cid,
+            'PositionName' =>  $array["position-name"],
+            'X_LONG' =>  $array["position-X"],
+            'Y_LONG' =>  $array["position-Y"],
             'addPeopleId' =>  $LoginPeople["id"],
-            'DetailsImage' =>  $Img,
-            'BusinessId' =>  $LoginPeople['type']=="admin"?$information["SjName"]:$LoginPeople["id"],
+            'DetailsImage' =>  $ImgPhoto,
+            'BusinessId' =>  $array["sjName"],
             'addPeopleType' =>  $LoginPeople['type']=="admin"?"1":"0",
             'addTime' =>  time(),
-            'HotClass' =>  $information["HotClass"],
-            'startTime'=>strtotime($information["StartDate"]),
-            'endTime'=>strtotime($information["EndDate"]),
-            'oldPrice'=>$information["Price"],
-            'activityPrice'=>$information["ActivePrice"],
-            'pid'=>$information["pid"]
+            'HotClass' =>  $array["AddHot"],
+            'startTime'=>strtotime($array["start_time"]),
+            'endTime'=>strtotime($array["end_time"]),
+            'oldPrice'=>$array["price"],
+            'activityPrice'=>$array["activeprice"],
+            'pid'=>$pid
         ]);
-        Session::delete('GoodsImgUpload');
         if($value)
         {
             exit("success");
@@ -760,6 +824,14 @@ class Goodslist extends Common
 
     public function testUploadsImg()
     {
+        $information=input();
+        $formData=json_decode($information["FormData"],true);
+        $array=array();
+        foreach ($formData as $val)
+        {
+            $array[$val["name"]]=$val["value"];
+        }
+        dump($array);
         $files= request()->file("Image");
         dump($files);
         foreach($files as $file){
@@ -767,4 +839,5 @@ class Goodslist extends Common
         }
         exit("endExit");
     }
+
 }

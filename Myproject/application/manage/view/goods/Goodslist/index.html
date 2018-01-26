@@ -2,7 +2,6 @@
 {block name="main"}
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
-
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
@@ -213,6 +212,7 @@
         </p>
         <h1>商品添加</h1>
         <div class="Pcmenu-AddMenu">
+            <form method="get" id="ADDGoods-Form" onsubmit="return false;" class="AddGoods-Form">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
                 <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
@@ -231,7 +231,7 @@
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
 
-                    <select class="AddLiabilityGoods-Choice_one">
+                    <select class="AddLiabilityGoods-Choice_one" name="AddLiabilityGoods">
                         <option value="0">--选择--</option>
                         {volist name="ClassList" id="choice"}
                         <option value="{$choice.id}">--{$choice.ClassName}--</option>
@@ -239,7 +239,7 @@
                     </select>
                     {volist name="ClassList" id="choice_1"}
                     {present name="choice_1.children.0"}
-                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden">
+                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden" name="AddLiabilityGoods{$choice_1.id}">
                         <option value="0">--选择--</option>
                         {volist name="choice_1.children" id="choice_2"}
                         <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
@@ -288,26 +288,14 @@
                 商品地址（点击地图获取定位）
             </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
             <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
-            <input type="text" value="" placeholder="经度" disabled name="position-X">
-            <input type="text" value="" placeholder="纬度" disabled name="position-Y">
-
-            <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
-            <!--<div id="r-result"></div>-->
-            <!--<span>-->
-                <!--<a href="javascript:;" class="a-upload">-->
-                    <!--<input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />-->
-
-                <!--</a>-->
-                <!--<button onclick="testUploadsImg()" style="width:15%;height:25px;">上传</button>-->
-            <!--</span>-->
-            <!--<span style="height:150px;">-->
-                <!--<div id="dd" style=" width:990px;float: left;">12345</div>-->
-            <!--</span>-->
-
-
-
+            <input type="text" value="" placeholder="经度" name="position-X">
+            <input type="text" value="" placeholder="纬度" name="position-Y">
+            </form>
+            <div class="map">
+                <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
+            </div>
             <div class="AddMenu-Submit">
-                <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+                <button onclick="testUploadsImg()">提&nbsp;&nbsp;&nbsp;交</button>
             </div>
         </div>
     </div>
@@ -366,11 +354,11 @@
             </span><br>
             <span>
                 <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>热卖</b><input type="checkbox" name="HotClass[]" value="" style="width:2%;">
+                <b>限时抢购</b><input type="checkbox" name="HotClass[]" value="" style="width:2%;">
+                <b>你猜</b><input type="checkbox" name="" value="HotClass[]"  style="width:2%;">
+                <b>你再猜</b><input type="checkbox" name="" value="HotClass[]"  style="width:2%;">
+                <b>你继续猜</b><input type="checkbox" name="" value="HotClass[]" style="width:2%;">
             </span>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>

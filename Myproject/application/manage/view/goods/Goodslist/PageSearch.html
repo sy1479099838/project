@@ -20,6 +20,7 @@
         <tr>
             <th>编号</th>
             <th>商品</th>
+            <th>封面图</th>
             <th>商家</th>
             <th>热门分类模板</th>
             <th>套餐</th>
@@ -38,6 +39,9 @@
                 价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
             </td>
             <td>
+                <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
+            </td>
+            <td>
                 商家：{$value.CompanyName}<br>
                 负责人：{$value.LiablePeople}
             </td>
@@ -46,7 +50,7 @@
                 模板1
             </td>
             <td>
-                <a href="">查看</a><br>
+                <a href="javascript:void(0)" onclick="check_tao('{$value.id}')">查看</a><br>
             </td>
             <td>
                 {$value['startTime']|date="Y/m/d H:i",###}<br>
@@ -60,10 +64,10 @@
 
             </td>
             <td>
-                <button class="" onclick="GoodsPK()">
+                <button class="" onclick="GoodsPK('{$value.id}')">
                     <img src="__PUBLIC__/manage/images/icon-details.png">详情
                 </button>
-                <button onclick="GoodsParameter()">
+                <button onclick="GoodsCS('{$value.id}')">
                     <img src="__PUBLIC__/manage/images/icon-parameter.png">参数
                 </button><br>
                 <button onclick="GoodsComment()">
@@ -79,15 +83,17 @@
                 </button>
                 <!--点赞详情-->
                 <br>
+
+
             </td>
             <td>
                     <span class="GoodsFight" >
-                        <input type="hidden" value="" class="status GoodsState{}" style="width:100%;">
-                        <button class="GoodsMenu-open" onclick="Up_Menu('{$value.id}')">
+                        <input type="hidden" value="{$value.groups}" class="status" style="width:100%;">
+                        <button class="GoodsGroup-open" onclick="switch_Menu('{$value.id}',0)" id="GoodsGroup-open{$value.id}">
                             <img src="__PUBLIC__/manage/images/qy-sdks.jpg" alt="">
                             启用
                         </button>
-                        <button class="GoodsMenu-off" onclick="End_Menu()">
+                        <button class="GoodsGroup-off" onclick="switch_Menu('{$value.id}',1)" id="GoodsGroup-off{$value.id}">
                             <img src="__PUBLIC__/manage/images/qyyyss.jpg" alt="">
                             禁用
                         </button>
@@ -99,14 +105,14 @@
                 </button><br>
                 <button onclick="DelGoods()" >删除
                     <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
-                </button><br>
-                <span class="GoodsChoice">
-                        <input type="hidden" value="" class="status GoodsState">
-                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                </button>
+                <span class="GoodsChoice" id="GoodsChoice{$value.id}">
+                        <input type="hidden" value="{$value.enable}" class="status GoodsState">
+                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
                             上架
                         </button><br>
-                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
                             下架
                         </button>

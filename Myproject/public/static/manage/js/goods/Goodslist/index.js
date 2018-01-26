@@ -20,118 +20,6 @@ function GoodsClassChoice(data) {
     });
 
 }
-// 商品添加的提交按钮
-function AddGoodsSubmit(){
-    var GoodsName=$('input:text[name="goodsName"]').val();
-    var ISBusiness=$("#BusinessChoice").length;
-    var SjName="";
-    if(ISBusiness=="1"){
-        SjName=$('#BusinessChoice').val();
-    }else{
-        SjName="Business";
-    }
-    var Cid="";
-    var pid="";
-    var num_1=$(".AddLiabilityGoods-Choice_one").val();//获取第一个下拉框的值
-    var Price=$('input[name="price"]').val();
-    var ActivePrice=$('input[name="activeprice"]').val();
-    var Number=$('input[name="number"]').val();
-    var StartDate=$("input[name='start_time']").val();
-    var EndDate=$("input[name='end_time']").val();
-    var positionName=$("input:text[name='position-name']").val();
-    var X=$("input:text[name='position-X']").val();
-    var Y=$("input:text[name='position-Y']").val();
-    var HotClass = $("input:checkbox[name='AddHot']:checked").map(function(index,elem) {
-        return $(elem).val();
-    }).get().join(',');
-
-    if(num_1=="0"){
-        $.showBox('请选择商品分类');
-    }else{
-        var num_2=$("#AddLiabilityGoods"+num_1).val();
-        if(num_2=="0"){
-            Cid=num_1;
-            pid=num_1;
-        }else{
-            Cid=num_1+","+num_2;
-            pid=num_2;
-        }
-    }
-    if(GoodsName==""){
-        $.showBox('请输入商品名');
-    }else if(SjName=="")
-    {
-        $.showBox('请输商家名称');
-    }else if (Price=="0")
-    {
-        $.showBox("请输入商品原价")
-    }
-    else if (ActivePrice==""){
-        $.showBox("请输入商品活动价")
-    }
-    else if (Number=="")
-    {
-        $.showBox("请输商品数量")
-    }
-    else if(StartDate=="")
-    {
-        $.showBox ("填写活动开始日期");
-    }
-    else if(EndDate=="")
-    {
-        $.showBox ("填写活动结束日期");
-    }
-    else if(positionName=="" || X=="" || Y=="")
-    {
-        $.showBox ("请选择商品位置！");
-    }
-    else
-    {
-         var result=uplode("doc","UploadImg");
-         if(result=="success")
-         {
-            $.ajax({
-                type:'post',
-                url:'AddGoods',
-                data:({
-                    GoodsName:GoodsName,
-                    SjName:SjName,
-                    Price:Price,
-                    Cid:Cid,
-                    ActivePrice:ActivePrice,
-                    Number:Number,
-                    StartDate:StartDate,
-                    EndDate:EndDate,
-                     positionName:positionName,
-                     X:X,
-                     Y:Y,
-                     HotClass:HotClass,
-                     pid:pid
-                }),
-                success:function(data){
-                    if(data=="success")
-                    {
-                        $.showBox("商品添加成功！");
-                        window.location.reload();
-                    }
-                    else if(data=="error")
-                    {
-                        $.showBox("商品添加失败！");
-                        window.location.reload();
-                    }
-                    else
-                    {
-                        $.showBox(data);
-                    }
-                }
-            });
-         }
-         else
-         {
-             $.showBox("请选择照片！");
-         }
-    }
-}
 
 function EditGoods() {
     $(".EditGoods-EditMenu-Box").fadeIn(700);
@@ -178,22 +66,18 @@ $(document).ready(function(){
 
 });
 
+
+
 /*
 * 插入地图
 * */
 $(function () {
     var map = new BMap.Map("allmap");
     var point = new BMap.Point(104.750115,31.472747);
-
-
-
     map.centerAndZoom(point,12);
     map.enableScrollWheelZoom(true);
     var geoc = new BMap.Geocoder();
-
-
     map.addEventListener("click", function(e){
-
         //通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
         var pt = e.point;
         geoc.getLocation(pt, function(rs){
@@ -254,7 +138,6 @@ function closeShow() {
 layui.use(['form', 'laydate'], function() {
     var form = layui.form
         , laydate = layui.laydate;
-
     //日期
     laydate.render({
         elem: '#date1',
@@ -379,7 +262,6 @@ function OpenMoreFile()
 {
     document.getElementById("doc").click();
 }
-
 var imgfile=new Object();
 function choseMoreImg() {
     $("#dd").html("");
@@ -424,136 +306,60 @@ function choseMoreImg() {
         }
     }
 }
-
 /*
  * 多图上传测试
  * */
 function testUploadsImg() {
-    var file = document.getElementById('doc').files;
-    if(file.length<1)
+
+    // var form = new FormData(document.getElementById("ADDGoods-Form"));//获取表单数据
+    var formArray = JSON.stringify($("#ADDGoods-Form").serializeArray());
+    console.log(formArray);
+    var arr = Object.keys(imgfile);//获取照片的数量
+    var oldNum = arr.length;
+    if(oldNum<2)//如果没有选择照片，则返回提醒选择照片
     {
-        return "error";
+        $.showBox("请选择上传照片");
     }
     else
     {
         var formData = new FormData();
-        var arr = Object.keys(imgfile);
-        var oldNum = arr.length;
         for(i=1;i<=(oldNum+1);i++){
             formData.append("Image["+(i-1)+"]", imgfile[i]);
         }
-        imgfile={0:""};
-        console.log(imgfile);
+
         $.ajax({
-            url: 'testUploadsImg',
+            url: 'AddGoods/FormData/'+formArray,
             type: "POST",
             processData: false,
             contentType: false,
             data: formData,
             success: function (msg) {
-                console.log(msg);
+                if(msg=="success")
+                {
+                    $("#dd").html("");
+                    imgfile={0:""};
+                    $.showBox("添加商品成功！");
+                }
+                else if(msg=="error")
+                {
+                    $("#dd").html("");
+                    imgfile={0:""};
+                    $.showBox("失败，请重试！");
+                }
+                else
+                {
+                    $.showBox(msg);
+                }
+                // console.log(msg);
             },
             error:function (msg) {
                 $.showBox("失败！");
             }
         });
-        console.log("success");
     }
 }
 
 
-/*商品照片批量添加*/
-function uplode(idName,url){
-    var fileCount = document.getElementById("dd").getElementsByTagName("img");
-    if(fileCount.length<1)
-    {
-        return "error";
-    }
-    else
-    {
-        for(i=0;i<fileCount.length;i++)
-        {
-            var fd = new FormData();
-            fd.append("upload", 1);
-            fd.append("upfile", $("#"+idName).get(0).files[i]);
-            $.ajax({
-                url: url,
-                type: "POST",
-                processData: false,
-                contentType: false,
-                data: fd,
-                success: function(msg) {
-
-                },
-                error:function()
-                {
-                    $.showBox("第"+i+"张照片上传失败！");
-                }
-            });
-            if(i==fileCount.length-1)
-            {
-                return "success";
-            }
-        }
-
-    }
-
-
-}
-
-
-//下面用于多图片上传预览功能
-function setImagePreviews(avalue) {
-    console.log(avalue);
-    var docObj = document.getElementById("doc");
-//    console.log(docObj.files);
-
-
-    var dd = document.getElementById("dd");
-    dd.innerHTML = "";
-    var fileList = docObj.files;
-
-
-    for (var i = 0; i < fileList.length; i++) {
-        dd.innerHTML += "<div style='float: left;margin-top: 10px;' > <img id='img" + i + "'  /> </div>";
-        var imgObjPreview = document.getElementById("img"+i);
-        if (docObj.files && docObj.files[i]) {
-            //火狐下，直接设img属性
-            // imgObjPreview.style.display = 'block';
-            imgObjPreview.style.width = '160px';
-            imgObjPreview.style.height = '130px';
-            imgObjPreview.style.margin = '5px';
-            imgObjPreview.style.borderRadius = '5px';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
-                }
-        else {
-            //IE下，使用滤镜
-            docObj.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId = document.getElementById("img" + i);
-            //必须设置初始大小
-            localImagId.style.width = "160px";
-            localImagId.style.height = "130px";
-            imgObjPreview.style.margin = '5px';
-            imgObjPreview.style.borderRadius = '5px';
-            //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                }
-            catch (e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview.style.display = 'none';
-            document.selection.empty();
-        }
-    }
-    return true;
-
-}
 
 /*
 * 分页
