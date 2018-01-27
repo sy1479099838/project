@@ -427,7 +427,7 @@ function check_muban(data){
         }),
         success:function (msg) {
             $(".muban").html(msg);
-    $(".muban").fadeIn();
+            $(".muban").fadeIn();
         },
         error:function (msg) {
 
@@ -452,12 +452,12 @@ function previewFile1 () {
     var reader = new FileReader();
     reader.onloadend = function () {
         imgfile.src = reader.result;
-            };
+    };
     if (file) {
         reader.readAsDataURL(file);
     } else {
         imgfile.src = "";
-            }
+    }
 }
 function xiugai(data,b){
     $.ajax({
@@ -469,7 +469,7 @@ function xiugai(data,b){
         }),
         success:function (msg) {
             $(".mu_edit").html(msg);
-    $(".mu_edit").fadeIn();
+            $(".mu_edit").fadeIn();
         },
         error:function (msg) {
 
@@ -738,8 +738,29 @@ function savePackage(goodsId) {
 * 点击显示封面上传框
 * */
 function upCover(id) {
-    // alert(id);
-    $(".upCover-Box").fadeIn();
+    $.ajax({
+        url:"ShowHead",
+        data:({
+            id:id
+        }),
+        type:"post",
+        success:function (msg) {
+            if(msg!="error")
+            {
+                $(".upCover-Box").html(msg);
+                $(".upCover-Box").fadeIn();
+            }
+            else
+            {
+                $.showBox("失败，请重试！");
+            }
+
+        },
+        error:function (msg) {
+            $.showBox("失败！");
+        }
+    });
+
 }
 
 /*
@@ -747,4 +768,67 @@ function upCover(id) {
 * */
 function choceHead() {
     document.getElementById("CoverImg").click();
+}
+
+function yulanHead () {
+    var file = document.getElementById('CoverImg').files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function (theFile) {
+        var image = new Image();
+        image.src = theFile.target.result;
+        image.onload = function () {
+            var width = this.width;
+            var height = this.height;
+            if(width==320 && height==320)
+            {
+                $(".CoverImg-Img").attr("src",image.src);
+            }
+            else
+            {
+                $.showBox("请上传320*320照片！");
+            }
+        }
+    }
+}
+/*
+* 关闭封面
+* */
+function closeCover() {
+    $(".upCover-Box").fadeOut();
+}
+
+/*
+* 保存商品封面图
+* */
+function SaveCover(id) {
+    var files = document.getElementById('CoverImg').files[0];
+    var formData = new FormData();
+    formData.append("files",files);
+    $.ajax({
+        url: 'SaveCover/id/'+id,
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function (msg) {
+            if(msg=="success")
+            {
+                $.showBox("添加商品成功！");
+                window.location.reload();
+            }
+            else if(msg=="error")
+            {
+                $.showBox("失败，请重试！");
+            }
+            else
+            {
+                $.showBox(msg);
+            }
+        },
+        error:function (msg) {
+            $.showBox("失败！");
+            window.location.reload();
+        }
+    });
 }

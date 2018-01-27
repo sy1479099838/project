@@ -39,7 +39,11 @@
                 价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
             </td>
             <td>
-                <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
+                {empty name="value.CovorImg"}
+                <img src="__PUBLIC__/manage/images/noCover.png" alt="" onclick="upCover('{$value.id}')">
+                {else /}
+                <img src="__ROTH__/uploads/{$value.CovorImg}" alt="" onclick="upCover('{$value.id}')">
+                {/empty}
             </td>
             <td>
                 商家：{$value.CompanyName}<br>

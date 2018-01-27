@@ -1,0 +1,21 @@
+<div class="Cover-content">
+    <p style="background: green;height: 30px;text-align: center;color: #ffffff;line-height: 30px;font-size: 20px;">
+        <span style="display: inline-block;width:50px; ">&nbsp;</span>
+        商品封面图
+        <button onclick="closeCover()" class="icon-remove-circle fr" style="color: #ffffff;display: inline-block;width: 50px;text-align: center;height: 30px;line-height: 30px;font-size: 20px;background: none;border: none;"></button>
+    </p>
+    <p style="margin: 10px 2%;">
+        商品名称&nbsp;:&nbsp;{$head.GoodsName}
+        <input type="file" name="CoverImg" style="display: none;" id="CoverImg" onchange="yulanHead();" ><br>
+        <button onclick="SaveCover('{$head.id}')" class="button-Cover">保存</button>
+        <button onclick="choceHead()" class="button-Cover">点击选择照片</button><label style="font-size: 14px;color:#959595;">照片尺寸320*320</label>
+    </p>
+    <div class="CoverImg-Box">
+        {empty name="head.CovorImg"}
+        <img class="CoverImg-Img" src="__PUBLIC__/manage/images/noCover.png" alt="请上传320*320照片">
+        {else /}
+        <img class="CoverImg-Img" src="__ROTH__/uploads/{$head.CovorImg}" alt="请上传320*320照片">
+        {/empty}
+
+    </div>
+</div>

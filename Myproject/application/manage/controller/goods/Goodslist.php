@@ -23,7 +23,7 @@ class Goodslist extends Common
                 ->alias("a")//给表添加别名
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")//此处为查询多个表中的某些字段
                 ->select();
@@ -36,7 +36,7 @@ class Goodslist extends Common
                 ->page('1,8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                 ->select();
@@ -228,7 +228,7 @@ class Goodslist extends Common
                     ->alias("a")
                     ->join('t_goods_classify b','a.pid = b.id')
                     ->join('t_business c','a.BusinessId=c.id')
-                    ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                    ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                     ->select();
@@ -242,7 +242,7 @@ class Goodslist extends Common
                     ->join('t_goods_classify b','a.pid = b.id')
                     ->join('t_business c','a.BusinessId=c.id')
                     ->field("
-                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.CovorImg,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                     ->select();
@@ -263,7 +263,7 @@ class Goodslist extends Common
                     ->alias("a")
                     ->join('t_goods_classify b','a.pid = b.id')
                     ->join('t_business c','a.BusinessId=c.id')
-                    ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                    ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                     ->select();
@@ -278,7 +278,7 @@ class Goodslist extends Common
                     ->join('t_goods_classify b','a.pid = b.id')
                     ->join('t_business c','a.BusinessId=c.id')
                     ->field("
-                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.CovorImg,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                     ->select();
@@ -523,7 +523,7 @@ class Goodslist extends Common
                 ->alias("a")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                ->field("a.id,a.GoodsName,a.addTime,a.CovorImg,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                 ->select();
@@ -538,7 +538,7 @@ class Goodslist extends Common
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("
-                a.id,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                a.id,a.GoodsName,a.addTime,a.HotClass,a.CovorImg,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
                 b.ClassName,c.LiablePeople,
                 c.CompanyName")
                 ->select();
@@ -821,4 +821,87 @@ class Goodslist extends Common
         }
     }
 
+    /*
+     * 查询封面显示
+     * */
+    public function ShowHead()
+    {
+        $id=input("id");
+        $Goods=Goods::where("id",$id)->field("id,GoodsName,CovorImg")->find();
+        if($Goods)
+        {
+            return $this->fetch("ShowHead",["head"=>$Goods]);
+        }
+        else
+        {
+            exit("error");
+        }
+
+    }
+    
+    /*
+     * 保存商品封面图
+     * */
+    public function SaveCover()
+    {
+        $id=input("id");
+        $people=Session::get('admin');
+        if($people["type"]=="admin")
+        {
+            $poewr="yes";
+        }
+        else
+        {
+            $BusinessId=Goods::where("id",$id)->field("BusinessId")->find()->BusinessId;
+            if($BusinessId==$people["id"])
+            {
+                $poewr="yes";
+            }
+            else
+            {
+                $poewr="no";
+            }
+        }
+        if($poewr=="yes")
+        {
+            $oldCover=Goods::where("id",$id)->field("CovorImg")->find()->CovorImg;
+            $file = request()->file("files");
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            if($info)
+            {
+                $value=$info->getSaveName();
+                $length=strlen($value);
+                $head=substr($value, 0, 8);
+                $ImgName=substr($value, 9, $length-9);
+                $ImgPhoto=$head."/".$ImgName;
+                if(strlen($ImgPhoto)>20)
+                {
+                    $result=Goods::where("id",$id)->update([
+                        "CovorImg"=>$ImgPhoto
+                    ]);
+                    if($result=="1")
+                    {
+                        if($oldCover=="" || $oldCover==NULL)
+                        {
+                            exit("success");
+                        }
+                        else
+                        {
+                            @unlink("public/uploads/".$oldCover);
+                            exit("success");
+                        }
+
+                    }
+                    else
+                    {
+                        exit("error");
+                    }
+                }
+            }
+        }
+        else
+        {
+            exit("对不起，您没有权限！");
+        }
+    }
 }

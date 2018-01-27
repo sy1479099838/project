@@ -102,7 +102,11 @@
                     价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
                 </td>
                 <td>
-                    <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="" onclick="upCover('{$value.id}')">
+                    {empty name="value.CovorImg"}
+                    <img src="__PUBLIC__/manage/images/noCover.png" alt="" onclick="upCover('{$value.id}')">
+                    {else /}
+                    <img src="__ROTH__/uploads/{$value.CovorImg}" alt="" onclick="upCover('{$value.id}')">
+                    {/empty}
                 </td>
                 <td>
                     商家：{$value.CompanyName}<br>
@@ -447,11 +451,11 @@
             <span style="margin-left:5%;">评论人:XXXX</span>
             <span class="huifu">回复</span>
             <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
         </li>
         <p>回复内容：这是个回复这是个回复这是个回复这是个回复
             这是个回复这是个回复
-            这是个回复这是个回复</p>
+            这是个回复这是个回复
+        </p>
 
     </ul>
     <ul class="pinglun_1">
@@ -460,14 +464,13 @@
             <span style="margin-left:5%;">评论人:XXXX</span>
             <span class="huifu">回复</span>
             <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
         </li>
         <p>回复内容：这是个回复这是个回复这是个回复这是个回复
             这是个回复这是个回复
-            这是个回复这是个回复</p>
-
+            这是个回复这是个回复
+        </p>
     </ul>
-            </div>
+</div>
 
 
 <!---------------------------商品模板选择----------------------------->
@@ -502,24 +505,10 @@
 
 <!-------------------------套餐--------------------------->
 <div class="taocan_1" >
-
 </div>
 
 <!---------------------上传封面图--------------------->
 <div class="upCover-Box">
-    <div class="Cover-content">
-        <p style="background: green;height: 30px;text-align: center;color: #ffffff;line-height: 30px;font-size: 20px;">
-            <span style="display: inline-block;width:50px; ">&nbsp;</span>
-           商品封面图
-            <button class="icon-remove-circle fr" style="color: #ffffff;display: inline-block;width: 50px;text-align: center;height: 30px;line-height: 30px;font-size: 20px;background: none;border: none;"></button>
-        </p>
-        <p style="margin: 10px 2%;">
-            商品名称:九皇山
-            <input type="file" name="CoverImg" style="display: none;" id="CoverImg" onchange="yulanHead();" >
-            <button onclick="choceHead()">点击选择照片</button>
-        </p>
-        <img src="__PUBLIC__/manage/images/d5e08745982728240ba235bcbcb61d2a.jpg" alt="">
-    </div>
 
 </div>
 {/block}
