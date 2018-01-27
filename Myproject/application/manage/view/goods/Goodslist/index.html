@@ -2,7 +2,6 @@
 {block name="main"}
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hYbeIVOGXQCFUANLtYxhpHfDDLzGaxwo"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
-
 <div class="Goodslist-Index_left">
     <div class="treemenu">
         <div class="tree-box">
@@ -22,8 +21,6 @@
                 <a href="javascript:GoodsClassChoice('{$list.id}')">{$list.ClassName}</a>
             </p>
             {present name="list.children.0"}
-
-
             <dl class="treeMenu-one" id="treeOpen_1">
             {volist name="list.children" id="list_2"}
                 {present name="list_2.children.0"}
@@ -86,6 +83,7 @@
             <tr>
                 <th>编号</th>
                 <th>商品</th>
+                <th>封面图</th>
                 <th>商家</th>
                 <th>热门分类模板</th>
                 <th>套餐</th>
@@ -102,6 +100,13 @@
                     名称：{$value.GoodsName}<br>
                     分类：{$value.ClassName}<br>
                     价格：￥{$value.activityPrice}&nbsp;&nbsp;<i style="text-decoration: line-through;color: #8a8a8a;font-size: 12px;">￥{$value.oldPrice}&nbsp;</i><br>
+                </td>
+                <td>
+                    {empty name="value.CovorImg"}
+                    <img src="__PUBLIC__/manage/images/noCover.png" alt="" onclick="upCover('{$value.id}')">
+                    {else /}
+                    <img src="__ROTH__/uploads/{$value.CovorImg}" alt="" onclick="upCover('{$value.id}')">
+                    {/empty}
                 </td>
                 <td>
                     商家：{$value.CompanyName}<br>
@@ -162,21 +167,21 @@
                     </span>
                 </td>
                 <td>
-                    <button onclick="EditGoods()" >编辑
+                    <button onclick="EditGoods()" >编&nbsp;&nbsp;&nbsp;&nbsp;辑
                     <img src="__PUBLIC__/manage/images/iocn-edit.png" alt="">
                     </button><br>
-                    <button onclick="DelGoods()" >删除
+                    <button onclick="DelGoods()" >删&nbsp;&nbsp;&nbsp;&nbsp;除
                         <img src="__PUBLIC__/manage/images/recycle_bin_full.png" alt="">
-                    </button><br>
-                    <span class="GoodsChoice">
-                        <input type="hidden" value="" class="status GoodsState">
-                        <button class="GoodsChoiceMenu-open" onclick="UpMenu()">
+                    </button>
+                    <span class="GoodsChoice" id="GoodsChoice{$value.id}">
+                        <input type="hidden" value="{$value.enable}" class="status GoodsState">
+                        <button class="GoodsChoiceMenu-open" onclick="goodsUp('{$value.id}',0)" id="shangjia{$value.id}">
                             <img src="__PUBLIC__/manage/images/end-ssdk.jpg" alt="">
-                            上架
+                            已上架
                         </button><br>
-                        <button class="GoodsChoiceMenu-off" onclick="EndMenu()">
+                        <button class="GoodsChoiceMenu-off" onclick="goodsUp('{$value.id}',1)" id="xiajia{$value.id}">
                             <img src="__PUBLIC__/manage/images/up-ssdk.jpg" alt="">
-                            下架
+                            已下架
                         </button>
                     </span>
                 </td>
@@ -209,6 +214,7 @@
         </p>
         <h1>商品添加</h1>
         <div class="Pcmenu-AddMenu">
+            <form method="get" id="ADDGoods-Form" onsubmit="return false;" class="AddGoods-Form">
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
                 <label style="width: 40px;"><b>*&nbsp;&nbsp;</b></label>
@@ -227,7 +233,7 @@
             <span>
                 <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
 
-                    <select class="AddLiabilityGoods-Choice_one">
+                    <select class="AddLiabilityGoods-Choice_one" name="AddLiabilityGoods">
                         <option value="0">--选择--</option>
                         {volist name="ClassList" id="choice"}
                         <option value="{$choice.id}">--{$choice.ClassName}--</option>
@@ -235,7 +241,7 @@
                     </select>
                     {volist name="ClassList" id="choice_1"}
                     {present name="choice_1.children.0"}
-                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden">
+                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden" name="AddLiabilityGoods{$choice_1.id}">
                         <option value="0">--选择--</option>
                         {volist name="choice_1.children" id="choice_2"}
                         <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
@@ -267,13 +273,13 @@
             </span><br>
             <span>
                 <a href="javascript:;" class="a-upload">
-                    <input type="file" name="file[]" id="doc" multiple="multiple" onchange="javascript:setImagePreviews(this.value);" accept="image/*" />
+                    <input type="file" style="display: none;"  name="file[]" id="doc" multiple="multiple" onchange="choseMoreImg();" accept="image/*" />
+                    <button onclick="OpenMoreFile()">点击选择照片</button>
                 </a>
-                <button onclick="uplode()" style="width:15%;height:25px;">上传</button>
+                <button onclick="testUploadsImg()" style="width:15%;height:25px;">上传</button>
             </span>
-            <span style="height:150px;">
-                <div id="dd" style=" width:990px;float: left;"></div>
-            </span>
+            <div id="dd" style="width:100%;float: left;"></div>
+
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
                 <input type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
@@ -284,15 +290,14 @@
                 商品地址（点击地图获取定位）
             </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
             <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
-            <input type="text" value="" placeholder="经度" disabled name="position-X">
-            <input type="text" value="" placeholder="纬度" disabled name="position-Y">
-
-            <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
-            <!--<div id="r-result"></div>-->
-
-
+            <input type="text" value="" placeholder="经度" name="position-X">
+            <input type="text" value="" placeholder="纬度" name="position-Y">
+            </form>
+            <div class="map">
+                <div id="allmap" style="height:300px;width:100%;cursor:crosshair"></div>
+            </div>
             <div class="AddMenu-Submit">
-                <button onclick="AddGoodsSubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+                <button onclick="testUploadsImg()">提&nbsp;&nbsp;&nbsp;交</button>
             </div>
         </div>
     </div>
@@ -351,11 +356,11 @@
             </span><br>
             <span>
                 <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类</label>
-                <b>热卖</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>限时抢购</b><input type="checkbox" name="" value="" style="width:2%;">
-                <b>你猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你再猜</b><input type="checkbox" name="" value=""  style="width:2%;">
-                <b>你继续猜</b><input type="checkbox" name="" value="" style="width:2%;">
+                <b>热卖</b><input type="checkbox" name="HotClass[]" value="" style="width:2%;">
+                <b>限时抢购</b><input type="checkbox" name="HotClass[]" value="" style="width:2%;">
+                <b>你猜</b><input type="checkbox" name="" value="HotClass[]"  style="width:2%;">
+                <b>你再猜</b><input type="checkbox" name="" value="HotClass[]"  style="width:2%;">
+                <b>你继续猜</b><input type="checkbox" name="" value="HotClass[]" style="width:2%;">
             </span>
             <span class="layui-form">
                 <label style="letter-spacing:8px;">活动时间</label>
@@ -446,11 +451,11 @@
             <span style="margin-left:5%;">评论人:XXXX</span>
             <span class="huifu">回复</span>
             <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
         </li>
         <p>回复内容：这是个回复这是个回复这是个回复这是个回复
             这是个回复这是个回复
-            这是个回复这是个回复</p>
+            这是个回复这是个回复
+        </p>
 
     </ul>
     <ul class="pinglun_1">
@@ -459,14 +464,13 @@
             <span style="margin-left:5%;">评论人:XXXX</span>
             <span class="huifu">回复</span>
             <p>评论内容：这是个回复这是个回复这是个回复这是个回复这是个回复这是个回复</p>
-
         </li>
         <p>回复内容：这是个回复这是个回复这是个回复这是个回复
             这是个回复这是个回复
-            这是个回复这是个回复</p>
-
+            这是个回复这是个回复
+        </p>
     </ul>
-            </div>
+</div>
 
 
 <!---------------------------商品模板选择----------------------------->
@@ -501,6 +505,10 @@
 
 <!-------------------------套餐--------------------------->
 <div class="taocan_1" >
+</div>
+
+<!---------------------上传封面图--------------------->
+<div class="upCover-Box">
 
 </div>
 {/block}
