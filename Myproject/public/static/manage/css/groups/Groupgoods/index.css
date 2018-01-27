@@ -1,0 +1,4 @@
+.head{width:100%;height:60px;text-align:center;line-height:60px;font-size:20px;}
+.second{width:100%;height:60px;}
+.second button{width:35%;height:30px;margin-left:3%;background:none;border:3px solid green;border-radius:3px;}
+.second input{width:80%;border:none;}
