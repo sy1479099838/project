@@ -78,8 +78,24 @@ class Home extends Common
     }
 
     public function piao(){
-        $this->assign("Title","查询");
+        $this->assign("Title","门票");
         $this->assign("JsName","home/Home/piao");
         return $this->fetch();
     }
+    public function yiri(){
+        $this->assign("Title","一日游");
+        $this->assign("JsName","home/Home/yiri");
+        return $this->fetch();
+    }
+    public function gentuan(){
+        $this->assign("Title","跟团游");
+        $this->assign("JsName","home/Home/gentuan");
+        return $this->fetch();
+    }
+    public function fuli(){
+        $this->assign("Title","福利");
+        $this->assign("JsName","home/Home/fuli");
+        return $this->fetch();
+    }
+
 }

@@ -271,4 +271,10 @@ class Personal extends Common
         exit("success");
 
     }
+    public function mima()
+    {
+        $this->assign("Title","密码修改");
+        $this->assign("JsName","personal/Personal/mima");
+        return $this->fetch();
+    }
 }
