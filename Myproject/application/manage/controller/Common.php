@@ -196,4 +196,35 @@ class Common extends Controller
         return $access_token;
     }
 
+    public static function excel($fileName)
+    {
+        $handle = fopen($fileName,"r");
+        $data = fgetcsv($handle);
+        $data = eval('return '.iconv('gbk','utf-8',var_export($data,true)).';');
+        $num=count($data);
+        $row=1;
+        while($value=fgetcsv($handle))
+        {
+            $value = eval('return '.iconv('gbk','utf-8',var_export($value,true)).';');
+            for($i=0;$i<$num;$i++)
+            {
+                $val[$row][$data[$i]]=$value[$i];
+            }
+            $row++;
+        }
+        return $val;
+    }
+    
+    /*
+     * 拉取微信公众号的用户信息
+     * */
+
+    public static function GetUserInformation($openId)
+    {
+        $access_token=self::getAccessToken();
+        $url2="https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openId&lang=zh_CN";
+        $people=json_decode(Common::http_request($url2,"get"),true);
+        return$people;
+    }
+
 }

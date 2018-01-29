@@ -53,3 +53,10 @@ function guanjiansub(){
         }
     });
 }
+$(function () {
+   $(".weixinBiaoqing").click(function () {
+       var text=$(this).attr("id");
+       var oldText=$("#TextContent").val();
+       $("#TextContent").val(oldText+"["+text+"]");
+   });
+});

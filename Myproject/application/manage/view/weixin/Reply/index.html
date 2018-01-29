@@ -143,15 +143,16 @@
 
             <div class="tian_content">
                 <form method="post"  id="huifu">
-                <li>
-                    <span>标题</span><input type="text" name="guanjian_title">
-                </li>
-
-                    <li>
-                        <span>内容</span><textarea  name="guanjian_content"></textarea>
-                    </li>
+                        <span>标题</span><input type="text" name="guanjian_title">
+                        <span>内容</span><textarea  name="guanjian_content" id="TextContent"></textarea>
                 </form>
-                <li><button class="Obut" onclick="guanjiansub()">提交数据</button></li>
+                <div class="cb"></div>
+                <div class="biaoqing">
+                    {volist name="Biaoqing" id="vo_2"}
+                    <img src="__PUBLIC__/Biaoqing/{$vo_2.phoneName}" class="weixinBiaoqing" id="{$vo_2.EnglishName}" alt="">
+                    {/volist}
+                </div>
+                <button class="Obut" onclick="guanjiansub()">提交数据</button>
             </div>
 
 

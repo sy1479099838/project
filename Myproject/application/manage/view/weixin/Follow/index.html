@@ -15,14 +15,30 @@
             <th>头像</th>
             <th>性别</th>
             <th>地址</th>
+            <th>关注时间</th>
+            <th>备注</th>
+            <th>修改备注</th>
         </tr>
+        {volist name="List" id="vo"}
         <tr>
-            <td>001</td>
-            <td>这是个昵称这是个</td>
-            <td><img src="/public/static/manage/images/1506842609781.jpg"></td>
-            <td>男</td>
-            <td>地址：XX省XXX市</td>
+            <td>{$key+1}</td>
+            <td>{$vo.nickname}</td>
+            <td><img src="{$vo.head}"></td>
+            <td>{$vo.sex=="1"?"男":"女"}</td>
+            <td>地址：{$vo.address}</td>
+            <td>{$vo.subscribe_time|date="Y-m-d H:i:s",###}</td>
+            <td>{$vo.remark}</td>
+            <td></td>
         </tr>
+        {/volist}
     </tbody>
 </table>
+
+<div class="fenye" style="float:right;margin-right:2%;">
+    <a class="icon-double-angle-left" href="javascript:void(0)" onclick="UserFenYe('{$NowPage}','Previous','{$AllPage}')"></a>
+    {volist name="page" id="vo_2"}
+    <a href="javascript:void(0);" onclick="UserFenYe('{$NowPage}','{$vo_2}','{$AllPage}')">{$vo_2}</a>
+    {/volist}
+    <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="UserFenYe('{$NowPage}','next','{$AllPage}')"></a>
+</div>
 {/block}

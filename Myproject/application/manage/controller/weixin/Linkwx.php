@@ -1,9 +1,11 @@
 <?php
 namespace app\manage\controller\weixin;
+use app\manage\controller\Common;
 use app\manage\model\Receive;
 use think\Controller;
 use app\manage\model\Accesstoken;
 use think\Session;
+use app\manage\model\FollowPeople;
 use app\admin\model\GoodsOrder;
 use app\manage\model\Reply;
 define("TOKEN", "weixin");//自己定义的token 就是个通信的私钥
@@ -50,7 +52,33 @@ class Linkwx extends Controller
                 {
                     $this->resMsg(1,"text",$postObj);
                 }
-
+            }
+            if($postObj->MsgType=="event")
+            {
+                $Event=$postObj->Event;
+                $openId=$postObj->FromUserName;
+                if($Event=="subscribe")
+                {
+                    $people=Common::GetUserInformation($openId);
+                    $result=FollowPeople::create([
+                        "openid"=>$people["openid"],
+                        "nickname"=>$people["nickname"],
+                        "sex"=>$people["sex"],
+                        "language"=>$people["language"],
+                        "address"=>$people["country"].$people["province"].$people["city"],
+                        "head"=>$people["headimgurl"],
+                        "subscribe_time"=>$people["subscribe_time"],
+                        "remark"=>$people["remark"]
+                    ]);
+                    if($result)
+                    {
+                        $this->resMsg(2,"text",$postObj);
+                    }
+                }
+                if($Event=="unsubscribe")
+                {
+                    $result=FollowPeople::where("openid",$openId)->delete();
+                }
             }
         }else {
             echo '咋不说哈呢';
