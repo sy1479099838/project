@@ -15,5 +15,12 @@
 .wei_fa tbody tr td:nth-child(7){width:auto;text-align: left;}
 .wei_fa tbody tr td:nth-child(8){width:5%;vertical-align:middle;}
 .wei_fa tbody tr td:nth-child(8) button{width:90%;height:30px;border:1px solid green;border-radius:5px;margin-left:5%;background:none;background:green;color:white;}
-.wei_list_fenye{width:15%;height:30px;float:right;margin-right:4%;margin-top:10px;}
+.wei_list_fenye{height:30px;float:right;margin-right:4%;margin-top:10px;}
 .wei_list_fenye a{display:block;width:15px;height:15px;border:1px solid black;float:left;text-align:center;line-height:15px;margin-left:8px;}
+.fahuo{width:400px;height:400px;position:absolute;top:200px;left:200px;border-radius:4px;z-index:9999999999999;display:none;background:white;border:1px solid green;}
+.fahuo_1{width:100%;height:40px;font-size:16px;line-height:40px;position:relative;text-align:center;}
+.fahuo_second{width:100%;height:120px;}
+.fahuo_second li{width:100%;height:40px;margin-top:20px;}
+.fahuo_second li span{width:24%;height:20px;margin-top:10px;margin-left:18%;text-align:center;line-height:20px;background:#7B7B7B;color:white;float:left;}
+.fahuo_second li input{width:40%;height:18px;margin-top:10px;line-height:18px;float:left;border:1px solid #BEBEBE;}
+.anniu{width:64%;margin-left:18%;height:20px;text-align:center;line-height:20px;background:#7B7B7B;color:white;margin-top:40px;}

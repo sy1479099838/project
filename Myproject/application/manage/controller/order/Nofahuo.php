@@ -19,4 +19,9 @@ class Nofahuo extends Common
         $this->assign("order",$order);
         return $this->fetch();
     }
+    public function fahuo(){
+        $tijiao=input();
+        dump($tijiao);
+        exit("success");
+    }
 }

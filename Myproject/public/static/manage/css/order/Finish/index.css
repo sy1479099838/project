@@ -17,3 +17,5 @@
 .yifahuo_list tbody tr td:nth-child(8){width:6%;vertical-align:middle;}
 .yifahuo_list tbody tr td:nth-child(8) span{width:90%;height:100%;border:1px solid green;border-radius:4px;}
 .yifahuo_list tbody tr td:nth-child(8) button{width:30%;height:20px;border:1px solid green;border-radius:4px;margin-left:5%;background:none;background:green;color:white;}
+.wei_list_fenye{height:30px;float:right;margin-right:4%;margin-top:10px;}
+.wei_list_fenye a{display:block;width:15px;height:15px;border:1px solid black;float:left;text-align:center;line-height:15px;margin-left:8px;}

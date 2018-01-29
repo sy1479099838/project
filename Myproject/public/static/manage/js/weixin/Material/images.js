@@ -31,56 +31,30 @@ function closeadd(){
     $(".addtupian").fadeOut();
 }
 
-function xmTanUploadImg(obj) {
 
-    var fl=obj.files.length;
-    for(var i=0;i<fl;i++){
-        var file=obj.files[i];
-        var reader = new FileReader();
-
-        //读取文件过程方法
-
-        reader.onloadstart = function (e) {
-            console.log("开始读取....");
-        }
-        reader.onprogress = function (e) {
-            console.log("正在读取中....");
-        }
-        reader.onabort = function (e) {
-            console.log("中断读取....");
-        }
-        reader.onerror = function (e) {
-            console.log("读取异常....");
-        }
-        reader.onload = function (e) {
-            console.log("成功读取....");
-
-            var imgstr='<img style="width:100px;height:100px;" src="'+e.target.result+'"/>';
-            var oimgbox=document.getElementById("imgboxid");
-            var ndiv=document.createElement("div");
-
-            ndiv.innerHTML=imgstr;
-            ndiv.className="img-div";
-            oimgbox.appendChild(ndiv);
-
-        }
-
+function previewFile () {
+    var preview = document.getElementById('img1');
+    var imgfile=preview.getElementsByTagName('img')[0];
+    var file  = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        imgfile.src = reader.result;
+    };
+    if (file) {
         reader.readAsDataURL(file);
-        console.log(file);
-//alert(1);
+    } else {
+        imgfile.src = "";
     }
-
 }
 
 function tutijiao(){
-    var ss=file;
+    //var ss=file;
     var form = new FormData(document.getElementById("tijiaoli"));
         $.ajax({
         url:'tutijiao',
         type:"post",
         data:({
-            form:form,
-            ss:ss
+            form:form
         }),
         processData:false,
         contentType:false,
