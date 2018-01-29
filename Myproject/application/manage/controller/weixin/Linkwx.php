@@ -56,6 +56,7 @@ class Linkwx extends Controller
             if($postObj->MsgType=="event")
             {
                 $Event=$postObj->Event;
+                $this->saveFile($Event);
                 $openId=$postObj->FromUserName;
                 if($Event=="subscribe")
                 {

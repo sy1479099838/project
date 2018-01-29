@@ -219,12 +219,12 @@ class Common extends Controller
      * 拉取微信公众号的用户信息
      * */
 
-    public static function GetUserInformation($openId)
+    public function GetUserInformation($openId)
     {
         $access_token=self::getAccessToken();
         $url2="https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openId&lang=zh_CN";
         $people=json_decode(Common::http_request($url2,"get"),true);
-        return$people;
+        return $people;
     }
 
 }
