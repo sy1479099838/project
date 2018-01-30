@@ -28,7 +28,11 @@
             <td>地址：{$vo.address}</td>
             <td>{$vo.subscribe_time|date="Y-m-d H:i:s",###}</td>
             <td>{$vo.remark}</td>
-            <td></td>
+            <td>
+                <button class="obutton" onclick="beizhubianji()">编辑</button><br>
+                <button class="obutton2" onclick="beizhubaocun()">保存</button><br>
+                <input type="text" name="beizhubaina" value="" class="bei_inp">
+            </td>
         </tr>
         {/volist}
     </tbody>
@@ -39,6 +43,6 @@
     {volist name="page" id="vo_2"}
     <a href="javascript:void(0);" onclick="UserFenYe('{$NowPage}','{$vo_2}','{$AllPage}')">{$vo_2}</a>
     {/volist}
-    <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="UserFenYe('{$NowPage}','next','{$AllPage}')"></a>
+    <a class="icon-double-angle-right" href="javascript:void(0)" onclick="UserFenYe('{$NowPage}','next','{$AllPage}')"></a>
 </div>
 {/block}

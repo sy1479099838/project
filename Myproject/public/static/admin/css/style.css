@@ -48,28 +48,6 @@ a{text-decoration:none;}
 /*------------头像部分-------------*/
 
 
-/*--------------------------以下是商品区部分----------------------------*/
-
-.LeftMenuBox{display:inline-block;height:auto;width:25%;background:#f2f2f2;border-right:1px solid #dddddd;border-top:1px solid #dddddd;}
-.LeftMenu{display:inline-block;width:100%;height:50px;line-height:50px;font-size:18px;text-align:center;color:#2b2a2a;border-bottom:1px solid #dddddd;}
-#LeftMenu_1{background:#ffffff;}
-.RightFruit{display:inline-block;background:#ffffff;width:74.6%;height:auto;border-top:1px solid #dddddd;}
-.RightFruit_order{font-size:13px;height:50px;}
-#RightFruit_1{display:block;}
-#RightFruit_2{display:none;}
-#RightFruit_3{display:none;}
-.RightFruit_order a{display:inline-block;line-height:50px;text-align:center;padding-left:4px;color:#333333;}
-.RightFruit_order a img{display:inline-block;margin-bottom:-2px;}
-.AllFruit{width:100%;display:inline-block;height:auto;}
-.AllFruit_photo{display:inline-block;width:35%;height:auto;}
-.AllFruit_photo img{display:inline-block;width:92%;border:1px solid #dddddd;float:right;}
-.AllFruit_text{display:inline-block;font-size:12px;width:25%;line-height:234%;margin-left: 7px;height:100%;}
-.AllFruit_text sub{font-size:8px;color:#333333;}
-.Fruit_text_Price{font-size:12px;color:#65a031;}
-.Fruit_text_Price b{font-size:8px;color:#c0bcb6;text-decoration:line-through;}
-.AllFruit_input{display:inline-block;height:20px;color:#6ea037;width:33%;margin-top: 13%;}
-.AllFruit_num{display:inline-block;border-radius:0;text-align:center;border:none;border:1px solid #dddddd;height:100%;color:#6ea037;margin:0 3px;width:35%;}
-.AllFruit_input span{display:inline-block;border:1px solid #dddddd;height:100%;text-align:center;width:20%;}
 
 
 /*------------------------以下是登录注册页面-------------------------*/

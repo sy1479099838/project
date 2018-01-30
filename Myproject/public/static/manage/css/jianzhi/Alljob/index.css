@@ -1,1 +1,17 @@
 .alljob_first{width:100%;height:60px;font-size:20px;line-height:60px;text-align:center;}
+.second{width:20%;height:30px;background:none;border:2px solid green;border-radius:4px;margin-left:3%;float:left;}
+.second input{display:block;width:75%;border:none;float:left;}
+.second_1{width:12%;height:30px;background:none;border:2px solid green;border-radius:4px;margin-left:3%;float:left;}
+.second_1 img{width:25px;height:25px;}
+.zhiwei_list{width:94%;border:1px solid #7B7B7B;margin-left:3%;margin-top:30px;}
+.zhiwei_list tbody tr th{border:1px solid #adadad;}
+.zhiwei_list tbody tr td{border:1px solid #adadad;text-align:center;}
+.zhiwei_list tbody tr td:nth-child(1){width:4%;}
+.zhiwei_list tbody tr td:nth-child(2){width:12%;}
+.zhiwei_list tbody tr td:nth-child(3){width:15%;}
+.zhiwei_list tbody tr td:nth-child(4){width:13%;}
+.zhiwei_list tbody tr td:nth-child(5){width:25%;}
+.zhiwei_list tbody tr td:nth-child(6){width:19%;}
+.zhiwei_list tbody tr td:nth-child(7){width:4%;}
+.zhiwei_list tbody tr td:nth-child(8){width:auto;text-align:center;vertical-align:middle;}
+.zhiwei_list tbody tr td:nth-child(8) button{display:block;width:80%;margin-left:10%;margin-top:10px;background:none;text-align:center;border:1px solid green;border-radius:4px;}

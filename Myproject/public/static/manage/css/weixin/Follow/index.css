@@ -6,9 +6,16 @@
 .guan_list{width:94%;height:auto;border:1px solid #adadad;margin-left:3%;}
 .guan_list tbody tr th{border:1px solid #adadad;text-align:center;}
 .guan_list tbody tr td{border:1px solid #adadad;text-align:center;}
-.guan_list tbody  tr td:nth-child(1){width:10%;}
-.guan_list tbody  tr td:nth-child(2){width:18%;}
+.guan_list tbody  tr td:nth-child(1){width:5%;}
+.guan_list tbody  tr td:nth-child(2){width:10%;}
 .guan_list tbody  tr td:nth-child(3){width:13%;}
 .guan_list tbody  tr td:nth-child(3) img{width:100px;height:100px;margin-left:1%;margin-top:3px;margin-bottom:3px;}
-.guan_list tbody  tr td:nth-child(4){width:15%;}
-.guan_list tbody  tr td:nth-child(5){width:auto;}
+.guan_list tbody  tr td:nth-child(4){width:5%;}
+.guan_list tbody  tr td:nth-child(5){width:20%;}
+.guan_list tbody  tr td:nth-child(6){width:15%;}
+.guan_list tbody  tr td:nth-child(7){width:auto;}
+.guan_list tbody  tr td:nth-child(8){width:15%;vertical-align:middle;}
+.obutton{width:70%;height:20px;border:1px solid green;border-radius:4px;background:none;}
+.obutton2{display:none;width:70%;height:20px;border:1px solid green;border-radius:4px;background:none;}
+.bei_inp{display:none;width:70%;height:20px;border:1px solid green;border-radius:4px;margin-top:10px;}
+.fenye a{display:block;width:18px;height:18px;border:1px solid #adadad;text-align:center;line-height:20px;float:left;margin-left:4px;margin-top:10px;}
