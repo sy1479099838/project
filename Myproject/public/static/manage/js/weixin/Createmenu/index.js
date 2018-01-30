@@ -16,7 +16,7 @@ $(function () {
        if(MenuType=="1")
        {
            $(this).nextAll("button").fadeOut(0);
-           $(this).parents(".Menu-Content").find(".childrenMenu").fadeOut(0);
+           $(this).parents(".Menu-Content").find(".childrenMenu").remove();
            $(this).parents(".Menu-Content").find(".href").fadeIn(200);
        }
        else
@@ -54,10 +54,17 @@ function saveMenu() {
             menu3:menu3
         }),
         success:function (msg) {
-            
+            if(msg=="success")
+            {
+                $.showBox("菜单生成成功！");
+            }
+            else
+            {
+                $.showBox("菜单生成失败啦！");
+            }
         },
         error:function (msg) {
-            
+            $.showBox("失败，请重试！");
         }
     });
 

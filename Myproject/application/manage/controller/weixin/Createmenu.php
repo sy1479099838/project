@@ -62,6 +62,75 @@ class Createmenu extends Common
     public function saveMenu()
     {
         $val=input();
-        dump($val);
+        $information=array();
+        foreach ($val as $v)
+        {
+            $temp=json_decode($v,true);
+            $a=array();
+            foreach ($temp as $va)
+            {
+                $a[$va["name"]]=$va["value"];
+            }
+            $information[]=$a;
+        }
+        $MenuList=array();
+        foreach ($information as $value)
+        {
+            $menu=array();
+            if($value["MenuEnable"]==1)
+            {
+                $menu["name"]=$value["MenuName"];
+                if($value["Menu-type"]==1)
+                {
+                    $menu["type"]="view";
+                    $menu["url"]=$value["MenuHref"];
+                }
+                else if($value["Menu-type"]==0)
+                {
+                    $menu["sub_button"]=array();
+                    for($i=1;$i<=5;$i++)
+                    {
+                        $test=array();
+                        if(isset($value["first-children-".$i]))
+                        {
+                            $test["name"]=$value["first-children-".$i];
+                            if($value["chidren1-enable".$i]==1)
+                            {
+                                $test["type"]="view";
+                                $test["url"]=$value["chidren1-href".$i];
+                            }
+                            else if($value["chidren1-enable".$i]==0)
+                            {
+                                $test["type"]="click";
+                                $test["key"]=$value["chidren1-href".$i];
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        $menu["sub_button"][]=$test;
+                    }
+                }
+            }
+            $MenuList[]=$menu;
+        }
+        $createMenu["button"]=$MenuList;
+        $createMenu=json_encode($createMenu,true);
+        $cacessToken=Common::getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=$cacessToken";
+        $result=Common::http_request($url,"post",$createMenu);
+        $result=json_decode($result,true);
+        if($result["errmsg"]=="ok")
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+
+
+
     }
 }
