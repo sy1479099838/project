@@ -330,7 +330,7 @@ function testUploadsImg() {
 
     // var form = new FormData(document.getElementById("ADDGoods-Form"));//获取表单数据
     var formArray = JSON.stringify($("#ADDGoods-Form").serializeArray());
-    console.log(formArray);
+    // console.log(formArray);
     var arr = Object.keys(imgfile);//获取照片的数量
     var oldNum = arr.length;
     if(oldNum<2)//如果没有选择照片，则返回提醒选择照片

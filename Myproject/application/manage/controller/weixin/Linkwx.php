@@ -5,6 +5,7 @@ use app\manage\model\Receive;
 use think\Controller;
 use app\manage\model\Accesstoken;
 use think\Session;
+use think\Db;
 use app\manage\model\FollowPeople;
 use app\admin\model\GoodsOrder;
 use app\manage\model\Reply;
@@ -60,7 +61,7 @@ class Linkwx extends Controller
                 $openId=$postObj->FromUserName;
                 if($Event=="subscribe")
                 {
-                    $people=Common::GetUserInformation($openId);
+                    $people=$this->GetUserInformation($openId);
                     $result=FollowPeople::create([
                         "openid"=>$people["openid"],
                         "nickname"=>$people["nickname"],
@@ -76,9 +77,10 @@ class Linkwx extends Controller
                         $this->resMsg(2,"text",$postObj);
                     }
                 }
-                if($Event=="unsubscribe")
+                else if($Event=="unsubscribe")
                 {
-                    $result=FollowPeople::where("openid",$openId)->delete();
+                    $people=$this->GetUserInformation($openId);
+                    Db::table('t_follow_people')->where('openid',$people["openid"])->delete();
                 }
             }
         }else {
@@ -216,5 +218,13 @@ class Linkwx extends Controller
         echo $failResult;
         exit;
 
+    }
+
+    public function GetUserInformation($openId)
+    {
+        $access_token=$this->getAccessToken();
+        $url2="https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openId&lang=zh_CN";
+        $people=json_decode(Common::http_request($url2,"get"),true);
+        return $people;
     }
 }

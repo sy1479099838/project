@@ -48,6 +48,7 @@ class Createmenu extends Common
 //             }';
         $menuList=Common::http_request($url);
         $menuList=json_decode($menuList,true);
+//        dump($menuList);exit;
         $this->assign("count",count($menuList["menu"]["button"]));
         $this->assign("menuList",$menuList["menu"]["button"]);
         return $this->fetch();
@@ -56,5 +57,11 @@ class Createmenu extends Common
         $tijiao=input();
         dump($tijiao);
         exit("success");
+    }
+
+    public function saveMenu()
+    {
+        $val=input();
+        dump($val);
     }
 }
