@@ -1,80 +1,124 @@
 {extend name="Public:index"/}
 {block name="main"}
-    <div class="WeixinMenu-bigBox">
-        <h1 class="Head">微信公众号菜单生成</h1>
-        <!--<form class="Menu-form">-->
-            <button class="addMenu" onclick="Add_menu()">添加一级菜单</button><label class="addMenu-label">（最多添加3个一级菜单，且名称不超过4个汉字）</label><br>
-            {volist name="menuList" id="vo"}
-            <div class="menuBox" id="MenuBox1">
-                <p id="topMenu{$key+1}" class="topmenu">
-                    {$key+1}、<input type="text" value="{$vo.name}" placeholder="请输入菜单名称" name="topMenu{$key+1}">
-                    跳转链接：<input type="radio" name="topMenu{$key+1}-checkbox" placeholder="" value="1" onclick="addbutton(1)"
-                                {present name="vo.type"}{$vo['type']=='view'?'checked':''}{/present}>
-                    点击事件：<input type="radio" name="topMenu{$key+1}-checkbox" placeholder="" value="0" onclick="addbutton(0)"
-                                {present name="vo.type"}{$vo['type']=='click'?'checked':''}{/present}>
-                    {present name="vo.type"}
-                    {if condition="($vo.type == 'view')"} 链接：<input type="text" value="http://" placeholder="链接">
-                    {else /} <button onclick="addSecondMenu()">添加子菜单</button>
-                    {/if}
-                    {/present}
-
+<div class="WeiXinMenu-Box">
+    <h1 style="text-align: center;font-size: 30px;margin: 20px 0;">
+        微信公众号菜单生成
+    </h1>
+    <p class="MenuSubmit"><button onclick="saveMenu()">保存</button></p>
+    <form method="post" class="WeiXinMenu-form" onsubmit="return false;" id="form1">
+        <div class="Menu-box">
+            <p class="Menu-enable">
+                <span class="zhucaidan"><b style="font-size: 20px;">主菜单1：</b></span>
+                <input type="radio" name="MenuEnable" value="1" placeholder="" {present name="menuList.0"}checked{/present}><span>启用</span>
+                <input type="radio" name="MenuEnable" value="0" placeholder="" {notpresent name="menuList.0"}checked{/notpresent}><span>不启用</span>
+            </p>
+            <div class="Menu-Content">
+                <p>
+                    <span>菜单名称：</span>
+                    <input type="text" value="{$menuList.0.name}" name="MenuName" placeholder="四个汉字或者8个英文" style="border:1px solid black;display: inline-block;width:200px;height: 22px;margin-left: 10px;">
+                    <input type="radio" name="Menu-type" placeholder="" value="1" {present name="menuList.0"}{present name="menuList.0.type"}checked{/present} {/present} ><span>跳转链接</span>
+                    <input type="radio" name="Menu-type" placeholder="" value="0" {present name="menuList.0"} {notpresent name="menuList.0.type"}checked{/notpresent}{/present} ><span>点击事件</span>
+                    <button class="addChildrenMenu">添加子菜单</button>
                 </p>
-                <div>
-                    {volist name="vo.sub_button" id="vo_1"}
-                    <p class="SecondMenu">
-                        ({$key+1})<input type="text" value="{$vo_1.name}" placeholder="二级菜单名称">
-                        跳转链接：<input type="radio" name="SecondMenu{$key+1}-checkbox" placeholder="" value="1" onclick="addbutton(1)"
-                                    {present name="vo_1.type"}{$vo_1['type']=='view'?'checked':''}{/present}>
-                        点击按钮：<input type="radio" name="SecondMenu{$key+1}-checkbox" placeholder="" value="0" onclick="addbutton(0)"
-                                    {present name="vo_1.type"}{$vo_1['type']=='click'?'checked':''}{/present}><br>
-                    </p>
-                    {/volist}
+                <div class="Menu-Content-children href">
+                    <span>跳转链接：</span>
+                    <input type="text" placeholder="http://" name="MenuHref" value="{present name="menuList.0"}{present name="menuList.0.type"}{$menuList.0.url}{/present} {/present}" style="display: inline-block;width: 300px;">
                 </div>
+                {present name="menuList.0"}
+                {notpresent name="menuList.0.type"}
+                {volist name="menuList.0.sub_button" id="vo"}
+                <div class="Menu-Content-children childrenMenu" style="display: block;">
+                    <div class="children-Menu">
+                        <span>子菜单{$key+1}：</span>
+                        <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
+                        <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="view"?"checked":""}><span>跳转链接</span>
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="click"?"checked":""}><span>关键字回复</span><br>
+                        <span>跳转链接或者关键字：</span><input value="{present name='vo.url'}{$vo.url}{else /}{$vo.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                    </div>
+                </div>
+                {/volist}
+                {/notpresent}
+                {/present}
             </div>
-            {/volist}
-        <!--</form>-->
-        <input type="hidden" value="{$count}">
-    </div>
-
-<!---------------------添加公众号菜单---------------------->
-    <div class="bianji_menulist" id="list">
-        <div class="first">
-        <button class="menulist_bianji" onclick="Kbianji()">编辑</button>
-        <button class="menulist_baocun" onclick="Baocun()">保存</button>
         </div>
-        <div style="clear:both;"></div>
-        <form  id="tijiao" method="post">
-            <div class="wei_menu" id="weixinmenu_1">
-                <span class="ziwei_menu1">
-                    主菜单一
-                </span>
-                <div class="ziwei_menu2">
-                    <span>启用<input type="radio" name="qiyong1" value="0" onchange="qiyong(1,0)"></span>
-                    <span>不启用<input type="radio" name="qiyong1" value="1" onchange="qiyong(1,1)"></span>
-                </div>
-            </div>
+    </form>
 
-            <div class="wei_menu" id="weixinmenu_2">
-                <span class="ziwei_menu1">
-                    主菜单二
-                </span>
-                <div class="ziwei_menu2">
-                    <span>启用<input type="radio" name="qiyong2" value="0" onchange="qiyong(2,0)"></span>
-                    <span>不启用<input type="radio" name="qiyong2" value="1" onchange="qiyong(2,1)"></span>
+    <form method="post" class="WeiXinMenu-form" onsubmit="return false;" id="form2">
+        <div class="Menu-box">
+            <p class="Menu-enable">
+                <span class="zhucaidan"><b style="font-size: 20px;">主菜单2：</b></span>
+                <input type="radio" name="MenuEnable" value="1" placeholder="" {present name="menuList.1"}checked{/present}><span>启用</span>
+                <input type="radio" name="MenuEnable" value="0" placeholder="" {notpresent name="menuList.1"}checked{/notpresent}><span>不启用</span>
+            </p>
+            <div class="Menu-Content">
+                <p>
+                    <span>菜单名称：</span>
+                    <input type="text" value="{$menuList.1.name}" name="MenuName" placeholder="四个汉字或者8个英文" style="border:1px solid black;display: inline-block;width:200px;height: 22px;margin-left: 10px;">
+                    <input type="radio" name="Menu-type" placeholder="" value="1" {present name="menuList.1"}{present name="menuList.1.type"}checked{/present} {/present}<span>跳转链接</span>
+                    <input type="radio" name="Menu-type" placeholder="" value="0" {present name="menuList.1"} {notpresent name="menuList.1.type"}checked{/notpresent}{/present}><span>点击事件</span>
+                    <button class="addChildrenMenu">添加子菜单</button>
+                </p>
+                <div class="Menu-Content-children href">
+                    <span>跳转链接：</span>
+                    <input type="text" placeholder="http://" name="MenuHref" value="{present name="menuList.1"}{present name="menuList.1.type"}{$menuList.1.url}{/present} {/present}" style="display: inline-block;width: 300px;">
                 </div>
-            </div>
-            <div class="wei_menu" id="weixinmenu_3">
-                <span class="ziwei_menu1">
-                    主菜单三
-                </span>
-                <div class="ziwei_menu2">
-                    <span>启用<input type="radio" name="qiyong3" value="0" onchange="qiyong(3,0)"></span>
-                    <span>不启用<input type="radio" name="qiyong3" value="1" onchange="qiyong(3,1)"></span>
+                {present name="menuList.1"}
+                {notpresent name="menuList.1.type"}
+                {volist name="menuList.1.sub_button" id="vo_1"}
+                <div class="Menu-Content-children childrenMenu" style="display: block;">
+                    <div class="children-Menu">
+                        <span>子菜单{$key+1}：</span>
+                        <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo_1.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
+                        <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="view"?"checked":""}><span>跳转链接</span>
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="click"?"checked":""}><span>关键字回复</span><br>
+                        <span>跳转链接或者关键字：</span><input value="{present name='vo_1.url'}{$vo_1.url}{else /}{$vo_1.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                    </div>
                 </div>
+                {/volist}
+                {/notpresent}
+                {/present}
             </div>
+        </div>
+    </form>
 
-        <div style="clear:both;"></div>
-        </form>
-    </div>
+    <form method="post" class="WeiXinMenu-form" onsubmit="return false;" id="form3">
+        <div class="Menu-box">
+            <p class="Menu-enable">
+                <span class="zhucaidan"><b style="font-size: 20px;">主菜单3：</b></span>
+                <input type="radio" name="MenuEnable" value="1" placeholder="" {present name="menuList.2"}checked{/present}><span>启用</span>
+                <input type="radio" name="MenuEnable" value="0" placeholder="" {notpresent name="menuList.2"}checked{/notpresent}><span>不启用</span>
+            </p>
+            <div class="Menu-Content">
+                <p>
+                    <span>菜单名称：</span>
+                    <input type="text" value="{$menuList.2.name}" name="MenuName" placeholder="四个汉字或者8个英文" style="border:1px solid black;display: inline-block;width:200px;height: 22px;margin-left: 10px;">
+                    <input type="radio" name="Menu-type" placeholder="" value="1" {present name="menuList.2"}{present name="menuList.2.type"}checked{/present} {/present}><span>跳转链接</span>
+                    <input type="radio" name="Menu-type" placeholder="" value="0" {present name="menuList.2"} {notpresent name="menuList.2.type"}checked{/notpresent}{/present}><span>点击事件</span>
+                    <button class="addChildrenMenu">添加子菜单</button>
+                </p>
+                <div class="Menu-Content-children href">
+                    <span>跳转链接：</span>
+                    <input type="text" placeholder="http://" name="MenuHref" value="{present name="menuList.2"}{present name="menuList.2.type"}{$menuList.2.url}{/present} {/present}" style="display: inline-block;width: 300px;">
+                </div>
+                {present name="menuList.2"}
+                {notpresent name="menuList.2.type"}
+                {volist name="menuList.2.sub_button" id="vo_2"}
+                <div class="Menu-Content-children childrenMenu" style="display: block;">
+                    <div class="children-Menu">
+                        <span>子菜单{$key+1}：</span>
+                        <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo_2.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
+                        <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="view"?"checked":""}><span>跳转链接</span>
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="click"?"checked":""}><span>关键字回复</span><br>
+                        <span>跳转链接或者关键字：</span><input value="{present name='vo_2.url'}{$vo_2.url}{else /}{$vo_2.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                    </div>
+                </div>
+                {/volist}
+                {/notpresent}
+                {/present}
+            </div>
+        </div>
+    </form>
 
+
+</div>
 {/block}
