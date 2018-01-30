@@ -29,5 +29,12 @@ class Follow extends Common
         $this->assign("NowPage",$NowPage);
         return $this->fetch();
     }
+    public function beizhua()
+    {
+        $beizhu=$_POST['beizhu'];
+        //dump($nicheng);
+        exit("success");
+
+    }
 
 }
