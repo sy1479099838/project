@@ -11,6 +11,6 @@
 .WeiXinMenu-Box>.WeiXinMenu-form>.Menu-box>.Menu-Content>.Menu-Content-children{margin: 10px 0 10px 109px;display: none;}
 .WeiXinMenu-Box>.WeiXinMenu-form>.Menu-box>.Menu-Content>.Menu-Content-children>.children-Menu{border:1px solid black;padding:10px 3px;}
 .WeiXinMenu-Box>.WeiXinMenu-form>.Menu-box>.Menu-Content>.Menu-Content-children>.children-Menu input{display: inline-block;width: 30px;}
-.WeiXinMenu-Box>.MenuSubmit{width: 80%;;margin-left: 5%;margin-bottom: 20px;}
+.WeiXinMenu-Box>.MenuSubmit{width: 90%;;margin-left: 5%;margin-bottom: 20px;}
 .WeiXinMenu-Box>.MenuSubmit button{background: none;border: 1px solid green; border-radius: 3px; padding:3px 10px;}
 
