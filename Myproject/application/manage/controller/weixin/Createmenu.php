@@ -115,8 +115,18 @@ class Createmenu extends Common
             }
             $MenuList[]=$menu;
         }
+        $zhongjian=array();
+        foreach ($MenuList as $Empty)
+        {
+            if(!empty($Empty))
+            {
+                $zhongjian[]=$Empty;
+            }
+        }
+        $MenuList=$zhongjian;
         $createMenu["button"]=$MenuList;
-        $createMenu=json_encode($createMenu,true);
+        $createMenu=json_encode($createMenu,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);//JSON_UNESCAPED_UNICODE
+//        dump($createMenu);exit;
         $cacessToken=Common::getAccessToken();
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=$cacessToken";
         $result=Common::http_request($url,"post",$createMenu);

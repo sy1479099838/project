@@ -40,7 +40,11 @@ $(function () {
        }
    });
 });
-
+function sureSave() {
+    var text="您确认保存菜单？";
+    var hanshu="saveMenu()";
+    affirm(text,hanshu);
+}
 function saveMenu() {
     var menu1 = JSON.stringify($("#form1").serializeArray());
     var menu2 = JSON.stringify($("#form2").serializeArray());
@@ -57,6 +61,7 @@ function saveMenu() {
             if(msg=="success")
             {
                 $.showBox("菜单生成成功！");
+                window.location.reload();
             }
             else
             {
