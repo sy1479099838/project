@@ -16,7 +16,7 @@ class Material extends Common
         $result=Common::http_request($url,"post",$data);
         $result=json_decode($result,true);
         $this->assign("news",$result);
-//        dump($result);
+//        dump($result);exit;
         return $this->fetch();
     }
 

@@ -2,28 +2,69 @@
 namespace app\manage\controller\weixin;
 use app\manage\controller\Common;
 use app\manage\model\WeixinExpression;
+use app\manage\model\Reply as ModelReplay;
+use app\manage\model\Receive;
 class Reply extends Common
 {
     public function index()
     {
-
+//        $a=$this->GetUserInformation("oNqUrwRmDJslHtb9wlOmcJQUekLc");
+//        dump($a);exit;
+        $text=ModelReplay::where("id","not in","1,2")->select();
+        $text=json_decode(json_encode($text,true),true);
+//        dump($text);exit;
         $biaoqing=json_decode(json_encode(WeixinExpression::all(),true),true);
-//        $rul="https://api.weixin.qq.com/cgi-bin/media/upload?access_token=5_zQIvbgBrH6v14Y07ek4NiXhkKXrTGWgXoNG_7639xkI2kOkSPB-Eso6E0KL8nHvIMrEEhPIIHVJhW19p5ycx2heMRJxROwhQKrx7Sf8LZQvBchMWgYQDaIhV2BhqUfyyf4waO3EI6I7rj5rMJAFfAJAULQ&type=image";
-//        $img=realpath("act1.jpg");
-//        $data =array('media'=>'@'.$img);
-//        $test=Common::http_request($rul,"post",$data);
-//        $test=json_decode($test,true);
-//        dump($test);
         $this->assign("Biaoqing",$biaoqing);
+        $this->assign("text",$text);
         return $this->fetch();
     }
 
     public function guanjianzi()
     {
         $guanjianzi=input();
-        dump($guanjianzi);
-        exit("success");
+        $result=ModelReplay::create([
+            "MsgType"=>"text",
+            "ReplyContent"=>$guanjianzi["guanjian_content"]
+        ]);
+        if($result)
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
 
+    public function saveReceive()
+    {
+        $info=input();
+        switch ($info["ReplyType"])
+        {
+            case 1:
+                $type="news";
+                break;
+            case 2:
+                $type="photo";
+                break;
+            case 3:
+                $type="text";
+                break;
+        }
+        $value=Receive::create([
+            "MegType"=>"text",
+            "content"=>$info["ReceiveContent"],
+            "ReplyMegType"=>$type,
+            "ReplyID"=>$info["text"]
+        ]);
+        if($value)
+        {
+            exit("success");
+        }
+        else
+        {
+            exit("error");
+        }
     }
 
 }

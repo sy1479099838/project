@@ -82,6 +82,23 @@ class Linkwx extends Controller
                     $people=$this->GetUserInformation($openId);
                     Db::table('t_follow_people')->where('openid',$people["openid"])->delete();
                 }
+                else if($Event=="CLICK")
+                {
+                    $EventKey = trim($postObj->EventKey);
+                    $this->saveFile($EventKey);
+                    $result=Receive::where("content",$EventKey)
+                        ->where("MegType","text")
+                        ->field("ReplyID,ReplyMegType")
+                        ->find();
+                    if($result)
+                    {
+                        $this->resMsg($result->ReplyID,$result->ReplyMegType,$postObj);
+                    }
+                    else
+                    {
+                        $this->resMsg(1,"text",$postObj);
+                    }
+                }
             }
         }else {
             echo '咋不说哈呢';

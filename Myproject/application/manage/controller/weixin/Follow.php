@@ -32,7 +32,7 @@ class Follow extends Common
     public function beizhua()
     {
         $beizhu=$_POST['beizhu'];
-        //dump($nicheng);
+        dump($beizhu);
         exit("success");
 
     }
