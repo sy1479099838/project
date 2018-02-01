@@ -5,6 +5,7 @@ use app\admin\controller\common\Common;
 use app\manage\model\Goods;
 use app\manage\model\Hotclass;
 use app\admin\model\Phoneimg;
+use app\manage\model\GoodsClassify;
 use think\Db;
 class Home extends Common
 {
@@ -37,7 +38,13 @@ class Home extends Common
 //            ->order($qwe,"DESC")
 //            ->select();
 //        dump(json_decode(json_encode($juli,true),true));exit;
+//         {:url('/admin/home/home/piao')}{:url('/admin/home/home/yiri')}{:url('/admin/home/home/gentuan')}
 
+        $GoodsClassify=GoodsClassify::where("id","not in","12")
+            ->where("level","1")
+            ->where("Enable","1")
+            ->field("id,ClassName,PageDisplays_frame,icon")
+            ->select();
         $LunBo=json_decode(json_encode(Phoneimg::where("zhuangtai","1")->order('order', 'asc')->field("href,img,method")->select(),true),true);
         $this->assign("LunBo",$LunBo);
         $GoodsList=json_decode(json_encode(Hotclass::where("enable","1")->order(['order','id'=>'desc'])->select(),true),true);
@@ -58,6 +65,7 @@ class Home extends Common
         $this->assign("UserInformation",$UserInformation);
         $this->assign("GoodsList",$GoodsList);
         $this->assign("NowTime",time());
+        $this->assign("GoodsClassify",$GoodsClassify);
         return $this->fetch();
     }
     public function checkmore(){

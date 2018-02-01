@@ -22,10 +22,14 @@
             <div class="cb"></div>
         </div>
         <div class="MAXwidth Index_Menu_box">
-            <a href="{:url('/admin/home/home/piao')}"><img src="__PUBLIC__/admin/images/90sheji_linggan_13435875.png"><br />门票</a>
-            <a href="{:url('/admin/home/home/yiri')}"><img src="__PUBLIC__/admin/images/oneDay.png"><br />一日游</a>
-            <a href="{:url('/admin/home/home/gentuan')}"><img src="__PUBLIC__/admin/images/Together.png"><br />跟团游</a>
-            <a href="{:url('/admin/home/home/fuli')}"><img src="__PUBLIC__/admin/images/welfare.png"><br />福利</a>
+            {volist name="GoodsClassify" id="Class"}
+                {switch name="Class.PageDisplays_frame"}
+                {case value="1"}<a href="{:url('/admin/home/Home/piao')}"><img src="__ROTH__/uploads/{$Class.icon}"><br />{$Class.ClassName}</a>{/case}
+                {case value="2"}<a href="{:url('/admin/home/Home/yiri')}"><img src="__ROTH__/uploads/{$Class.icon}"><br />{$Class.ClassName}</a>{/case}
+                {case value="3"}<a href="{:url('/admin/home/Home/gentuan')}"><img src="__ROTH__/uploads/{$Class.icon}"><br />{$Class.ClassName}</a>{/case}
+                {/switch}
+            {/volist}
+            <a href="{:url('/admin/home/Home/fuli')}"><img src="__PUBLIC__/admin/images/welfare.png"><br />福利</a>
         </div>
     </div><br>
 
