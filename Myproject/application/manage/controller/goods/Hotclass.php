@@ -121,21 +121,24 @@ class Hotclass extends Common
         if($people["type"]!="admin")
         {
             $GoodsList=Goods::where($map)
+                ->where("enable","1")
                 ->page('1,10')
                 ->where("BusinessId",$people["id"])
                 ->field("id,GoodsName,HotOrder")
                 ->select();
             $PageCount=Goods::where($map)
+                ->where("enable","1")
                 ->where("BusinessId",$people["id"])
                 ->count("id");
         }
         else
         {
             $GoodsList=Goods::where($map)
+                ->where("enable","1")
                 ->page('1,10')
                 ->field("id,GoodsName,HotOrder")
                 ->select();
-            $PageCount=Goods::where($map)->count("id");
+            $PageCount=Goods::where($map)->where("enable","1")->count("id");
         }
         $GoodsList=json_decode(json_encode($GoodsList,true),true);
 

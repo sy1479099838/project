@@ -15,34 +15,6 @@
                 启用：<input type="radio" name="EditClassEnable" value="1" placeholder="" {$information.Enable=="1"?"checked":""}>
                 不启用：<input type="radio" name="EditClassEnable" value="0" placeholder="" {$information.Enable=="1"?"":"checked"}>
             </div>
-            <div>
-                <span>选择父级分类：</span>
-
-                <select class="EditClassSelect_1" name="fenlei">
-                    <option value="0" {$information.cid.0=="0"?"selected":""} >----一级分类----</option>
-                    {present name="ClassList.0"}
-                    {volist name="ClassList" id="value"}
-                    <option value="{$value.id}" {$information.cid.0==$value.id?"selected":""}>----{$value.ClassName}----</option>
-                    {/volist}
-                    {/present}
-                </select>
-
-                {present name="ClassList.0"}
-                {volist name="ClassList" id="va"}
-                {present name="va.children.0"}
-                {notin name="va.level" value="2"}
-                <select id="EditClassSelect{$va.id}" class="EditClassSelect_2" name="fenlei{$va.id}">
-                    <option value="0">---请选择----</option>
-                    {volist name="va.children" id="va_1"}
-                    <option value="{$va_1.id}" {present name="$information.cid.1"}{$information.cid.1==$va_1.id?"selected":""} {/present} >----{$va_1.ClassName}----</option>
-                    {/volist}
-                </select>
-                {/notin}
-                {/present}
-                {/volist}
-                {/present}
-            </div>
-
             <div class="mubanChoice" {$information.IdName}>
                 <span>模&nbsp;&nbsp;板&nbsp;&nbsp;选&nbsp;&nbsp;择：</span><br>
                 <span class="muban-box fl">

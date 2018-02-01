@@ -3,12 +3,12 @@ namespace app\manage\controller\system;
 use app\manage\controller\Common;
 use app\manage\model\GoodsClassify;
 use think\Session;
+use app\manage\model\Goods;
 class Mobmenu extends Common
 {
     public function index()
     {
-        $ClsaaList=json_decode(json_encode(GoodsClassify::select(),true),true);
-//        dump($ClsaaList);exit;
+        $ClsaaList=json_decode(json_encode(GoodsClassify::where("id","not in","12")->select(),true),true);
         $this->assign("ClassList",$this->treeData($ClsaaList));
         return $this->fetch();
     }
@@ -38,30 +38,84 @@ class Mobmenu extends Common
     public function OpenClass()
     {
         $num=input("num");
-        $value=GoodsClassify::where('id', $num)
-            ->update(['Enable' => '1']);
-        if($value=="1")
+        $pid=GoodsClassify::where("id",$num)->field("pid")->find()->pid;
+        if($pid=="0")
         {
-            exit("success");
+            $value=GoodsClassify::where('id', $num)
+                ->update(['Enable' => '1']);
+            if($value=="1")
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
         }
         else
         {
-            exit("error");
+            $enable=GoodsClassify::where("id",$pid)->field("Enable")->find()->Enable;
+            if($enable=="1")
+            {
+                $value=GoodsClassify::where('id', $num)
+                    ->update(['Enable' => '1']);
+                if($value=="1")
+                {
+                    exit("success");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+            else
+            {
+                exit("请确保父级分类为开启状态！");
+            }
         }
     }
     public function CloseClass()
     {
         $num=input("num");
-        $value=GoodsClassify::where('id', $num)
-            ->update(['Enable' => '0']);
-        if($value=="1")
+        $map[]=['exp',"FIND_IN_SET($num,cid)"];
+        $goods=Goods::where($map)->update([
+            "enable"=>0
+        ]);
+        if($goods>=0)
         {
-            exit("success");
+            $id=json_decode(json_encode(GoodsClassify::where($map)->field("id")->select(),true),true);
+            $arr=array();
+            if(!empty($id))
+            {
+                $arr[0]=$num;
+                foreach ($id as $v)
+                {
+                    $arr[]="".$v["id"]."";
+                }
+            }
+            else
+            {
+                $arr[0]=$num;
+            }
+            $ids=implode(",",$arr);
+            $arr=json_encode($arr,true);
+            $value=GoodsClassify::where('id', "in",$ids)
+                ->update(['Enable' => '0']);
+//            dump($arr);exit;
+            if($value>=1)
+            {
+                exit($arr);
+            }
+            else
+            {
+                exit("error");
+            }
         }
         else
         {
-            exit("error");
+            exit("meiyoujinlai");
         }
+
     }
 
     public function subIcon($id)
@@ -105,7 +159,6 @@ class Mobmenu extends Common
     public function Edit()
     {
         $id=input("id");
-        $ClsaaList=json_decode(json_encode(GoodsClassify::select(),true),true);
 
         $information=json_decode(json_encode(GoodsClassify::where("id",$id)->find(),true),true);
         $information["cid"]=explode(",",$information["cid"]);
@@ -116,38 +169,14 @@ class Mobmenu extends Common
         else{
             $information["IdName"]="";
         }
-        return $this->fetch("Edit",["ClassList"=>$this->treeData($ClsaaList),"information"=>$information]);
+        return $this->fetch("Edit",["information"=>$information]);
     }
 
     public function saveFrom($id)
     {
         $value=input();
-        if($value["fenlei"]==0)
-        {
-            $level=1;
-            $pid=0;
-            $cid=0;
-        }
-        else
-        {
-            if($value["fenlei".$value["fenlei"]]==0)
-            {
-                $level=2;
-                $pid=$value["fenlei"];
-                $cid=$value["fenlei"];
-            }
-            else
-            {
-                $level=3;
-                $pid=$value["fenlei".$value["fenlei"]];
-                $cid=$value["fenlei"].",".$value["fenlei".$value["fenlei"]];
-            }
-        }
         $result=GoodsClassify::where("id",$id)->update([
             "ClassName"=>$value["ClassName"],
-            "pid"=>$pid,
-            "cid"=>$cid,
-            "level"=>$level,
             "PageDisplays_frame"=>$value["EditMuban"],
             "Enable"=>$value["EditClassEnable"],
         ]);
@@ -159,5 +188,50 @@ class Mobmenu extends Common
         {
             exit("error");
         }
+    }
+
+    public function SureDel()
+    {
+        $num=input("id");
+        if($num==12)
+        {
+            exit("对不起，您没有权限！");
+        }
+        $map[]=['exp',"FIND_IN_SET($num,cid)"];
+        $id=json_decode(json_encode(GoodsClassify::where($map)->field("id")->select(),true),true);
+        $arr=array();
+        if(!empty($id))
+        {
+            $arr[0]=$num;
+            foreach ($id as $v)
+            {
+                $arr[]="".$v["id"]."";
+            }
+        }
+        else
+        {
+            $arr[0]=$num;
+        }
+        $ids=implode(",",$arr);
+        $value=GoodsClassify::where('id', "in",$ids)
+            ->delete();
+        if($value>0)
+        {
+            $goods=Goods::where($map)->update([
+                "enable"=>0,
+                "pid"=>12,
+                "cid"=>12
+            ]);
+            if($goods)
+            {
+                exit("success");
+            }
+
+        }
+        else
+        {
+            exit("error");
+        }
+
     }
 }

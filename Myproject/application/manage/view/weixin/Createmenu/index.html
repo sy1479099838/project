@@ -5,7 +5,7 @@
         微信公众号菜单生成
     </h1>
     <p class="MenuSubmit"><button onclick="sureSave()">保存</button></p>
-    <p class="MenuSubmit"><b style="color: red">注意：</b>主菜单字数不超过4个汉字或者8个字符，二级菜单字数不超过8个汉字或16个字符；任何链接必须以"http://"或者"https://"开头，否则将会生成失败！请认真填写。</p>
+    <p class="MenuSubmit"><b style="color: red">注意：</b>主菜单字数不超过4个汉字或者8个字符，二级菜单字数不超过8个汉字或16个字符；任何链接必须以"http://"或者"https://"开头，关键字回复可以为任意关键字，素材消息需要填写微信公众平台添加的永久素材Id，否则将会生成失败或部分功能无效！请认真填写。</p>
     <form method="post" class="WeiXinMenu-form" onsubmit="return false;" id="form1">
         <div class="Menu-box">
             <p class="Menu-enable">
@@ -33,8 +33,9 @@
                         <span>子菜单{$key+1}：</span>
                         <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
                         <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="view"?"checked":""}><span>跳转链接</span>
-                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="click"?"checked":""}><span>关键字回复</span><br>
-                        <span>跳转链接或者关键字：</span><input value="{present name='vo.url'}{$vo.url}{else /}{$vo.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="click"?"checked":""}><span>关键字回复</span>
+                        <input type="radio" value="2" name="chidren1-enable{$key+1}" placeholder="" {$vo.type=="media_id"?"checked":""}><span>素材消息</span><br>
+                        <span>跳转链接或者关键字或素材Id：</span><input value="{present name='vo.url'}{$vo.url}{else /}{present name='vo.key'}{$vo.key}{else/}{$vo.media_id}{/present}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头；素材消息为永久素材Id" style="width: 570px;border: 1px solid black;height: 22px;margin: 5px 0">
                     </div>
                 </div>
                 {/volist}
@@ -71,8 +72,9 @@
                         <span>子菜单{$key+1}：</span>
                         <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo_1.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
                         <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="view"?"checked":""}><span>跳转链接</span>
-                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="click"?"checked":""}><span>关键字回复</span><br>
-                        <span>跳转链接或者关键字：</span><input value="{present name='vo_1.url'}{$vo_1.url}{else /}{$vo_1.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="click"?"checked":""}><span>关键字回复</span>
+                        <input type="radio" value="2" name="chidren1-enable{$key+1}" placeholder="" {$vo_1.type=="media_id"?"checked":""}><span>素材消息</span><br>
+                        <span>跳转链接或者关键字或素材Id：</span><input value="{present name='vo_1.url'}{$vo_1.url}{else /}{present name='vo_1.key'}{$vo_1.key}{else/}{$vo_1.media_id}{/present}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头；素材消息为永久素材Id" style="width: 570px;border: 1px solid black;height: 22px;margin: 5px 0">
                     </div>
                 </div>
                 {/volist}
@@ -109,8 +111,9 @@
                         <span>子菜单{$key+1}：</span>
                         <input type="text" placeholder="最多八个汉字16个字符" name="first-children-{$key+1}" value="{$vo_2.name}" style="width: 200px;display: inline-block;border: 1px solid black;height: 22px;">
                         <input type="radio" value="1" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="view"?"checked":""}><span>跳转链接</span>
-                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="click"?"checked":""}><span>关键字回复</span><br>
-                        <span>跳转链接或者关键字：</span><input value="{present name='vo_2.url'}{$vo_2.url}{else /}{$vo_2.key}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头" style="width: 500px;border: 1px solid black;height: 22px;margin: 5px 0">
+                        <input type="radio" value="0" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="click"?"checked":""}><span>关键字回复</span>
+                        <input type="radio" value="2" name="chidren1-enable{$key+1}" placeholder="" {$vo_2.type=="media_id"?"checked":""}><span>素材消息</span><br>
+                        <span>跳转链接或者关键字或素材Id：</span><input value="{present name='vo_2.url'}{$vo_2.url}{else /}{present name='vo_2.key'}{$vo_2.key}{else/}{$vo_2.media_id}{/present}{/present}" type="text" name="chidren1-href{$key+1}" placeholder="关键字内容不限；跳转链接以'http://'或者'https://'开头；素材消息为永久素材Id" style="width: 570px;border: 1px solid black;height: 22px;margin: 5px 0">
                     </div>
                 </div>
                 {/volist}

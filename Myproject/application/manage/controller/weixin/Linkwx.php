@@ -152,6 +152,7 @@ class Linkwx extends Controller
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $megType, $contentStr);
             echo $resultStr;
         }
+        
     }
     public function http_request($url,$method="get",$data=null,$https=true)
     {

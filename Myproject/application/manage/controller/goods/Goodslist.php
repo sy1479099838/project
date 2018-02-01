@@ -73,7 +73,7 @@ class Goodslist extends Common
         }
 
 
-        $ClassList=GoodsClassify::where("Enable","1")->select();
+        $ClassList=GoodsClassify::where("Enable","1")->where("id","not in","12")->select();
         $ClassList=Common::treeData(json_decode(json_encode($ClassList,true),true));
         $this->assign("peopleType",$peopleType);
         $this->assign("ClassList",$ClassList);
@@ -785,22 +785,9 @@ class Goodslist extends Common
         $people=Session::get('admin');
         if($people["type"]=="admin")
         {
-            $result=Goods::where("id",$state["id"])->update([
-                "enable"=>$state["state"]
-            ]);
-            if($result==1)
-            {
-                exit("success");
-            }
-            else
-            {
-                exit("error");
-            }
-        }
-        else
-        {
-            $BusinessId=Goods::where("id",$state["id"])->field("BusinessId")->find()->BusinessId;
-            if($BusinessId==$people["id"])
+            $pid=Goods::where("id",$state["id"])->field("pid")->find()->pid;
+            $classEnable=GoodsClassify::where("id",$pid)->field("Enable")->find()->Enable;
+            if($classEnable=="1")
             {
                 $result=Goods::where("id",$state["id"])->update([
                     "enable"=>$state["state"]
@@ -812,6 +799,38 @@ class Goodslist extends Common
                 else
                 {
                     exit("error");
+                }
+            }
+            else
+            {
+                exit("请确保该产品所属的分类已经启用！");
+            }
+
+        }
+        else
+        {
+            $BusinessId=Goods::where("id",$state["id"])->field("BusinessId")->find()->BusinessId;
+            if($BusinessId==$people["id"])
+            {
+                $pid=Goods::where("id",$state["id"])->field("pid")->find()->pid;
+                $classEnable=GoodsClassify::where("id",$pid)->field("Enable")->find()->Enable;
+                if($classEnable=="1")
+                {
+                    $result=Goods::where("id",$state["id"])->update([
+                        "enable"=>$state["state"]
+                    ]);
+                    if($result==1)
+                    {
+                        exit("success");
+                    }
+                    else
+                    {
+                        exit("error");
+                    }
+                }
+                else
+                {
+                    exit("请确保该产品所属的分类已经启用！");
                 }
             }
             else

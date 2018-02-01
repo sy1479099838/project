@@ -4,7 +4,7 @@ function checka(num){
 function closechecka(num){
     $("#tu"+num).fadeOut();
 }
-function Del(num){
+function DelImages(num){
     $.ajax({
         url:"zheshige",
         type:"post",

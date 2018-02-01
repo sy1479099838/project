@@ -240,9 +240,13 @@ function OpenClass(data) {
                 $("#MobmenuSwitch_off"+data).fadeIn(500);
 
             }
-            else
+            else if(msg=="error")
             {
                 $.showBox("失败，请重试！");
+            }
+            else
+            {
+                $.showBox(msg);
             }
         },
         error:function (msg) {
@@ -259,11 +263,17 @@ function CloseClass(data) {
             num:data
         }),
         success:function (msg) {
-            if(msg=="success")
+            if(msg!="error")
             {
                 $.showBox("成功！");
-                $("#MobmenuSwitch_off"+data).fadeOut(0);
-                $("#MobmenuSwitch_open"+data).fadeIn(500);
+                var obj = JSON.parse(msg);
+                console.log(obj);
+                for(var i=0;i<=obj.length;i++)
+                {
+                    $("#MobmenuSwitch_off"+(obj[i])).fadeOut(0);
+                    $("#MobmenuSwitch_open"+(obj[i])).fadeIn(500);
+                }
+
 
             }
             else
@@ -278,18 +288,35 @@ function CloseClass(data) {
 }
 // 删除分类
 function DeleteMobmenu(date) {
-    alert("del"+date);
-    // $.ajax({
-    //     url:"",
-    //     type:"POST",
-    //     data:({id:date}),
-    //     sucess:function(msg){
-    //         if (msg==="success"){
-    //             $.showBox("删除成功！");
-    //             $(".Mobmenu-index-Box").fadeIn(700);
-    //         }
-    //     },error:function (err) {
-    //         $.showBox("删除失败！")；
-    //     }
-    // })
+    var text="此动作将删除该分类和其所有子分类，下架该分类下所有商品，并将商品归类到默认分类中,是否确认删除？";
+    var hanshu ="SureDel('"+date+"')";
+    affirm(text,hanshu);
+
+}
+
+function SureDel(data) {
+    $.ajax({
+        url:"SureDel",
+        type:"POST",
+        data:({
+            id:data
+        }),
+        success:function(msg){
+            if (msg=="success"){
+                $.showBox("删除成功！");
+                window.location.reload();
+            }
+            else if(msg=="error")
+            {
+                $.showBox("失败啦，请重试！");
+            }
+            else
+            {
+                $.showBox(msg);
+            }
+
+        },error:function (err) {
+            $.showBox("删除失败！");
+        }
+    })
 }

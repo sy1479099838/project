@@ -9,6 +9,7 @@ class Createmenu extends Common
         $url="https://api.weixin.qq.com/cgi-bin/menu/get?access_token=$cacessToken";
         $menuList=Common::http_request($url);//https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfb8f36560c95e58&redirect_uri=http://www.hfyiqiwan.top/admin/login/Weixin/index&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
         $menuList=json_decode($menuList,true);
+//        dump($menuList);exit;
         $this->assign("count",count($menuList["menu"]["button"]));
         $this->assign("menuList",$menuList["menu"]["button"]);
         return $this->fetch();
@@ -64,6 +65,11 @@ class Createmenu extends Common
                                 $test["type"]="click";
                                 $test["key"]=$value["chidren1-href".$i];
                             }
+                            else if($value["chidren1-enable".$i]==2)
+                            {
+                                $test["type"]="media_id";
+                                $test["media_id"]=$value["chidren1-href".$i];
+                            }
                         }
                         else
                         {
@@ -84,6 +90,7 @@ class Createmenu extends Common
             }
         }
         $MenuList=$zhongjian;
+//        dump($MenuList);exit;
         $createMenu["button"]=$MenuList;
         $createMenu=json_encode($createMenu,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
         $cacessToken=Common::getAccessToken();
