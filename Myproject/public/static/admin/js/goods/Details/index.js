@@ -318,22 +318,11 @@ $(function (){
         document.getElementById("queren1").value=n1;
     };
 
-    /*var lis=document.getElementById('Tao_queren_3');
-    var Ole=lis.getElementsByTagName('div');
-    var num=0;
-    var Oldli=null;
-    Oldli=Ole[num];
-    //console.log(Ole);
-    //Ole[num].className='oldclass';
-    for(var i=0;i<Ole.length;i++){
-        Ole[i].onclick=function(){
-            //console.log(Ole[i]);
-            Oldli.className="active";
-            Oldli=this;
-            this.className="l_change";
-            console.log(Oldli);
-        };
-    }*/
+    $("#DingdanSub").click(function () {
+        var packgeId=fisker_encode_v2($("input:hidden[name=pacageId]").val());
+        var num=fisker_encode_v2($("#queren1").val());
+        self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?'+fisker_encode_v2("taocan")+'='+packgeId+'&'+fisker_encode_v2("num")+'='+num;
+    })
 });
 
 function Change_price(data){
@@ -349,6 +338,7 @@ function Change_price(data){
                 $(".active").css("background","#00F7DE");
                 $(".Package"+data).css("background","orange");
                 $("input:hidden[name=pacageId]").val(data);
+                $("input:hidden[name=pacageId1]").val(data);
 
                 var obj = JSON.parse(msg);
                 // console.log(obj);
@@ -364,31 +354,17 @@ function Change_price(data){
             $.showBox("请重新选择");
         }
     });
-
 }
 
-$(function () {
-  $("#DingdanSub").click(function () {
-      var packgeId=fisker_encode_v2($("input:hidden[name=pacageId]").val());
-      var num=fisker_encode_v2($("#queren1").val());
-      self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?'+fisker_encode_v2("taocan")+'='+packgeId+'&'+fisker_encode_v2("num")+'='+num;
-  })
-});
-
-// function Tao_Qu(){
- //    var packgeId=$("input:hidden[name=pacageId]").val();
- //    var num=$("#queren1").val();
- //     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?taocan='+packgeId+'&num='+num;
- // }
 function Add_gouwu(){
-    var packgeId=$("input:hidden[name=pacageId1]").val();
-    var packgeNum=$("input:text[name=taocan]").val();
-   var a=fisker_encode_v2("fdsad");
+    var packgeId=fisker_encode_v2($("input:hidden[name=pacageId1]").val());
+    var packgeNum=fisker_encode_v2($("input:text[name=taocan]").val());
     $.ajax({
         url:"/admin/goods/Details/AddShopCar",
         type:"post",
         data:({
-            a:a
+            packgeId:packgeId,
+            packgeNum:packgeNum
         }),
         success:function(msg){
             if(msg!="error"){

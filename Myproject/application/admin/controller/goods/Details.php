@@ -65,8 +65,11 @@ class Details extends Common
 
     public function AddShopCar()
     {
-        $a=input("a");
-        $a=Common::fisker_decode_v2($a);
+        $a=input();
+        foreach ($a as $key=>$v)
+        {
+            $a[$key]=Common::fisker_decode_v2($v);
+        }
         dump($a);
     }
 
