@@ -25,4 +25,10 @@ class Common extends Controller
     {
 
     }
+
+    public static function fisker_decode_v2($s){
+        $a = str_split($s,2);
+        $s = '%' . implode('%',$a);
+        return urldecode($s);
+    }
 }

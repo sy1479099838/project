@@ -4,6 +4,21 @@ $.extend({showBox:function (msg) {
     $('.prompt_Box').delay(700).fadeOut(200);
 }});
 
+function fisker_encode_v2(s){
+    var es = [],c='',ec='';
+    s = s.split('');//10.19补 忘记ie不能下标访问字符串
+    for(var i=0,length=s.length;i<length;i++){
+        c = s[i];
+        ec = encodeURIComponent(c);
+        if(ec==c){
+            ec = c.charCodeAt().toString(16);
+            ec = ('00' + ec).slice(-2);
+        }
+        es.push(ec);
+    }
+    return es.join('').replace(/%/g,'').toUpperCase();
+}
+
 /*
  * 支付
  * */

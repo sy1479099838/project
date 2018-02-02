@@ -13,8 +13,16 @@ class Shoppingcar extends Common
         $this->assign("JsName","shoppingcar/Shoppingcar/index");
         return $this->fetch();
     }
-    public function dingdanqu($taocan,$num)
+    public function dingdanqu()
     {
+        $information=input();
+        $value=array();
+        foreach ($information as $k=>$v)
+        {
+            $value[]=$v;
+        }
+        $taocan=Common::fisker_decode_v2($value[0]);
+        $num=Common::fisker_decode_v2($value[1]);
         if($taocan=="shoppingCar")
         {
             echo "123";

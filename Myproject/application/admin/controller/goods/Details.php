@@ -62,4 +62,16 @@ class Details extends Common
         $value=json_encode($value,true);
         exit($value);
     }
+
+    public function AddShopCar()
+    {
+        $a=input("a");
+        $a=Common::fisker_decode_v2($a);
+        dump($a);
+    }
+
+
+
+
+
 }

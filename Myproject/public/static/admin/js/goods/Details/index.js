@@ -366,21 +366,29 @@ function Change_price(data){
     });
 
 }
- function Tao_Qu(){
-    var packgeId=$("input:hidden[name=pacageId]").val();
-    var num=$("#queren1").val();
-     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?taocan='+packgeId+'&num='+num;
- }
+
+$(function () {
+  $("#DingdanSub").click(function () {
+      var packgeId=fisker_encode_v2($("input:hidden[name=pacageId]").val());
+      var num=fisker_encode_v2($("#queren1").val());
+      self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?'+fisker_encode_v2("taocan")+'='+packgeId+'&'+fisker_encode_v2("num")+'='+num;
+  })
+});
+
+// function Tao_Qu(){
+ //    var packgeId=$("input:hidden[name=pacageId]").val();
+ //    var num=$("#queren1").val();
+ //     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?taocan='+packgeId+'&num='+num;
+ // }
 function Add_gouwu(){
-     //alert(1111111110);
     var packgeId=$("input:hidden[name=pacageId1]").val();
     var packgeNum=$("input:text[name=taocan]").val();
+   var a=fisker_encode_v2("fdsad");
     $.ajax({
-        url:"/admin/goods/Details/",
+        url:"/admin/goods/Details/AddShopCar",
         type:"post",
         data:({
-            packgeId:packgeId,
-            packgeNum:packgeNum
+            a:a
         }),
         success:function(msg){
             if(msg!="error"){
