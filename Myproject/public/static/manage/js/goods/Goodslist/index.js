@@ -48,21 +48,7 @@ function closeEditGoods() {
 function DelGoods(data) {
     alert(data);
 }
-/*
- * 关键字搜索
- * */
-// function KeywordSearch() {
-//     var text=$('input:text[name="KeywordSearch"]').val();
-//     $.ajax({
-//         type:"post",
-//         data:({key:text}),
-//         url:"KeywordSearch",
-//         success:function (msg) {
-//             $(".Goodslist-table").html(msg);
-//         },error:function (msg) {
-//         }
-//     })
-// }
+
 // 上下架
 $(document).ready(function(){
 
@@ -393,44 +379,6 @@ function testUploadsImg() {
 
 
 
-/*
-* 分页
-* */
-// function GoodsFenYe(data,cid) {
-//     var NowPage=$("input:hidden[name='GoodsNowPage']").val();
-//     var AllPage=$("input:hidden[name='GoodsAllPage']").val();
-//     var num="";
-//     if(data=="Previous" && NowPage!=1)
-//     {
-//         num=NowPage-1;
-//     }
-//     else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
-//     {
-//         num=parseInt(NowPage)+1;
-//     }
-//     else
-//     {
-//         num=data;
-//     }
-//     if(NowPage!=num && num!="" && num!="Previous" && num!="next")
-//     {
-//         $.ajax({
-//             url:"PageSearch",
-//             type:"post",
-//             data:({
-//                 num:num,
-//                 cid:cid
-//             }),
-//             success:function (msg) {
-//                 $(".Goodslist").html(msg);
-//             },
-//             error:function () {
-//                 $.showBox("对不起，出错啦！");
-//             }
-//         });
-//     }
-// }
-
 
 function GoodsFenye(nowPage,page,AllPage) {
     publicFenYe(nowPage,page,AllPage);
@@ -464,10 +412,6 @@ function previewFile1 () {
     var preview = document.getElementById('yulan_1');
     var imgfile=preview.getElementsByTagName('img')[0];
     var file=document.getElementById('abc').files[0];
-    //console.log(abc);
-    // var file  = document.querySelector("input:file[name='tupian']").files[0];
-
-    // console.log(file);
     var reader = new FileReader();
     reader.onloadend = function () {
         imgfile.src = reader.result;
