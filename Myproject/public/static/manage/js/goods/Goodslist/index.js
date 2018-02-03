@@ -6,20 +6,35 @@ function AddGoods() {
 function closeAddGoods() {
     $(".Goods-AddMenu-Box").fadeOut(1000);
 }
-function GoodsClassChoice(data) {
-    $.ajax({
-        url:"GoodsClassChoice",
-        type:"post",
-        data:({num:data}),
-        success:function (msg) {
-            $(".Goodslist").html(msg);
-        },
-        error:function (meg) {
 
-        }
-    });
+/*
+* 分类查询
+* */
 
+function ClassSeach(date) {
+    var currentUrl = this.location.href;
+    var result=currentUrl.split("&");
+    date=fisker_encode_v2(date);
+    var href=result[0];
+    window.location.href=href+"&Classify="+date;
 }
+
+function nowHref() {
+    var currentUrl = this.location.href;
+    return currentUrl;
+}
+/*
+* 关键字搜索
+* */
+$(function () {
+    $("#KeyWords").click(function () {
+        var key=fisker_encode_v2($("input:text[name=KeywordSearch]").val());
+        var currentUrl = nowHref();
+        var result=currentUrl.split("&");
+        var href=result[0];
+        window.location.href=href+"&KeyWords="+key;
+    });
+});
 
 function EditGoods() {
     $(".EditGoods-EditMenu-Box").fadeIn(700);
@@ -36,18 +51,18 @@ function DelGoods(data) {
 /*
  * 关键字搜索
  * */
-function KeywordSearch() {
-    var text=$('input:text[name="KeywordSearch"]').val();
-    $.ajax({
-        type:"post",
-        data:({key:text}),
-        url:"KeywordSearch",
-        success:function (msg) {
-            $(".Goodslist-table").html(msg);
-        },error:function (msg) {
-        }
-    })
-}
+// function KeywordSearch() {
+//     var text=$('input:text[name="KeywordSearch"]').val();
+//     $.ajax({
+//         type:"post",
+//         data:({key:text}),
+//         url:"KeywordSearch",
+//         success:function (msg) {
+//             $(".Goodslist-table").html(msg);
+//         },error:function (msg) {
+//         }
+//     })
+// }
 // 上下架
 $(document).ready(function(){
 
@@ -381,41 +396,45 @@ function testUploadsImg() {
 /*
 * 分页
 * */
-function GoodsFenYe(data,cid) {
-    var NowPage=$("input:hidden[name='GoodsNowPage']").val();
-    var AllPage=$("input:hidden[name='GoodsAllPage']").val();
-    var num="";
-    if(data=="Previous" && NowPage!=1)
-    {
-        num=NowPage-1;
-    }
-    else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
-    {
-        num=parseInt(NowPage)+1;
-    }
-    else
-    {
-        num=data;
-    }
-    if(NowPage!=num && num!="" && num!="Previous" && num!="next")
-    {
-        $.ajax({
-            url:"PageSearch",
-            type:"post",
-            data:({
-                num:num,
-                cid:cid
-            }),
-            success:function (msg) {
-                $(".Goodslist").html(msg);
-            },
-            error:function () {
-                $.showBox("对不起，出错啦！");
-            }
-        });
-    }
-}
+// function GoodsFenYe(data,cid) {
+//     var NowPage=$("input:hidden[name='GoodsNowPage']").val();
+//     var AllPage=$("input:hidden[name='GoodsAllPage']").val();
+//     var num="";
+//     if(data=="Previous" && NowPage!=1)
+//     {
+//         num=NowPage-1;
+//     }
+//     else if(AllPage!=data && data=="next" && parseInt(NowPage)!=parseInt(AllPage))
+//     {
+//         num=parseInt(NowPage)+1;
+//     }
+//     else
+//     {
+//         num=data;
+//     }
+//     if(NowPage!=num && num!="" && num!="Previous" && num!="next")
+//     {
+//         $.ajax({
+//             url:"PageSearch",
+//             type:"post",
+//             data:({
+//                 num:num,
+//                 cid:cid
+//             }),
+//             success:function (msg) {
+//                 $(".Goodslist").html(msg);
+//             },
+//             error:function () {
+//                 $.showBox("对不起，出错啦！");
+//             }
+//         });
+//     }
+// }
 
+
+function GoodsFenye(nowPage,page,AllPage) {
+    publicFenYe(nowPage,page,AllPage);
+}
 
 /*商品详情查看*/
 function check_muban(data){

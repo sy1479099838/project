@@ -13,50 +13,48 @@ class Goodslist extends Common
 {
     public function index()
     {
-        $people=Session::get('admin');
-        $HotClass=json_decode(json_encode(Hotclass::field("id,HotName")->select(),true),true);
-        if($people["type"]!="admin")
+        $get=$_GET;
+        if(isset($get["page"]))
         {
-            $GoodsList=Db::table('t_goods')
-                ->where("BusinessId",$people["id"])
-                ->page('1,8')
-                ->alias("a")//给表添加别名
-                ->join('t_goods_classify b','a.pid = b.id')
-                ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
-                b.ClassName,c.LiablePeople,
-                c.CompanyName")//此处为查询多个表中的某些字段
-                ->select();
-            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数   模型查询
+            $NowPage=Common::fisker_decode_v2($get["page"]);
         }
         else
         {
-            $GoodsList=Db::table('t_goods')
-                ->alias("a")
-                ->page('1,8')
-                ->join('t_goods_classify b','a.pid = b.id')
-                ->join('t_business c','a.BusinessId=c.id')
-                ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
-                b.ClassName,c.LiablePeople,
-                c.CompanyName")
-                ->select();
-            $PageCount=Goods::count("id");//总条数
+            $NowPage=1;
         }
 
 
-        $Num=ceil($PageCount/8);//总页数
-        $NowPage=1;
-        $page=Common::Page($NowPage,$Num);
-        $this->assign("NowPage",$NowPage);
-        $this->assign("page",$page);
-        $this->assign("AllPage",$Num);
-
-
-
-        foreach ($GoodsList as $key=>$value)
+        $people=Session::get('admin');
+        $HotClass=json_decode(json_encode(Hotclass::field("id,HotName")->select(),true),true);
+        if(isset($get["Classify"]))
         {
-            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
-            $GoodsList[$key]["HotClass"]=$res;
+            $classify=Common::fisker_decode_v2($get["Classify"]);
+            if($classify=="0")
+            {
+                $retrun=$this->AllGoods($NowPage);
+            }
+            else
+            {
+                $retrun=$this->GoodsClassChoice($classify,$NowPage);
+            }
+            $GoodsList=$retrun["GoodsList"];
+            $Num=$retrun["Num"];
+            $page=$retrun["page"];
+        }
+        elseif (isset($get["KeyWords"]))
+        {
+            $KeyWords=Common::fisker_decode_v2($get["KeyWords"]);
+            $retrun=$this->KeyWordSearch($NowPage,$KeyWords);
+            $GoodsList=$retrun["GoodsList"];
+            $Num=$retrun["Num"];
+            $page=$retrun["page"];
+        }
+        else
+        {
+            $retrun=$this->AllGoods($NowPage);
+            $GoodsList=$retrun["GoodsList"];
+            $Num=$retrun["Num"];
+            $page=$retrun["page"];
         }
         if($people['type']=="admin")
         {
@@ -73,13 +71,121 @@ class Goodslist extends Common
         }
 
 
-        $ClassList=GoodsClassify::where("Enable","1")->where("id","not in","12")->select();
+        $this->assign("NowPage",$NowPage);
+        $this->assign("page",$page);
+        $this->assign("AllPage",$Num);
+
+
+        $ClassList=GoodsClassify::where("Enable","1")->whereOr("id","12")->select();
         $ClassList=Common::treeData(json_decode(json_encode($ClassList,true),true));
+
+
         $this->assign("peopleType",$peopleType);
         $this->assign("ClassList",$ClassList);
         $this->assign("HotClass",$HotClass);
         $this->assign("GoodsList",$GoodsList);
         return $this->fetch();//模板渲染   tp3为display();
+    }
+
+
+    /*
+     * 获取所有商品列表
+     * */
+    public function AllGoods($NowPage)
+    {
+        $people=Session::get('admin');
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->page(''.$NowPage.',8')
+                ->alias("a")//给表添加别名
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")//此处为查询多个表中的某些字段
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数   模型查询
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->alias("a")
+                ->page(''.$NowPage.',8')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                ->select();
+            $PageCount=Goods::count("id");//总条数
+        }
+        $Num=ceil($PageCount/8);//总页数
+
+        foreach ($GoodsList as $key=>$value)
+        {
+            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
+            $GoodsList[$key]["HotClass"]=$res;
+        }
+        $page=Common::Page($NowPage,$Num);
+        $return=array(
+            "page"=>$page,
+            "GoodsList"=>$GoodsList,
+            "Num"=>$Num
+        );
+        return $return;
+    }
+
+    /*
+     * 关键字搜索
+     * */
+    public function KeyWordSearch($NowPage,$Key)
+    {
+        $people=Session::get('admin');
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->where('GoodsName|PositionName','like','%'.$Key.'%')
+                ->page(''.$NowPage.',8')
+                ->alias("a")//给表添加别名
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")//此处为查询多个表中的某些字段
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->where('GoodsName|PositionName','like','%'.$Key.'%')->count("id");//总条数   模型查询
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where('GoodsName|PositionName','like','%'.$Key.'%')
+                ->alias("a")
+                ->page(''.$NowPage.',8')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                ->select();
+            $PageCount=Goods::where('GoodsName|PositionName','like','%'.$Key.'%')->count("id");//总条数
+        }
+        $Num=ceil($PageCount/8);//总页数
+
+        foreach ($GoodsList as $key=>$value)
+        {
+            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
+            $GoodsList[$key]["HotClass"]=$res;
+        }
+        $page=Common::Page($NowPage,$Num);
+        $return=array(
+            "page"=>$page,
+            "GoodsList"=>$GoodsList,
+            "Num"=>$Num
+        );
+        return $return;
     }
 
     public function GoodsImg()
@@ -508,9 +614,9 @@ class Goodslist extends Common
     /*
      *商品分类搜索
      * */
-    public function GoodsClassChoice()
+    public function GoodsClassChoice($cid,$NowPage)
     {
-        $cid=input("num");
+//        $cid=input("num");
         $people=Session::get('admin');
         $map[]=['exp',"FIND_IN_SET($cid,a.cid)"];
         $map1[]=['exp',"FIND_IN_SET($cid,cid)"];
@@ -518,7 +624,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->where("BusinessId",$people["id"])
-                ->page('1,5')
+                ->page(''.$NowPage.',8')
                 ->where($map)
                 ->alias("a")
                 ->join('t_goods_classify b','a.pid = b.id')
@@ -534,7 +640,7 @@ class Goodslist extends Common
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
                 ->where($map)
-                ->page('1,5')
+                ->page(''.$NowPage.',8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("
@@ -545,25 +651,31 @@ class Goodslist extends Common
             $PageCount=Goods::where($map1)->count("id");//总条数
 
         }
-        $Num=ceil($PageCount/5);//总页数
-//        dump($PageCount);
-        $NowPage=1;
+        $Num=ceil($PageCount/8);//总页数
         $page=Common::Page($NowPage,$Num);
         foreach ($GoodsList as $key=>$value)
         {
             $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
             $GoodsList[$key]["HotClass"]=$res;
         }
-//        dump($GoodsList);exit;
-        return $this->fetch("GoodsClassChoice",
-            [
-                "GoodsList"=>$GoodsList,
-                "NowPage"=>$NowPage,
-                "page"=>$page,
-                "AllPage"=>$Num,
-                "cid"=>$cid
-            ]
+        $return=array(
+            "GoodsList"=>$GoodsList,
+            "NowPage"=>$NowPage,
+            "page"=>$page,
+            "Num"=>$Num,
+            "cid"=>$cid
         );
+        return $return;
+//        dump($GoodsList);exit;
+//        return $this->fetch("GoodsClassChoice",
+//            [
+//                "GoodsList"=>$GoodsList,
+//                "NowPage"=>$NowPage,
+//                "page"=>$page,
+//                "AllPage"=>$Num,
+//                "cid"=>$cid
+//            ]
+//        );
     }
     
     /*

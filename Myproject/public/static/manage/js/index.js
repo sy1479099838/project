@@ -235,3 +235,37 @@ function fisker_encode_v2(s){
 }
 
 
+function publicFenYe(nowPage,page,AllPage)
+{
+    var currentUrl = this.location.href;
+    var result=currentUrl.split("&");
+    var pages='';
+    if(page=="Previous")
+    {
+        if(nowPage!="1")
+        {
+            pages=fisker_encode_v2((parseInt(nowPage)-1));
+            window.location.href=result[0]+"&page="+pages;
+        }
+    }
+    else if(page=="next")
+    {
+        if(nowPage!=AllPage)
+        {
+            pages=fisker_encode_v2((parseInt(nowPage)+1));
+            window.location.href=result[0]+"&page="+pages;
+        }
+    }
+    else
+    {
+        if(page!=nowPage)
+        {
+            pages=fisker_encode_v2(page);
+            window.location.href=result[0]+"&page="+pages;
+        }
+
+    }
+
+}
+
+

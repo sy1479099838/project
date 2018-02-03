@@ -9,7 +9,7 @@
                 <button class="TreeMenuOne-switch">
                     &nbsp;
                 </button>
-                <a href="javascript:GoodsClassChoice('0')">全部</a>
+                <a href="javascript:ClassSeach('0')">全部</a>
             </p>
         </div>
         {volist name="ClassList" id="list"}
@@ -18,7 +18,7 @@
                 <button class="TreeMenuOne-switch">
                     <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                 </button>
-                <a href="javascript:GoodsClassChoice('{$list.id}')">{$list.ClassName}</a>
+                <a href="javascript:ClassSeach('{$list.id}')">{$list.ClassName}</a>
             </p>
             {present name="list.children.0"}
             <dl class="treeMenu-one" id="treeOpen_1">
@@ -29,7 +29,7 @@
                     <button class="TreeMenuTwo-switch">
                         <img src="__PUBLIC__/manage/images/openFile.png" alt="">
                     </button>
-                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:ClassSeach('{$list_2.id}')">{$list_2.ClassName}</a>
                 </dt>
                 <dd  class="treeMenu-three" id="treeOpen_2">
                     {volist name="list_2.children" id="list_3"}
@@ -38,7 +38,7 @@
                         <button>
                             <img src="__PUBLIC__/manage/images/file.png" alt="">
                         </button>
-                        <a href="javascript:GoodsClassChoice('{$list_3.id}')">{$list_3.ClassName}</a>
+                        <a href="javascript:ClassSeach('{$list_3.id}')">{$list_3.ClassName}</a>
                     </div>
                     {/volist}
                 </dd>
@@ -48,7 +48,7 @@
                     <button>
                         <img src="__PUBLIC__/manage/images/file.png" alt="">
                     </button>
-                    <a href="javascript:GoodsClassChoice('{$list_2.id}')">{$list_2.ClassName}</a>
+                    <a href="javascript:ClassSeach('{$list_2.id}')">{$list_2.ClassName}</a>
                 </div>
                 {/present}
                 {/volist}
@@ -68,8 +68,8 @@
                 <img src="__PUBLIC__/manage/images/icon-add.png" alt="">添加商品
             </button>
             <span>
-                <input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;&nbsp;搜索">
-                <i class="icon-search" onclick="GoodsKeywordSearch('')"></i>
+                <input type="text" value="" name="KeywordSearch" placeholder="&nbsp;&nbsp;商品名称/商品地址">
+                <i class="icon-search" Id="KeyWords"></i>
             </span>
             <span>
             &nbsp;&nbsp; 活动日期:
@@ -193,11 +193,11 @@
         <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
         <div class="fenye" style="float:right;margin-right:2%;">
 
-            <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenYe('Previous')"></a>
+            <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenye('{$NowPage}','Previous','{$AllPage}')"></a>
             {volist name="page" id="vo"}
-            <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenYe('{$vo}')">{$vo}</a>
+            <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenye('{$NowPage}','{$vo}','{$AllPage}')">{$vo}</a>
             {/volist}
-            <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenYe('next')"></a>
+            <a class=" icon-double-angle-right" href="javascript:void(0)" onclick="GoodsFenye('{$NowPage}','next','{$AllPage}')"></a>
         </div>
     </div>
     <div style="clear:both;"></div>
