@@ -311,7 +311,7 @@ function choseMoreImg() {
                 if(width==640 && height==320)
                 {
                     var text='<div class="ImgShow fl">' +
-                        '<img src="'+image.src+'" id="ImgShow'+i+'">'+
+                        '<img src="'+image.src+'" class="ImgShow">'+
                         '</div>';
                     var result=$("#dd").append(text);
                 }
@@ -323,6 +323,18 @@ function choseMoreImg() {
             }
         }
     }
+}
+
+/*
+* 
+* */
+function testUpImg() {
+
+    $(".ImgShow").each(function(){
+        var src=$(this).attr("src");
+        console.log(src);
+    });
+
 }
 /*
  * 多图上传测试
@@ -375,6 +387,24 @@ function testUploadsImg() {
             }
         });
     }
+}
+
+function test123(e) {
+    var reader = new FileReader();
+    reader.readAsDataURL(e);
+    reader.onload = function(theFile) {
+        var image = new Image();
+        image.src = theFile.target.result;
+        image.onload=function(){
+            var width= image.width;
+            var height= image.height;
+            if(width==640 && height==320)
+            {
+                return false;
+            }
+        };
+    };
+
 }
 
 
@@ -795,3 +825,26 @@ function SaveCover(id) {
         }
     });
 }
+
+
+/*
+* 时间搜索
+* */
+$(function () {
+   $("#TimeSearch").click(function () {
+       var startTime=fisker_encode_v2($("input:text[name=start_date]").val());
+       var endtime=fisker_encode_v2($("input:text[name=end_date]").val());
+       if(startTime=="" || endtime=="" || startTime==endtime)
+       {
+           alert("请选择起始时间");
+       }
+       else
+       {
+           var currentUrl = nowHref();
+           var result=currentUrl.split("&");
+           var href=result[0];
+           window.location.href=href+"&StartTime="+startTime+"&EndTime="+endtime;
+       }
+
+   });
+});

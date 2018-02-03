@@ -238,7 +238,7 @@ function fisker_encode_v2(s){
 function publicFenYe(nowPage,page,AllPage)
 {
     var currentUrl = this.location.href;
-    var result=currentUrl.split("&");
+    var result=currentUrl.split('&page=');
     var pages='';
     if(page=="Previous")
     {

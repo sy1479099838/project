@@ -24,6 +24,7 @@ class Goodslist extends Common
         }
 
 
+
         $people=Session::get('admin');
         $HotClass=json_decode(json_encode(Hotclass::field("id,HotName")->select(),true),true);
         if(isset($get["Classify"]))
@@ -45,6 +46,29 @@ class Goodslist extends Common
         {
             $KeyWords=Common::fisker_decode_v2($get["KeyWords"]);
             $retrun=$this->KeyWordSearch($NowPage,$KeyWords);
+            $GoodsList=$retrun["GoodsList"];
+            $Num=$retrun["Num"];
+            $page=$retrun["page"];
+        }
+        elseif(isset($get["StartTime"]) && isset($get["EndTime"]))
+        {
+            $startTime=strtotime(Common::fisker_decode_v2($get["StartTime"]));
+            $endTime=strtotime(Common::fisker_decode_v2($get["EndTime"]));//strtotime($oldtime);
+
+            if($startTime=="" || $endTime=="" || $startTime==$endTime)
+            {
+                $retrun=$this->AllGoods($NowPage);
+            }
+            else
+            {
+                if($startTime>$endTime)
+                {
+                    $a=$endTime;
+                    $endTime=$startTime;
+                    $startTime=$a;
+                }
+                $retrun=$this->TimeSearch($NowPage,$startTime,$endTime);
+            }
             $GoodsList=$retrun["GoodsList"];
             $Num=$retrun["Num"];
             $page=$retrun["page"];
@@ -188,6 +212,59 @@ class Goodslist extends Common
         return $return;
     }
 
+    /*
+     * 时间搜索
+     * */
+    public function TimeSearch($NowPage,$startTime,$endTime)
+    {
+        $people=Session::get('admin');
+        if($people["type"]!="admin")
+        {
+            $GoodsList=Db::table('t_goods')
+                ->where("BusinessId",$people["id"])
+                ->page(''.$NowPage.',8')
+                ->alias("a")//给表添加别名
+                ->where("a.startTime","egt",$startTime)
+                ->where("a.endTime","elt",$endTime)
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")//此处为查询多个表中的某些字段
+                ->select();
+            $PageCount=Goods::where("BusinessId",$people["id"])->count("id");//总条数   模型查询
+        }
+        else
+        {
+            $GoodsList=Db::table('t_goods')
+                ->alias("a")
+                ->where("a.startTime","egt",$startTime)
+                ->where("a.endTime","elt",$endTime)
+                ->page(''.$NowPage.',8')
+                ->join('t_goods_classify b','a.pid = b.id')
+                ->join('t_business c','a.BusinessId=c.id')
+                ->field("a.id,a.GoodsName,a.CovorImg,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
+                b.ClassName,c.LiablePeople,
+                c.CompanyName")
+                ->select();
+            $PageCount=Goods::count("id");//总条数
+        }
+        $Num=ceil($PageCount/8);//总页数
+
+        foreach ($GoodsList as $key=>$value)
+        {
+            $res=json_decode(json_encode(Hotclass::where("id","in",$value["HotClass"])->field("HotName")->select(),true),true);
+            $GoodsList[$key]["HotClass"]=$res;
+        }
+        $page=Common::Page($NowPage,$Num);
+        $return=array(
+            "page"=>$page,
+            "GoodsList"=>$GoodsList,
+            "Num"=>$Num
+        );
+        return $return;
+    }
+
     public function GoodsImg()
     {
         $file = request()->file("upfile");
@@ -217,6 +294,11 @@ class Goodslist extends Common
      * */
     public function AddGoods()
     {
+        $files= request()->file("Image");
+        dump($files);dump($_FILES);
+        dump($img);
+        $a = file_put_contents('./test.jpg', $img);
+        exit;
         $information=input();
         $formData=json_decode($information["FormData"],true);
         $array=array();
@@ -273,6 +355,7 @@ class Goodslist extends Common
             $cid=$array["AddLiabilityGoods"].",".$array["AddLiabilityGoods".$array["AddLiabilityGoods"]];
         }
         $files= request()->file("Image");
+        dump($files);exit;
         $ImgPhoto=array();
         foreach($files as $file){
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
