@@ -277,4 +277,26 @@ class Personal extends Common
         $this->assign("JsName","personal/Personal/mima");
         return $this->fetch();
     }
+    public function daipinjia()
+    {
+        $this->assign("Title","待评价");
+        $this->assign("JsName","personal/Personal/daipinjia");
+        return $this->fetch();
+    }
+    public function pinjiaz()
+    {
+        $this->assign("Title","待评价");
+        $this->assign("JsName","personal/Personal/pinjiaz");
+        return $this->fetch();
+    }
+    public function fabu()
+    {
+        exit("success");
+    }
+    public function jianzhi()
+    {
+        $this->assign("Title","兼职");
+        $this->assign("JsName","personal/Personal/jianzhi");
+        return $this->fetch();
+    }
 }

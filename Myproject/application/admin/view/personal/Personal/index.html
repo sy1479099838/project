@@ -1,64 +1,64 @@
 {extend name="Public:public"/}
 {block name="main"}
-		<!-- 头像部分 -->
-		<div class="MAXwidth HeadPortraitBox">
-			<div class="HeadPortrait">
-				{empty name="user.UserImg"}
-				<img class="fl" src="__PUBLIC__/admin/images/default.png"/>
-				{else /}
-					{eq name="user.count" value="1"}
-					<img class="fl" src="{$user.UserImg}"/>
-					{else/}
-					<img class="fl" src="__ROTH__/uploads/{$user.UserImg}"/>
-					{/eq}
-				{/empty}
-				<a class="UserMember" href="{:url('/admin/personal/Personal/level')}">
-					<b>v</b>1
-				</a>
-			</div>
-			<a href="{:url('/admin/personal/Personal/member')}" class="turnright">
-				<img src="__PUBLIC__/admin/images/turnright.png">
-			</a>
-		</div>
-		<!-- 电话号码（账号） -->
-		<div class="MAXwidth PhoneNum">{$user.UserName}</div>
-		<!-- 积分、余额、优惠 -->
-		<div class="MAXwidth IntegralBox">
+<!-- 头像部分 -->
+<div class="MAXwidth HeadPortraitBox">
+	<div class="HeadPortrait">
+		{empty name="user.UserImg"}
+		<img class="fl" src="__PUBLIC__/admin/images/default.png"/>
+		{else /}
+		{eq name="user.count" value="1"}
+		<img class="fl" src="{$user.UserImg}"/>
+		{else/}
+		<img class="fl" src="__ROTH__/uploads/{$user.UserImg}"/>
+		{/eq}
+		{/empty}
+		<a class="UserMember" href="{:url('/admin/personal/Personal/level')}">
+			<b>v</b>1
+		</a>
+	</div>
+	<a href="{:url('/admin/personal/Personal/member')}" class="turnright">
+		<img src="__PUBLIC__/admin/images/turnright.png">
+	</a>
+</div>
+<!-- 电话号码（账号） -->
+<div class="MAXwidth PhoneNum">{$user.UserName}</div>
+<!-- 积分、余额、优惠 -->
+<div class="MAXwidth IntegralBox">
 			<span class="Integral fl">
 				积分<br />
 				<b>0</b>
 			</span>
-			<span class="Integral fl">
+	<span class="Integral fl">
 				余额<br />
 				<b>￥0.00</b>
 			</span>
-			<a class="Integral fl" href="{:url('/admin/personal/Personal/quan')}">
-				优惠券<br />
-				<b>0</b>
-			</a>
-		</div>
+	<a class="Integral fl" href="{:url('/admin/personal/Personal/quan')}">
+		优惠券<br />
+		<b>0</b>
+	</a>
+</div>
 
-		<div class="MAXwidth MyMenuBox" style="height: auto;">
-			<a href="{:url('/admin/personal/Personal/orderform')}" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon1.png" class="MyMenu_icon"><br>我的订单
-			</a>
-			<a href="" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon2.png " class="MyMenu_icon"><br>待评价
-			</a>
-			<a href="{:url('/admin/personal/Personal/level')}" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon3.png" class="MyMenu_icon"><br>会员等级
-			</a>
-			<a href="" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon4.png" class="MyMenu_icon"><br>我的赠品
-			</a>
-			<a href="" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon5.png" class="MyMenu_icon"><br>我的特权
-			</a>
-			<a href="{:url('/admin/shoppingcar/Shoppingcar/index')}" class="MyMenu fl">
-				<img src="__PUBLIC__/admin/images/u-icon7.png" class="MyMenu_icon"><br>购物车
-			</a>
-			<div class="cb"></div>
-		</div>
+<div class="MAXwidth MyMenuBox" style="height: auto;">
+	<a href="{:url('/admin/personal/Personal/orderform')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/u-icon1.png" class="MyMenu_icon"><br>我的订单
+	</a>
+	<a href="{:url('/admin/personal/Personal/daipinjia')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/u-icon2.png " class="MyMenu_icon"><br>待评价
+	</a>
+	<a href="{:url('/admin/personal/Personal/level')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/u-icon3.png" class="MyMenu_icon"><br>会员等级
+	</a>
+	<a href="{:url('/admin/groups/Mygroups/index')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/timg_meitu_1_meitu_4.png" class="MyMenu_icon" style="border-radius:5px;"><br>我的拼团
+	</a>
+	<a href="{:url('/admin/personal/Personal/jianzhi')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/time_4_meitu_1.png" class="MyMenu_icon"><br>我的兼职
+	</a>
+	<a href="{:url('/admin/shoppingcar/Shoppingcar/index')}" class="MyMenu fl">
+		<img src="__PUBLIC__/admin/images/u-icon7.png" class="MyMenu_icon"><br>购物车
+	</a>
+	<div class="cb"></div>
+</div>
 <div class="bottom_margin_Box"></div>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 

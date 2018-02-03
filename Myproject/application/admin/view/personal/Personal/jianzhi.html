@@ -1,0 +1,151 @@
+{extend name="Public:public_4"/}
+{block name="main"}
+<div class="head">
+    <a class="icon-arrow-left" style="font-size:14px;margin-top:13px;float:left;margin-left:5%;color:black;" href="{:url('/admin/personal/Personal/index')}"></a>
+    <p class="pin">我的兼职</p>
+</div>
+<div id="Tao_second_2">
+    <div class="l_change" onclick="jianzhichange(0)" id="order0">我的申请</div>
+    <div class="active" onclick="jianzhichange(1)" id="order1">拒绝申请</div>
+    <div class="active" onclick="jianzhichange(2)" id="order2">待面试</div>
+    <div class="active" onclick="jianzhichange(3)" id="order3">面试结果</div>
+</div>
+<div class="kong"></div>
+<div id="jianzhi0">
+    <div class="jianshi_2">
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+    <div class="jianshi_2">
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+    <div class="jianshi_2">
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="jianzhi1" style="display:none;">
+    <div class="jianshi_2">
+        <p class="biao">已拒绝<span>XXXX年XX月XX日</span></p>
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <div style="clear:both;"></div>
+        <p class="biao">拒绝原因<span>XXXXXXXXXXXXXXXXXX</span></p>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="jianzhi2" style="display:none;">
+    <div class="jianshi_2">
+        <p class="biao">邀请面试<span>XXX年XXX月XX日</span></p>
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <p class="biao">面试时间<span>XXXX年XX月XX日 00时00分</span></p>
+        <p class="biao">面试地点<span>XXXX市XXXXXXXXXXXXXXXXXXXX</span></p>
+        <div style="clear:both;"></div>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="jianzhi3" style="display:none;">
+    <div class="jianshi_2">
+        <p class="biao">面试结果<span>已通过</span></p>
+        <div class="jieshao">
+            <img src="/public/static/manage/images/1506842609781.jpg">
+            <span>公司名称:XXXXXX公司公司公司</span>
+            <span>职位名称:XXXXXXX职位职位</span>
+            <span>薪资待遇:￥:3000-￥:5000/月</span>
+            <span>申请日期:2018-01-18</span>
+        </div>
+        <p class="biao">入职时间<span>XXXX年XX月XX日 00时00分</span></p>
+        <p class="biao">入职地点<span>XXXX市XXXXXXXXXXXXXXXXXXXX</span></p>
+        <div style="clear:both;"></div>
+        <div class="yaoqiu">
+            <span>任职要求</span>
+            <div class="miaoshu">
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+                <p>1.这是描述描述描述描述漫画描述描述谋害</p>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
