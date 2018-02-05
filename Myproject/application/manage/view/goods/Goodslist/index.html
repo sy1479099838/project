@@ -74,8 +74,8 @@
             <span>
             &nbsp;&nbsp; 活动日期:
             <input type="text" name="start_date" id="date5" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">&nbsp;至
-            <input type="text" name="start_date" id="date6" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
-            <i class="icon-search" onclick="timeSearch('')"></i>
+            <input type="text" name="end_date" id="date6" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off">
+            <i class="icon-search" id="TimeSearch"></i>
             </span>
         </p>
         <table class="Goodslist-table">
@@ -276,7 +276,7 @@
                     <input type="file" style="display: none;"  name="file[]" id="doc" multiple="multiple" onchange="choseMoreImg();" accept="image/*" />
                     <button onclick="OpenMoreFile()">点击选择照片</button>
                 </a>
-                <button onclick="testUploadsImg()" style="width:15%;height:25px;">上传</button>
+                <button onclick="testUpImg()" style="width:15%;height:25px;">上传</button>
             </span>
             <div id="dd" style="width:100%;float: left;"></div>
 
