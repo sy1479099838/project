@@ -11,3 +11,19 @@ window.onscroll = function () {
 function checkshi(){
     alert("1秒后开始执行");
 }
+function fenlei(){
+    alert(1111111111);
+    //$(".fenlei_list").show().animate({width:'100%'},2000);
+    //var text='<div class="fen_list"><p>1111111111111111111</p></div>';
+    //$(".fenlei_list").html(text);
+    $(".fenlei_list").show();
+}
+function tiaozhuan(){
+    self.location='/admin/home/home/index';
+}
+function quanfen(){
+    self.location='/admin/home/Home/piao';
+}
+function cloase_fen(){
+    $(".fenlei_list").hide();
+}

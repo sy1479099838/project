@@ -20,4 +20,6 @@
 .ospan{display:block;width:100%;height:100px;background:#009966;color:white;line-height:100px;text-align:center;}
 .fenlei_list_second{width:100%;height:40px;line-height:40px;font-size:.8em;border-bottom:1px solid #e0e0e0;}
 .zilist{width:100%;height:auto;}
-.fenlei_list_second_1{display:none;width:100%;height:40px;line-height:40px;font-size:.8em;border-bottom:1px solid #e0e0e0;}
+.fenlei_list_second_1{width:100%;height:40px;line-height:40px;font-size:.8em;border-bottom:1px solid #e0e0e0;}
+.fenlei_list_2{position:absolute;top:0;right:0;width:29%;height:100%;}
+

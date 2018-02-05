@@ -27,7 +27,6 @@ function tiaozhuan(){
 function quanfen(){
     self.location='/admin/home/Home/piao';
 }
-function check_zifenlei(){
-
-    $(".fenlei_list_second_1").show();
+function cloase_fen(){
+    $(".fenlei_list").hide();
 }
