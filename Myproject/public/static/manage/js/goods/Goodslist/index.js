@@ -317,7 +317,6 @@ function choseMoreImg() {
                 }
                 else
                 {
-                    delete imgfile[i];
                     $.showBox("请上传640*320照片！");
                 }
             }
@@ -325,17 +324,7 @@ function choseMoreImg() {
     }
 }
 
-/*
-* 
-* */
-function testUpImg() {
 
-    $(".ImgShow").each(function(){
-        var src=$(this).attr("src");
-        console.log(src);
-    });
-
-}
 /*
  * 多图上传测试
  * */
