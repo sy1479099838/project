@@ -15,7 +15,7 @@
 .forth_1 span p{display:block;width:40%;height:20px;color:#BEBEBE;text-decoration:line-through;position:absolute;right:0;top:0;}
 .paixu{width:85%;height:30px;margin-left:18%;}
 .paixu div{display:block;width:18%;height:20px;background:orangered;color:white;float:left;margin-top:5px;font-size:.4em;margin-left:5%;line-height:20px;}
-.fenlei_list{width:100%;height:100%;display:none;position:fixed;top:0;background:rgba(0,0,0,0.3);z-index:99999999;}
+.fenlei_list{width:100%;height:100%;left:-100%;position:fixed;top:0;background:rgba(0,0,0,0.3);z-index:99999999;}
 .fenlei_list_first{width:70%;height:100%;background:white;}
 .ospan{display:block;width:100%;height:100px;background:#009966;color:white;line-height:100px;text-align:center;}
 .fenlei_list_second{width:100%;height:40px;line-height:40px;font-size:.8em;border-bottom:1px solid #e0e0e0;}

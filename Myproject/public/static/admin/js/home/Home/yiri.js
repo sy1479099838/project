@@ -12,11 +12,7 @@ function checkshi(){
     alert("1秒后开始执行");
 }
 function fenlei(){
-    alert(1111111111);
-    //$(".fenlei_list").show().animate({width:'100%'},2000);
-    //var text='<div class="fen_list"><p>1111111111111111111</p></div>';
-    //$(".fenlei_list").html(text);
-    $(".fenlei_list").show();
+    $(".fenlei_list").show().animate({left:0},1000);
 }
 function tiaozhuan(){
     self.location='/admin/home/home/index';
@@ -25,5 +21,5 @@ function quanfen(){
     self.location='/admin/home/Home/piao';
 }
 function cloase_fen(){
-    $(".fenlei_list").hide();
+    $(".fenlei_list").show().animate({left:'-100%'},0);
 }
