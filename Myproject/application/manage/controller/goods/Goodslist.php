@@ -294,11 +294,6 @@ class Goodslist extends Common
      * */
     public function AddGoods()
     {
-        $files= request()->file("Image");
-        dump($files);dump($_FILES);
-        dump($img);
-        $a = file_put_contents('./test.jpg', $img);
-        exit;
         $information=input();
         $formData=json_decode($information["FormData"],true);
         $array=array();
@@ -355,7 +350,6 @@ class Goodslist extends Common
             $cid=$array["AddLiabilityGoods"].",".$array["AddLiabilityGoods".$array["AddLiabilityGoods"]];
         }
         $files= request()->file("Image");
-        dump($files);exit;
         $ImgPhoto=array();
         foreach($files as $file){
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
@@ -1117,5 +1111,18 @@ class Goodslist extends Common
         {
             exit("对不起，您没有权限！");
         }
+    }
+
+    public function testUploads()
+    {
+        $text=input();
+        $i=0;
+        $array=array();
+        foreach ($text["data"] as $val)
+        {
+            $arr=explode(",",$val);
+            file_put_contents("/", $arr[1]);
+        }
+//        dump($array);
     }
 }
