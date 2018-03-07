@@ -269,7 +269,14 @@ function closeGoodsComment() {
 }
 
 
-
+function isInArray(arr,value){
+    for(var i = 0; i < arr.length; i++){
+        if(value === arr[i]){
+            return false;
+        }
+    }
+    return true;
+}
 
 /*\
 * 图片预览
@@ -282,7 +289,10 @@ function OpenMoreFile()
 }
 var imgfile=new Object();
 function choseMoreImg() {
-    $("#dd").html("");
+    var firstHtml='<div class="fl" onclick="OpenMoreFile()" style="width: 162px;height: 82px;margin-right:2px;background:#00CC99;text-align: center;font-size: 60px;border-radius: 5px;">'
+        +
+        '+</div>';
+    $("#dd").html(firstHtml);
     imgfile[0]="";
     var file = document.getElementById('doc').files;
     var fileNum=file.length;
@@ -290,9 +300,19 @@ function choseMoreImg() {
     {
         var arr = Object.keys(imgfile);
         var oldNum = arr.length;
+        var arrayObj = new Array();
+        for (a=1;a<oldNum;a++)
+        {
+            arrayObj[a-1]=imgfile[a].name;
+        }
+        var num_2=oldNum;
         for(j=oldNum;j<(fileNum+oldNum);j++)
         {
-            imgfile[j]=file[j-oldNum];
+            if(isInArray(arrayObj,file[j-oldNum].name))
+            {
+                imgfile[num_2]=file[j-oldNum];
+                num_2=num_2+1;
+            }
         }
     }
     var arr2 = Object.keys(imgfile);
@@ -319,11 +339,10 @@ function choseMoreImg() {
                 {
                     $.showBox("请上传640*320照片！");
                 }
-            }
+            };
         }
     }
 }
-
 
 /*
  * 多图上传测试

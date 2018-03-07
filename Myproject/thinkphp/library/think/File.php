@@ -40,6 +40,7 @@ class File extends SplFileObject
     {
         parent::__construct($filename, $mode);
         $this->filename = $this->getRealPath();
+        $this->File_Temp = $this->getRealPath();
     }
 
     /**

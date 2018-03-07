@@ -32,6 +32,7 @@ class Linkwx extends Controller
             exit;
         }
     }
+
     public function responseMsg()
     {
         $postStr = file_get_contents("php://input");

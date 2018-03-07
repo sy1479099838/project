@@ -23,6 +23,7 @@ class Shoppingcar extends Common
         }
         $taocan=Common::fisker_decode_v2($value[0]);
         $num=Common::fisker_decode_v2($value[1]);
+//        dump($taocan.";".$num);exit;
         if($taocan=="shoppingCar")
         {
             echo "123";

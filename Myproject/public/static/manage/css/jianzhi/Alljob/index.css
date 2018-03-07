@@ -1,7 +1,7 @@
 .alljob_first{width:100%;height:60px;font-size:20px;line-height:60px;text-align:center;}
 .second{width:20%;height:30px;background:none;border:2px solid green;border-radius:4px;margin-left:3%;float:left;}
 .second input{display:block;width:75%;border:none;float:left;}
-.second_1{width:12%;height:30px;background:none;border:2px solid green;border-radius:4px;margin-left:3%;float:left;}
+.second_1{height:30px;background:none;border:2px solid green;border-radius:4px;margin-left:3%;float:left;padding: 0 5px 0 5px;}
 .second_1 img{width:25px;height:25px;}
 .zhiwei_list{width:94%;border:1px solid #7B7B7B;margin-left:3%;margin-top:30px;}
 .zhiwei_list tbody tr th{border:1px solid #adadad;}

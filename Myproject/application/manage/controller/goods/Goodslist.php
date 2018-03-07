@@ -22,9 +22,6 @@ class Goodslist extends Common
         {
             $NowPage=1;
         }
-
-
-
         $people=Session::get('admin');
         $HotClass=json_decode(json_encode(Hotclass::field("id,HotName")->select(),true),true);
         if(isset($get["Classify"]))
@@ -124,6 +121,7 @@ class Goodslist extends Common
                 ->where("BusinessId",$people["id"])
                 ->page(''.$NowPage.',8')
                 ->alias("a")//给表添加别名
+                ->order("addTime desc")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
@@ -136,6 +134,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
+                ->order("addTime desc")
                 ->page(''.$NowPage.',8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
@@ -174,6 +173,7 @@ class Goodslist extends Common
                 ->where('GoodsName|PositionName','like','%'.$Key.'%')
                 ->page(''.$NowPage.',8')
                 ->alias("a")//给表添加别名
+                ->order("addTime desc")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("a.id,a.CovorImg,a.GoodsName,a.addTime,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
@@ -187,6 +187,7 @@ class Goodslist extends Common
             $GoodsList=Db::table('t_goods')
                 ->where('GoodsName|PositionName','like','%'.$Key.'%')
                 ->alias("a")
+                ->order("addTime desc")
                 ->page(''.$NowPage.',8')
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
@@ -224,6 +225,7 @@ class Goodslist extends Common
                 ->where("BusinessId",$people["id"])
                 ->page(''.$NowPage.',8')
                 ->alias("a")//给表添加别名
+                ->order("addTime desc")
                 ->where("a.startTime","egt",$startTime)
                 ->where("a.endTime","elt",$endTime)
                 ->join('t_goods_classify b','a.pid = b.id')
@@ -238,6 +240,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
+                ->order("addTime desc")
                 ->where("a.startTime","egt",$startTime)
                 ->where("a.endTime","elt",$endTime)
                 ->page(''.$NowPage.',8')
@@ -287,8 +290,6 @@ class Goodslist extends Common
             }
         }
     }
-
-
     /*
      * 接收商品信息,添加到数据库
      * */
@@ -352,18 +353,24 @@ class Goodslist extends Common
         $files= request()->file("Image");
         $ImgPhoto=array();
         foreach($files as $file){
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-            $ruth="public/uploads/";
-            if($info)
+            $size = getimagesize($file->File_Temp);
+            $height = $size[1];
+            $width = $size[0];
+            if($width=="640" && $height=="320")
             {
-                $value=$info->getSaveName();
-                $length=strlen($value);
-                $head=substr($value, 0, 8);
-                $ImgName=substr($value, 9, $length-9);
-                $ImgPhoto[]=array(
-                    $head,
-                    $ImgName
-                );
+                $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+                $ruth="public/uploads/";
+                if($info)
+                {
+                    $value=$info->getSaveName();
+                    $length=strlen($value);
+                    $head=substr($value, 0, 8);
+                    $ImgName=substr($value, 9, $length-9);
+                    $ImgPhoto[]=array(
+                        $head,
+                        $ImgName
+                    );
+                }
             }
         }
         $ImgPhoto=json_encode($ImgPhoto);
@@ -393,7 +400,6 @@ class Goodslist extends Common
         {
             exit("error");
         }
-
     }
 
     public function PageSearch()
@@ -704,6 +710,7 @@ class Goodslist extends Common
                 ->page(''.$NowPage.',8')
                 ->where($map)
                 ->alias("a")
+                ->order("addTime desc")
                 ->join('t_goods_classify b','a.pid = b.id')
                 ->join('t_business c','a.BusinessId=c.id')
                 ->field("a.id,a.GoodsName,a.addTime,a.CovorImg,a.HotClass,a.startTime,a.endTime,a.enable,a.groups,a.oldPrice,a.activityPrice,
@@ -716,6 +723,7 @@ class Goodslist extends Common
         {
             $GoodsList=Db::table('t_goods')
                 ->alias("a")
+                ->order("addTime desc")
                 ->where($map)
                 ->page(''.$NowPage.',8')
                 ->join('t_goods_classify b','a.pid = b.id')
