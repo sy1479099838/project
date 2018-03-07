@@ -853,6 +853,16 @@ $(function () {
            var href=result[0];
            window.location.href=href+"&StartTime="+startTime+"&EndTime="+endtime;
        }
-
    });
 });
+
+function myFunction(value) {
+    var l = value.length;
+    if(l>40)
+    {
+        var text=value.substr(0,40);
+        $("#GoodsIntroduce").val(text);
+        l=40;
+    }
+    $("#IntroduceLenth").text("已输入"+l+"个字，最多40个汉字！还能输入"+(40-l)+"个字！");
+}

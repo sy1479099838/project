@@ -85,7 +85,7 @@
                 <th>商品</th>
                 <th>封面图</th>
                 <th>商家</th>
-                <th>热门分类模板</th>
+                <th>热门分类模板照片</th>
                 <th>套餐</th>
                 <th>活动日期</th>
                 <th>热门分类</th>
@@ -114,7 +114,6 @@
                 </td>
                 <td>
                     <a href="javascript:void(0);" onclick="check_muban('{$value.id}')" >查看</a><br>
-                    模板1
                 </td>
                 <td>
                     <a href="javascript:void(0)" onclick="check_tao('{$value.id}')">查看</a><br>
@@ -192,7 +191,6 @@
         <input type="hidden" name="GoodsNowPage" value="{$NowPage}">
         <input type="hidden" name="GoodsAllPage" value="{$AllPage}">
         <div class="fenye" style="float:right;margin-right:2%;">
-
             <a class="icon-double-angle-left" href="javascript:void(0)" onclick="GoodsFenye('{$NowPage}','Previous','{$AllPage}')"></a>
             {volist name="page" id="vo"}
             <a href="javascript:void(0);" id='{$vo==$NowPage?"NowPage":""}' onclick="GoodsFenye('{$NowPage}','{$vo}','{$AllPage}')">{$vo}</a>
@@ -215,85 +213,89 @@
         <h1>商品添加</h1>
         <div class="Pcmenu-AddMenu">
             <form method="get" id="ADDGoods-Form" onsubmit="return false;" class="AddGoods-Form">
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称&nbsp;&nbsp;:</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
-            </span>
-            <span>
-                <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家&nbsp;&nbsp;:</label>
-                {if condition="$peopleType neq 'admin'"}
-                <input type="text" name="sjName" value="{$businessName}" disabled placeholder="请输入商家名称">
-                {else /}
-                <select name="sjName" id="BusinessChoice">
-                    <option value="0">--请选择--</option>
-                    {volist name="BusinessList" id="BU"}
-                    <option value="{$BU.id}">{$BU.CompanyName}</option>
-                    {/volist}
-                </select>
-                {/if}
-            </span><br>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;:</label>
-
-                    <select class="AddLiabilityGoods-Choice_one" name="AddLiabilityGoods">
-                        <option value="0">--选择--</option>
-                        {volist name="ClassList" id="choice"}
-                        <option value="{$choice.id}">--{$choice.ClassName}--</option>
+                <span>
+                    <label>商&nbsp;&nbsp;品&nbsp;&nbsp;名&nbsp;&nbsp;称&nbsp;&nbsp;:</label><input type="text" name="goodsName" value="" placeholder="请输入商品名称">
+                </span>
+                <span>
+                    <label>所&nbsp;&nbsp;属&nbsp;&nbsp;商&nbsp;&nbsp;家&nbsp;&nbsp;:</label>
+                    {if condition="$peopleType neq 'admin'"}
+                    <input type="text" name="sjName" value="{$businessName}" disabled placeholder="请输入商家名称">
+                    {else /}
+                    <select name="sjName" id="BusinessChoice">
+                        <option value="0">--请选择--</option>
+                        {volist name="BusinessList" id="BU"}
+                        <option value="{$BU.id}">{$BU.CompanyName}</option>
                         {/volist}
                     </select>
-                    {volist name="ClassList" id="choice_1"}
-                    {present name="choice_1.children.0"}
-                    <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden" name="AddLiabilityGoods{$choice_1.id}">
-                        <option value="0">--选择--</option>
-                        {volist name="choice_1.children" id="choice_2"}
-                        <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
+                    {/if}
+                </span><br>
+                <span>
+                    <label>商&nbsp;&nbsp;品&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;:</label>
+
+                        <select class="AddLiabilityGoods-Choice_one" name="AddLiabilityGoods">
+                            <option value="0">--选择--</option>
+                            {volist name="ClassList" id="choice"}
+                            <option value="{$choice.id}">--{$choice.ClassName}--</option>
+                            {/volist}
+                        </select>
+                        {volist name="ClassList" id="choice_1"}
+                        {present name="choice_1.children.0"}
+                        <select id="AddLiabilityGoods{$choice_1.id}" class="Choice-hidden" name="AddLiabilityGoods{$choice_1.id}">
+                            <option value="0">--选择--</option>
+                            {volist name="choice_1.children" id="choice_2"}
+                            <option value="{$choice_2.id}">--{$choice_2.ClassName}--</option>
+                            {/volist}
+                        </select>
+                        {/present}
                         {/volist}
-                    </select>
-                    {/present}
-                    {/volist}
-            </span><br>
-            <span>
-                <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格&nbsp;&nbsp;:</label><input type="text" name="price" id="price" value="" placeholder="实际价格">&nbsp;&nbsp;
-
-
-            </span>
-            <span>
-                <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格&nbsp;&nbsp;:</label><input type="text" name="activeprice" id="activePrice" value="" placeholder="活动价格"  >&nbsp;
-            </span>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量&nbsp;&nbsp;:</label><input type="text" name="number" id="number" value="">
-            </span>
-            <span>
-                <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;:</label>
-                {volist name="HotClass" id="Hot"}
-                <b>{$Hot.HotName}</b><input type="checkbox" name="AddHot" value="{$Hot.id}" style="width:2%;">
-                {/volist}
-            </span>
-            <span>
-                <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片&nbsp;&nbsp;:</label>
-                <a href="javascript:;" class="a-upload">
-                    <input type="file" style="display: none;"  name="file[]" id="doc" multiple="multiple" onchange="choseMoreImg();" accept="image/*" />
-
-                </a>
-                <input type="hidden" value="" id="ImgId">
-            </span><br>
-            <div id="dd" style="width:100%;float: left;">
-                <div onclick="OpenMoreFile()" style="width: 162px;height: 82px;margin-right:2px;background:#00CC99;text-align: center;font-size: 60px;border-radius: 5px;">
-                    +
+                </span><br>
+                <span>
+                    <label>实&nbsp;&nbsp;际&nbsp;&nbsp;价&nbsp;&nbsp;格&nbsp;&nbsp;:</label><input type="text" name="price" id="price" value="" placeholder="实际价格">&nbsp;&nbsp;
+                </span>
+                <span>
+                    <label>活&nbsp;&nbsp;动&nbsp;&nbsp;价&nbsp;&nbsp;格&nbsp;&nbsp;:</label><input type="text" name="activeprice" id="activePrice" value="" placeholder="活动价格"  >&nbsp;
+                </span>
+                <span>
+                    <label>商&nbsp;&nbsp;品&nbsp;&nbsp;数&nbsp;&nbsp;量&nbsp;&nbsp;:</label><input type="text" name="number" id="number" value="">
+                </span>
+                <span>
+                    <label>商&nbsp;&nbsp;品&nbsp;&nbsp;描&nbsp;&nbsp;述&nbsp;&nbsp;:</label>
+                </span>
+                <div style="width:100%;float: left;">
+                    <textarea style="width: 40%;height: 100px; border:2px solid #52c0d3;" id="GoodsIntroduce" name="GoodsIntroduce" oninput="myFunction(this.value)"></textarea>
+                    <sub id="IntroduceLenth" style="color:#737383;">已输入0个字，最多40个字！还能输入40个字！"</sub>
                 </div>
-            </div>
 
-            <span class="layui-form">
-                <label style="letter-spacing:8px;">活动时间:</label>
-                <input style="height: 100%;" type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-                <label style="width: 5%;border:none;background: none;text-align: center;"><font size="20px" color="red">至</font></label>
-                <input style="height: 100%;" type="text" name="end_time" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
-            </span><br>
-            <span>
-                商品地址（点击地图获取定位）
-            </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
-            <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
-            <input type="text" value="" placeholder="经度" name="position-X">
-            <input type="text" value="" placeholder="纬度" name="position-Y">
+                <span>
+                    <label>热&nbsp;&nbsp;门&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;&nbsp;:</label>
+                    {volist name="HotClass" id="Hot"}
+                    <b>{$Hot.HotName}</b><input type="checkbox" name="AddHot" value="{$Hot.id}" style="width:2%;border:none;">
+                    {/volist}
+                </span>
+                <span>
+                    <label>商&nbsp;&nbsp;品&nbsp;&nbsp;照&nbsp;&nbsp;片&nbsp;&nbsp;:</label>
+                    <a href="javascript:;" class="a-upload">
+                        <input type="file" style="display: none;"  name="file[]" id="doc" multiple="multiple" onchange="choseMoreImg();" accept="image/*" />
+                    </a>
+                    <input type="hidden" value="" id="ImgId">
+                </span><br>
+                <div id="dd" style="width:100%;float: left;">
+                    <div onclick="OpenMoreFile()" style="width: 162px;height: 82px;margin-right:2px;background:#00CC99;text-align: center;font-size: 60px;border-radius: 5px;">
+                        +
+                    </div>
+                </div>
+                <span class="layui-form">
+                    <label style="letter-spacing:8px;">活动时间:</label>
+                    <input style="height: 100%;" type="text" name="start_time" id="date3" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                    <label style="width: 5%;border:none;background: none;text-align: center;"><font size="20px" color="red">至</font></label>
+                    <input style="height: 100%;" type="text" name="end_time" id="date4" lay-verify="date" placeholder="年-月-日：时-分-秒" autocomplete="off" class="layui-input">
+                </span><br>
+                <span>
+                    商品地址（点击地图获取定位）
+                </span><input type="text" value="" placeholder="城市定位" name="Map-serch"><button id="Map-serch">搜索</button>
+                <input type="text" value="" placeholder="地名" name="position-name" id="position-name">
+                <input type="text" value="" placeholder="经度" name="position-X">
+                <input type="text" value="" placeholder="纬度" name="position-Y">
             </form>
             <div class="map">
                 <div id="allmap" style="height:300px;width:98%;cursor:crosshair"></div>

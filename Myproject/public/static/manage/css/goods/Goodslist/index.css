@@ -33,7 +33,7 @@
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button{display:inline-block;height: 24px;line-height: 22px;background: none;border: 1px solid green;border-radius: 5px;padding:1px 3px;}
 .Goodslist>.Goodslist-Content-Box>.Goodslist-table tbody tr td button img{display: inline-block;float: left;height: 95%;}
 .Goods-AddMenu-Box{width:100%;height: 100%;overflow:auto;position:absolute;top:0;right:0;background: rgba(255,255,255,1);z-index: 999;display: none;border-left: 2px solid #f0f0f0}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{background: #ffffff;border-radius: 10px;width: 60%;height:auto;border:1px solid red;margin-left: 20%;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window{background: #ffffff;border-radius: 10px;width: 60%;height:auto;border:1px solid #747474;margin-left: 20%;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p{text-align: center;height: 33px;padding: 3px}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p button{display: inline-block;border-radius: 5px;float: right;margin: 3px;padding: 3px;background: none;font-size: 18px;border:2px solid #48484c;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window p button b{font-size: 14px;}
@@ -49,9 +49,9 @@
 .AddMenu-Submit{width: 98%;float: left;margin: 2%;text-align: center;height: 40px;}
 .AddMenu-Submit button{display: inline-block;width: 40%;height: 95%;font-size: 20px;border-radius: 10px;border:1px solid green;background:#f0f0f0;}
 .Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>.AddGoods-Form span script{width: 70%;overflow: hidden;margin-top: 0px;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>.AddGoods-Form>span>.Choice-hidden{display: none;width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
-.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>.AddGoods-Form>span>.AddLiabilityGoods-Choice_one{width: 20%;height: 100%;border: none;background: none;margin-left:50px;-webkit-appearance: none;}
-
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>.AddGoods-Form>span>.Choice-hidden{display: none;width: 30.4%;height: 100%;border:2px solid #52c0d3;background: none;}
+.Goods-AddMenu-Box>.Pcmenu-AddMenu-Window>.Pcmenu-AddMenu>.AddGoods-Form>span>.AddLiabilityGoods-Choice_one{width: 30.4%;height: 100%;background: none;border:2px solid #52c0d3;}
+#BusinessChoice{border:2px solid #52c0d3;height:100%;width: 30.4%;}
 
 .EditGoods-EditMenu-Box{width:99.5%;height: 100%;position: absolute;top:0;left: 0;background: rgba(255,255,255,1.0);z-index: 999;display: none;border-left: 1px solid #f0f0f0}
 .EditGoods-EditMenu-Box>.Pcmenu-AddMenu-Window{position: relative;background: #ffffff;border-radius: 10px;}

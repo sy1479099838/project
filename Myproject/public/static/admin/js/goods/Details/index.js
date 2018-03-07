@@ -231,13 +231,6 @@ $(document).on('scroll', function () {
 });
 
 
-$(function () {
-    $(".Goods_info_content1").click(function(){
-        var t = $(window).scrollTop();
-        $('body,html').animate({'scrollTop':t+400},2000);
-    });
-});
-
 /*商品添加到购物车时候弹出套餐*/
 
 function Add_Tao() {
@@ -254,37 +247,17 @@ $(function (){
     var n1=Number(Num.value);
     console.log(n1);
     Obu[0].onclick=function(){
-        //alert(1111);
         n1--;
         if(n1<1){
             n1=1;
         }
-        //console.log(n1);
         document.getElementById("ccid").value=n1;
     };
     Obu[1].onclick=function(){
-        //alert(111);
         n1++;
-        //console.log(n1);
         document.getElementById("ccid").value=n1;
     };
 
-   /* var lis=document.getElementById('Tao_second_2');
-    var Ole=lis.getElementsByTagName('div');
-    var num=0;
-    var Oldli=null;
-    Oldli=Ole[num];
-    //console.log(Ole);
-    //Ole[num].className='oldclass';
-    for(var i=0;i<Ole.length;i++){
-        Ole[i].onclick=function(){
-            //console.log(Ole[i]);
-            Oldli.className="active";
-            Oldli=this;
-            this.className="l_change";
-            console.log(Oldli);
-        };
-    }*/
 });
 
 function Taoqueren(){
@@ -303,18 +276,14 @@ $(function (){
     var n1=Number(Num.value);
     console.log(n1);
     Obu[0].onclick=function(){
-        //alert(1111);
         n1--;
         if(n1<1){
             n1=1;
         }
-        //console.log(n1);
         document.getElementById("queren1").value=n1;
     };
     Obu[1].onclick=function(){
-        //alert(111);
         n1++;
-        //console.log(n1);
         document.getElementById("queren1").value=n1;
     };
 

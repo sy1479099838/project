@@ -3,6 +3,7 @@ namespace app\admin\controller\goods;
 use app\admin\controller\common\Common;
 use app\manage\model\Goods;
 use app\manage\model\Parameter;
+use app\manage\model\Business;
 use think\Db;
 use app\manage\model\GoodsPackage;
 class Details extends Common
@@ -13,8 +14,13 @@ class Details extends Common
         $GoodsInformation=json_decode(json_encode(Goods::with("comments")
             ->where("id",$goodsId)
             ->alias("a")
-            ->field("a.id,a.GoodsName,a.PositionName,a.X_LONG,a.Y_LONG,a.DetailsImage,a.startTime,a.endTime,a.groups,a.oldPrice,a.activityPrice")
+            ->field("a.id,a.GoodsName,a.PositionName,a.X_LONG,a.Y_LONG,a.DetailsImage,a.startTime,a.endTime,a.groups,a.oldPrice,a.activityPrice,a.introduce,a.BusinessId")
             ->find(),true),true);
+//        dump($GoodsInformation);exit;
+        $BusinessId=$GoodsInformation["BusinessId"];
+        $ShangJia=Business::where("id",$BusinessId)->field("CompanyName,PhoneNum")->find();
+        $ShangJia->PhoneNum = explode(",",$ShangJia->PhoneNum);
+        $this->assign("ShangJia",$ShangJia);
         $this->assign("Title","商品详情");
         $this->assign("JsName","goods/Details/index");
         $this->assign("GoodsInformation",$GoodsInformation);

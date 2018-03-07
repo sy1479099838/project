@@ -47,7 +47,7 @@
 			<span><i class="icon-tags">&nbsp;</i>已售123</span>
 			<span><i class="icon-map-marker">&nbsp;</i>{$GoodsInformation.PositionName}</span>
 			<span class="cb"></span>
-			<p>会当凌绝顶，一览众山小！会当凌绝顶，一览众山小！</p>
+			<p>{$GoodsInformation.introduce}</p>
 			<p><i class="icon-bullhorn">&nbsp;</i>有效期：{$GoodsInformation.startTime|date="Y/m/d",###} - {$GoodsInformation.endTime|date="Y/m/d",###}</p>
 		</div>
 		<div class="Goods_info_remind">
@@ -75,9 +75,11 @@
 		</table>
 		<div class="Goods_info_block"></div>
 		<div class="Goods_info_Scenic">
-			<p><img src="__PUBLIC__/admin/images/sina.png" alt="">&nbsp;这里是景区名</p>
-			<a href="tel:18780516325"><i class="icon-phone">&nbsp;&nbsp;</i>18780516325<b class="icon-chevron-right fr"></b></a>
-			<p><i class="icon-map-marker">&nbsp;&nbsp;</i>这里是景区位置<b class="icon-chevron-right fr"></b></p>
+			<p><img src="__PUBLIC__/admin/images/sina.png" alt="">&nbsp;{$ShangJia.CompanyName}</p>
+			{volist name="ShangJia.PhoneNum" id="PhoneNum"}
+			<a href="tel:{$PhoneNum}"><i class="icon-phone">&nbsp;&nbsp;</i>{$PhoneNum}<b class="icon-chevron-right fr"></b></a>
+			{/volist}
+			<p style="border-bottom: none;"><i class="icon-map-marker">&nbsp;&nbsp;</i>这里是景区位置<b class="icon-chevron-right fr"></b></p>
 		</div>
 	</div>
 
@@ -87,9 +89,10 @@
 </div>
 
 <!----------以下是商品评价盒子---------------->
-<div class="Goods-Evaluate-BigBox"></div>
+<div class="Goods-Evaluate-BigBox" style="background: #ffffff;"></div>
 <!---------以下是商品详情盒子---------->
-<div class="Goods-xiangqing-BigBox"></div>
+<div class="Goods-xiangqing-BigBox" style="background: #ffffff;"></div>
+<div class="cb"></div>
 <input type="hidden" value="{$GoodsInformation.id}" name="ThisGoodsId">
 <input type="hidden" value="0" name="ThisGoodsHidden">
 <div class="Goods_info_block"></div>

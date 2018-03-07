@@ -56,7 +56,7 @@ class Home extends Common
             $GoodsList[$key]["goods"]=json_decode(json_encode(Goods::where("id","in",$goodsId)
                 ->where("enable","1")
                 ->order("field(id,$goodsId)")
-                ->field("id,GoodsName,Template_1,Template_2,Template_3,Template_4,startTime,endTime,oldPrice,activityPrice")
+                ->field("id,GoodsName,Template_1,Template_2,Template_3,Template_4,startTime,endTime,oldPrice,activityPrice,introduce")
                 ->select(),true),true);
         }
         $this->assign("Title","首页");

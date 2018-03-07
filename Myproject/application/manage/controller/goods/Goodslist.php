@@ -298,6 +298,7 @@ class Goodslist extends Common
         $information=input();
         $formData=json_decode($information["FormData"],true);
         $array=array();
+
         foreach ($formData as $val)
         {
             $array[$val["name"]]=$val["value"];
@@ -319,7 +320,8 @@ class Goodslist extends Common
             ['end_time','require','请选择结束时间'],
             ['position-name','require|length:1,100','请输入或者选择商品位置|名字过长'],
             ['position-X','float|gt:0','请点击地图|请点击地图'],
-            ['position-Y','float|gt:0','请点击地图|请点击地图']
+            ['position-Y','float|gt:0','请点击地图|请点击地图'],
+            ['GoodsIntroduce','require|length:1,80','请介绍商品|长度需要在1-40汉字之间']
         ];
         $data = [
             'goodsName'  => $array["goodsName"],
@@ -332,7 +334,8 @@ class Goodslist extends Common
             'end_time'   => $array["end_time"],
             'position-name'   => $array["position-name"],
             'position-X'   => $array["position-X"],
-            'position-Y'   => $array["position-Y"]
+            'position-Y'   => $array["position-Y"],
+            'GoodsIntroduce'=>$array["GoodsIntroduce"]
         ];
         $validate = new \think\Validate($rule);
         $result   = $validate->check($data);
@@ -390,7 +393,8 @@ class Goodslist extends Common
             'endTime'=>strtotime($array["end_time"]),
             'oldPrice'=>$array["price"],
             'activityPrice'=>$array["activeprice"],
-            'pid'=>$pid
+            'pid'=>$pid,
+            'introduce'=>$array["GoodsIntroduce"]
         ]);
         if($value)
         {
