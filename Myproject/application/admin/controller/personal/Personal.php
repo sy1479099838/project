@@ -4,6 +4,7 @@ use app\admin\controller\common\Common;
 use think\Db;
 use app\admin\model\User;
 use think\Session;
+use app\admin\model\GoodsOrder;
 class Personal extends Common
 {
     public function index()
@@ -298,5 +299,33 @@ class Personal extends Common
         $this->assign("Title","兼职");
         $this->assign("JsName","personal/Personal/jianzhi");
         return $this->fetch();
+    }
+
+    /*
+     * 提醒发货
+     * */
+    public function TXFaHuo()
+    {
+        $num=input("num");
+        $LastTime=GoodsOrder::where("id",$num)->field("lastUpdateTime,LastUrgeTime,Urge")->find();
+        if((time()-$LastTime->lastUpdateTime)>3600 && (time()-$LastTime->LastUrgeTime)>3600)
+        {
+            $result=GoodsOrder::where("id",$num)->update([
+                "Urge"=>($LastTime->Urge)+1,
+                "LastUrgeTime"=>time()
+            ]);
+            if($result==1)
+            {
+                exit("success");
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            exit("NO");
+        }
     }
 }

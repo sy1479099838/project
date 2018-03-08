@@ -13,7 +13,7 @@ function clc(y,data){
             type:"post",
             success:function (msg) {
                 if(msg!="error"){
-                    document.body.style.overflow="hidden";
+                    // document.body.style.overflow="hidden";
                     getId("Ding"+x).style.display = "none";
                     getId("Ding"+y).style.display = "";
                     x=y;
@@ -33,7 +33,7 @@ function clc(y,data){
     }
     else
     {
-        document.body.style.overflow="hidden";
+        // document.body.style.overflow="hidden";
         getId("Ding"+x).style.display = "none";
         getId("Ding"+y).style.display = "";
         x=y;

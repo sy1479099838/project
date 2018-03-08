@@ -13,7 +13,7 @@ function clc(y,data){
             type:"post",
             success:function (msg) {
                 if(msg!="error"){
-                    document.body.style.overflow="hidden";
+                    // document.body.style.overflow="hidden";
                     getId("Ding"+x).style.display = "none";
                     getId("Ding"+y).style.display = "";
                     x=y;
@@ -33,7 +33,7 @@ function clc(y,data){
     }
     else
     {
-        document.body.style.overflow="hidden";
+        // document.body.style.overflow="hidden";
         getId("Ding"+x).style.display = "none";
         getId("Ding"+y).style.display = "";
         x=y;
@@ -45,6 +45,32 @@ function clc(y,data){
         }
         $("#order"+y).removeAttr('onclick').attr("onclick","clc("+y+","+(data+1)+");");
     }
+}
 
-
+function TiXingFa(num) {
+    $.ajax({
+        url:'TXFaHuo',
+        type:'post',
+        data:({
+            num:num
+        }),
+        success:function (msg) {
+            if(msg=="error")
+            {
+                alert("对不起，请重试！");
+            }
+            if(msg=="NO")
+            {
+                alert("请稍后再试！");
+            }
+            if(msg=="success")
+            {
+                alert("提醒成功！");
+            }
+        },
+        error:function () {
+            $.showBox("出错啦，请重试！");
+        }
+        
+    });
 }

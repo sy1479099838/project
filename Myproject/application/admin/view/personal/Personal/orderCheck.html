@@ -1,3 +1,4 @@
+
 {switch name="num"}
     {case value="0"}
         {volist name="orderCheck" id="vo"}
@@ -33,7 +34,9 @@
                     <i>×{$vo_1.num}</i>
                 </div>
                 <div style="clear:both;"></div>
-                <li style="font-size: 8px;">{$vo_1.lastUpdateTime|date="Y/m/d H:i:s",###}<a href="{:url('/admin/shoppingcar/Shoppingcar/dingdanqu')}">点击支付</a></li>
+                <li style="font-size: 8px;">{$vo_1.lastUpdateTime|date="Y/m/d H:i:s",###}
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;">去付款</button>
+                </li>
                 <div class="form_kong"></div>
             </div>
         </div>
@@ -44,17 +47,23 @@
         <div class="Tao_second_3">
             <div class="Tao_second_3_1">
                 <p>{$vo_2.GoodsName}</p>
-                <span>未发货</span>
             </div>
             <div class="Tao_second_3_1_1">
                 <img src="__ROTH__/uploads/{$vo_2.Template_4}">
-                <p>{$vo_2.GoodsName}&nbsp;&nbsp;{$vo_2.PackageName}</p>
+                <p style="overflow: hidden;">
+                    {$vo_2.GoodsName}&nbsp;&nbsp;{$vo_2.PackageName}<br>
+                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_2.price}</span>
                     <i>×{$vo_2.num}</i>
                 </div>
                 <div style="clear:both;"></div>
-                <li style="font-size: 8px;">{$vo_2.lastUpdateTime|date="Y/m/d H:i:s",###}</li>
+                <li style="font-size: 8px;">
+                    {$vo_2.lastUpdateTime|date="Y/m/d H:i:s",###}
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;" onclick="TiXingFa('{$vo_2.Id}')">提醒发货</button>
+                </li>
+
                 <div class="form_kong"></div>
             </div>
         </div>
@@ -68,13 +77,20 @@
             </div>
             <div class="Tao_second_3_1_1">
                 <img src="__ROTH__/uploads/{$vo_3.Template_4}">
-                <p>{$vo_3.GoodsName}&nbsp;&nbsp;{$vo_3.PackageName}</p>
+                <p style="overflow: hidden;">
+                    {$vo_3.GoodsName}&nbsp;&nbsp;{$vo_3.PackageName}<br>
+                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_3.price}</span>
                     <i>×{$vo_3.num}</i>
                 </div>
                 <div style="clear:both;"></div>
-                <li style="font-size: 8px;">{$vo_3.lastUpdateTime|date="Y/m/d H:i:s",###}</li>
+                <li style="font-size: 8px;">
+                    {$vo_3.lastUpdateTime|date="Y/m/d H:i:s",###}
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;">查看物流</button>
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;">确认收货</button>
+                </li>
                 <div class="form_kong"></div>
             </div>
         </div>
@@ -88,13 +104,19 @@
             </div>
             <div class="Tao_second_3_1_1">
                 <img src="__ROTH__/uploads/{$vo_4.Template_4}">
-                <p>{$vo_4.GoodsName}&nbsp;&nbsp;{$vo_4.PackageName}</p>
+                <p style="overflow: hidden;">
+                    {$vo_4.GoodsName}&nbsp;&nbsp;{$vo_4.PackageName}<br>
+                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_4.price}</span>
                     <i>×{$vo_4.num}</i>
                 </div>
                 <div style="clear:both;"></div>
-                <li style="font-size: 8px;">{$vo_4.lastUpdateTime|date="Y/m/d H:i:s",###}<a>点击评价</a></li>
+                <li style="font-size: 8px;">
+                    {$vo_4.lastUpdateTime|date="Y/m/d H:i:s",###}
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;">去评价</button>
+                </li>
                 <div class="form_kong"></div>
             </div>
         </div>
