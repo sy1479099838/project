@@ -16,14 +16,31 @@ class Shoppingcar extends Common
     public function dingdanqu()
     {
         $information=input();
-        $value=array();
-        foreach ($information as $k=>$v)
+        $people=Session::get("UserInformation");
+        if(isset($information["DingId"]))
         {
-            $value[]=$v;
+            $DingId=Common::fisker_decode_v2($information["DingId"]);
+            $Order=GoodsOrder::where("Id",$DingId)->field("User,state,PackageId,num")->find();
+            if($people["id"]==$Order->User && $Order->state=="0")
+            {
+                $taocan=$Order->PackageId;
+                $num=$Order->num;
+            }
+            else
+            {
+                exit("出错啦！");
+            }
         }
-        $taocan=Common::fisker_decode_v2($value[0]);
-        $num=Common::fisker_decode_v2($value[1]);
-//        dump($taocan.";".$num);exit;
+        else
+        {
+            $value=array();
+            foreach ($information as $k=>$v)
+            {
+                $value[]=$v;
+            }
+            $taocan=Common::fisker_decode_v2($value[0]);
+            $num=Common::fisker_decode_v2($value[1]);
+        }
         if($taocan=="shoppingCar")
         {
             echo "123";

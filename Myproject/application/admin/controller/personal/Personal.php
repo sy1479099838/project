@@ -127,7 +127,7 @@ class Personal extends Common
                     ->join("goods_package c","a.GoodsId=c.PackageId")
                     ->field
                     (
-                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
+                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
                         b.id,b.GoodsName,b.Template_4,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
@@ -142,7 +142,7 @@ class Personal extends Common
                     ->join("goods_package c","a.GoodsId=c.PackageId")
                     ->field
                     (
-                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
+                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
                         b.id,b.GoodsName,b.Template_4,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
@@ -157,7 +157,7 @@ class Personal extends Common
                     ->join("goods_package c","a.GoodsId=c.PackageId")
                     ->field
                     (
-                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
+                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
                         b.id,b.GoodsName,b.Template_4,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")

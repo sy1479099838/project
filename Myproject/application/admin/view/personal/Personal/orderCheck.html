@@ -35,7 +35,7 @@
                 </div>
                 <div style="clear:both;"></div>
                 <li style="font-size: 8px;">{$vo_1.lastUpdateTime|date="Y/m/d H:i:s",###}
-                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;">去付款</button>
+                    <button style="background:orange;border-radius:2px;float: right;margin: 0 15px 6px 0;padding: 1px 3px 1px 3px;border: none;" onclick="FuK('{$vo_1.Id}')">去付款</button>
                 </li>
                 <div class="form_kong"></div>
             </div>
@@ -52,7 +52,7 @@
                 <img src="__ROTH__/uploads/{$vo_2.Template_4}">
                 <p style="overflow: hidden;">
                     {$vo_2.GoodsName}&nbsp;&nbsp;{$vo_2.PackageName}<br>
-                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                    <span>{$vo_2.ReceiveAddress}</span>
                 </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_2.price}</span>
@@ -79,7 +79,7 @@
                 <img src="__ROTH__/uploads/{$vo_3.Template_4}">
                 <p style="overflow: hidden;">
                     {$vo_3.GoodsName}&nbsp;&nbsp;{$vo_3.PackageName}<br>
-                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                    <span>{$vo_3.ReceiveAddress}</span>
                 </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_3.price}</span>
@@ -106,7 +106,7 @@
                 <img src="__ROTH__/uploads/{$vo_4.Template_4}">
                 <p style="overflow: hidden;">
                     {$vo_4.GoodsName}&nbsp;&nbsp;{$vo_4.PackageName}<br>
-                    <span>的更换即可购房贷款了购房肯定是个荆防颗粒杜家庄今飞凯达gfdgfdgfds</span>
+                    <span>{$vo_4.ReceiveAddress}</span>
                 </p>
                 <div class="Tao_second_3_1_little">
                     <span>￥:{$vo_4.price}</span>

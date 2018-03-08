@@ -74,3 +74,7 @@ function TiXingFa(num) {
         
     });
 }
+
+function FuK(num) {
+    self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?DingId='+fisker_encode_v2(num);
+}
