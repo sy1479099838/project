@@ -3,12 +3,16 @@
 <div class="head">
     <a class="icon-chevron-left" style="font-size:14px;margin-top:13px;float:left;margin-left:5%;" href="{:url('/admin/personal/Personal/daipinjia')}"></a>
     <p class="pin">评价</p>
-    <button onclick="fabu()">发布评价</button>
+    <button onclick="elease('{$good.id}')">发布评价</button>
 </div>
 
 <div class="first">
-    <img src="/public/static/manage/images/1506842609781.jpg">
-    <p>某某某某描述描述描述描述</p>
+    <img src="__ROTH__/uploads/{$good.CovorImg}">
+    <p>
+        <span>{$good.GoodsName}</span><br>
+        {$good.introduce}
+    </p>
+    <div class="cb"></div>
 </div>
 <div class="third">
     <p>请选择星等</p>
@@ -20,22 +24,9 @@
         <span class="Level icon-star"><input type="hidden" value="4"></span>
         <span class="Level icon-star"><input type="hidden" value="5"></span>
     </div>
-    <!--<table id ="czy">
-        <tr>
-            <td onclick="test()">★</td>
-            <td onclick="test()">★</td>
-            <td onclick="test()">★</td>
-            <td onclick="test()">★</td>
-            <td onclick="test()">★</td>
-        </tr>
-    </table>-->
 </div>
 <div class="second">
-    <textarea name="pingluna" id="pingluna">评价:</textarea>
-    <a href="javascript:;" class="file">点击上传图片
-        <input type="file"  onchange="choseMoreImg('')" id="abc" name="tu">
-    </a>
-    <div id="yulan"></div>
+    <textarea name="pingluna" id="pingluna" placeholder="评价:"></textarea>
     <div style="clear:both;"></div>
 </div>
 

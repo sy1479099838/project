@@ -55,3 +55,14 @@ function Goodspay(data)
         jsApiCall(data);
     }
 }
+
+
+// function FadeOutSure() {
+//     $(".SureBox").fadeOut(0);
+// }
+//
+// function FadeInSure(text,Hanshu) {
+//     $(".SureBox-Content-Text").text(text);
+//     $("#SureBox-sure").attr("onclick",Hanshu);
+//     $(".SureBox").fadeIn(100);
+// }

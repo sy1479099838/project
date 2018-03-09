@@ -10,7 +10,7 @@
 		<div class="active" onclick="clc(1,0)" id="order1">待付款</div>
 		<div class="active" onclick="clc(2,0)" id="order2">待发货</div>
 		<div class="active" onclick="clc(3,0)" id="order3">待收货</div>
-		<div class="active" onclick="clc(4,0)" id="order4">待评价</div>
+		<!--<div class="active" onclick="clc(4,0)" id="order4">待评价</div>-->
 	</div>
 	<div style="clear:both;"></div>
 	<div class="tiao"></div>
@@ -22,8 +22,11 @@
 					<p>{$vo.GoodsName}</p>
 				</div>
 				<div class="Tao_second_3_1_1">
-					<img src="__ROTH__/uploads/{$vo.Template_4}">
-					<p>{$vo.GoodsName}&nbsp;&nbsp;{$vo.PackageName}</p>
+					<img src="__ROTH__/uploads/{$vo.CovorImg}">
+					<p>
+						{$vo.GoodsName}&nbsp;&nbsp;{$vo.PackageName}<br>
+						<span>{$vo.ReceiveAddress}</span>
+					</p>
 					<div class="Tao_second_3_1_little">
 						<span>￥:{$vo.price}</span>
 						<i>×{$vo.num}</i>
@@ -38,6 +41,6 @@
 		<div id="Ding1" style="display:none;"></div>
 		<div id="Ding2" style="display:none;"></div>
 		<div id="Ding3" style="display:none;"></div>
-		<div id="Ding4" style="display:none;"></div>
+		<!--<div id="Ding4" style="display:none;"></div>-->
 	</div>
 {/block}

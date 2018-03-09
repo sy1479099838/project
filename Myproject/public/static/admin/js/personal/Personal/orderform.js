@@ -78,3 +78,63 @@ function TiXingFa(num) {
 function FuK(num) {
     self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?DingId='+fisker_encode_v2(num);
 }
+
+function DelDing(num) {
+    var text=confirm("确认删除该订单？");
+    if(text==true)
+    {
+        $.ajax({
+            url:"DelDing",
+            type:"post",
+            data:({
+                Ding:num
+            }),
+            success:function (msg) {
+                if(msg=="success")
+                {
+                    $.showBox("删除成功！");
+                    window.location.reload();
+                }
+                else
+                {
+                    $.showBox("删除失败，请重试！");
+                }
+            },
+            error:function (msg) {
+
+            }
+        });
+    }
+}
+
+function CheckExpress() {
+    alert("对不起，暂时还不支持此业务！");
+}
+
+function GoodsReceive(num) {
+    var text=confirm("确认收货？");
+    if(text==true)
+    {
+        $.ajax({
+            url:"SureReceive",
+            type:"post",
+            data:({
+                Ding:num
+            }),
+            success:function (msg) {
+                if(msg=="success")
+                {
+                    $.showBox("收货成功！");
+                    window.location.reload();
+                }
+                else
+                {
+                    $.showBox("收货失败，请重试！");
+                }
+            },
+            error:function (msg) {
+
+            }
+        });
+    }
+}

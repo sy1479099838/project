@@ -1,6 +1,8 @@
 <?php
 namespace app\admin\controller\personal;
 use app\admin\controller\common\Common;
+use app\admin\controller\goods\Goods;
+use app\manage\model\Goods as ModelGoods;
 use think\Db;
 use app\admin\model\User;
 use think\Session;
@@ -63,11 +65,11 @@ class Personal extends Common
         $order=Db::name('goods_order')
             ->alias("a")
             ->where("a.User",$people["id"])
-            ->where("a.state","5")
+            ->where("a.state=4 OR a.state=5")
             ->join("goods b","a.GoodsId=b.id")
             ->join("goods_package c","a.GoodsId=c.PackageId")
             ->field("a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
-            b.id,b.GoodsName,b.Template_4,c.PackageName")
+            b.id,b.GoodsName,b.CovorImg,c.PackageName")
             ->order("lastUpdateTime desc")
             ->select();
 //        dump($order);exit;
@@ -92,13 +94,13 @@ class Personal extends Common
                 $order=Db::name('goods_order')
                     ->alias("a")
                     ->where("a.User",$people["id"])
-                    ->where("a.state","5")
+                    ->where("a.state=4 OR a.state=5")
                     ->join("goods b","a.GoodsId=b.id")
-                    ->join("goods_package c","a.GoodsId=c.PackageId")
+                    ->join("goods_package c","a.PackageId=c.PackageId")
                     ->field
                     (
                         "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
-                        b.id,b.GoodsName,b.Template_4,c.PackageName"
+                        b.id,b.GoodsName,b.CovorImg,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
                     ->select();
@@ -109,11 +111,11 @@ class Personal extends Common
                     ->where("a.User",$people["id"])
                     ->where("a.state","0")
                     ->join("goods b","a.GoodsId=b.id")
-                    ->join("goods_package c","a.GoodsId=c.PackageId")
+                    ->join("goods_package c","a.PackageId=c.PackageId")
                     ->field
                     (
                         "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,
-                        b.id,b.GoodsName,b.Template_4,c.PackageName"
+                        b.id,b.GoodsName,b.CovorImg,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
                     ->select();
@@ -124,11 +126,11 @@ class Personal extends Common
                     ->where("a.User",$people["id"])
                     ->where("a.state","2")
                     ->join("goods b","a.GoodsId=b.id")
-                    ->join("goods_package c","a.GoodsId=c.PackageId")
+                    ->join("goods_package c","a.PackageId=c.PackageId")
                     ->field
                     (
                         "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
-                        b.id,b.GoodsName,b.Template_4,c.PackageName"
+                        b.id,b.GoodsName,b.CovorImg,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
                     ->select();
@@ -139,26 +141,11 @@ class Personal extends Common
                     ->where("a.User",$people["id"])
                     ->where("a.state","3")
                     ->join("goods b","a.GoodsId=b.id")
-                    ->join("goods_package c","a.GoodsId=c.PackageId")
+                    ->join("goods_package c","a.PackageId=c.PackageId")
                     ->field
                     (
                         "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
-                        b.id,b.GoodsName,b.Template_4,c.PackageName"
-                    )
-                    ->order("lastUpdateTime desc")
-                    ->select();
-                break;
-            case 4:
-                $order=Db::name('goods_order')
-                    ->alias("a")
-                    ->where("a.User",$people["id"])
-                    ->where("a.state","4")
-                    ->join("goods b","a.GoodsId=b.id")
-                    ->join("goods_package c","a.GoodsId=c.PackageId")
-                    ->field
-                    (
-                        "a.Id,a.GoodsOrderID,a.num,a.createTime,a.lastUpdateTime,a.ReceiveAddress,a.price,a.ReceiveAddress,
-                        b.id,b.GoodsName,b.Template_4,c.PackageName"
+                        b.id,b.GoodsName,b.CovorImg,c.PackageName"
                     )
                     ->order("lastUpdateTime desc")
                     ->select();
@@ -282,12 +269,47 @@ class Personal extends Common
     {
         $this->assign("Title","待评价");
         $this->assign("JsName","personal/Personal/daipinjia");
+
+        $people=Session::get("UserInformation");
+        $order=Db::name('goods_order')
+            ->alias("a")
+            ->where("a.User",$people["id"])
+            ->where("a.state","4")
+            ->join("goods b","a.GoodsId=b.id")
+            ->join("goods_package c","a.PackageId=c.PackageId")
+            ->field
+            (
+                "a.Id,a.GoodsOrderID,a.num,a.lastUpdateTime,a.price,
+                b.id,b.GoodsName,b.CovorImg,c.PackageName"
+            )
+            ->order("lastUpdateTime desc")
+            ->select();
+        $this->assign("order",$order);
         return $this->fetch();
     }
     public function pinjiaz()
     {
-        $this->assign("Title","待评价");
+        $this->assign("Title","评价");
         $this->assign("JsName","personal/Personal/pinjiaz");
+
+        $data=input();
+        $arr=array();
+        foreach ($data as $key=>$value){
+            $arr[Common::fisker_decode_v2($key)]=Common::fisker_decode_v2($value);
+        }
+        $goodsId=$arr["goodsId"];
+        $Id=$arr["OrderId"];
+        $people=Session::get("UserInformation");
+        $Order=GoodsOrder::where("Id",$Id)->field("User,state,PackageId,num")->find();
+        if($people["id"]==$Order->User && $Order->state=="4")
+        {
+            $goods=ModelGoods::where("id",$goodsId)->field("id,GoodsName,CovorImg,introduce")->find();
+        }
+        else
+        {
+            exit("对不起，出错啦！");
+        }
+        $this->assign("good",$goods);
         return $this->fetch();
     }
     public function fabu()
@@ -326,6 +348,46 @@ class Personal extends Common
         else
         {
             exit("NO");
+        }
+    }
+
+    /*
+     * 删除订单
+     * */
+    public function DelDing()
+    {
+        $Id=input("Ding");
+        $people=Session::get("UserInformation");
+        $Order=GoodsOrder::where("Id",$Id)->field("User,state,PackageId,num")->find();
+        if($people["id"]==$Order->User && $Order->state=="0")
+        {
+            $result=GoodsOrder::where("Id",$Id)->delete();
+            $result=="1"? exit("success"): exit("error");
+        }
+        else
+        {
+            exit("error");
+        }
+    }
+    /*
+     * 确认收货
+     * */
+    public function SureReceive()
+    {
+        $Id=input("Ding");
+        $people=Session::get("UserInformation");
+        $Order=GoodsOrder::where("Id",$Id)->field("User,state,PackageId,num")->find();
+        if($people["id"]==$Order->User && $Order->state=="3")
+        {
+            $result=GoodsOrder::where("Id",$Id)->update([
+                "state"=>"4",
+                "lastUpdateTime"=>time()
+            ]);
+            $result=="1"? exit("success"): exit("error");
+        }
+        else
+        {
+            exit("error");
         }
     }
 }
