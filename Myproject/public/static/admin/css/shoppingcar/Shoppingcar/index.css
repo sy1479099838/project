@@ -6,18 +6,18 @@
 .BoughtmenuBox{display: inline-block;width: 100%;height:50px;text-align: center;}
 .Boughtmenu{display:inline-block;width:91%;text-align:left;font-size:20px;line-height: 50px;}
 .BoughtFruitBox{background:#ffffff;text-align:center;}
-.BoughtFruit{display:inline-block;border-bottom:1px solid #dddddd;width:90%;height:100px;text-align:left;}
-.BoughtFruit a{display:inline-block;height:85%;text-align:center;float:left;}
+.BoughtFruit{display:inline-block;border-bottom:1px solid #dddddd;width:90%;text-align:left;}
+.BoughtFruit a{display:inline-block;text-align:center;float:left;}
 .BoughtFruit a img{width:80px;height:80px;float:left;margin-top:6px;}
-.BoughtFruit_text{display:inline-block;width:40%;height:100%;line-height:100%;font-size:12px;color:#b4afc0;margin-left:2%;float:left;}
+.BoughtFruit_text{display:inline-block;height:80px;line-height:22px;font-size:12px;color:#b4afc0;margin-left:2%;float:left;margin-top:6px;width: 62%;}
 .BoughtFruit_text p:nth-child(1){display:inline-block;height:33%;font-size:14px;color:black;line-height:180%;}
 .BoughtFruit_text b{display:inline-block;height:33%;font-size:16px;line-height:180%;color:#ff992e;}
-.BoughtFruit_input{display:inline-block;width:20%;height:22px;float:right;margin-top:60px;text-align:center;}
-.BoughtFruit_input input{width:20%;height:100%;border:none;text-align:center;font-size:100%;}
+.BoughtFruit_input{display:inline-block;height:22px;float:right;text-align:center;margin-bottom: 3px;}
+.BoughtFruit_input input{width:30px;height:100%;border:none;text-align:center;font-size:100%;}
 .BoughtFruit_input button{width:20px;height:20px;text-align:center;font-size:100%;border:1px solid #bfbfbf;border-radius:50%;background:#ffffff;color:#ff992e;}
-.TotalAmount{display:inline-block;width:90%;height:80px;text-align:left;color:#ff992e;line-height:80px;font-size:30px;}
+.TotalAmount{display:inline-block;width:96%;height:80px;text-align:left;color:#ff992e;line-height:80px;font-size: 20px;}
 .TotalAmount input{width:15px;height:15px;margin-top:36px;margin-left:5%;}
-.TotalAmount button{display:inline-block;width:50%;height:40px;background:#ff992e;border:1px solid #ff992e;border-radius:40px;float:right;position:relative;top:25%;font-size:20px;color:#ffffff;}
+.TotalAmount a{display:inline-block;width:35%;height:30px;background:#ff992e;border:1px solid #ff992e;border-radius:40px;line-height:30px;text-align:center;float:right;margin-top: 8px;position:relative;top:25%;font-size:20px;color:#ffffff;}
 .en_none{display:none;}
 #BoughtFruitBox>.BoughtFruit>.check_one{float:left;margin-top:40px;margin-right:10px;}
 #BoughtFruitBox>.BoughtFruit>.check{float:left;margin-top:40px;margin-right:10px;}

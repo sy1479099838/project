@@ -5,6 +5,8 @@ use app\manage\model\Goods;
 use app\manage\model\Parameter;
 use app\manage\model\Business;
 use think\Db;
+use app\admin\model\Shoppingcar;
+use think\Session;
 use app\manage\model\GoodsPackage;
 class Details extends Common
 {
@@ -14,7 +16,7 @@ class Details extends Common
         $GoodsInformation=json_decode(json_encode(Goods::with("comments")
             ->where("id",$goodsId)
             ->alias("a")
-            ->field("a.id,a.GoodsName,a.PositionName,a.X_LONG,a.Y_LONG,a.DetailsImage,a.startTime,a.endTime,a.groups,a.oldPrice,a.activityPrice,a.introduce,a.BusinessId")
+            ->field("a.id,a.GoodsName,a.PositionName,a.X_LONG,a.Y_LONG,a.DetailsImage,a.startTime,a.endTime,a.groups,a.oldPrice,a.activityPrice,a.introduce,a.BusinessId,a.CovorImg")
             ->find(),true),true);
 //        dump($GoodsInformation);exit;
         $BusinessId=$GoodsInformation["BusinessId"];
@@ -71,12 +73,26 @@ class Details extends Common
 
     public function AddShopCar()
     {
-        $a=input();
-        foreach ($a as $key=>$v)
+        $arr=input();
+        $people=Session::get("UserInformation");
+        foreach ($arr as $key=>$v)
         {
-            $a[$key]=Common::fisker_decode_v2($v);
+            $arr[$key]=Common::fisker_decode_v2($v);
         }
-        dump($a);
+        if(preg_match("/^[0-9]*$/",$arr["packgeId"]) && preg_match("/^[0-9]*$/",$arr["packgeNum"]))
+        {
+            $result=Shoppingcar::create([
+                "userId"=>$people["id"],
+                "packgeId"=>$arr["packgeId"],
+                "num"=>$arr["packgeNum"],
+                "addTime"=>time()
+            ]);
+            $result? exit("success"): exit('error');
+        }
+        else
+        {
+            exit("error");
+        }
     }
 
 

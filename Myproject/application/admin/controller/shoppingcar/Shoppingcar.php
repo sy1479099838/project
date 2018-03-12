@@ -11,6 +11,20 @@ class Shoppingcar extends Common
     {
         $this->assign("Title","购物车");
         $this->assign("JsName","shoppingcar/Shoppingcar/index");
+        $people=Session::get("UserInformation");
+        $List=Db::table('t_shoppingcar')
+            ->alias('a')
+            ->order("a.addTime desc")
+            ->where("a.userId",$people["id"])
+            ->join('t_goods_package b','a.packgeId = b.PackageId')
+            ->join('t_goods c','b.GoodsID = c.id')
+            ->field("a.id,a.num,a.addTime,a.packgeId,
+            b.PackageName,b.ActivityPrice,b.OldPrice,
+            c.GoodsName,c.startTime,c.endTime,c.CovorImg
+            ")
+            ->select();
+        $this->assign("time",time());
+        $this->assign("List",$List);
         return $this->fetch();
     }
     public function dingdanqu()
@@ -43,7 +57,7 @@ class Shoppingcar extends Common
         }
         if($taocan=="shoppingCar")
         {
-            echo "123";
+            dump($information);
         }
         else
         {

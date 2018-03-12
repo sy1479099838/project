@@ -8,43 +8,32 @@
 	<div class="cb"></div>
 	<div class="MAXwidth BoughtmenuBox">
 		<div class="Boughtmenu">
-			已购商品
+			全部商品
 		</div>
 	</div>
-
 	<ul class="MAXwidth BoughtFruitBox" id="BoughtFruitBox">
+		{volist name="List" id="vo"}
 		<li class="BoughtFruit">
-			<input type="checkbox" value="" class="check_one check">
-			<a href=""><img src="__PUBLIC__/admin/images/sc.jpg"></a>
+			<input type="checkbox" value="{$vo['startTime']<$time && $time<$vo['endTime']?$vo.ActivityPrice:$vo.OldPrice}" class="check_one check" placeholder="">
+			<input type="hidden" value="{$vo.packgeId}" class="package">
+			<a href=""><img src="__ROTH__/uploads/{$vo.CovorImg}"></a>
 			<span class="BoughtFruit_text">
-						<p>南丰贡桔 南丰贡桔</p><br />
-						<strong>12个装</strong><br />
-						<em class="en_none">0</em>
-						<b>88元</b>
-					</span>
+				<p style="width:100%;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{$vo.GoodsName}</p><br />
+				<strong>{$vo.PackageName}</strong><br />
+				<em class="en_none">0</em>
+				<b>{$vo['startTime']<$time && $time<$vo['endTime']?$vo.ActivityPrice:$vo.OldPrice}元</b>
+			</span>
+			<div class="cb"></div>
+			<sub class="fl">{$vo.addTime|date="Y-m-d H:i:s",###}</sub>
 			<span class="BoughtFruit_input">
-					<button>-</button><input type="text" class="BoughtFruit_num" name="num" value="1"/><button>+</button>
+				<button class="reduceNum">-</button>
+				<input type="text" class="BoughtFruit_num" name="num" value="{$vo.num}" placeholder="" disabled/>
+				<button class="addNum">+</button>
 			</span>
 		</li>
-
-		<li class="BoughtFruit">
-			<input type="checkbox" value="" class="check_one check">
-			<a href=""><img class="fl" src="__PUBLIC__/admin/images/sc.jpg"></a>
-			<span class="BoughtFruit_text">
-						<p>南丰贡桔 南丰贡桔</p><br />
-						<strong>12个装</strong><br />
-						<em class="en_none">0</em>
-						<b>88元</b>
-					</span>
-			<span class="BoughtFruit_input">
-					<button>-</button><input type="text" class="BoughtFruit_num" name="num" value="2"/><button>+</button>
-			</span>
-		</li>
+		{/volist}
 	</ul>
-
 	<div class="TotalAmount">
-		<input class="check_all check" type="checkbox"> 全选<span class="heji"></span><a href="{:url('/admin/shoppingcar/Shoppingcar/dingdanqu')}">立即结算</a>
+		<input class="check_all check" type="checkbox" placeholder=""> 全选<span class="heji">￥0</span><a href="javascript:void(0);" onclick="Settlement()">立即结算</a>
 	</div>
-
-
 {/block}

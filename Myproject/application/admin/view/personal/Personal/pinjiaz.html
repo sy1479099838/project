@@ -3,7 +3,7 @@
 <div class="head">
     <a class="icon-chevron-left" style="font-size:14px;margin-top:13px;float:left;margin-left:5%;" href="{:url('/admin/personal/Personal/daipinjia')}"></a>
     <p class="pin">评价</p>
-    <button onclick="elease('{$good.id}')">发布评价</button>
+    <button onclick="elease('{$good.id}','{$orderId}')">发布评价</button>
 </div>
 
 <div class="first">
@@ -16,7 +16,7 @@
 </div>
 <div class="third">
     <p>请选择星等</p>
-    <input type="hidden" id="hidden_list" value="" name="xing"/>
+
     <div class="third_1">
         <span class="Level icon-star"><input type="hidden" value="1"></span>
         <span class="Level icon-star"><input type="hidden" value="2"></span>
@@ -26,7 +26,11 @@
     </div>
 </div>
 <div class="second">
-    <textarea name="pingluna" id="pingluna" placeholder="评价:"></textarea>
+    <form method="post" id="Evaluate_Content">
+        <span id="limitLenth" style="margin-left: 5%;font-size: 12px;">已输入0个字，最多100个汉字！还能输入100个字！</span>
+        <textarea name="pingluna" id="pingluna" placeholder="评价:" oninput="mylimit(this.value)"></textarea>
+        <input type="hidden" id="hidden_list" value="" name="xing"/>
+    </form>
     <div style="clear:both;"></div>
 </div>
 

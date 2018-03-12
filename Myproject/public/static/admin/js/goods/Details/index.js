@@ -291,7 +291,30 @@ $(function (){
         var packgeId=fisker_encode_v2($("input:hidden[name=pacageId]").val());
         var num=fisker_encode_v2($("#queren1").val());
         self.location='/admin/shoppingcar/Shoppingcar/dingdanqu.html?'+fisker_encode_v2("taocan")+'='+packgeId+'&'+fisker_encode_v2("num")+'='+num;
-    })
+    });
+
+    $("#AddShoppingCar").click(function () {
+        var packgeId=fisker_encode_v2($("input:hidden[name=pacageId1]").val());
+        var packgeNum=fisker_encode_v2($("input:text[name=taocan]").val());
+        $.ajax({
+            url:"/admin/goods/Details/AddShopCar",
+            type:"post",
+            data:({
+                packgeId:packgeId,
+                packgeNum:packgeNum
+            }),
+            success:function(msg){
+                if(msg!="error"){
+                    $.showBox("添加成功");
+                }else{
+                    $.showBox("添加失败");
+                }
+            },
+            error:function(msg){
+                $.showBox("添加失败");
+            }
+        })
+    });
 });
 
 function Change_price(data){
@@ -325,28 +348,28 @@ function Change_price(data){
     });
 }
 
-function Add_gouwu(){
-    var packgeId=fisker_encode_v2($("input:hidden[name=pacageId1]").val());
-    var packgeNum=fisker_encode_v2($("input:text[name=taocan]").val());
-    $.ajax({
-        url:"/admin/goods/Details/AddShopCar",
-        type:"post",
-        data:({
-            packgeId:packgeId,
-            packgeNum:packgeNum
-        }),
-        success:function(msg){
-            if(msg!="error"){
-                $.showBox("添加成功");
-            }else{
-                $.showBox("添加失败");
-            }
-        },
-        error:function(msg){
-            $.showBox("添加失败");
-        }
-    })
-}
+// function Add_gouwu(){
+//     var packgeId=fisker_encode_v2($("input:hidden[name=pacageId1]").val());
+//     var packgeNum=fisker_encode_v2($("input:text[name=taocan]").val());
+//     $.ajax({
+//         url:"/admin/goods/Details/AddShopCar",
+//         type:"post",
+//         data:({
+//             packgeId:packgeId,
+//             packgeNum:packgeNum
+//         }),
+//         success:function(msg){
+//             if(msg!="error"){
+//                 $.showBox("添加成功");
+//             }else{
+//                 $.showBox("添加失败");
+//             }
+//         },
+//         error:function(msg){
+//             $.showBox("添加失败");
+//         }
+//     })
+// }
 
 
 

@@ -7,6 +7,7 @@ use think\Db;
 use app\admin\model\User;
 use think\Session;
 use app\admin\model\GoodsOrder;
+use app\admin\model\Evaluate;
 class Personal extends Common
 {
     public function index()
@@ -310,6 +311,7 @@ class Personal extends Common
             exit("对不起，出错啦！");
         }
         $this->assign("good",$goods);
+        $this->assign("orderId",$Id);
         return $this->fetch();
     }
     public function fabu()
@@ -389,5 +391,61 @@ class Personal extends Common
         {
             exit("error");
         }
+    }
+
+    /*
+     * 提交评论
+     * */
+    public function SaveEvaluate()
+    {
+        $data=input();
+        $people=Session::get("UserInformation");
+        $formData=json_decode($data["formArray"],true);
+        $id=$data["num"];
+        $orderId=$data["num2"];
+//        dump($orderId);exit;
+        $arr=array();
+        foreach ($formData as $value)
+        {
+            $arr[$value["name"]]=$value["value"];
+        }
+        $lenth=strlen($arr["pingluna"]);
+        $res=preg_match("/^[1-5]$/",$arr["xing"]);
+        if($lenth<=90 && $res)
+        {
+            $Order=GoodsOrder::where("Id",$orderId)->field("User,state")->find();
+            if($people["id"]==$Order->User && $Order->state=="4")
+            {
+                $result=Evaluate::create([
+                    "GoodsId"=>$id,
+                    "UserId"=>$people["id"],
+                    "CreateTime"=>time(),
+                    "Evaluate_text"=>$arr["pingluna"],
+                    "Grade"=>$arr["xing"],
+                    "OrderId"=>$orderId
+                ]);
+                if($result)
+                {
+                    $state=GoodsOrder::where("Id",$orderId)->update([
+                        "state"=>"5"
+                    ]);
+                    $state==1? exit("success"): exit("error");
+                }
+                else
+                {
+                    exit("error");
+                }
+            }
+            else
+            {
+                exit("error");
+            }
+        }
+        else
+        {
+            exit("error");
+        }
+
+
     }
 }
