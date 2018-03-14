@@ -21,6 +21,7 @@ class Personal extends Common
         {
             $user["count"]=0;
         }
+//        dump($user);exit;
         $this->assign("Title","个人中心");
         $this->assign("JsName","personal/Personal/index");
         $this->assign("user",$user);
@@ -58,6 +59,17 @@ class Personal extends Common
     {
         $this->assign("Title","昵称修改");
         $this->assign("JsName","personal/Personal/nicheng");
+        return $this->fetch();
+    }
+
+    /*
+     * 不是代理则注册信息
+     * */
+
+    public function register()
+    {
+        $this->assign("Title","代理注册");
+        $this->assign("JsName","personal/Personal/register");
         return $this->fetch();
     }
     public function orderform()

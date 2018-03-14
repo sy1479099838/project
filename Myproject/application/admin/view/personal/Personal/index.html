@@ -24,18 +24,28 @@
 <div class="MAXwidth PhoneNum">{$user.UserName}</div>
 <!-- 积分、余额、优惠 -->
 <div class="MAXwidth IntegralBox">
-			<span class="Integral fl">
-				积分<br />
-				<b>0</b>
-			</span>
 	<span class="Integral fl">
-				余额<br />
-				<b>￥0.00</b>
-			</span>
-	<a class="Integral fl" href="{:url('/admin/personal/Personal/distribution')}">
-		我的分销<br />
-		<b>(0)</b>
-	</a>
+		积分<br />
+		<b>0</b>
+	</span>
+	<span class="Integral fl">
+		余额<br />
+		<b>￥0.00</b>
+	</span>
+	{switch name="$user.agent"}
+		{case value="1"}
+		<a class="Integral fl" href="{:url('/admin/personal/Personal/distribution')}">
+			我的分销<br />
+			<b>(0)</b>
+		</a>
+		{/case}
+		{default /}
+		<a class="Integral fl" href="{:url('/admin/personal/Personal/register')}">
+			我的分销<br />
+			<b>(0)</b>
+		</a>
+	{/switch}
+
 </div>
 
 <div class="MAXwidth MyMenuBox" style="height: auto;">

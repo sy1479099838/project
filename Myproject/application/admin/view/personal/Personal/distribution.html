@@ -1,10 +1,34 @@
 {extend name="Public:public_2"/}
 {block name="main"}
 <div class="quan_first">
-	<a href="javascript:void(0)" class="ComeBack icon-chevron-left" onclick="history.go(-1)"></a><br>
+	<a href="javascript:void(0)" class="icon-chevron-left ComeBack" onclick="history.go(-1)"></a>
+	<button class="FenXiang icon-th-list" onclick="FenXiang()"></button><br>
 	<div style="width: 110px;display: inline-block">&nbsp;</div>
 	这里是用户名字
 	<img src="__PUBLIC__/admin/images/978684a9018de9d75fd1fecfc789208d.jpg" alt="" class="UserHead">
+</div>
+<div class="LeftMenu">
+	<p>
+		<span class="fl icon-double-angle-right Close_LeftMenu" onclick="CloseFenXiang()"></span>
+	</p>
+	<table class="LeftMenu_button">
+		<tr onclick="FenX('1')">
+			<td>分享到朋友圈</td>
+			<td><i class="icon-chevron-right"></i></td>
+		</tr>
+	</table>
+	<table class="LeftMenu_button">
+		<tr onclick="FenX('2')">
+			<td>分享给好友</td>
+			<td><i class="icon-chevron-right"></i></td>
+		</tr>
+	</table>
+	<table class="LeftMenu_button">
+		<tr onclick="FenX('3')">
+			<td>分享到QQ</td>
+			<td><i class="icon-chevron-right"></i></td>
+		</tr>
+	</table>
 </div>
 <div class="UserInfo">
 	<span class="UserInfo_content">
@@ -43,7 +67,7 @@
 					12
 				</button>
 			</td>
-			<td><b class="icon-chevron-right"></b></td>
+			<td onclick=""><b class="icon-chevron-right"></b></td>
 		</tr>
 		<tr>
 			<td><b class="icon-file-alt"></b></td>
