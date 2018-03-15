@@ -1,0 +1,30 @@
+{extend name="Public:index"/}
+{block name="main"}
+<div class="Setup">
+    <div class="Setup_content">
+        <p class="head">
+            <button onclick="">关闭</button>
+            分销设置
+        </p>
+        <form method="post" class="distribution_Setup">
+            <h2>一级分销代理设置</h2>
+            <p>
+                是否需要付费：
+                <input type="radio" name="" value="1" placeholder=""/>是
+                <input type="radio" name="" value="0" placeholder=""/>否
+            </p>
+            <div>
+                <input type="text" class="demo-input" placeholder="请选择日期" id="test1">
+
+                <script src="__ROTH__/layDa/laydate/laydate.js"></script>
+                <script>
+                    laydate.render({
+                        elem: '#test1',
+                        type: 'datetime'
+                    });
+                </script>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
