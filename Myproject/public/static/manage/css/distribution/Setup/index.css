@@ -1,12 +1,11 @@
-.Setup{border:1px solid red;height: auto;}
-.Setup>.Setup_content{width: 60%;border:1px solid #747474;margin-left: 20%;border-radius: 5px;}
+.Setup{height: auto;}
+.Setup>.Setup_content{width: 60%;border:1px solid #747474;margin-left: 20%;border-radius: 5px;margin-top: 30px;padding:30px;}
 .Setup>.Setup_content>.head{text-align: center;font-size: 22px;font-weight: 600;}
-.Setup>.Setup_content>.head button{float: right;margin: 3px;display: inline-block;height:25px;background: none;border:1px solid #398439;border-radius: 3px;padding:2px; font-size: 14px;font-weight: normal;}
 .Setup>.Setup_content>.distribution_Setup{margin-left: 5px;}
 .Setup>.Setup_content>.distribution_Setup h2{font-size: 20px;font-weight: 400;}
 .Setup>.Setup_content>.distribution_Setup>p{padding-left: 15px;height: 30px;margin: 10px;}
-
-
-
+.Setup>.Setup_content>.distribution_Setup>.Price{padding-left: 15px;height: 30px;margin: 10px;display: none;}
+.Setup>.Setup_content>.button{text-align: left;margin-bottom: 10px;}
+.Setup>.Setup_content>.button button{margin: 3px;display: inline-block;background: none;border:1px solid #398439;border-radius: 3px;padding:3px 8px; font-size: 14px;font-weight: normal;}
 
 

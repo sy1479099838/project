@@ -3,28 +3,54 @@
 <div class="Setup">
     <div class="Setup_content">
         <p class="head">
-            <button onclick="">关闭</button>
             分销设置
         </p>
-        <form method="post" class="distribution_Setup">
+        <p class="button">
+            <button onclick="Save()">保&nbsp;&nbsp;&nbsp;存</button>
+        </p>
+        <form method="post" class="distribution_Setup" id="distribution1">
             <h2>一级分销代理设置</h2>
             <p>
                 是否需要付费：
-                <input type="radio" name="" value="1" placeholder=""/>是
-                <input type="radio" name="" value="0" placeholder=""/>否
+                <input type="radio" name="IsPay" value="1" placeholder="" class="ShowPriceBox"/>是
+                <input type="radio" name="IsPay" value="0" placeholder="" class="ShowPriceBox" checked/>否
             </p>
-            <div>
-                <input type="text" class="demo-input" placeholder="请选择日期" id="test1">
-
-                <script src="__ROTH__/layDa/laydate/laydate.js"></script>
-                <script>
-                    laydate.render({
-                        elem: '#test1',
-                        type: 'datetime'
-                    });
-                </script>
+            <p>
+                代理时间(天)：<input type="number" name="DayNum" placeholder="" oninput="panNum(this.value)" class="DayNum">
+            </p>
+            <div class="Price">
+                代理押金：<input type="number" value="" name="Price" placeholder="" onblur="panPrice(this.value)" class="Price">
             </div>
         </form>
+        <form method="post" class="distribution_Setup" id="distribution2">
+            <h2>二级分销代理设置</h2>
+            <p>
+                是否需要付费：
+                <input type="radio" name="IsPay" value="1" placeholder="" class="ShowPriceBox"/>是
+                <input type="radio" name="IsPay" value="0" placeholder="" class="ShowPriceBox" checked/>否
+            </p>
+            <p>
+                代理时间(天)：<input type="number" name="DayNum" placeholder="" oninput="panNum(this.value)" class="DayNum">
+            </p>
+            <div class="Price">
+                代理押金：<input type="number" value="" name="Price" placeholder="" onblur="panPrice(this.value)" class="Price">
+            </div>
+        </form>
+        <form method="post" class="distribution_Setup" id="distribution3">
+            <h2>三级分销代理设置</h2>
+            <p>
+                是否需要付费：
+                <input type="radio" name="IsPay" value="1" placeholder="" class="ShowPriceBox"/>是
+                <input type="radio" name="IsPay" value="0" placeholder="" class="ShowPriceBox" checked/>否
+            </p>
+            <p>
+                代理时间(天)：<input type="number" name="DayNum" placeholder="" oninput="panNum(this.value)" class="DayNum">
+            </p>
+            <div class="Price">
+                代理押金：<input type="number" value="" name="Price" placeholder="" onblur="panPrice(this.value)" class="Price">
+            </div>
+        </form>
+
     </div>
 </div>
 {/block}
