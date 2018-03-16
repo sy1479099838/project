@@ -1,0 +1,15 @@
+.Wring{text-align: center;border: 1px solid #747474;left: 2%;height: 30%;width:96%;top: 35%;border-radius: 10px;position:fixed;z-index: 99;background: rgba(0,0,0,0.7);color:#ffffff;}
+.Wring>h5{text-align: center;height: 60px;line-height: 60px;}
+.Wring>button{background: none;border:1px solid #ffffff;border-radius: 4px;display: inline-block;padding:3px 5px;margin: 20px 15px;color:#ffffff;}
+.contract{width: 100%;}
+.contract>.contract_content{width: 100%;height: auto;}
+.contract>.contract_content img{max-width: 100%;}
+.contract>.Agree{width: 90%;margin-left: 5%;display: none;}
+.contract>.Agree>button{background: none;border:1px solid green;border-radius: 4px;display: inline-block;padding:3px 5px;margin: 20px 15px;}
+.information{margin-top: 10px;display: none;}
+.information>h4{text-align: center;}
+.information>p{height:26px;width: 90%;margin-left: 10%;margin-top: 20px;}
+.information>p>span{display: inline-block;width:85px;background: #6ff9e4;height: 26px;line-height: 26px;float: left;}
+.information>p>input{display: inline-block;width: 57%;height: 24px;border:1px solid #6ff9e4;float: left;}
+.information>div>button{background: none;border:1px solid green;border-radius: 4px;display: inline-block;padding:3px 5px;margin: 20px 15px;}
+

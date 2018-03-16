@@ -1,4 +1,46 @@
 {extend name="Public:public_2"/}
 {block name="main"}
-代理注册
+<div class="Wring">
+    <h5>
+        您还不是代理，马上成为代理？
+    </h5>
+    <button onclick="Sure()">申&nbsp;&nbsp;请</button>
+    <button onclick="Cancel()">取&nbsp;&nbsp;消</button>
+</div>
+<div class="contract">
+    <div class="contract_content"></div>
+    <div class="cb"></div>
+    <div class="Agree">
+        <input type="checkbox" value="1" placeholder="" name="Agree" id="Agree">我已同意 <br>
+        <button class="fr" onclick="Cancel()">取&nbsp;&nbsp;&nbsp;消</button>
+        <button class="fr" id="Next">下一步</button>
+    </div>
+</div>
+<script src="__ROTH__/layDa/laydate/laydate.js"></script>
+<form class="information" method="post" onsubmit="return false">
+    <h4>个人信息填写</h4>
+    <p>
+        <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span><input type="text" placeholder="">
+    </p>
+    <p>
+        <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span><input type="text" placeholder="">
+    </p>
+    <p>
+        <span>出生年月：</span><input type="text" class="demo-input" placeholder="请选择日期" id="Day">
+    </p>
+    <p>
+        <span>联系电话：</span><input type="text" placeholder="">
+    </p>
+    <p>
+        <span>联系Q&nbsp;Q：</span><input type="text" placeholder="">
+    </p>
+    <div style="text-align: center;">
+        <button onclick="saveInfor()">提&nbsp;&nbsp;交</button><button onclick="Cancel()">取&nbsp;&nbsp;消</button>
+    </div>
+</form>
+<script>
+    laydate.render({
+        elem: '#Day'
+    });
+</script>
 {/block}

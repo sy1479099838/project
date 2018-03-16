@@ -23,21 +23,24 @@ class Setup extends Common
             }
             $val[]=$arr;
         }
-
         foreach ($val as $value1)
         {
+            if(!preg_match('/[1-9]\d*/', $value1["DayNum"]))
+            {
+                exit("请填写正确的天数！");
+            }
             if($value1["IsPay"]==1 || $value1["IsPay"]==0)
             {
                 if($value1["IsPay"]==1)
                 {
                     $str = $value1["Price"];
-                    $isMatched = preg_match('/^(?:[1-9][0-9]*(?:\.[0-9]+)?|0\.(?!0+$)[0-9]+)$/', $str, $matches);
-                    var_dump($isMatched, $matches);
+                    $isMatched = preg_match('/^(?:[1-9][0-9]*(?:\.[0-9]+)?|0\.(?!0+$)[0-9]+)$/', $str);
+                    if($isMatched==0)
+                    {
+                        exit("请输入正确的价格！");
+                    }
                 }
             }
         }
-
-
-        dump($val);
     }
 }

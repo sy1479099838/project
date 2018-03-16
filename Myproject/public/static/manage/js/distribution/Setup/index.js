@@ -44,7 +44,7 @@ function Save() {
             data:arr
         }),
         success:function (msg) {
-            
+            $.showBox(msg);
         },
         error:function () {
             
