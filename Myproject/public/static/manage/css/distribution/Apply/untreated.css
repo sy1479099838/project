@@ -1,0 +1,9 @@
+.untreated{width: 100%;}
+.untreated>h2{text-align: center;font-size: 22px;}
+.untreated>p{width: 98%;margin-left: 1%;}
+.untreated>.untreated_List{width: 98%;height: auto;border: 1px solid #bfbfbf;margin: 3px 0;border-collapse:collapse;margin-left: 1%;}
+.untreated>.untreated_List tr td{border:1px solid #bfbfbf;}
+.untreated>.untreated_List tr th{border:1px solid #bfbfbf;}
+
+
+
