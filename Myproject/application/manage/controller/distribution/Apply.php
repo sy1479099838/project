@@ -7,4 +7,8 @@ class Apply extends Common
     {
         return $this->fetch();
     }
+    public function test()
+    {
+        return $this->fetch();
+    }
 }
