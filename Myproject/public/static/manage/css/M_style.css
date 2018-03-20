@@ -4,7 +4,7 @@
 .cb{clear: both;}
 ul li{list-style-type:none;}
 a{text-decoration:none;}
-
+.CantClick{position:fixed;width: 100%;height: 100%;background: rgba(255,255,255,0);display: none;z-index: 999999999999999;}
 /*----------以下是确认框----------*/
 .Sure-Box{position: fixed;top:25%;left: 36%;width: 26%;height: auto;background: rgba(255,255,255,1);border:1px solid red;border-radius: 5px;padding-bottom: 20px;display: none;}
 .Sure-Box>.sure-text{margin: 10px;text-align: center;font-weight: 600;font-size: 22px;}
